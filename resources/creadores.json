@@ -1,0 +1,3990 @@
+[ {
+  "id" : 1,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Colombia",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 241503,
+  "estadisticas" : {
+    "interacciones_totales" : 1279203,
+    "promedio_vistas_mensuales" : 9684,
+    "tasa_crecimiento_seguidores" : 8.03250201023239
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User1_YouTube",
+    "seguidores" : 81338,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3606,
+      "interacciones" : 3073
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4822,
+      "interacciones" : 4046
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User1_Instagram",
+    "seguidores" : 98686,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2055,
+      "interacciones" : 9650
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2,
+      "interacciones" : 2428
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User1_Twitch",
+    "seguidores" : 1914,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3590,
+      "interacciones" : 9349
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1179,
+      "interacciones" : 3243
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User1_TikTok",
+    "seguidores" : 51984,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4955,
+      "interacciones" : 7659
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 685,
+      "interacciones" : 6141
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 2,
+  "nombre" : "Ana Lopez",
+  "pais" : "Colombia",
+  "tematica" : "Moda",
+  "seguidores_totales" : 198102,
+  "estadisticas" : {
+    "interacciones_totales" : 1440644,
+    "promedio_vistas_mensuales" : 135387,
+    "tasa_crecimiento_seguidores" : 1.935135181901324
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User2_YouTube",
+    "seguidores" : 53229,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2872,
+      "interacciones" : 3665
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4701,
+      "interacciones" : 6747
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User2_Instagram",
+    "seguidores" : 70734,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1479,
+      "interacciones" : 342
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2112,
+      "interacciones" : 4874
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User2_Twitch",
+    "seguidores" : 94818,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4399,
+      "interacciones" : 286
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4698,
+      "interacciones" : 383
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User2_TikTok",
+    "seguidores" : 61269,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2287,
+      "interacciones" : 4477
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1553,
+      "interacciones" : 8404
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-08-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 3,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Argentina",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 414907,
+  "estadisticas" : {
+    "interacciones_totales" : 1001781,
+    "promedio_vistas_mensuales" : 136207,
+    "tasa_crecimiento_seguidores" : 8.800496344107474
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User3_YouTube",
+    "seguidores" : 36274,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1820,
+      "interacciones" : 6440
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4634,
+      "interacciones" : 3853
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User3_Instagram",
+    "seguidores" : 32562,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2707,
+      "interacciones" : 5382
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2305,
+      "interacciones" : 750
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User3_Twitch",
+    "seguidores" : 23792,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3827,
+      "interacciones" : 6962
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1002,
+      "interacciones" : 1896
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User3_TikTok",
+    "seguidores" : 16378,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3647,
+      "interacciones" : 5464
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4679,
+      "interacciones" : 2138
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 4,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Chile",
+  "tematica" : "Fitness",
+  "seguidores_totales" : 174577,
+  "estadisticas" : {
+    "interacciones_totales" : 1021687,
+    "promedio_vistas_mensuales" : 109844,
+    "tasa_crecimiento_seguidores" : 3.1498209800016177
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User4_YouTube",
+    "seguidores" : 67872,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4734,
+      "interacciones" : 1228
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2468,
+      "interacciones" : 4147
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User4_Instagram",
+    "seguidores" : 70054,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1957,
+      "interacciones" : 2471
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1712,
+      "interacciones" : 9341
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User4_Twitch",
+    "seguidores" : 1101,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3440,
+      "interacciones" : 9134
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2623,
+      "interacciones" : 6873
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User4_TikTok",
+    "seguidores" : 39719,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4131,
+      "interacciones" : 5933
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2016,
+      "interacciones" : 4524
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 5,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Chile",
+  "tematica" : "Fitness",
+  "seguidores_totales" : 366973,
+  "estadisticas" : {
+    "interacciones_totales" : 256746,
+    "promedio_vistas_mensuales" : 33096,
+    "tasa_crecimiento_seguidores" : 5.275429892223573
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User5_YouTube",
+    "seguidores" : 84900,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2528,
+      "interacciones" : 1069
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 644,
+      "interacciones" : 8042
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User5_Instagram",
+    "seguidores" : 45481,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2161,
+      "interacciones" : 8967
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 237,
+      "interacciones" : 3885
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User5_Twitch",
+    "seguidores" : 91149,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2992,
+      "interacciones" : 6000
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3055,
+      "interacciones" : 8155
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User5_TikTok",
+    "seguidores" : 55334,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4720,
+      "interacciones" : 1063
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 751,
+      "interacciones" : 2931
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 6,
+  "nombre" : "Ana Lopez",
+  "pais" : "Mexico",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 106167,
+  "estadisticas" : {
+    "interacciones_totales" : 682413,
+    "promedio_vistas_mensuales" : 74658,
+    "tasa_crecimiento_seguidores" : 1.120392281646726
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User6_YouTube",
+    "seguidores" : 8384,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3160,
+      "interacciones" : 7180
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2927,
+      "interacciones" : 8528
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User6_Instagram",
+    "seguidores" : 6448,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 977,
+      "interacciones" : 7688
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4489,
+      "interacciones" : 2971
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User6_Twitch",
+    "seguidores" : 55557,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2968,
+      "interacciones" : 6299
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3615,
+      "interacciones" : 2857
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User6_TikTok",
+    "seguidores" : 23462,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1513,
+      "interacciones" : 717
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2259,
+      "interacciones" : 881
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-08-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 7,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Mexico",
+  "tematica" : "Videojuegos",
+  "seguidores_totales" : 155137,
+  "estadisticas" : {
+    "interacciones_totales" : 1318100,
+    "promedio_vistas_mensuales" : 151327,
+    "tasa_crecimiento_seguidores" : 3.0665010178273944
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User7_YouTube",
+    "seguidores" : 63037,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 22,
+      "interacciones" : 6346
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1202,
+      "interacciones" : 2487
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User7_Instagram",
+    "seguidores" : 62233,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 881,
+      "interacciones" : 8284
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2855,
+      "interacciones" : 9349
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User7_Twitch",
+    "seguidores" : 74263,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 438,
+      "interacciones" : 9678
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4991,
+      "interacciones" : 6510
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User7_TikTok",
+    "seguidores" : 30895,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4036,
+      "interacciones" : 3407
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3703,
+      "interacciones" : 7129
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 8,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Mexico",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 551661,
+  "estadisticas" : {
+    "interacciones_totales" : 1431748,
+    "promedio_vistas_mensuales" : 124650,
+    "tasa_crecimiento_seguidores" : 4.220583645764206
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User8_YouTube",
+    "seguidores" : 47636,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3833,
+      "interacciones" : 739
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3068,
+      "interacciones" : 3329
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User8_Instagram",
+    "seguidores" : 80338,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3809,
+      "interacciones" : 9679
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1528,
+      "interacciones" : 4130
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User8_Twitch",
+    "seguidores" : 62035,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2982,
+      "interacciones" : 299
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2896,
+      "interacciones" : 7937
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User8_TikTok",
+    "seguidores" : 84034,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3268,
+      "interacciones" : 5658
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2670,
+      "interacciones" : 1835
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-08-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 9,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Mexico",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 397116,
+  "estadisticas" : {
+    "interacciones_totales" : 1218639,
+    "promedio_vistas_mensuales" : 140200,
+    "tasa_crecimiento_seguidores" : 9.366427929439562
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User9_YouTube",
+    "seguidores" : 83923,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4595,
+      "interacciones" : 9635
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2242,
+      "interacciones" : 3319
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User9_Instagram",
+    "seguidores" : 42098,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1612,
+      "interacciones" : 8399
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1821,
+      "interacciones" : 995
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User9_Twitch",
+    "seguidores" : 61703,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 974,
+      "interacciones" : 4663
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 536,
+      "interacciones" : 4963
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User9_TikTok",
+    "seguidores" : 51014,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4989,
+      "interacciones" : 2657
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1200,
+      "interacciones" : 3512
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-09-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 10,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Mexico",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 517624,
+  "estadisticas" : {
+    "interacciones_totales" : 809264,
+    "promedio_vistas_mensuales" : 52630,
+    "tasa_crecimiento_seguidores" : 3.2381504725927335
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User10_YouTube",
+    "seguidores" : 60309,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3327,
+      "interacciones" : 9093
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1803,
+      "interacciones" : 6817
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User10_Instagram",
+    "seguidores" : 30705,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 58,
+      "interacciones" : 1619
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4532,
+      "interacciones" : 234
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User10_Twitch",
+    "seguidores" : 19773,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2804,
+      "interacciones" : 5555
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2935,
+      "interacciones" : 9940
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User10_TikTok",
+    "seguidores" : 37200,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2824,
+      "interacciones" : 9833
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4780,
+      "interacciones" : 8546
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 11,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Colombia",
+  "tematica" : "Fitness",
+  "seguidores_totales" : 469272,
+  "estadisticas" : {
+    "interacciones_totales" : 1274386,
+    "promedio_vistas_mensuales" : 12805,
+    "tasa_crecimiento_seguidores" : 9.757122561677999
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User11_YouTube",
+    "seguidores" : 51183,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3589,
+      "interacciones" : 7206
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1311,
+      "interacciones" : 3287
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User11_Instagram",
+    "seguidores" : 5126,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4616,
+      "interacciones" : 4963
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2849,
+      "interacciones" : 4923
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User11_Twitch",
+    "seguidores" : 32319,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4416,
+      "interacciones" : 2100
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1799,
+      "interacciones" : 440
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User11_TikTok",
+    "seguidores" : 30559,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4286,
+      "interacciones" : 794
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3667,
+      "interacciones" : 6123
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 12,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Chile",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 189170,
+  "estadisticas" : {
+    "interacciones_totales" : 95493,
+    "promedio_vistas_mensuales" : 165137,
+    "tasa_crecimiento_seguidores" : 3.0425202828321773
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User12_YouTube",
+    "seguidores" : 46292,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3895,
+      "interacciones" : 9671
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 416,
+      "interacciones" : 7436
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User12_Instagram",
+    "seguidores" : 55851,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4037,
+      "interacciones" : 3066
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4571,
+      "interacciones" : 2092
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User12_Twitch",
+    "seguidores" : 95163,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1577,
+      "interacciones" : 5968
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1668,
+      "interacciones" : 7429
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User12_TikTok",
+    "seguidores" : 61580,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1297,
+      "interacciones" : 9081
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 320,
+      "interacciones" : 5701
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 13,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Mexico",
+  "tematica" : "Moda",
+  "seguidores_totales" : 539563,
+  "estadisticas" : {
+    "interacciones_totales" : 586998,
+    "promedio_vistas_mensuales" : 68494,
+    "tasa_crecimiento_seguidores" : 6.493644584794778
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User13_YouTube",
+    "seguidores" : 93868,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 517,
+      "interacciones" : 1897
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2297,
+      "interacciones" : 3309
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User13_Instagram",
+    "seguidores" : 70340,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3486,
+      "interacciones" : 6154
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4537,
+      "interacciones" : 5436
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User13_Twitch",
+    "seguidores" : 85488,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2202,
+      "interacciones" : 4946
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1538,
+      "interacciones" : 8572
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User13_TikTok",
+    "seguidores" : 77736,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1461,
+      "interacciones" : 9870
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3831,
+      "interacciones" : 1923
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 14,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Colombia",
+  "tematica" : "Fitness",
+  "seguidores_totales" : 482319,
+  "estadisticas" : {
+    "interacciones_totales" : 559401,
+    "promedio_vistas_mensuales" : 129626,
+    "tasa_crecimiento_seguidores" : 5.783661165039888
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User14_YouTube",
+    "seguidores" : 28714,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 820,
+      "interacciones" : 2830
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3010,
+      "interacciones" : 5926
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User14_Instagram",
+    "seguidores" : 14963,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3918,
+      "interacciones" : 6876
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2929,
+      "interacciones" : 2203
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User14_Twitch",
+    "seguidores" : 89344,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2508,
+      "interacciones" : 429
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2391,
+      "interacciones" : 7379
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User14_TikTok",
+    "seguidores" : 84369,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3805,
+      "interacciones" : 7612
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 311,
+      "interacciones" : 3197
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 15,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Mexico",
+  "tematica" : "Videojuegos",
+  "seguidores_totales" : 320023,
+  "estadisticas" : {
+    "interacciones_totales" : 1352655,
+    "promedio_vistas_mensuales" : 71707,
+    "tasa_crecimiento_seguidores" : 5.6288159118645
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User15_YouTube",
+    "seguidores" : 34319,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3920,
+      "interacciones" : 9635
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3380,
+      "interacciones" : 1699
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User15_Instagram",
+    "seguidores" : 82738,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4333,
+      "interacciones" : 7661
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2657,
+      "interacciones" : 6880
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User15_Twitch",
+    "seguidores" : 84240,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1802,
+      "interacciones" : 5756
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2310,
+      "interacciones" : 780
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User15_TikTok",
+    "seguidores" : 81989,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 113,
+      "interacciones" : 5213
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3659,
+      "interacciones" : 8006
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 16,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Argentina",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 380098,
+  "estadisticas" : {
+    "interacciones_totales" : 539402,
+    "promedio_vistas_mensuales" : 16735,
+    "tasa_crecimiento_seguidores" : 5.881597490513892
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User16_YouTube",
+    "seguidores" : 85329,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3957,
+      "interacciones" : 9877
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4086,
+      "interacciones" : 3544
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User16_Instagram",
+    "seguidores" : 11333,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 498,
+      "interacciones" : 9450
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2823,
+      "interacciones" : 9932
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User16_Twitch",
+    "seguidores" : 81159,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4646,
+      "interacciones" : 1405
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 597,
+      "interacciones" : 1538
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User16_TikTok",
+    "seguidores" : 70491,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3272,
+      "interacciones" : 8735
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2543,
+      "interacciones" : 4997
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 17,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Chile",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 516679,
+  "estadisticas" : {
+    "interacciones_totales" : 321703,
+    "promedio_vistas_mensuales" : 93079,
+    "tasa_crecimiento_seguidores" : 0.5765347497860551
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User17_YouTube",
+    "seguidores" : 94497,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 5,
+      "interacciones" : 5863
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2945,
+      "interacciones" : 3374
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User17_Instagram",
+    "seguidores" : 88130,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4235,
+      "interacciones" : 9046
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2614,
+      "interacciones" : 7401
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User17_Twitch",
+    "seguidores" : 61168,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2978,
+      "interacciones" : 770
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2477,
+      "interacciones" : 1492
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User17_TikTok",
+    "seguidores" : 99716,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 246,
+      "interacciones" : 4613
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1127,
+      "interacciones" : 4930
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 18,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Colombia",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 314537,
+  "estadisticas" : {
+    "interacciones_totales" : 941400,
+    "promedio_vistas_mensuales" : 79511,
+    "tasa_crecimiento_seguidores" : 9.331005837485693
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User18_YouTube",
+    "seguidores" : 53094,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2345,
+      "interacciones" : 3932
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1318,
+      "interacciones" : 3186
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User18_Instagram",
+    "seguidores" : 13670,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3041,
+      "interacciones" : 2459
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 351,
+      "interacciones" : 1306
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User18_Twitch",
+    "seguidores" : 44006,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4332,
+      "interacciones" : 6714
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1186,
+      "interacciones" : 5297
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User18_TikTok",
+    "seguidores" : 4176,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4006,
+      "interacciones" : 4012
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1111,
+      "interacciones" : 809
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 19,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Colombia",
+  "tematica" : "Moda",
+  "seguidores_totales" : 473778,
+  "estadisticas" : {
+    "interacciones_totales" : 971642,
+    "promedio_vistas_mensuales" : 182637,
+    "tasa_crecimiento_seguidores" : 8.825487748347884
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User19_YouTube",
+    "seguidores" : 57665,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1772,
+      "interacciones" : 2184
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4433,
+      "interacciones" : 8449
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User19_Instagram",
+    "seguidores" : 14401,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3775,
+      "interacciones" : 710
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2908,
+      "interacciones" : 9990
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User19_Twitch",
+    "seguidores" : 24826,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1067,
+      "interacciones" : 3888
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 584,
+      "interacciones" : 9332
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User19_TikTok",
+    "seguidores" : 84767,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1350,
+      "interacciones" : 2712
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2797,
+      "interacciones" : 8285
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 20,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Espania",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 545616,
+  "estadisticas" : {
+    "interacciones_totales" : 1184633,
+    "promedio_vistas_mensuales" : 35327,
+    "tasa_crecimiento_seguidores" : 2.012670972243252
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User20_YouTube",
+    "seguidores" : 20376,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1508,
+      "interacciones" : 8299
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2774,
+      "interacciones" : 4278
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User20_Instagram",
+    "seguidores" : 97122,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1703,
+      "interacciones" : 5077
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1820,
+      "interacciones" : 6499
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User20_Twitch",
+    "seguidores" : 26422,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3556,
+      "interacciones" : 5727
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2374,
+      "interacciones" : 5060
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User20_TikTok",
+    "seguidores" : 91302,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2393,
+      "interacciones" : 3188
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4380,
+      "interacciones" : 915
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-08-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 21,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Argentina",
+  "tematica" : "Moda",
+  "seguidores_totales" : 118109,
+  "estadisticas" : {
+    "interacciones_totales" : 654642,
+    "promedio_vistas_mensuales" : 57322,
+    "tasa_crecimiento_seguidores" : 1.3129154852169955
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User21_YouTube",
+    "seguidores" : 91295,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 385,
+      "interacciones" : 8140
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2400,
+      "interacciones" : 252
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User21_Instagram",
+    "seguidores" : 67344,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3603,
+      "interacciones" : 4279
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3249,
+      "interacciones" : 480
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User21_Twitch",
+    "seguidores" : 85149,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 262,
+      "interacciones" : 8965
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 243,
+      "interacciones" : 9236
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User21_TikTok",
+    "seguidores" : 64753,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1011,
+      "interacciones" : 2554
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4654,
+      "interacciones" : 5264
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 22,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Espania",
+  "tematica" : "Fitness",
+  "seguidores_totales" : 468658,
+  "estadisticas" : {
+    "interacciones_totales" : 1921168,
+    "promedio_vistas_mensuales" : 172314,
+    "tasa_crecimiento_seguidores" : 7.963433677748009
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User22_YouTube",
+    "seguidores" : 50335,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4178,
+      "interacciones" : 3890
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1307,
+      "interacciones" : 5384
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User22_Instagram",
+    "seguidores" : 98709,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1841,
+      "interacciones" : 257
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2661,
+      "interacciones" : 7084
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User22_Twitch",
+    "seguidores" : 6251,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4075,
+      "interacciones" : 4167
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3476,
+      "interacciones" : 7482
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User22_TikTok",
+    "seguidores" : 35934,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2872,
+      "interacciones" : 6800
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3357,
+      "interacciones" : 719
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-09-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 23,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Chile",
+  "tematica" : "Fitness",
+  "seguidores_totales" : 534614,
+  "estadisticas" : {
+    "interacciones_totales" : 1999242,
+    "promedio_vistas_mensuales" : 54938,
+    "tasa_crecimiento_seguidores" : 4.806418093741013
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User23_YouTube",
+    "seguidores" : 51730,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 175,
+      "interacciones" : 1532
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1112,
+      "interacciones" : 8952
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User23_Instagram",
+    "seguidores" : 99997,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4624,
+      "interacciones" : 659
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 649,
+      "interacciones" : 5719
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User23_Twitch",
+    "seguidores" : 91069,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2117,
+      "interacciones" : 8381
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4924,
+      "interacciones" : 9033
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User23_TikTok",
+    "seguidores" : 39547,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4552,
+      "interacciones" : 1826
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 244,
+      "interacciones" : 2997
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 24,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Argentina",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 326335,
+  "estadisticas" : {
+    "interacciones_totales" : 1342989,
+    "promedio_vistas_mensuales" : 126230,
+    "tasa_crecimiento_seguidores" : 6.002367837759258
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User24_YouTube",
+    "seguidores" : 75207,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1654,
+      "interacciones" : 3389
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1608,
+      "interacciones" : 2935
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User24_Instagram",
+    "seguidores" : 77285,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 654,
+      "interacciones" : 5020
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1668,
+      "interacciones" : 4708
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User24_Twitch",
+    "seguidores" : 4497,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1621,
+      "interacciones" : 7700
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4168,
+      "interacciones" : 1930
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User24_TikTok",
+    "seguidores" : 28033,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1833,
+      "interacciones" : 4640
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 67,
+      "interacciones" : 1317
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 25,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Colombia",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 133301,
+  "estadisticas" : {
+    "interacciones_totales" : 398937,
+    "promedio_vistas_mensuales" : 10620,
+    "tasa_crecimiento_seguidores" : 4.91920387724295
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User25_YouTube",
+    "seguidores" : 73344,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 444,
+      "interacciones" : 1185
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3428,
+      "interacciones" : 2672
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User25_Instagram",
+    "seguidores" : 79014,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 570,
+      "interacciones" : 6913
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 309,
+      "interacciones" : 2801
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User25_Twitch",
+    "seguidores" : 34719,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3550,
+      "interacciones" : 426
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1185,
+      "interacciones" : 236
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User25_TikTok",
+    "seguidores" : 6247,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4743,
+      "interacciones" : 23
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 962,
+      "interacciones" : 8801
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 26,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Mexico",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 364755,
+  "estadisticas" : {
+    "interacciones_totales" : 510092,
+    "promedio_vistas_mensuales" : 177680,
+    "tasa_crecimiento_seguidores" : 0.7115460144958086
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User26_YouTube",
+    "seguidores" : 26629,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3438,
+      "interacciones" : 4272
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3446,
+      "interacciones" : 8361
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User26_Instagram",
+    "seguidores" : 31372,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3441,
+      "interacciones" : 1878
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2258,
+      "interacciones" : 6717
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User26_Twitch",
+    "seguidores" : 51511,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2908,
+      "interacciones" : 5153
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 943,
+      "interacciones" : 9831
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User26_TikTok",
+    "seguidores" : 95322,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2138,
+      "interacciones" : 3081
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2011,
+      "interacciones" : 9323
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 27,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Chile",
+  "tematica" : "Fitness",
+  "seguidores_totales" : 116002,
+  "estadisticas" : {
+    "interacciones_totales" : 1741323,
+    "promedio_vistas_mensuales" : 188795,
+    "tasa_crecimiento_seguidores" : 0.6195562726359294
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User27_YouTube",
+    "seguidores" : 7018,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3644,
+      "interacciones" : 7435
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4715,
+      "interacciones" : 4931
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User27_Instagram",
+    "seguidores" : 40539,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3981,
+      "interacciones" : 7403
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3687,
+      "interacciones" : 4776
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User27_Twitch",
+    "seguidores" : 27862,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3294,
+      "interacciones" : 3376
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3882,
+      "interacciones" : 6714
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User27_TikTok",
+    "seguidores" : 70497,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2728,
+      "interacciones" : 8700
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3707,
+      "interacciones" : 1935
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-08-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 28,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Mexico",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 516448,
+  "estadisticas" : {
+    "interacciones_totales" : 125956,
+    "promedio_vistas_mensuales" : 16969,
+    "tasa_crecimiento_seguidores" : 3.5185203411728185
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User28_YouTube",
+    "seguidores" : 30362,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1097,
+      "interacciones" : 7016
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 770,
+      "interacciones" : 6325
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User28_Instagram",
+    "seguidores" : 72029,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4822,
+      "interacciones" : 9719
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1278,
+      "interacciones" : 7106
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User28_Twitch",
+    "seguidores" : 52034,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3013,
+      "interacciones" : 5584
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 591,
+      "interacciones" : 4138
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User28_TikTok",
+    "seguidores" : 39314,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2784,
+      "interacciones" : 2989
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3993,
+      "interacciones" : 6555
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-08-01",
+    "fecha_fin" : "2023-09-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 29,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Espania",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 591872,
+  "estadisticas" : {
+    "interacciones_totales" : 1244595,
+    "promedio_vistas_mensuales" : 35183,
+    "tasa_crecimiento_seguidores" : 8.202837692040628
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User29_YouTube",
+    "seguidores" : 79267,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3233,
+      "interacciones" : 9825
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3805,
+      "interacciones" : 9501
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User29_Instagram",
+    "seguidores" : 81355,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4514,
+      "interacciones" : 3612
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2814,
+      "interacciones" : 8517
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User29_Twitch",
+    "seguidores" : 20922,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 425,
+      "interacciones" : 1204
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 374,
+      "interacciones" : 2119
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User29_TikTok",
+    "seguidores" : 62286,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 255,
+      "interacciones" : 9957
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 234,
+      "interacciones" : 5024
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 30,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Chile",
+  "tematica" : "Moda",
+  "seguidores_totales" : 360937,
+  "estadisticas" : {
+    "interacciones_totales" : 1569852,
+    "promedio_vistas_mensuales" : 185187,
+    "tasa_crecimiento_seguidores" : 3.5454061997452726
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User30_YouTube",
+    "seguidores" : 55237,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 581,
+      "interacciones" : 7041
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2049,
+      "interacciones" : 2753
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User30_Instagram",
+    "seguidores" : 15419,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4975,
+      "interacciones" : 6055
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3142,
+      "interacciones" : 913
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User30_Twitch",
+    "seguidores" : 34246,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4593,
+      "interacciones" : 5832
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 854,
+      "interacciones" : 2724
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User30_TikTok",
+    "seguidores" : 42053,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4366,
+      "interacciones" : 4968
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2564,
+      "interacciones" : 938
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 31,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Espania",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 296245,
+  "estadisticas" : {
+    "interacciones_totales" : 682106,
+    "promedio_vistas_mensuales" : 73056,
+    "tasa_crecimiento_seguidores" : 6.622840196535394
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User31_YouTube",
+    "seguidores" : 37782,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1195,
+      "interacciones" : 4593
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 112,
+      "interacciones" : 9343
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User31_Instagram",
+    "seguidores" : 96506,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1162,
+      "interacciones" : 2924
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 630,
+      "interacciones" : 7621
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User31_Twitch",
+    "seguidores" : 65280,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1359,
+      "interacciones" : 6787
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2733,
+      "interacciones" : 1631
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User31_TikTok",
+    "seguidores" : 73515,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1464,
+      "interacciones" : 5068
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1148,
+      "interacciones" : 3183
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 32,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Chile",
+  "tematica" : "Videojuegos",
+  "seguidores_totales" : 465099,
+  "estadisticas" : {
+    "interacciones_totales" : 1550221,
+    "promedio_vistas_mensuales" : 66330,
+    "tasa_crecimiento_seguidores" : 6.46901335143189
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User32_YouTube",
+    "seguidores" : 14928,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4139,
+      "interacciones" : 6460
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4995,
+      "interacciones" : 2337
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User32_Instagram",
+    "seguidores" : 77287,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 863,
+      "interacciones" : 64
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1461,
+      "interacciones" : 4806
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User32_Twitch",
+    "seguidores" : 27955,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1875,
+      "interacciones" : 4119
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2910,
+      "interacciones" : 5178
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User32_TikTok",
+    "seguidores" : 37418,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3725,
+      "interacciones" : 5997
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2242,
+      "interacciones" : 5973
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 33,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Mexico",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 147040,
+  "estadisticas" : {
+    "interacciones_totales" : 1357034,
+    "promedio_vistas_mensuales" : 186354,
+    "tasa_crecimiento_seguidores" : 4.890995259900689
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User33_YouTube",
+    "seguidores" : 97081,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 672,
+      "interacciones" : 2750
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1034,
+      "interacciones" : 7690
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User33_Instagram",
+    "seguidores" : 62426,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 652,
+      "interacciones" : 3018
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 90,
+      "interacciones" : 3557
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User33_Twitch",
+    "seguidores" : 48674,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3887,
+      "interacciones" : 4252
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3460,
+      "interacciones" : 1470
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User33_TikTok",
+    "seguidores" : 77145,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4308,
+      "interacciones" : 5793
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2462,
+      "interacciones" : 9590
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 34,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Chile",
+  "tematica" : "Videojuegos",
+  "seguidores_totales" : 400200,
+  "estadisticas" : {
+    "interacciones_totales" : 1525525,
+    "promedio_vistas_mensuales" : 74164,
+    "tasa_crecimiento_seguidores" : 1.1029521005193754
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User34_YouTube",
+    "seguidores" : 54678,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4231,
+      "interacciones" : 9298
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1956,
+      "interacciones" : 8593
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User34_Instagram",
+    "seguidores" : 81572,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2684,
+      "interacciones" : 1218
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4748,
+      "interacciones" : 9102
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User34_Twitch",
+    "seguidores" : 53360,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 831,
+      "interacciones" : 6088
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1004,
+      "interacciones" : 2152
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User34_TikTok",
+    "seguidores" : 5114,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 636,
+      "interacciones" : 8625
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3094,
+      "interacciones" : 9331
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 35,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Chile",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 133033,
+  "estadisticas" : {
+    "interacciones_totales" : 1556672,
+    "promedio_vistas_mensuales" : 199851,
+    "tasa_crecimiento_seguidores" : 4.97061514983606
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User35_YouTube",
+    "seguidores" : 537,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1884,
+      "interacciones" : 37
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3682,
+      "interacciones" : 6842
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User35_Instagram",
+    "seguidores" : 59277,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4061,
+      "interacciones" : 3065
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2936,
+      "interacciones" : 5047
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User35_Twitch",
+    "seguidores" : 4983,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3634,
+      "interacciones" : 8116
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2611,
+      "interacciones" : 1594
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User35_TikTok",
+    "seguidores" : 59231,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1216,
+      "interacciones" : 8968
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1761,
+      "interacciones" : 801
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 36,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Espania",
+  "tematica" : "Videojuegos",
+  "seguidores_totales" : 189585,
+  "estadisticas" : {
+    "interacciones_totales" : 1253321,
+    "promedio_vistas_mensuales" : 132248,
+    "tasa_crecimiento_seguidores" : 0.3095777902355512
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User36_YouTube",
+    "seguidores" : 53117,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2139,
+      "interacciones" : 9347
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4277,
+      "interacciones" : 648
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User36_Instagram",
+    "seguidores" : 25738,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2699,
+      "interacciones" : 6788
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2371,
+      "interacciones" : 2631
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User36_Twitch",
+    "seguidores" : 18806,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4223,
+      "interacciones" : 7716
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3808,
+      "interacciones" : 3885
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User36_TikTok",
+    "seguidores" : 62147,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4498,
+      "interacciones" : 3208
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4319,
+      "interacciones" : 276
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 37,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Mexico",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 210981,
+  "estadisticas" : {
+    "interacciones_totales" : 1911236,
+    "promedio_vistas_mensuales" : 6737,
+    "tasa_crecimiento_seguidores" : 5.131970637217958
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User37_YouTube",
+    "seguidores" : 6688,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4977,
+      "interacciones" : 325
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2551,
+      "interacciones" : 1090
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User37_Instagram",
+    "seguidores" : 79409,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4650,
+      "interacciones" : 7559
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2195,
+      "interacciones" : 9119
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User37_Twitch",
+    "seguidores" : 54315,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4508,
+      "interacciones" : 3451
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4088,
+      "interacciones" : 8130
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User37_TikTok",
+    "seguidores" : 7597,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3038,
+      "interacciones" : 1350
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2234,
+      "interacciones" : 7836
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 38,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Chile",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 346160,
+  "estadisticas" : {
+    "interacciones_totales" : 1053218,
+    "promedio_vistas_mensuales" : 27056,
+    "tasa_crecimiento_seguidores" : 0.6177407252822742
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User38_YouTube",
+    "seguidores" : 54639,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 557,
+      "interacciones" : 8943
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2460,
+      "interacciones" : 4680
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User38_Instagram",
+    "seguidores" : 48907,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1163,
+      "interacciones" : 4129
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3607,
+      "interacciones" : 5667
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User38_Twitch",
+    "seguidores" : 38983,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1277,
+      "interacciones" : 3412
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1677,
+      "interacciones" : 9026
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User38_TikTok",
+    "seguidores" : 7193,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 347,
+      "interacciones" : 3593
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1716,
+      "interacciones" : 5212
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 39,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Argentina",
+  "tematica" : "Videojuegos",
+  "seguidores_totales" : 170130,
+  "estadisticas" : {
+    "interacciones_totales" : 1580160,
+    "promedio_vistas_mensuales" : 174891,
+    "tasa_crecimiento_seguidores" : 8.689516704348858
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User39_YouTube",
+    "seguidores" : 55231,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2301,
+      "interacciones" : 3547
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2921,
+      "interacciones" : 7887
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User39_Instagram",
+    "seguidores" : 12111,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2946,
+      "interacciones" : 661
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 537,
+      "interacciones" : 7960
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User39_Twitch",
+    "seguidores" : 43377,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 300,
+      "interacciones" : 4838
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4733,
+      "interacciones" : 3357
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User39_TikTok",
+    "seguidores" : 64817,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2509,
+      "interacciones" : 654
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2827,
+      "interacciones" : 6647
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 40,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Chile",
+  "tematica" : "Fitness",
+  "seguidores_totales" : 440427,
+  "estadisticas" : {
+    "interacciones_totales" : 825156,
+    "promedio_vistas_mensuales" : 94486,
+    "tasa_crecimiento_seguidores" : 6.641650187907796
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User40_YouTube",
+    "seguidores" : 40859,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 985,
+      "interacciones" : 3860
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1895,
+      "interacciones" : 9783
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User40_Instagram",
+    "seguidores" : 52940,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4392,
+      "interacciones" : 8221
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2801,
+      "interacciones" : 3688
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User40_Twitch",
+    "seguidores" : 73511,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 93,
+      "interacciones" : 9783
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1760,
+      "interacciones" : 5805
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User40_TikTok",
+    "seguidores" : 17835,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1813,
+      "interacciones" : 6254
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4355,
+      "interacciones" : 558
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 41,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Colombia",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 356100,
+  "estadisticas" : {
+    "interacciones_totales" : 1577635,
+    "promedio_vistas_mensuales" : 42953,
+    "tasa_crecimiento_seguidores" : 6.006208104876684
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User41_YouTube",
+    "seguidores" : 99784,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3255,
+      "interacciones" : 1272
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3070,
+      "interacciones" : 8382
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User41_Instagram",
+    "seguidores" : 41223,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2925,
+      "interacciones" : 1207
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 47,
+      "interacciones" : 3569
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User41_Twitch",
+    "seguidores" : 90638,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 768,
+      "interacciones" : 7287
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3245,
+      "interacciones" : 7847
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User41_TikTok",
+    "seguidores" : 53283,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1895,
+      "interacciones" : 9061
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 118,
+      "interacciones" : 3629
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-09-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 42,
+  "nombre" : "Ana Lopez",
+  "pais" : "Argentina",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 510443,
+  "estadisticas" : {
+    "interacciones_totales" : 1842908,
+    "promedio_vistas_mensuales" : 125321,
+    "tasa_crecimiento_seguidores" : 6.555696520528893
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User42_YouTube",
+    "seguidores" : 28117,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1145,
+      "interacciones" : 8680
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4578,
+      "interacciones" : 6697
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User42_Instagram",
+    "seguidores" : 5580,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2092,
+      "interacciones" : 5133
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2612,
+      "interacciones" : 149
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User42_Twitch",
+    "seguidores" : 60013,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4620,
+      "interacciones" : 3594
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3687,
+      "interacciones" : 2865
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User42_TikTok",
+    "seguidores" : 24111,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2917,
+      "interacciones" : 4219
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4166,
+      "interacciones" : 5036
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-08-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 43,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Colombia",
+  "tematica" : "Videojuegos",
+  "seguidores_totales" : 315526,
+  "estadisticas" : {
+    "interacciones_totales" : 1316296,
+    "promedio_vistas_mensuales" : 100630,
+    "tasa_crecimiento_seguidores" : 2.580375785498071
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User43_YouTube",
+    "seguidores" : 17469,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3515,
+      "interacciones" : 9354
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3602,
+      "interacciones" : 8511
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User43_Instagram",
+    "seguidores" : 96371,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1467,
+      "interacciones" : 5197
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 5,
+      "interacciones" : 6336
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User43_Twitch",
+    "seguidores" : 34818,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1559,
+      "interacciones" : 9476
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1490,
+      "interacciones" : 9850
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User43_TikTok",
+    "seguidores" : 1032,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4983,
+      "interacciones" : 8781
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4887,
+      "interacciones" : 422
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 44,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Espania",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 138394,
+  "estadisticas" : {
+    "interacciones_totales" : 974887,
+    "promedio_vistas_mensuales" : 144901,
+    "tasa_crecimiento_seguidores" : 9.722642623927385
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User44_YouTube",
+    "seguidores" : 1684,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4314,
+      "interacciones" : 3111
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 980,
+      "interacciones" : 5495
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User44_Instagram",
+    "seguidores" : 73678,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2834,
+      "interacciones" : 7356
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2569,
+      "interacciones" : 8796
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User44_Twitch",
+    "seguidores" : 21175,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1408,
+      "interacciones" : 8565
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 408,
+      "interacciones" : 9645
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User44_TikTok",
+    "seguidores" : 83179,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3632,
+      "interacciones" : 6393
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3735,
+      "interacciones" : 9719
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Pedro Gonzalez",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 45,
+  "nombre" : "Ana Lopez",
+  "pais" : "Mexico",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 514159,
+  "estadisticas" : {
+    "interacciones_totales" : 1839738,
+    "promedio_vistas_mensuales" : 160084,
+    "tasa_crecimiento_seguidores" : 1.1321255701729416
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User45_YouTube",
+    "seguidores" : 31418,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4867,
+      "interacciones" : 6152
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3011,
+      "interacciones" : 917
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User45_Instagram",
+    "seguidores" : 78053,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 394,
+      "interacciones" : 4158
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4101,
+      "interacciones" : 9234
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User45_Twitch",
+    "seguidores" : 72717,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1539,
+      "interacciones" : 6011
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3128,
+      "interacciones" : 5547
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User45_TikTok",
+    "seguidores" : 26142,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2724,
+      "interacciones" : 9372
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3080,
+      "interacciones" : 6469
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 46,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Colombia",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 224073,
+  "estadisticas" : {
+    "interacciones_totales" : 961364,
+    "promedio_vistas_mensuales" : 152858,
+    "tasa_crecimiento_seguidores" : 0.5798084543034454
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User46_YouTube",
+    "seguidores" : 11566,
+    "fecha_creacion" : "2018-07-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3379,
+      "interacciones" : 5115
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3928,
+      "interacciones" : 4932
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User46_Instagram",
+    "seguidores" : 23680,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1247,
+      "interacciones" : 7563
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2508,
+      "interacciones" : 8902
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User46_Twitch",
+    "seguidores" : 48061,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3489,
+      "interacciones" : 4832
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4707,
+      "interacciones" : 6029
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User46_TikTok",
+    "seguidores" : 20224,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4965,
+      "interacciones" : 3209
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1733,
+      "interacciones" : 2805
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 47,
+  "nombre" : "Luis Fernandez",
+  "pais" : "Espania",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 272561,
+  "estadisticas" : {
+    "interacciones_totales" : 628713,
+    "promedio_vistas_mensuales" : 104831,
+    "tasa_crecimiento_seguidores" : 3.677892312768175
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User47_YouTube",
+    "seguidores" : 15704,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 550,
+      "interacciones" : 7605
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2375,
+      "interacciones" : 2121
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User47_Instagram",
+    "seguidores" : 61248,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3633,
+      "interacciones" : 280
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2054,
+      "interacciones" : 875
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User47_Twitch",
+    "seguidores" : 23290,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2626,
+      "interacciones" : 3052
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4496,
+      "interacciones" : 9420
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User47_TikTok",
+    "seguidores" : 33552,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2532,
+      "interacciones" : 8384
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 868,
+      "interacciones" : 2189
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Elena Perez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 48,
+  "nombre" : "Lucia Garcia",
+  "pais" : "Espania",
+  "tematica" : "Videojuegos",
+  "seguidores_totales" : 504820,
+  "estadisticas" : {
+    "interacciones_totales" : 482523,
+    "promedio_vistas_mensuales" : 114752,
+    "tasa_crecimiento_seguidores" : 7.8927395884037175
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User48_YouTube",
+    "seguidores" : 12708,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 84,
+      "interacciones" : 611
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4385,
+      "interacciones" : 493
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User48_Instagram",
+    "seguidores" : 29473,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3144,
+      "interacciones" : 2830
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4988,
+      "interacciones" : 2873
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User48_Twitch",
+    "seguidores" : 56466,
+    "fecha_creacion" : "2018-03-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3670,
+      "interacciones" : 9298
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3922,
+      "interacciones" : 139
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User48_TikTok",
+    "seguidores" : 82604,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4273,
+      "interacciones" : 1288
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 1782,
+      "interacciones" : 2841
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+}, {
+  "id" : 49,
+  "nombre" : "Carlos Ruiz",
+  "pais" : "Argentina",
+  "tematica" : "Tecnologia",
+  "seguidores_totales" : 509181,
+  "estadisticas" : {
+    "interacciones_totales" : 1904810,
+    "promedio_vistas_mensuales" : 51038,
+    "tasa_crecimiento_seguidores" : 7.718898012512833
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User49_YouTube",
+    "seguidores" : 25385,
+    "fecha_creacion" : "2018-01-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4558,
+      "interacciones" : 1198
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4558,
+      "interacciones" : 1491
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User49_Instagram",
+    "seguidores" : 57484,
+    "fecha_creacion" : "2018-09-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 737,
+      "interacciones" : 8383
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2074,
+      "interacciones" : 2289
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User49_Twitch",
+    "seguidores" : 14841,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2817,
+      "interacciones" : 3320
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 2260,
+      "interacciones" : 3079
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User49_TikTok",
+    "seguidores" : 4125,
+    "fecha_creacion" : "2018-04-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 1994,
+      "interacciones" : 855
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 59,
+      "interacciones" : 9757
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  } ]
+}, {
+  "id" : 50,
+  "nombre" : "Marta Sanchez",
+  "pais" : "Argentina",
+  "tematica" : "Cocina",
+  "seguidores_totales" : 199475,
+  "estadisticas" : {
+    "interacciones_totales" : 1241259,
+    "promedio_vistas_mensuales" : 35364,
+    "tasa_crecimiento_seguidores" : 2.300581950106136
+  },
+  "plataformas" : [ {
+    "nombre" : "YouTube",
+    "usuario" : "User50_YouTube",
+    "seguidores" : 8805,
+    "fecha_creacion" : "2018-05-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4345,
+      "interacciones" : 2327
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 3133,
+      "interacciones" : 1122
+    } ]
+  }, {
+    "nombre" : "Instagram",
+    "usuario" : "User50_Instagram",
+    "seguidores" : 76426,
+    "fecha_creacion" : "2018-06-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 2936,
+      "interacciones" : 9183
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 4786,
+      "interacciones" : 217
+    } ]
+  }, {
+    "nombre" : "Twitch",
+    "usuario" : "User50_Twitch",
+    "seguidores" : 46526,
+    "fecha_creacion" : "2018-02-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 3669,
+      "interacciones" : 4117
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 67,
+      "interacciones" : 7816
+    } ]
+  }, {
+    "nombre" : "TikTok",
+    "usuario" : "User50_TikTok",
+    "seguidores" : 39549,
+    "fecha_creacion" : "2018-08-15",
+    "historico" : [ {
+      "fecha" : "2023-01-10",
+      "nuevos_seguidores" : 4098,
+      "interacciones" : 7188
+    }, {
+      "fecha" : "2023-02-10",
+      "nuevos_seguidores" : 948,
+      "interacciones" : 6780
+    } ]
+  } ],
+  "colaboraciones" : [ {
+    "colaborador" : "Luis Blanco",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  } ]
+} ]
