@@ -120,7 +120,6 @@ public class Controller implements ActionListener{
 					cargarGrafica(botonPlataforma.getText());
 				}
 			});
-
 			this.view.plataformasPanel.add(botonPlataforma, gbc);
 			i++;
 		}
