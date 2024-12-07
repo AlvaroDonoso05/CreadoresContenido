@@ -30,6 +30,8 @@ import Controllers.Controller;
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainView extends JFrame {
 
@@ -69,6 +71,7 @@ public class MainView extends JFrame {
 	private JPanel mainPanel;
 	private JButton btnNewButton;
 	public JPanel panel;
+	public JPanel panelVistasGrafica;
 	public JTabbedPane tabbedPane;
 	public JPanel panel_Plataformas;
 	public JLabel lblPlataformas;
@@ -89,6 +92,7 @@ public class MainView extends JFrame {
 	public JPanel plataformasPanel;
 	public JPanel panelBotonesPlataforma;
 	public JLabel lblPlataformaSel;
+	public JPanel panelLikesGrafica;
 	public JLabel lblUsuario;
 	public JTextField textFieldUsuario;
 	public JLabel lblSeguidoresPlat;
@@ -282,6 +286,7 @@ public class MainView extends JFrame {
 	
 		panelBotonesPlataforma = new JPanel();
 		panelBotonesPlataforma.setBackground(new Color(255, 204, 204));
+
 		panelBotonesPlataforma.setBounds(153, 22, 928, 113);
 		panel_Plataformas.add(panelBotonesPlataforma);
 
@@ -294,6 +299,15 @@ public class MainView extends JFrame {
 		lblPlataformaSel.setBounds(26, 124, 144, 46);
 		panel_Plataformas.add(lblPlataformaSel);
 		
+
+		panelVistasGrafica = new JPanel();
+		panelVistasGrafica.setBounds(725, 90, 360, 298);
+		panel_Plataformas.add(panelVistasGrafica);
+		
+		panelLikesGrafica = new JPanel();
+		panelLikesGrafica.setBounds(355, 90, 360, 298);
+		panel_Plataformas.add(panelLikesGrafica);
+
 		lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblUsuario.setBounds(26, 180, 108, 24);
@@ -374,6 +388,7 @@ public class MainView extends JFrame {
 		textFieldIntHist.setColumns(10);
 		textFieldIntHist.setBounds(283, 403, 163, 21);
 		panel_Plataformas.add(textFieldIntHist);
+
 		
 		panel_Colabs = new JPanel();
 		panel_Colabs.setBackground(new Color(255, 204, 204));
