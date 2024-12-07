@@ -22,8 +22,8 @@ public class Metrica {
 	@CsvBindByName(column = "comentarios")
 	private int comentarios;
 	@CsvBindByName(column = "compartidos")
-	private int compartidos;	
-	
+	private int compartidos;
+
 	public int getIdCreador() {
 		return idCreador;
 	}

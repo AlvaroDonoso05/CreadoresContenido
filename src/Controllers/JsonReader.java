@@ -12,21 +12,21 @@ import Models.Creador;
 
 public class JsonReader {
 	private static final ObjectMapper mapper = new ObjectMapper();
-	
+
 	private JsonNode creadoresNode;
 	List<Creador> listaCreadores;
 	private String url;
-	
+
 	public JsonReader(String url) {
 		this.url = url;
 		abrirJson();
 	}
-	
+
 	public void abrirJson() {
 		try {
-			listaCreadores = new ArrayList<Creador>();
+			listaCreadores = new ArrayList<>();
 			creadoresNode = mapper.readTree(new File(this.url));
-			
+
 			for(JsonNode creadorNode: creadoresNode) {
 				Creador creador = new Creador();
 				creador.setId(creadorNode.get("id").asInt());
@@ -34,10 +34,10 @@ public class JsonReader {
 				creador.setPais(creadorNode.get("pais").asText());
 				creador.setTematica(creadorNode.get("tematica").asText());
 				creador.setSegidoresTotales(creadorNode.get("seguidores_totales").asInt());
-				
-				HashMap<String, Double> estadisticas = new HashMap<String, Double>();
+
+				HashMap<String, Double> estadisticas = new HashMap<>();
 				JsonNode estadisticasNode = creadorNode.get("estadisticas");
-				
+
 				if(estadisticasNode.get("interacciones_totales") != null) {
 					estadisticas.put("interacciones_totales", estadisticasNode.get("interacciones_totales").asDouble());
 				}
@@ -47,29 +47,29 @@ public class JsonReader {
 				if(estadisticasNode.get("tasa_crecimiento_seguidores") != null) {
 					estadisticas.put("tasa_crecimiento_seguidores", estadisticasNode.get("tasa_crecimiento_seguidores").asDouble());
 				}
-				
+
 				creador.setEstadisticas(estadisticas);
 				creador.setPlataformas(creadorNode.get("plataformas"));
 				creador.setColaboraciones(creadorNode.get("colaboraciones"));
-				
-				listaCreadores.add(creador);				
+
+				listaCreadores.add(creador);
 			}
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-	
+
 	public HashMap<Integer, String> getCreadoresIdNombre() {
-		HashMap<Integer, String> creadores = new HashMap<Integer, String>();
-		
+		HashMap<Integer, String> creadores = new HashMap<>();
+
 		for(JsonNode creador: this.creadoresNode) {
 			int id = creador.get("id").asInt();
 			String nombre = creador.get("nombre").asText();
-			
+
 			creadores.put(id, nombre);
-			
+
 		}
-		
+
 		return creadores;
 	}
 
