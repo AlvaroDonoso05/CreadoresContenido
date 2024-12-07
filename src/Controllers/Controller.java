@@ -102,8 +102,8 @@ public class Controller implements ActionListener{
 			botonPlataforma.setPreferredSize(new Dimension(200, 50));
 			botonPlataforma.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			
-			gbc.gridx = i % 2;
-		    gbc.gridy = i / 2;
+			gbc.gridx = i % 4;
+		    gbc.gridy = i / 4;
 		    gbc.insets = new java.awt.Insets(10, 10, 10, 10);
 
 			this.view.plataformasPanel.add(botonPlataforma, gbc);

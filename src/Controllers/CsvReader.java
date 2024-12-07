@@ -4,12 +4,15 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import Models.Metrica;
 
 public class CsvReader {
+	private static final ObjectMapper objectMapper = new ObjectMapper();
 	private List<Metrica> archivoCsv;
 	private String url;
 
@@ -57,5 +60,22 @@ public class CsvReader {
 		}
 
 		return metricaCreador;
+	}
+	
+	public ObjectNode obtenerContenidosPlataforma(int id, String plataforma) {
+		ObjectNode rootNode = objectMapper.createObjectNode();
+		
+		for(Metrica metrica: archivoCsv) {
+			if(metrica.getIdCreador() == id && metrica.getPlataforma().equalsIgnoreCase(plataforma)) {
+				ObjectNode contenido = objectMapper.createObjectNode();
+				contenido.put("vistas", metrica.getVistas());
+				contenido.put("me_gusta", metrica.getMeGusta());
+				
+				rootNode.set(metrica.getContenido(), contenido);
+			}
+		}
+		
+		return rootNode;
+		
 	}
 }
