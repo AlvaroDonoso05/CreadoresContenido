@@ -78,4 +78,12 @@ public class CsvReader {
 		return rootNode;
 		
 	}
+
+	public List<Metrica> getArchivoCsv() {
+		return archivoCsv;
+	}
+
+	public void setArchivoCsv(List<Metrica> archivoCsv) {
+		this.archivoCsv = archivoCsv;
+	}
 }

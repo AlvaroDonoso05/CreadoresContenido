@@ -10,6 +10,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -32,6 +33,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class MainView extends JFrame {
 
@@ -69,7 +71,6 @@ public class MainView extends JFrame {
 	public JButton btnNewButton_1;
 	public JLabel lblNewLabel_1;
 	private JPanel mainPanel;
-	private JButton btnNewButton;
 	public JPanel panel;
 	public JPanel panelVistasGrafica;
 	public JTabbedPane tabbedPane;
@@ -107,6 +108,11 @@ public class MainView extends JFrame {
 	public JTextField textFieldNuevosSeg;
 	public JLabel lblIntHist;
 	public JTextField textFieldIntHist;
+	public JButton btnExtraerDatos;
+	public JTextField textPromLikes;
+	public JTextField textPromVistas;
+	public JTextField lblInfoHaste;
+	private JLabel lblPromedio;
 
 	public MainView() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -263,6 +269,24 @@ public class MainView extends JFrame {
 		lblDatos.setBounds(25, 33, 144, 46);
 		mainPanel.add(lblDatos);
 		
+		ImageIcon icono = new ImageIcon("resources/img/avatar.png");
+		JLabel lblNewLabel = new JLabel(icono);
+		lblNewLabel.setBounds(846, 23, 263, 248);
+		mainPanel.add(lblNewLabel);
+		
+		btnExtraerDatos = new JButton("Exportar Datos");
+		btnExtraerDatos.setBounds(846, 282, 263, 37);
+		btnExtraerDatos.setEnabled(false);
+		mainPanel.add(btnExtraerDatos);
+		
+		lblInfoHaste = new JTextField("");
+		lblInfoHaste.setEditable(false);
+		lblInfoHaste.setVisible(false);
+		lblInfoHaste.setForeground(new Color(0, 128, 0));
+		lblInfoHaste.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblInfoHaste.setBounds(781, 434, 390, 37);
+		mainPanel.add(lblInfoHaste);
+		
 		panel_Plataformas = new JPanel();
 		panel_Plataformas.setBackground(new Color(255, 204, 204));
 		tabbedPane.addTab("Plataformas", null, panel_Plataformas, null);
@@ -270,7 +294,7 @@ public class MainView extends JFrame {
 		
 		lblPlataformas = new JLabel("Plataformas:");
 		lblPlataformas.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblPlataformas.setBounds(25, 33, 144, 46);
+		lblPlataformas.setBounds(26, 21, 144, 46);
 		panel_Plataformas.add(lblPlataformas);
 		
 		
@@ -287,25 +311,25 @@ public class MainView extends JFrame {
 		panelBotonesPlataforma = new JPanel();
 		panelBotonesPlataforma.setBackground(new Color(255, 204, 204));
 
-		panelBotonesPlataforma.setBounds(153, 22, 928, 113);
+		panelBotonesPlataforma.setBounds(156, 11, 928, 74);
 		panel_Plataformas.add(panelBotonesPlataforma);
 
 		scrollPlataformas.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPlataformas.setBounds(52, 332, 1124, 132);
 		panelBotonesPlataforma.add(scrollPlataformas);
 		
-		lblPlataformaSel = new JLabel("PlatSelec");
+		lblPlataformaSel = new JLabel("Información Plataforma");
 		lblPlataformaSel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblPlataformaSel.setBounds(26, 124, 144, 46);
+		lblPlataformaSel.setBounds(26, 124, 245, 46);
 		panel_Plataformas.add(lblPlataformaSel);
 		
 
 		panelVistasGrafica = new JPanel();
-		panelVistasGrafica.setBounds(725, 90, 360, 298);
+		panelVistasGrafica.setBounds(811, 89, 360, 298);
 		panel_Plataformas.add(panelVistasGrafica);
 		
 		panelLikesGrafica = new JPanel();
-		panelLikesGrafica.setBounds(355, 90, 360, 298);
+		panelLikesGrafica.setBounds(441, 89, 360, 298);
 		panel_Plataformas.add(panelLikesGrafica);
 
 		lblUsuario = new JLabel("Usuario:");
@@ -355,39 +379,59 @@ public class MainView extends JFrame {
 		
 		lblFechHist = new JLabel("Fecha");
 		lblFechHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblFechHist.setBounds(153, 325, 108, 24);
+		lblFechHist.setBounds(90, 329, 108, 24);
 		panel_Plataformas.add(lblFechHist);
 		
 		textFieldFechHist = new JTextField();
 		textFieldFechHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldFechHist.setEditable(false);
 		textFieldFechHist.setColumns(10);
-		textFieldFechHist.setBounds(283, 331, 163, 21);
+		textFieldFechHist.setBounds(208, 331, 163, 21);
 		panel_Plataformas.add(textFieldFechHist);
 		
 		lblNuevosSeg = new JLabel("Nuevos Seguidores:");
 		lblNuevosSeg.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNuevosSeg.setBounds(153, 361, 108, 24);
+		lblNuevosSeg.setBounds(90, 364, 108, 24);
 		panel_Plataformas.add(lblNuevosSeg);
 		
 		textFieldNuevosSeg = new JTextField();
 		textFieldNuevosSeg.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldNuevosSeg.setEditable(false);
 		textFieldNuevosSeg.setColumns(10);
-		textFieldNuevosSeg.setBounds(283, 367, 163, 21);
+		textFieldNuevosSeg.setBounds(208, 367, 163, 21);
 		panel_Plataformas.add(textFieldNuevosSeg);
 		
 		lblIntHist = new JLabel("Interacciones:");
 		lblIntHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblIntHist.setBounds(153, 397, 108, 24);
+		lblIntHist.setBounds(90, 399, 108, 24);
 		panel_Plataformas.add(lblIntHist);
 		
 		textFieldIntHist = new JTextField();
 		textFieldIntHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldIntHist.setEditable(false);
 		textFieldIntHist.setColumns(10);
-		textFieldIntHist.setBounds(283, 403, 163, 21);
+		textFieldIntHist.setBounds(208, 401, 163, 21);
 		panel_Plataformas.add(textFieldIntHist);
+		
+		textPromLikes = new JTextField();
+		textPromLikes.setHorizontalAlignment(SwingConstants.CENTER);
+		textPromLikes.setFont(new Font("Tahoma", Font.BOLD, 18));
+		textPromLikes.setEditable(false);
+		textPromLikes.setBounds(467, 425, 306, 46);
+		panel_Plataformas.add(textPromLikes);
+		textPromLikes.setColumns(10);
+		
+		textPromVistas = new JTextField();
+		textPromVistas.setHorizontalAlignment(SwingConstants.CENTER);
+		textPromVistas.setFont(new Font("Tahoma", Font.BOLD, 18));
+		textPromVistas.setColumns(10);
+		textPromVistas.setBounds(845, 425, 306, 46);
+		panel_Plataformas.add(textPromVistas);
+		
+		lblPromedio = new JLabel("Promedio:");
+		lblPromedio.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblPromedio.setBounds(441, 398, 183, 21);
+		panel_Plataformas.add(lblPromedio);
 
 		
 		panel_Colabs = new JPanel();

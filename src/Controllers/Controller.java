@@ -25,21 +25,27 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import Models.Creador;
+import Models.Metrica;
 import Views.MainView;
 
-public class Controller implements ActionListener{
+public class Controller implements ActionListener {
 
 	private final MainView view;
 	private JsonReader jsonR = new JsonReader("resources/creadores.json");
 	private CsvReader csvR = new CsvReader("resources/metricas_contenido.csv");
+	private HasteBinController hasteServer = new HasteBinController();
+	
 	private Creador creadorSeleccionado;
+	private String botonSeleccionado;
 
 	public Controller(MainView frame) {
 
 		this.view = frame;
 		this.view.comboBox.addActionListener(this);
 		this.view.comboBox_1.addActionListener(this);
+		this.view.comboBox_2.addActionListener(this);
 		this.view.exitItem.addActionListener(this);
+		this.view.btnExtraerDatos.addActionListener(this);
 		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
 		
 		List<Creador> creadores = jsonR.getListaCreadores();
@@ -53,6 +59,7 @@ public class Controller implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.view.comboBox) {
+			resetearValores();
 			creadorSeleccionado = jsonR.getCreador(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
 			obtenerDatosCreador(creadorSeleccionado);
 			generarBotonesPlataforma(creadorSeleccionado);
@@ -60,16 +67,34 @@ public class Controller implements ActionListener{
 			
 			JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
 			obtenerDatosColaboracion(colaboracion);
+			this.view.lblInfoHaste.setVisible(false);
+			this.view.btnExtraerDatos.setEnabled(true);
 
 		} else
 		
 		if(e.getSource() == this.view.exitItem) {
 			System.exit(0);
-		} else
+		} else 
+			
+		if(e.getSource() == this.view.btnExtraerDatos) {
+			for(JsonNode creadorNode: jsonR.getCreadoresNode()) {
+				if(creadorNode.get("id").asInt() == creadorSeleccionado.getId()) {
+					this.view.lblInfoHaste.setVisible(true);
+					this.view.lblInfoHaste.setText(hasteServer.uploadTextToHastebin(creadorNode));
+				}
+			}
+		} else 
 		
 		if(e.getSource() == this.view.comboBox_1) {
 			JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
 			obtenerDatosColaboracion(colaboracion);
+		} else if(e.getSource() == this.view.comboBox_2) {
+			JsonNode plataformas = creadorSeleccionado.getPlataformas();
+			for(JsonNode plataforma: plataformas) {
+				if(plataforma.get("nombre").asText().equalsIgnoreCase(botonSeleccionado)) {
+					cargarHistorico(plataforma.get("historico").get(Integer.parseInt(view.comboBox_2.getSelectedItem().toString().substring(0, view.comboBox_2.getSelectedItem().toString().indexOf("."))) - 1));
+				}
+			}
 		}
 
 	}
@@ -117,7 +142,8 @@ public class Controller implements ActionListener{
 		    
 		    botonPlataforma.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					cargarGrafica(botonPlataforma.getText());
+					cargarGraficaYDatos(botonPlataforma.getText());
+					botonSeleccionado = botonPlataforma.getText();
 				}
 			});
 			this.view.plataformasPanel.add(botonPlataforma, gbc);
@@ -162,8 +188,9 @@ public class Controller implements ActionListener{
 		}
 	}
 	
-	private void cargarGrafica(String text) {
+	private void cargarGraficaYDatos(String text) {
 		
+		// Cargar Datos de Gráficas
 		this.view.panelLikesGrafica.removeAll();
 		this.view.panelVistasGrafica.removeAll();
 		
@@ -171,8 +198,11 @@ public class Controller implements ActionListener{
 		DefaultPieDataset<String> datasetLikes = new DefaultPieDataset<String>();
 		
 		ObjectNode contenidosPlataforma = csvR.obtenerContenidosPlataforma(creadorSeleccionado.getId(), text);
-		
 		Iterator<Entry<String, JsonNode>> fieldsIterator = contenidosPlataforma.fields();
+		
+		Double contadorVistas = 0.0;
+		Double contadorLikes = 0.0;
+		Double numContenido = 0.0;
 		
 		while (fieldsIterator.hasNext()) {
 			
@@ -181,11 +211,19 @@ public class Controller implements ActionListener{
 			JsonNode datos = entry.getValue();
 			
 			int vistas = datos.get("vistas").asInt();
+			contadorVistas += vistas;
 			int likes = datos.get("me_gusta").asInt();
+			contadorLikes += likes;
 			
 			datasetVistas.setValue(contenido, vistas);
 			datasetLikes.setValue(contenido, likes);
+			numContenido++;
 		}
+		
+		// Realizar promedio de Vistas y Likes
+		
+		this.view.textPromLikes.setText(String.valueOf(contadorLikes / numContenido));
+		this.view.textPromVistas.setText(String.valueOf(contadorVistas / numContenido));
 		
         
         JFreeChart chartVistas = ChartFactory.createPieChart(
@@ -220,6 +258,53 @@ public class Controller implements ActionListener{
         this.view.panelLikesGrafica.revalidate();
         this.view.panelLikesGrafica.repaint();
         
+		// Cargar Datos de TextViews
+        
+        for(JsonNode plataforma: creadorSeleccionado.getPlataformas()) {
+        	if(plataforma.get("nombre").asText().equalsIgnoreCase(text)) {
+        		this.view.textFieldUsuario.setText(plataforma.get("usuario").asText());
+        		this.view.textFieldSegPlat.setText(plataforma.get("seguidores").asText());
+        		this.view.textFieldFechCr.setText(plataforma.get("fecha_creacion").asText());
+        		
+        		view.comboBox_2.removeAll();
+        		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        		
+        		int i = 1;
+        		for(JsonNode historico: plataforma.get("historico")) {
+        				model.addElement(i + ". " + historico.get("fecha").asText());
+        				i++;
+        		}     		
+        		view.comboBox_2.setModel(model);
+        	}
+        }
+	}
+	
+	private void cargarHistorico(JsonNode historico) {
+		this.view.textFieldFechHist.setText(historico.get("fecha").asText());
+		this.view.textFieldNuevosSeg.setText(historico.get("nuevos_seguidores").asText());
+		this.view.textFieldIntHist.setText(historico.get("interacciones").asText());
+	}
+	
+	private void resetearValores() {
+		this.view.textFieldUsuario.setText("");
+		this.view.textFieldSegPlat.setText("");
+		this.view.textFieldFechCr.setText("");
+		this.view.textFieldFechHist.setText("");
+		this.view.textFieldNuevosSeg.setText("");
+		this.view.textFieldIntHist.setText("");
+		this.view.textFieldTemCol.setText("");
+		this.view.textFieldFechaInicio.setText("");
+		this.view.textFieldFechaFin.setText("");
+		this.view.textFieldTipo.setText("");
 		
+		this.view.panelVistasGrafica.removeAll();
+        this.view.panelLikesGrafica.removeAll();
+		creadorSeleccionado = null;
+		botonSeleccionado = null;
+		
+		this.view.panelVistasGrafica.revalidate();
+        this.view.panelVistasGrafica.repaint();
+        this.view.panelLikesGrafica.revalidate();
+        this.view.panelLikesGrafica.repaint();
 	}
 }

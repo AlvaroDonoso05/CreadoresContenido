@@ -77,4 +77,12 @@ public class JsonReader {
 	public void setListaCreadores(List<Creador> listaCreadores) {
 		this.listaCreadores = listaCreadores;
 	}
+
+	public JsonNode getCreadoresNode() {
+		return creadoresNode;
+	}
+
+	public void setCreadoresNode(JsonNode creadoresNode) {
+		this.creadoresNode = creadoresNode;
+	}
 }
