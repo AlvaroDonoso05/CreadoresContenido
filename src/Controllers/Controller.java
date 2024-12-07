@@ -8,13 +8,21 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import Models.Creador;
 import Views.MainView;
@@ -23,6 +31,7 @@ public class Controller implements ActionListener{
 
 	private final MainView view;
 	private JsonReader jsonR = new JsonReader("resources/creadores.json");
+	private CsvReader csvR = new CsvReader("resources/metricas_contenido.csv");
 	private Creador creadorSeleccionado;
 
 	public Controller(MainView frame) {
@@ -105,6 +114,12 @@ public class Controller implements ActionListener{
 			gbc.gridx = i % 4;
 		    gbc.gridy = i / 4;
 		    gbc.insets = new java.awt.Insets(10, 10, 10, 10);
+		    
+		    botonPlataforma.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					cargarGrafica(botonPlataforma.getText());
+				}
+			});
 
 			this.view.plataformasPanel.add(botonPlataforma, gbc);
 			i++;
@@ -146,5 +161,66 @@ public class Controller implements ActionListener{
 		} else {
 			this.view.chckbxColActiva.setSelected(false);
 		}
+	}
+	
+	private void cargarGrafica(String text) {
+		
+		this.view.panelLikesGrafica.removeAll();
+		this.view.panelVistasGrafica.removeAll();
+		
+		DefaultPieDataset<String> datasetVistas = new DefaultPieDataset<String>();
+		DefaultPieDataset<String> datasetLikes = new DefaultPieDataset<String>();
+		
+		ObjectNode contenidosPlataforma = csvR.obtenerContenidosPlataforma(creadorSeleccionado.getId(), text);
+		
+		Iterator<Entry<String, JsonNode>> fieldsIterator = contenidosPlataforma.fields();
+		
+		while (fieldsIterator.hasNext()) {
+			
+			Entry<String, JsonNode> entry = fieldsIterator.next();
+			String contenido = entry.getKey();
+			JsonNode datos = entry.getValue();
+			
+			int vistas = datos.get("vistas").asInt();
+			int likes = datos.get("me_gusta").asInt();
+			
+			datasetVistas.setValue(contenido, vistas);
+			datasetLikes.setValue(contenido, likes);
+		}
+		
+        
+        JFreeChart chartVistas = ChartFactory.createPieChart(
+                "Vistas " + text,
+                datasetVistas,
+                true,
+                true,
+                false
+        );
+        
+        JFreeChart chartLikes = ChartFactory.createPieChart(
+                "Likes " + text,
+                datasetLikes,
+                true,
+                true,
+                false
+        );
+        
+        ChartPanel vistasChart = new ChartPanel(chartVistas);
+        vistasChart.setPreferredSize(this.view.panelVistasGrafica.getSize());
+        vistasChart.setMouseWheelEnabled(true);
+        
+        ChartPanel likesChart = new ChartPanel(chartLikes);
+        likesChart.setPreferredSize(this.view.panelVistasGrafica.getSize());
+        likesChart.setMouseWheelEnabled(true);
+        
+        this.view.panelVistasGrafica.add(vistasChart);
+        this.view.panelLikesGrafica.add(likesChart);
+        
+        this.view.panelVistasGrafica.revalidate();
+        this.view.panelVistasGrafica.repaint();
+        this.view.panelLikesGrafica.revalidate();
+        this.view.panelLikesGrafica.repaint();
+        
+		
 	}
 }
