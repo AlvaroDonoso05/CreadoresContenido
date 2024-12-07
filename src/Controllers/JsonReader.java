@@ -59,18 +59,15 @@ public class JsonReader {
         }
     }
 
-	public HashMap<Integer, String> getCreadoresIdNombre() {
-		HashMap<Integer, String> creadores = new HashMap<>();
+	public Creador getCreador(int id) {
 
-		for(JsonNode creador: this.creadoresNode) {
-			int id = creador.get("id").asInt();
-			String nombre = creador.get("nombre").asText();
-
-			creadores.put(id, nombre);
-
+		for(Creador creador: this.listaCreadores) {
+			if(creador.getId() == id) {
+				return creador;
+			}
 		}
 
-		return creadores;
+		return null;
 	}
 
 	public List<Creador> getListaCreadores() {
