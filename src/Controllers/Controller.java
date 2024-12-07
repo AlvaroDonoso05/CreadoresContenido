@@ -105,6 +105,7 @@ public class Controller implements ActionListener{
 			gbc.gridx = i % 4;
 		    gbc.gridy = i / 4;
 		    gbc.insets = new java.awt.Insets(10, 10, 10, 10);
+		    
 
 			this.view.plataformasPanel.add(botonPlataforma, gbc);
 			i++;
