@@ -40,12 +40,11 @@ public class Metrica {
         this.plataforma = plataforma;
     }
 
-    public LocalDate getFecha() {
-        LocalDate fecha = LocalDate.parse(this.fecha);
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha.toString();
     }
 

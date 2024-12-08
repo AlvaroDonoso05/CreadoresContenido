@@ -15,8 +15,10 @@ import java.nio.charset.StandardCharsets;
 public class HasteBinController {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static URL url;
+    private Logger logger;
 
     public HasteBinController() {
+    	logger = Logger.getInstance();
         try {
             HasteBinController.url = new URL("https://pastebin.donoso.mooo.com/documents");
         } catch (MalformedURLException e) {
@@ -54,13 +56,15 @@ public class HasteBinController {
                 String responseString = response.toString();
                 String hastebinKey = responseString.split(":")[1].replace("\"", "").replace("}", "");
 
+                logger.success("Link generado correctamente: https://pastebin.donoso.mooo.com/" + hastebinKey);
                 return "https://pastebin.donoso.mooo.com/" + hastebinKey;
             } else {
                 System.out.println(responseCode);
+                logger.warning("Error al enviar a Hastebin. Código: " + responseCode);
                 return "Error al enviar a Hastebin. Código: " + responseCode;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e);
             return "Error al conectar con Hastebin.";
         }
     }

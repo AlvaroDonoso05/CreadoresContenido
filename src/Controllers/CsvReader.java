@@ -5,7 +5,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +20,61 @@ public class CsvReader {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private List<Metrica> archivoCsv;
     private final String url;
+    private Logger logger;
 
     public CsvReader(String url) {
+    	logger = Logger.getInstance();
         this.url = url;
         this.archivoCsv = abrirCSV();
+    }
+    
+    public void generarCsv() {
+    	BufferedWriter bw = null;
+    	FileWriter fw = null;
+    	File archivo = null;
+    	try {
+    		archivo = new File(url);
+    		
+    		if(archivo.exists()) {
+    			archivo.delete();
+    		}
+    		
+    		fw = new FileWriter(archivo);
+    		bw = new BufferedWriter(fw);
+    		
+    		bw.write("creador_id,plataforma,fecha,contenido,tipo,vistas,me_gusta,comentarios,compartidos");
+    		bw.newLine();
+    		
+    		for(Metrica metrica: archivoCsv) {
+    			bw.write(metrica.getIdCreador() + ","
+    					+ metrica.getPlataforma() + ","
+    					+ metrica.getFecha() + ","
+    					+ metrica.getContenido() + ","
+    					+ metrica.getTipo() + ","
+    					+ metrica.getMeGusta() + ","
+    					+ metrica.getComentarios() + ","
+    					+ metrica.getCompartidos());
+    			bw.newLine();
+    		}
+    		logger.success("Archivo actualizado correctamente.");
+    	} catch(Exception e) {
+    		logger.error(e);
+    	} finally {
+    		if(bw != null) {
+    			try {
+					bw.close();
+				} catch (IOException e) {
+					logger.error(e);
+				}
+    		}
+    		if(fw != null) {
+    			try {
+					fw.close();
+				} catch (IOException e) {
+					logger.error(e);
+				}
+    		}
+    	}
     }
 
     public List<Metrica> abrirCSV() {
@@ -32,7 +88,7 @@ public class CsvReader {
             metricas = csv.parse();
 
         } catch (Exception e) {
-            e.printStackTrace();
+        	logger.error(e);
         }
 
         return metricas;
