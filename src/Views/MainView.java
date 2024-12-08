@@ -69,7 +69,7 @@ public class MainView extends JFrame {
 	public JLabel lblTasaCrecimiento;
 	public JTextField textFieldTasaCrec;
 	public JMenuItem exitItem;
-	public JMenuItem newItem;
+	public JMenuItem reporteCreadoresItem;
 	public JMenuItem openItem;
 	public JMenuItem savetem;
 
@@ -188,12 +188,12 @@ public class MainView extends JFrame {
 		menuBar.add(helpMenu);
 
 		// Create JMenuItems
-		newItem = new JMenuItem("New");
+		reporteCreadoresItem = new JMenuItem("Generar Reporte Creadores");
 		openItem = new JMenuItem("Open");
 		saveItem = new JMenuItem("Save");
 		exitItem = new JMenuItem("Exit");
 
-		fileMenu.add(newItem);
+		fileMenu.add(reporteCreadoresItem);
 		fileMenu.add(openItem);
 		fileMenu.add(saveItem);
 		fileMenu.addSeparator();
