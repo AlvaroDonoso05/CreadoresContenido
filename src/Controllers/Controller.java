@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -15,6 +16,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import Models.Creador;
 import Views.MainView;
@@ -24,45 +28,166 @@ public class Controller implements ActionListener{
 	private final MainView view;
 	private JsonReader jsonR = new JsonReader("resources/creadores.json");
 	private Creador creadorSeleccionado;
+	private ObjectMapper om = new ObjectMapper();
 
 	public Controller(MainView frame) {
 
 		this.view = frame;
 		this.view.comboBox.addActionListener(this);
 		this.view.comboBox_1.addActionListener(this);
+		this.view.comboBoxColNew.addActionListener(this);
+		this.view.comboBoxColTem.addActionListener(this);
+		this.view.comboBoxColTipo.addActionListener(this);
 		this.view.exitItem.addActionListener(this);
+		this.view.btnConfFchIni.addActionListener(this);
+		this.view.btnConfFchFin.addActionListener(this);
+		this.view.btnFechaIni.addActionListener(this);
+		this.view.btnFechaFin.addActionListener(this);
+		this.view.btnNewButtonAddCol.addActionListener(this);
+		
+		
 		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+		DefaultComboBoxModel<String> modelCol = new DefaultComboBoxModel<>();
+		DefaultComboBoxModel<String> modelTem = new DefaultComboBoxModel<>();
+		DefaultComboBoxModel<String> modelTipo = new DefaultComboBoxModel<>();
+		
+		
+		modelTem.addElement("Tecnologia");
+		modelTem.addElement("Moda");
+		modelTem.addElement("Fitness");
+		modelTem.addElement("Cocina");
+		modelTem.addElement("Videojuegos");
+		this.view.comboBoxColTem.setModel(modelTem);
+		
+		modelTipo.addElement("Patrocinado");
+		modelTipo.addElement("Colaboración Natural");
+		this.view.comboBoxColTipo.setModel(modelTipo);
+		
+		
 		
 		List<Creador> creadores = jsonR.getListaCreadores();
+		model.addElement("Elige un creador");
 		for(int i=0;i<creadores.size();i++) {
-			model.addElement((i+1) + ". " + creadores.get(i).getNombre());
+			model.addElement((i+1) + ". " + creadores.get(i).getNombre());			
 		}
 		view.comboBox.setModel(model);
+		generarCreadoresCol(modelCol);
+		
 
 	}
+
+	private void generarCreadoresCol (DefaultComboBoxModel<String> modelCol) {
+		List<Creador> creadores = jsonR.getListaCreadores();
+		modelCol.addElement("Elige un colaborador");
+		for(int i=0;i<creadores.size();i++) {
+			
+			modelCol.addElement((i+1) + ". " + creadores.get(i).getNombre());
+		}
+		view.comboBoxColNew.setModel(modelCol);
+	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.view.comboBox) {
-			creadorSeleccionado = jsonR.getCreador(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
-			obtenerDatosCreador(creadorSeleccionado);
-			generarBotonesPlataforma(creadorSeleccionado);
-			obtenerColaboraciones(creadorSeleccionado);
+			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1){
+				DefaultComboBoxModel<String> modelCol = (DefaultComboBoxModel<String>) view.comboBoxColNew.getModel();
+				modelCol.removeAllElements();
+				generarCreadoresCol(modelCol);
+				
+				creadorSeleccionado = jsonR.getCreador(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
+				obtenerDatosCreador(creadorSeleccionado);
+				generarBotonesPlataforma(creadorSeleccionado);
+				obtenerColaboraciones(creadorSeleccionado);
+				
+				JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
+				obtenerDatosColaboracion(colaboracion);
+				modelCol.removeElementAt(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
+			}
 			
-			JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
-			obtenerDatosColaboracion(colaboracion);
 
-		} else
-		
-		if(e.getSource() == this.view.exitItem) {
+		}else if(e.getSource() == this.view.exitItem) {
 			System.exit(0);
-		} else
-		
-		if(e.getSource() == this.view.comboBox_1) {
+			
+		}else if (e.getSource() == this.view.comboBox_1) {
 			JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
 			obtenerDatosColaboracion(colaboracion);
+			
+		}else if (e.getSource() == this.view.btnConfFchIni) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			String selectedDate = sdf.format(this.view.calendar.getDate());
+			this.view.textFieldFechIniColNew.setText(selectedDate);
+			this.view.calendar.setVisible(false);
+			this.view.btnConfFchIni.setVisible(false);
+			
+		}else if (e.getSource() == this.view.btnConfFchFin) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			String selectedDate = sdf.format(this.view.calendar.getDate());
+			this.view.textFieldFechFinColNew.setText(selectedDate);
+			this.view.calendar.setVisible(false);
+			this.view.btnConfFchFin.setVisible(false);
+			
+		}else if (e.getSource() == this.view.btnFechaIni) {
+			this.view.btnConfFchFin.setVisible(false);
+			this.view.btnConfFchIni.setVisible(true);
+			this.view.calendar.setVisible(true);
+			
+		}else if (e.getSource() == this.view.btnFechaFin) {
+			this.view.btnConfFchIni.setVisible(false);
+			this.view.btnConfFchFin.setVisible(true);
+			this.view.calendar.setVisible(true);
+			
+		}else if (e.getSource() == this.view.btnNewButtonAddCol) {
+			
+			int creador = -1;
+			String colaborador, tipo, tematica, fchIni, fchFin, activaString;
+			Boolean activa;
+			
+			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
+				creador = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
+			}
+			
+			
+			colaborador = this.view.comboBoxColNew.getSelectedItem().toString();
+			colaborador = colaborador.substring(colaborador.indexOf(".") + 2);
+			tipo = this.view.comboBoxColTipo.getSelectedItem().toString();
+			tematica = this.view.comboBoxColTem.getSelectedItem().toString();
+			fchIni = this.view.textFieldFechIniColNew.getText();
+			fchFin = this.view.textFieldFechFinColNew.getText();
+			activa = this.view.chckbxColActivaColNew.isSelected();
+			if(activa) {
+				activaString = "Activa";
+			}else {
+				activaString = "Finalizada";
+			}
+			
+			if(creador != -1 &&
+					!colaborador.equals("Elige un colaborador") &&
+					!fchIni.equals("") &&
+					!fchFin.equals("") &&
+					creador != -1) {
+				
+				ObjectNode colaboracion = om.createObjectNode();
+				colaboracion.put("colaborador", colaborador);
+				colaboracion.put("tematica", tematica);
+				colaboracion.put("fecha_inicio", fchIni);
+				colaboracion.put("fecha_fin", fchFin);
+				colaboracion.put("tipo", tipo);
+				colaboracion.put("estado", activaString);
+				
+				JsonNode creadores = jsonR.getCreadoresNode();
+				ArrayNode colaboraciones = (ArrayNode) creadores.get(creador).get("colaboraciones");
+				colaboraciones.add(colaboracion);
+				try {
+					jsonR.actualizarCreadores();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+			
+			
 		}
-
+			
 	}
 
 	private void obtenerDatosCreador(Creador creador) {
@@ -76,7 +201,6 @@ public class Controller implements ActionListener{
 		view.textFieldPromVist.setText(String.valueOf((int) Math.round(creador.getEstadisticas().get("promedio_vistas_mensuales"))));
 		view.textFieldTasaCrec.setText(String.valueOf(creador.getEstadisticas().get("tasa_crecimiento_seguidores")));
 		
-		System.out.println(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf(".")));
 	}
 	
 	private void generarBotonesPlataforma(Creador creador) {

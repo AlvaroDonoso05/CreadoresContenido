@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import Models.Creador;
 
@@ -58,6 +59,16 @@ public class JsonReader {
             e.printStackTrace();
         }
     }
+	
+	public void actualizarCreadores() throws Exception {
+		try {
+			mapper.enable(SerializationFeature.INDENT_OUTPUT);
+			mapper.writeValue(new File(url), creadoresNode);
+
+		} catch (Exception e) {
+			e.printStackTrace();;
+		}
+	}
 
 	public Creador getCreador(int id) {
 
@@ -77,4 +88,14 @@ public class JsonReader {
 	public void setListaCreadores(List<Creador> listaCreadores) {
 		this.listaCreadores = listaCreadores;
 	}
+
+	public JsonNode getCreadoresNode() {
+		return creadoresNode;
+	}
+
+	public void setCreadoresNode(JsonNode creadoresNode) {
+		this.creadoresNode = creadoresNode;
+	}
+	
+	
 }

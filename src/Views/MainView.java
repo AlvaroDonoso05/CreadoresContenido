@@ -10,6 +10,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -26,10 +27,15 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.toedter.calendar.JCalendar;
+
 import Controllers.Controller;
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.awt.event.ActionEvent;
 
 public class MainView extends JFrame {
 
@@ -103,6 +109,26 @@ public class MainView extends JFrame {
 	public JTextField textFieldNuevosSeg;
 	public JLabel lblIntHist;
 	public JTextField textFieldIntHist;
+	public JPanel panel_NewCol;
+	public JLabel lblAnadirColaboracion;
+	public JLabel lblTemColNew;
+	public JLabel lblTipoColNew;
+	public JLabel lblFechaInicioColNew;
+	public JTextField textFieldFechIniColNew;
+	public JLabel lblFechaFinColNew;
+	public JTextField textFieldFechFinColNew;
+	public JLabel lblEstadoColNew;
+	public JCheckBox chckbxColActivaColNew;
+	public JLabel lblColaborador;
+	public JButton btnNewButtonAddCol;
+	public JButton btnFechaIni;
+	public JButton btnConfFchIni;
+	public JButton btnFechaFin;
+	public JComboBox<String> comboBoxColNew;
+	public JComboBox<String> comboBoxColTipo;
+	public JComboBox<String> comboBoxColTem;
+	public JButton btnConfFchFin;
+	public JCalendar calendar;
 
 	public MainView() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -164,11 +190,11 @@ public class MainView extends JFrame {
 		mainPanel.add(lblId);
 
 		textFieldId = new JTextField();
+		textFieldId.setEditable(false);
 		textFieldId.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldId.setBounds(195, 100, 163, 21);
 		mainPanel.add(textFieldId);
 		textFieldId.setColumns(10);
-		textFieldId.setEditable(false);
 
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -176,11 +202,11 @@ public class MainView extends JFrame {
 		mainPanel.add(lblNombre);
 
 		textFieldNombre = new JTextField();
+		textFieldNombre.setEditable(false);
 		textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldNombre.setColumns(10);
 		textFieldNombre.setBounds(195, 136, 163, 21);
 		mainPanel.add(textFieldNombre);
-		textFieldNombre.setEditable(false);
 
 		lblPais = new JLabel("Pais:");
 		lblPais.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -188,11 +214,11 @@ public class MainView extends JFrame {
 		mainPanel.add(lblPais);
 
 		textFieldPais = new JTextField();
+		textFieldPais.setEditable(false);
 		textFieldPais.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldPais.setColumns(10);
 		textFieldPais.setBounds(195, 172, 163, 21);
 		mainPanel.add(textFieldPais);
-		textFieldPais.setEditable(false);
 
 		lblTematica = new JLabel("Temática:");
 		lblTematica.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -437,7 +463,7 @@ public class MainView extends JFrame {
 		textFieldFechaFin.setBounds(788, 92, 163, 21);
 		panel_Colabs.add(textFieldFechaFin);
 		
-		lblEstado = new JLabel("Estado:");
+		lblEstado = new JLabel("Activa:");
 		lblEstado.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblEstado.setBounds(377, 131, 108, 24);
 		panel_Colabs.add(lblEstado);
@@ -449,20 +475,123 @@ public class MainView extends JFrame {
 		
 		panel_Colabs.add(chckbxColActiva);
 		
+		panel_NewCol = new JPanel();
+		panel_NewCol.setBackground(new Color(255, 204, 204));
+		tabbedPane.addTab("Nueva Colaboración", null, panel_NewCol, null);
+		panel_NewCol.setLayout(null);
+		
+		lblAnadirColaboracion = new JLabel("Añadir Colaboración con el Creador Seleccionado:");
+		lblAnadirColaboracion.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblAnadirColaboracion.setBounds(25, 33, 379, 46);
+		panel_NewCol.add(lblAnadirColaboracion);
+		
+		lblTemColNew = new JLabel("Temática:");
+		lblTemColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblTemColNew.setBounds(68, 241, 108, 24);
+		panel_NewCol.add(lblTemColNew);
+		
+		lblTipoColNew = new JLabel("Tipo:");
+		lblTipoColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblTipoColNew.setBounds(68, 136, 108, 24);
+		panel_NewCol.add(lblTipoColNew);
+		
+		lblFechaInicioColNew = new JLabel("Fecha Inicio:");
+		lblFechaInicioColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblFechaInicioColNew.setBounds(68, 173, 108, 24);
+		panel_NewCol.add(lblFechaInicioColNew);
+		
+		textFieldFechIniColNew = new JTextField();
+		textFieldFechIniColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textFieldFechIniColNew.setEditable(false);
+		textFieldFechIniColNew.setColumns(10);
+		textFieldFechIniColNew.setBounds(182, 175, 163, 21);
+		panel_NewCol.add(textFieldFechIniColNew);
+		
+		lblFechaFinColNew = new JLabel("Fecha Fin:");
+		lblFechaFinColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblFechaFinColNew.setBounds(68, 207, 108, 24);
+		panel_NewCol.add(lblFechaFinColNew);
+		
+		textFieldFechFinColNew = new JTextField();
+		textFieldFechFinColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textFieldFechFinColNew.setEditable(false);
+		textFieldFechFinColNew.setColumns(10);
+		textFieldFechFinColNew.setBounds(182, 209, 163, 21);
+		panel_NewCol.add(textFieldFechFinColNew);
+		
+		lblEstadoColNew = new JLabel("Activa:");
+		lblEstadoColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblEstadoColNew.setBounds(68, 279, 108, 24);
+		panel_NewCol.add(lblEstadoColNew);
+		
+		chckbxColActivaColNew = new JCheckBox("");
+		chckbxColActivaColNew.setBackground(new Color(255, 204, 204));
+		chckbxColActivaColNew.setBounds(182, 282, 93, 21);
+		panel_NewCol.add(chckbxColActivaColNew);
+		
+		lblColaborador = new JLabel("Colaborador:");
+		lblColaborador.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblColaborador.setBounds(68, 102, 108, 24);
+		panel_NewCol.add(lblColaborador);
+		
+		btnNewButtonAddCol = new JButton("Añadir");
+		btnNewButtonAddCol.setBounds(222, 368, 123, 34);
+		panel_NewCol.add(btnNewButtonAddCol);
+		
+		calendar = new JCalendar();
+		calendar.setSize(199, 234);
+		calendar.setLocation(500, 102);
+		calendar.setVisible(false);
+		panel_NewCol.add(calendar);
+		
+	
+		btnFechaIni = new JButton("");
+		btnFechaIni.setBounds(355, 176, 33, 21);
+		panel_NewCol.add(btnFechaIni);
+		
+		
+		btnConfFchIni = new JButton("Confirmar");
+		btnConfFchIni.setBounds(560, 345, 85, 21);
+		btnConfFchIni.setVisible(false);
+		panel_NewCol.add(btnConfFchIni);
+		
+		btnFechaFin = new JButton("");
+		btnFechaFin.setBounds(355, 208, 33, 21);
+		panel_NewCol.add(btnFechaFin);
+		
+		comboBoxColNew = new JComboBox<>();
+		comboBoxColNew.setBounds(182, 105, 163, 23);
+		panel_NewCol.add(comboBoxColNew);
+		
+		comboBoxColTipo = new JComboBox<>();
+		comboBoxColTipo.setBounds(182, 139, 163, 23);
+		panel_NewCol.add(comboBoxColTipo);
+		
+		comboBoxColTem = new JComboBox<>();
+		comboBoxColTem.setBounds(182, 244, 163, 23);
+		panel_NewCol.add(comboBoxColTem);
+		
+		btnConfFchFin = new JButton("Confirmar");
+		btnConfFchFin.setBounds(560, 345, 85, 21);
+		btnConfFchFin.setVisible(false);
+		panel_NewCol.add(btnConfFchFin);
+		
 		panel = new JPanel();
 		panel.setBackground(new Color(255, 204, 204));
 		panel.setBounds(0, 0, 1186, 138);
 		contentPane.add(panel);
 		panel.setLayout(null);
+
+		comboBox = new JComboBox<>();
+		comboBox.setBounds(49, 71, 182, 40);
+		panel.add(comboBox);
+
+		lblNewLabel_1 = new JLabel("Seleccione al Creador:");
+		lblNewLabel_1.setBounds(49, 21, 182, 39);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+	
 		
-				comboBox = new JComboBox<>();
-				comboBox.setBounds(49, 71, 182, 40);
-				panel.add(comboBox);
-				
-						lblNewLabel_1 = new JLabel("Seleccione al Creador:");
-						lblNewLabel_1.setBounds(49, 21, 182, 39);
-						panel.add(lblNewLabel_1);
-						lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 	}
 
 	public static void main(String[] args) {
