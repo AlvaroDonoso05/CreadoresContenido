@@ -67,6 +67,8 @@ public class Controller implements ActionListener, ListSelectionListener {
         this.view.btnExtraerDatos.addActionListener(this);
         this.view.btnAnterior.addActionListener(this);
         this.view.btnSiguiente.addActionListener(this);
+        this.view.btnModificar.addActionListener(this);
+        this.view.btnEliminar.addActionListener(this);
         this.view.btnConfFchIni.addActionListener(this);
 	    	this.view.btnConfFchFin.addActionListener(this);
 	    	this.view.btnFechaIni.addActionListener(this);
@@ -151,6 +153,25 @@ public class Controller implements ActionListener, ListSelectionListener {
         		cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
             	this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1));
         	}
+        } else if(e.getSource() == this.view.btnModificar) {
+        	if(this.view.listPublicaciones.getSelectedValue() != null) {
+        		List<Metrica> listaPublicaciones = csvR.obtenerPorId(creadorSeleccionado.getId());
+            	
+            	for(Metrica publicacion: listaPublicaciones) {
+            		int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
+            		if(publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
+            			publicacion.setVistas(Integer.parseInt(this.view.textVistas.getText()));
+            			publicacion.setMeGusta(Integer.parseInt(this.view.textLikes.getText()));
+            			publicacion.setComentarios(Integer.parseInt(this.view.textComentarios.getText()));
+            			publicacion.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
+            			this.view.lblMinComentarios.setText(String.valueOf(0));
+            			this.view.lblMaxComentarios.setText(String.valueOf(publicacion.getComentarios()));
+            			cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
+            		}
+            	}
+        	}
+        } else if(e.getSource() == this.view.btnEliminar) {
+        	
         }else if (e.getSource() == this.view.btnConfFchIni) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 			String selectedDate = sdf.format(this.view.calendar.getDate());
