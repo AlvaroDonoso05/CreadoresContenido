@@ -62,6 +62,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.comboBoxColNew.addActionListener(this);
 		this.view.comboBoxColTem.addActionListener(this);
 		this.view.comboBoxColTipo.addActionListener(this);
+		this.view.reporteCreadoresItem.addActionListener(this);
 		this.view.exitItem.addActionListener(this);
 		this.view.listPublicaciones.addListSelectionListener(this);
 		this.view.btnExtraerDatos.addActionListener(this);
@@ -116,18 +117,22 @@ public class Controller implements ActionListener, ListSelectionListener {
 			DefaultComboBoxModel<String> modelCol = (DefaultComboBoxModel<String>) this.view.comboBoxColNew.getModel();
 			modelCol.removeAllElements();
 			generarCreadoresCol(modelCol);
-			modelCol.removeElementAt(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
+			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
+				modelCol.removeElementAt(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
+				creadorSeleccionado = jsonR.getCreador(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
+				obtenerDatosCreador(creadorSeleccionado);
+				generarBotonesPlataforma(creadorSeleccionado);
+				obtenerColaboraciones(creadorSeleccionado);
+				obtenerPublicaciones(creadorSeleccionado.getId());
 
-			creadorSeleccionado = jsonR.getCreador(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
-			obtenerDatosCreador(creadorSeleccionado);
-			generarBotonesPlataforma(creadorSeleccionado);
-			obtenerColaboraciones(creadorSeleccionado);
-			obtenerPublicaciones(creadorSeleccionado.getId());
+				JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
+				obtenerDatosColaboracion(colaboracion);
+				this.view.lblInfoHaste.setVisible(false);
+				this.view.btnExtraerDatos.setEnabled(true);
+			}
+			
 
-			JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
-			obtenerDatosColaboracion(colaboracion);
-			this.view.lblInfoHaste.setVisible(false);
-			this.view.btnExtraerDatos.setEnabled(true);
+			
 
 		} else if (e.getSource() == this.view.exitItem) {
 			System.exit(0);
@@ -175,6 +180,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 					}
 				}
 			}
+			
 		} else if(e.getSource() == this.view.btnEliminar) {
 
 		}else if (e.getSource() == this.view.btnConfFchIni) {
@@ -254,9 +260,54 @@ public class Controller implements ActionListener, ListSelectionListener {
 			}
 
 
+		}else if(e.getSource() == this.view.reporteCreadoresItem) {
+			List<Creador> creadores = jsonR.getListaCreadores();
+			ObjectNode rootNode = om.createObjectNode();
+			ArrayNode creadoresArray = om.createArrayNode();
+
+			for (Creador creador : creadores) {
+			    int seguidores = creador.getSegidoresTotales();                
+			    JsonNode plataformas = creador.getPlataformas();
+
+			    String plataforma = "";
+			    double mediaAlta = 0;
+
+			    for (JsonNode plataformaNode : plataformas) {
+			        double acumulador = 0;
+			        int contador = 0;
+
+			        ArrayNode historicos = (ArrayNode) plataformaNode.get("historico");
+			        for (JsonNode historico : historicos) {
+			            acumulador += historico.get("interacciones").asInt();
+			            contador++;
+			        }
+
+			        double mediaInteracciones = acumulador / contador;
+			        if (mediaInteracciones > mediaAlta) {
+			            mediaAlta = mediaInteracciones;
+			            plataforma = plataformaNode.get("nombre").asText();
+			        }
+			    }
+
+			    ObjectNode creadorNode = om.createObjectNode();
+			    creadorNode.put("id", creador.getId());
+			    creadorNode.put("nombre", creador.getNombre());
+			    creadorNode.put("total_seguidores", seguidores);
+			    creadorNode.put("plataforma_interacciones", plataforma);
+			    creadorNode.put("promedio_interacciones", mediaAlta);
+
+			    creadoresArray.add(creadorNode);
+			}
+
+			rootNode.set("creadores", creadoresArray);
+			jsonR.crearJson("resources/reporte_creadores.json", rootNode);
 		}
 	}
 
+	public void anadirCreador (JsonNode root) {
+		
+	}
+	
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		if(e.getSource() == this.view.listPublicaciones) {
@@ -290,7 +341,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		view.textFieldPromVist.setText(String.valueOf((int) Math.round(creador.getEstadisticas().get("promedio_vistas_mensuales"))));
 		view.textFieldTasaCrec.setText(String.valueOf(creador.getEstadisticas().get("tasa_crecimiento_seguidores")));
 
-		System.out.println(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf(".")));
+		
 	}
 
 	private void generarBotonesPlataforma(Creador creador) {

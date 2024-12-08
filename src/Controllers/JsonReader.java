@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -70,6 +71,17 @@ public class JsonReader {
 		} catch (Exception e) {
 			e.printStackTrace();;
 		}
+	}
+	
+	public void crearJson (String fichero, JsonNode rootNode) {
+		
+		try {
+			mapper.enable(SerializationFeature.INDENT_OUTPUT);
+			mapper.writeValue(new File(fichero), rootNode);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public Creador getCreador(int id) {
