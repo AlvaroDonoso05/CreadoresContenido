@@ -13,65 +13,65 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class HasteBinController {
-    private static final ObjectMapper objectMapper = new ObjectMapper();
-    private static URL url;
-    private Logger logger;
+	private static final ObjectMapper objectMapper = new ObjectMapper();
+	private static URL url;
+	private Logger logger;
 
-    public HasteBinController() {
-    	logger = Logger.getInstance();
-        try {
-            HasteBinController.url = new URL("https://pastebin.donoso.mooo.com/documents");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
+	public HasteBinController() {
+		logger = Logger.getInstance();
+		try {
+			HasteBinController.url = new URL("https://pastebin.donoso.mooo.com/documents");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+	}
 
-    public String uploadTextToHastebin(JsonNode creator, String texto) {
-        try {
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+	public String uploadTextToHastebin(JsonNode creator, String texto) {
+		try {
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("POST");
+			connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
-            connection.setDoOutput(true);
+			connection.setDoOutput(true);
 
-            objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-            String creatorText;
-            
-            if(creator != null) {
-            	creatorText = objectMapper.writeValueAsString(creator);
-            } else {
-            	creatorText = texto;
-            }
+			objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+			String creatorText;
 
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = creatorText.getBytes(StandardCharsets.UTF_8);
-                os.write(input, 0, input.length);
-            }
+			if(creator != null) {
+				creatorText = objectMapper.writeValueAsString(creator);
+			} else {
+				creatorText = texto;
+			}
 
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String inputLine;
-                StringBuilder response = new StringBuilder();
+			try (OutputStream os = connection.getOutputStream()) {
+				byte[] input = creatorText.getBytes(StandardCharsets.UTF_8);
+				os.write(input, 0, input.length);
+			}
 
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
+			int responseCode = connection.getResponseCode();
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+				String inputLine;
+				StringBuilder response = new StringBuilder();
 
-                String responseString = response.toString();
-                String hastebinKey = responseString.split(":")[1].replace("\"", "").replace("}", "");
+				while ((inputLine = in.readLine()) != null) {
+					response.append(inputLine);
+				}
+				in.close();
 
-                logger.success("Link generado correctamente: https://pastebin.donoso.mooo.com/" + hastebinKey);
-                return "https://pastebin.donoso.mooo.com/" + hastebinKey;
-            } else {
-                System.out.println(responseCode);
-                logger.warning("Error al enviar a Hastebin. Código: " + responseCode);
-                return "Error al enviar a Hastebin. Código: " + responseCode;
-            }
-        } catch (Exception e) {
-            logger.error(e);
-            return "Error al conectar con Hastebin.";
-        }
-    }
+				String responseString = response.toString();
+				String hastebinKey = responseString.split(":")[1].replace("\"", "").replace("}", "");
+
+				logger.success("Link generado correctamente: https://pastebin.donoso.mooo.com/" + hastebinKey);
+				return "https://pastebin.donoso.mooo.com/" + hastebinKey;
+			} else {
+				System.out.println(responseCode);
+				logger.warning("Error al enviar a Hastebin. Código: " + responseCode);
+				return "Error al enviar a Hastebin. Código: " + responseCode;
+			}
+		} catch (Exception e) {
+			logger.error(e);
+			return "Error al conectar con Hastebin.";
+		}
+	}
 }

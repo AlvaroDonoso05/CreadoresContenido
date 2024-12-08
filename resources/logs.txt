@@ -38,3 +38,70 @@
 08-12-2024 19:01:28 [SUCCESS] Link generado correctamente: https://pastebin.donoso.mooo.com/tomohexumo
 08-12-2024 19:01:28 [SUCCESS] https://pastebin.donoso.mooo.com/tomohexumo
 08-12-2024 19:07:05 [LOGGER] Creador de contenido seleccionado 8
+08-12-2024 19:55:31 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 19:55:37 [LOGGER] Creador de contenido seleccionado 6
+08-12-2024 19:55:40 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 19:55:41 [LOGGER] Creador de contenido seleccionado 2
+08-12-2024 19:55:43 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 19:56:49 [LOGGER] Creador de contenido seleccionado 6
+08-12-2024 19:56:56 [LOGGER] Creador de contenido seleccionado 8
+08-12-2024 19:56:58 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 19:56:59 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 19:58:08 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 19:59:06 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 19:59:08 [LOGGER] Creador de contenido seleccionado 6
+08-12-2024 19:59:10 [LOGGER] Creador de contenido seleccionado 2
+08-12-2024 19:59:13 [LOGGER] Creador de contenido seleccionado 11
+08-12-2024 19:59:16 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 19:59:18 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 20:04:12 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 20:04:58 [LOGGER] Creador de contenido seleccionado 3
+08-12-2024 20:07:21 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 20:07:28 [LOGGER] Creador de contenido seleccionado 3
+08-12-2024 20:07:29 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 20:07:31 [LOGGER] Creador de contenido seleccionado 8
+08-12-2024 20:07:32 [LOGGER] Creador de contenido seleccionado 12
+08-12-2024 20:07:33 [LOGGER] Creador de contenido seleccionado 12
+08-12-2024 20:07:34 [LOGGER] Creador de contenido seleccionado 29
+08-12-2024 20:07:42 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 20:07:43 [LOGGER] Creador de contenido seleccionado 9
+08-12-2024 20:07:47 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 20:07:48 [LOGGER] Creador de contenido seleccionado 2
+08-12-2024 20:07:52 [LOGGER] Creador de contenido seleccionado 26
+08-12-2024 20:07:53 [LOGGER] Creador de contenido seleccionado 38
+08-12-2024 20:11:31 [LOGGER] Creador de contenido seleccionado 6
+08-12-2024 20:11:34 [LOGGER] Creador de contenido seleccionado 9
+08-12-2024 20:11:36 [LOGGER] Creador de contenido seleccionado 3
+08-12-2024 20:11:37 [LOGGER] Creador de contenido seleccionado 11
+08-12-2024 20:11:51 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 20:11:55 [LOGGER] Creador de contenido seleccionado 9
+08-12-2024 20:12:52 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 20:12:55 [LOGGER] Creador de contenido seleccionado 10
+08-12-2024 20:13:10 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 20:13:13 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 20:15:23 [LOGGER] Creador de contenido seleccionado 6
+08-12-2024 20:16:47 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 20:16:51 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 20:16:52 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 20:16:56 [LOGGER] Creador de contenido seleccionado 8
+08-12-2024 20:16:57 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 20:21:11 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 20:21:18 [SUCCESS] Contenido 42 eliminado correctamente.
+08-12-2024 20:21:23 [LOGGER] Creador de contenido seleccionado 6
+08-12-2024 20:21:24 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 20:21:51 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 20:21:53 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 20:22:51 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 20:22:53 [SUCCESS] Link generado correctamente: https://pastebin.donoso.mooo.com/saguferiho
+08-12-2024 20:22:53 [SUCCESS] https://pastebin.donoso.mooo.com/saguferiho
+08-12-2024 20:23:47 [SUCCESS] Contenido 17 eliminado correctamente.
+08-12-2024 20:23:47 [SUCCESS] Contenido 42 eliminado correctamente.
+08-12-2024 20:23:47 [SUCCESS] Contenido 72 eliminado correctamente.
+08-12-2024 20:23:50 [LOGGER] Creador de contenido seleccionado 9
+08-12-2024 20:23:52 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 20:23:54 [LOGGER] Creador de contenido seleccionado 6
+08-12-2024 20:23:55 [LOGGER] Creador de contenido seleccionado 8
+08-12-2024 20:23:58 [SUCCESS] Contenido 90 eliminado correctamente.
+08-12-2024 20:24:01 [LOGGER] Creador de contenido seleccionado 11
+08-12-2024 20:24:02 [LOGGER] Creador de contenido seleccionado 8
+08-12-2024 20:24:54 [LOGGER] Creador de contenido seleccionado 6
