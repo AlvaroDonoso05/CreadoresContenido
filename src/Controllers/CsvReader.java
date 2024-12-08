@@ -1,81 +1,145 @@
 package Controllers;
 
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import Models.Metrica;
 
 public class CsvReader {
-	private static final ObjectMapper objectMapper = new ObjectMapper();
-	private List<Metrica> archivoCsv;
-	private String url;
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private List<Metrica> archivoCsv;
+    private final String url;
+    private Logger logger;
 
-	public CsvReader(String url) {
-		this.url = url;
-		this.archivoCsv = abrirCSV();
-	}
+    public CsvReader(String url) {
+    	logger = Logger.getInstance();
+        this.url = url;
+        this.archivoCsv = abrirCSV();
+    }
+    
+    public void generarCsv() {
+    	BufferedWriter bw = null;
+    	FileWriter fw = null;
+    	File archivo = null;
+    	try {
+    		archivo = new File(url);
+    		
+    		if(archivo.exists()) {
+    			archivo.delete();
+    		}
+    		
+    		fw = new FileWriter(archivo);
+    		bw = new BufferedWriter(fw);
+    		
+    		bw.write("creador_id,plataforma,fecha,contenido,tipo,vistas,me_gusta,comentarios,compartidos");
+    		bw.newLine();
+    		
+    		for(Metrica metrica: archivoCsv) {
+    			bw.write(metrica.getIdCreador() + ","
+    					+ metrica.getPlataforma() + ","
+    					+ metrica.getFecha() + ","
+    					+ metrica.getContenido() + ","
+    					+ metrica.getTipo() + ","
+    					+ metrica.getMeGusta() + ","
+    					+ metrica.getComentarios() + ","
+    					+ metrica.getCompartidos());
+    			bw.newLine();
+    		}
+    		logger.success("Archivo actualizado correctamente.");
+    	} catch(Exception e) {
+    		logger.error(e);
+    	} finally {
+    		if(bw != null) {
+    			try {
+					bw.close();
+				} catch (IOException e) {
+					logger.error(e);
+				}
+    		}
+    		if(fw != null) {
+    			try {
+					fw.close();
+				} catch (IOException e) {
+					logger.error(e);
+				}
+    		}
+    	}
+    }
 
-	public List<Metrica> abrirCSV(){
-		List<Metrica> metricas = null;
-		try  {
-			FileReader reader = new FileReader(this.url);
+    public List<Metrica> abrirCSV() {
+        List<Metrica> metricas = null;
+        try {
+            FileReader reader = new FileReader(this.url);
 
-			CsvToBeanBuilder<Metrica> csvBuilder = new CsvToBeanBuilder<>(reader);
-			CsvToBean<Metrica> csv = csvBuilder.withType(Metrica.class).withIgnoreLeadingWhiteSpace(true).build();
+            CsvToBeanBuilder<Metrica> csvBuilder = new CsvToBeanBuilder<>(reader);
+            CsvToBean<Metrica> csv = csvBuilder.withType(Metrica.class).withIgnoreLeadingWhiteSpace(true).build();
 
-			metricas = csv.parse();
+            metricas = csv.parse();
 
         } catch (Exception e) {
-            e.printStackTrace();
+        	logger.error(e);
         }
 
-		return metricas;
-	}
+        return metricas;
+    }
 
-	public List<Metrica> obtenerPorId(int id) {
-		List<Metrica> metricaCreador = new ArrayList<>();
+    public List<Metrica> obtenerPorId(int id) {
+        List<Metrica> metricaCreador = new ArrayList<>();
 
-		for(Metrica metrica : this.archivoCsv) {
-			if(metrica.getIdCreador() == id) {
-				metricaCreador.add(metrica);
-			}
-		}
+        for (Metrica metrica : this.archivoCsv) {
+            if (metrica.getIdCreador() == id) {
+                metricaCreador.add(metrica);
+            }
+        }
 
-		return metricaCreador;
-	}
+        return metricaCreador;
+    }
 
-	public List<Metrica> obtenerPorRedSocial(int id, String redSocial) {
-		List<Metrica> metricaCreador = new ArrayList<>();
+    public List<Metrica> obtenerPorRedSocial(int id, String redSocial) {
+        List<Metrica> metricaCreador = new ArrayList<>();
 
-		for(Metrica metrica : this.archivoCsv) {
-			if(metrica.getIdCreador() == id && metrica.getPlataforma().equalsIgnoreCase(redSocial)) {
-				metricaCreador.add(metrica);
-			}
-		}
+        for (Metrica metrica : this.archivoCsv) {
+            if (metrica.getIdCreador() == id && metrica.getPlataforma().equalsIgnoreCase(redSocial)) {
+                metricaCreador.add(metrica);
+            }
+        }
 
-		return metricaCreador;
-	}
-	
-	public ObjectNode obtenerContenidosPlataforma(int id, String plataforma) {
-		ObjectNode rootNode = objectMapper.createObjectNode();
-		
-		for(Metrica metrica: archivoCsv) {
-			if(metrica.getIdCreador() == id && metrica.getPlataforma().equalsIgnoreCase(plataforma)) {
-				ObjectNode contenido = objectMapper.createObjectNode();
-				contenido.put("vistas", metrica.getVistas());
-				contenido.put("me_gusta", metrica.getMeGusta());
-				
-				rootNode.set(metrica.getContenido(), contenido);
-			}
-		}
-		
-		return rootNode;
-		
-	}
+        return metricaCreador;
+    }
+
+    public ObjectNode obtenerContenidosPlataforma(int id, String plataforma) {
+        ObjectNode rootNode = objectMapper.createObjectNode();
+
+        for (Metrica metrica : archivoCsv) {
+            if (metrica.getIdCreador() == id && metrica.getPlataforma().equalsIgnoreCase(plataforma)) {
+                ObjectNode contenido = objectMapper.createObjectNode();
+                contenido.put("vistas", metrica.getVistas());
+                contenido.put("me_gusta", metrica.getMeGusta());
+
+                rootNode.set(metrica.getContenido(), contenido);
+            }
+        }
+
+        return rootNode;
+
+    }
+
+    public List<Metrica> getArchivoCsv() {
+        return archivoCsv;
+    }
+
+    public void setArchivoCsv(List<Metrica> archivoCsv) {
+        this.archivoCsv = archivoCsv;
+    }
 }
