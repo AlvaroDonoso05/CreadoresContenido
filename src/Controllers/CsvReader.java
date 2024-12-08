@@ -62,80 +62,80 @@ public class CsvReader {
 				} catch (IOException e) {
 					logger.error(e);
 				}
-    		}
-    		if(fw != null) {
-    			try {
+			}
+			if(fw != null) {
+				try {
 					fw.close();
 				} catch (IOException e) {
 					logger.error(e);
 				}
-    		}
-    	}
-    }
+			}
+		}
+	}
 
-    public List<Metrica> abrirCSV() {
-        List<Metrica> metricas = null;
-        try {
-            FileReader reader = new FileReader(this.url);
+	public List<Metrica> abrirCSV() {
+		List<Metrica> metricas = null;
+		try {
+			FileReader reader = new FileReader(this.url);
 
-            CsvToBeanBuilder<Metrica> csvBuilder = new CsvToBeanBuilder<>(reader);
-            CsvToBean<Metrica> csv = csvBuilder.withType(Metrica.class).withIgnoreLeadingWhiteSpace(true).build();
+			CsvToBeanBuilder<Metrica> csvBuilder = new CsvToBeanBuilder<>(reader);
+			CsvToBean<Metrica> csv = csvBuilder.withType(Metrica.class).withIgnoreLeadingWhiteSpace(true).build();
 
-            metricas = csv.parse();
+			metricas = csv.parse();
 
-        } catch (Exception e) {
-        	logger.error(e);
-        }
+		} catch (Exception e) {
+			logger.error(e);
+		}
 
-        return metricas;
-    }
+		return metricas;
+	}
 
-    public List<Metrica> obtenerPorId(int id) {
-        List<Metrica> metricaCreador = new ArrayList<>();
+	public List<Metrica> obtenerPorId(int id) {
+		List<Metrica> metricaCreador = new ArrayList<>();
 
-        for (Metrica metrica : this.archivoCsv) {
-            if (metrica.getIdCreador() == id) {
-                metricaCreador.add(metrica);
-            }
-        }
+		for (Metrica metrica : this.archivoCsv) {
+			if (metrica.getIdCreador() == id) {
+				metricaCreador.add(metrica);
+			}
+		}
 
-        return metricaCreador;
-    }
+		return metricaCreador;
+	}
 
-    public List<Metrica> obtenerPorRedSocial(int id, String redSocial) {
-        List<Metrica> metricaCreador = new ArrayList<>();
+	public List<Metrica> obtenerPorRedSocial(int id, String redSocial) {
+		List<Metrica> metricaCreador = new ArrayList<>();
 
-        for (Metrica metrica : this.archivoCsv) {
-            if (metrica.getIdCreador() == id && metrica.getPlataforma().equalsIgnoreCase(redSocial)) {
-                metricaCreador.add(metrica);
-            }
-        }
+		for (Metrica metrica : this.archivoCsv) {
+			if (metrica.getIdCreador() == id && metrica.getPlataforma().equalsIgnoreCase(redSocial)) {
+				metricaCreador.add(metrica);
+			}
+		}
 
-        return metricaCreador;
-    }
+		return metricaCreador;
+	}
 
-    public ObjectNode obtenerContenidosPlataforma(int id, String plataforma) {
-        ObjectNode rootNode = objectMapper.createObjectNode();
+	public ObjectNode obtenerContenidosPlataforma(int id, String plataforma) {
+		ObjectNode rootNode = objectMapper.createObjectNode();
 
-        for (Metrica metrica : archivoCsv) {
-            if (metrica.getIdCreador() == id && metrica.getPlataforma().equalsIgnoreCase(plataforma)) {
-                ObjectNode contenido = objectMapper.createObjectNode();
-                contenido.put("vistas", metrica.getVistas());
-                contenido.put("me_gusta", metrica.getMeGusta());
+		for (Metrica metrica : archivoCsv) {
+			if (metrica.getIdCreador() == id && metrica.getPlataforma().equalsIgnoreCase(plataforma)) {
+				ObjectNode contenido = objectMapper.createObjectNode();
+				contenido.put("vistas", metrica.getVistas());
+				contenido.put("me_gusta", metrica.getMeGusta());
 
-                rootNode.set(metrica.getContenido(), contenido);
-            }
-        }
+				rootNode.set(metrica.getContenido(), contenido);
+			}
+		}
 
-        return rootNode;
+		return rootNode;
 
-    }
+	}
 
-    public List<Metrica> getArchivoCsv() {
-        return archivoCsv;
-    }
+	public List<Metrica> getArchivoCsv() {
+		return archivoCsv;
+	}
 
-    public void setArchivoCsv(List<Metrica> archivoCsv) {
-        this.archivoCsv = archivoCsv;
-    }
+	public void setArchivoCsv(List<Metrica> archivoCsv) {
+		this.archivoCsv = archivoCsv;
+	}
 }
