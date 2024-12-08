@@ -1,0 +1,40 @@
+08-12-2024 17:12:28 [SUCCESS] Link generado correctamente: https://pastebin.donoso.mooo.com/yijewihaqu
+08-12-2024 17:34:59 [ERROR] java.io.FileNotFoundException: resources\metricas_contenido.csv (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+08-12-2024 17:40:14 [ERROR] java.io.FileNotFoundException: resources\metricas_contenido.csv (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+08-12-2024 17:40:36 [SUCCESS] Archivo actualizado correctamente.
+08-12-2024 18:02:45 [ERROR] java.lang.RuntimeException: Error parsing CSV line: 2. [9,TikTok,2023-09-6,Contenido 1,imagen,4671,101,260]
+08-12-2024 18:03:14 [ERROR] java.lang.RuntimeException: Error parsing CSV line: 2. [9,TikTok,2023-09-6,Contenido 1,imagen,4671,101,260]
+08-12-2024 18:47:32 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 4
+08-12-2024 18:47:49 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 4
+08-12-2024 18:47:50 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 5
+08-12-2024 18:47:50 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 6
+08-12-2024 18:47:52 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 11
+08-12-2024 18:47:53 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 8
+08-12-2024 18:47:54 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 7
+08-12-2024 18:47:55 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 3
+08-12-2024 18:47:56 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 1
+08-12-2024 18:47:57 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 1
+08-12-2024 18:48:00 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 7
+08-12-2024 18:48:02 [LOGGER] [34m[LOGGER] [94mCreador de contenido seleccionado 12
+08-12-2024 18:50:58 [LOGGER] Creador de contenido seleccionado 7
+08-12-2024 18:50:59 [LOGGER] Creador de contenido seleccionado 1
+08-12-2024 18:51:25 [LOGGER] Creador de contenido seleccionado 5
+08-12-2024 18:51:26 [LOGGER] Creador de contenido seleccionado 1
+08-12-2024 18:51:29 [LOGGER] Creador de contenido seleccionado 10
+08-12-2024 18:51:30 [LOGGER] Creador de contenido seleccionado 12
+08-12-2024 18:51:32 [LOGGER] Creador de contenido seleccionado 27
+08-12-2024 18:51:34 [LOGGER] Creador de contenido seleccionado 42
+08-12-2024 18:51:36 [LOGGER] Creador de contenido seleccionado 50
+08-12-2024 18:51:40 [LOGGER] Creador de contenido seleccionado 1
+08-12-2024 18:51:41 [LOGGER] Creador de contenido seleccionado 8
+08-12-2024 19:00:17 [LOGGER] Creador de contenido seleccionado 6
+08-12-2024 19:00:17 [LOGGER] Creador de contenido seleccionado 10
+08-12-2024 19:00:18 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 19:00:19 [LOGGER] Creador de contenido seleccionado 3
+08-12-2024 19:00:20 [LOGGER] Creador de contenido seleccionado 9
+08-12-2024 19:01:25 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 19:01:26 [LOGGER] Creador de contenido seleccionado 10
+08-12-2024 19:01:27 [LOGGER] Creador de contenido seleccionado 4
+08-12-2024 19:01:28 [SUCCESS] Link generado correctamente: https://pastebin.donoso.mooo.com/tomohexumo
+08-12-2024 19:01:28 [SUCCESS] https://pastebin.donoso.mooo.com/tomohexumo
+08-12-2024 19:07:05 [LOGGER] Creador de contenido seleccionado 8

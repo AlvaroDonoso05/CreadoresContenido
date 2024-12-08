@@ -26,7 +26,7 @@ public class HasteBinController {
         }
     }
 
-    public String uploadTextToHastebin(JsonNode creator) {
+    public String uploadTextToHastebin(JsonNode creator, String texto) {
         try {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
@@ -35,7 +35,13 @@ public class HasteBinController {
             connection.setDoOutput(true);
 
             objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-            String creatorText = objectMapper.writeValueAsString(creator);
+            String creatorText;
+            
+            if(creator != null) {
+            	creatorText = objectMapper.writeValueAsString(creator);
+            } else {
+            	creatorText = texto;
+            }
 
             try (OutputStream os = connection.getOutputStream()) {
                 byte[] input = creatorText.getBytes(StandardCharsets.UTF_8);

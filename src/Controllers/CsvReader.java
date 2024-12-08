@@ -17,51 +17,47 @@ import java.util.List;
 import Models.Metrica;
 
 public class CsvReader {
-	private static final ObjectMapper objectMapper = new ObjectMapper();
-	private List<Metrica> archivoCsv;
-	private final String url;
-	private Logger logger;
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private List<Metrica> archivoCsv;
+    private final String url;
+    private Logger logger;
 
-	public CsvReader(String url) {
-		logger = Logger.getInstance();
-		this.url = url;
-		this.archivoCsv = abrirCSV();
-	}
-
-	public void generarCsv() {
-		BufferedWriter bw = null;
-		FileWriter fw = null;
-		File archivo = null;
-		try {
-			archivo = new File(url);
-
-			if(archivo.exists()) {
-				archivo.delete();
-			}
-
-			fw = new FileWriter(archivo);
-			bw = new BufferedWriter(fw);
-
-			bw.write("creador_id,plataforma,fecha,contenido,tipo,vistas,me_gusta,comentarios,compartidos");
-			bw.newLine();
-
-			for(Metrica metrica: archivoCsv) {
-				bw.write(metrica.getIdCreador() + ","
-						+ metrica.getPlataforma() + ","
-						+ metrica.getFecha() + ","
-						+ metrica.getContenido() + ","
-						+ metrica.getTipo() + ","
-						+ metrica.getMeGusta() + ","
-						+ metrica.getComentarios() + ","
-						+ metrica.getCompartidos());
-				bw.newLine();
-			}
-			logger.success("Archivo actualizado correctamente.");
-		} catch(Exception e) {
-			logger.error(e);
-		} finally {
-			if(bw != null) {
-				try {
+    public CsvReader(String url) {
+    	logger = Logger.getInstance();
+        this.url = url;
+        this.archivoCsv = abrirCSV();
+    }
+    
+    public void generarCsv() {
+    	BufferedWriter bw = null;
+    	FileWriter fw = null;
+    	File archivo = null;
+    	try {
+    		archivo = new File(url);
+    		
+    		fw = new FileWriter(archivo);
+    		bw = new BufferedWriter(fw);
+    		
+    		bw.write("creador_id,plataforma,fecha,contenido,tipo,vistas,me_gusta,comentarios,compartidos");
+    		bw.newLine();
+    		
+    		for(Metrica metrica: archivoCsv) {
+    			bw.write(metrica.getIdCreador() + ","
+    					+ metrica.getPlataforma() + ","
+    					+ metrica.getFecha() + ","
+    					+ metrica.getContenido() + ","
+    					+ metrica.getTipo() + ","
+    					+ metrica.getMeGusta() + ","
+    					+ metrica.getComentarios() + ","
+    					+ metrica.getCompartidos());
+    			bw.newLine();
+    		}
+    		logger.success("Archivo actualizado correctamente.");
+    	} catch(Exception e) {
+    		logger.error(e);
+    	} finally {
+    		if(bw != null) {
+    			try {
 					bw.close();
 				} catch (IOException e) {
 					logger.error(e);
