@@ -72,9 +72,9 @@ public class JsonReader {
 			e.printStackTrace();;
 		}
 	}
-	
+
 	public void crearJson (String fichero, JsonNode rootNode) {
-		
+
 		try {
 			mapper.enable(SerializationFeature.INDENT_OUTPUT);
 			mapper.writeValue(new File(fichero), rootNode);
