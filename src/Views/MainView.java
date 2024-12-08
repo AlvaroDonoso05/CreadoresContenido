@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -127,6 +126,8 @@ public class MainView extends JFrame {
     public JLabel lblMaxComentarios;
     public JButton btnSiguiente;
     public JButton btnAnterior;
+    public JButton btnModificar;
+    public JButton btnEliminar;
 
     public MainView() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -529,7 +530,7 @@ public class MainView extends JFrame {
         tabbedPane.addTab("Publicaciones", null, panel_Publicaciones, null);
         panel_Publicaciones.setLayout(null);
         
-        listPublicaciones = new JList();
+        listPublicaciones = new JList<String>();
         listPublicaciones.setBounds(10, 30, 355, 405);
         panel_Publicaciones.add(listPublicaciones);
         
@@ -658,6 +659,14 @@ public class MainView extends JFrame {
         textCompartidos.setColumns(10);
         textCompartidos.setBounds(521, 227, 125, 23);
         panel_Publicaciones.add(textCompartidos);
+        
+        btnModificar = new JButton("Modificar");
+        btnModificar.setBounds(390, 286, 160, 47);
+        panel_Publicaciones.add(btnModificar);
+        
+       btnEliminar = new JButton("Eliminar");
+        btnEliminar.setBounds(584, 286, 160, 47);
+        panel_Publicaciones.add(btnEliminar);
 
         panel = new JPanel();
         panel.setBackground(new Color(255, 204, 204));
