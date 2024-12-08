@@ -16,6 +16,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -24,6 +25,10 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -34,27 +39,39 @@ import Views.MainView;
 
 public class Controller implements ActionListener, ListSelectionListener {
 
-    private final MainView view;
-    private JsonReader jsonR;
-    private final CsvReader csvR;
-    private final HasteBinController hasteServer;
-    private final ComentariosController comentariosController;
 
-    private Creador creadorSeleccionado;
-    private String botonSeleccionado;
-    private JsonNode listaComentarios;
+	private ObjectMapper om = new ObjectMapper();
+  private final MainView view;
+  private JsonReader jsonR;
+  private final CsvReader csvR;
+  private final HasteBinController hasteServer;
+  private final ComentariosController comentariosController;
+
+  private Creador creadorSeleccionado;
+  private String botonSeleccionado;
+  private JsonNode listaComentarios;
+
 
     public Controller(MainView frame) {
+
 
         this.view = frame;
         this.view.comboBox.addActionListener(this);
         this.view.comboBox_1.addActionListener(this);
         this.view.comboBox_2.addActionListener(this);
+      	this.view.comboBoxColNew.addActionListener(this);
+	    	this.view.comboBoxColTem.addActionListener(this);
+	    	this.view.comboBoxColTipo.addActionListener(this);
         this.view.exitItem.addActionListener(this);
         this.view.listPublicaciones.addListSelectionListener(this);
         this.view.btnExtraerDatos.addActionListener(this);
         this.view.btnAnterior.addActionListener(this);
         this.view.btnSiguiente.addActionListener(this);
+        this.view.btnConfFchIni.addActionListener(this);
+	    	this.view.btnConfFchFin.addActionListener(this);
+	    	this.view.btnFechaIni.addActionListener(this);
+	    	this.view.btnFechaFin.addActionListener(this);
+	    	this.view.btnNewButtonAddCol.addActionListener(this);
         
         jsonR = new JsonReader("resources/creadores.json");
         csvR = new CsvReader("resources/metricas_contenido.csv");
@@ -62,13 +79,33 @@ public class Controller implements ActionListener, ListSelectionListener {
         comentariosController = new ComentariosController();
         
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        DefaultComboBoxModel<String> modelCol = new DefaultComboBoxModel<>();
+	      DefaultComboBoxModel<String> modelTem = new DefaultComboBoxModel<>();
+		    DefaultComboBoxModel<String> modelTipo = new DefaultComboBoxModel<>();
+  
+  	
+        modelTem.addElement("Tecnologia");
+        modelTem.addElement("Moda");
+        modelTem.addElement("Fitness");
+        modelTem.addElement("Cocina");
+        modelTem.addElement("Videojuegos");
+        this.view.comboBoxColTem.setModel(modelTem);
 
+        modelTipo.addElement("Patrocinado");
+        modelTipo.addElement("Colaboración Natural");
+        this.view.comboBoxColTipo.setModel(modelTipo);
+  
         List<Creador> creadores = jsonR.getListaCreadores();
-        for (int i = 0; i < creadores.size(); i++) {
-            model.addElement((i + 1) + ". " + creadores.get(i).getNombre());
-        }
+        model.addElement("Elige un creador");
+          for(int i=0;i<creadores.size();i++) {
+            model.addElement((i+1) + ". " + creadores.get(i).getNombre());			
+          }
         view.comboBox.setModel(model);
+        generarCreadoresCol(modelCol);
+      
     }
+		
+	
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -114,7 +151,80 @@ public class Controller implements ActionListener, ListSelectionListener {
         		cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
             	this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1));
         	}
-        }
+        }else if (e.getSource() == this.view.btnConfFchIni) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			String selectedDate = sdf.format(this.view.calendar.getDate());
+			this.view.textFieldFechIniColNew.setText(selectedDate);
+			this.view.calendar.setVisible(false);
+			this.view.btnConfFchIni.setVisible(false);
+			
+		}else if (e.getSource() == this.view.btnConfFchFin) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			String selectedDate = sdf.format(this.view.calendar.getDate());
+			this.view.textFieldFechFinColNew.setText(selectedDate);
+			this.view.calendar.setVisible(false);
+			this.view.btnConfFchFin.setVisible(false);
+			
+		}else if (e.getSource() == this.view.btnFechaIni) {
+			this.view.btnConfFchFin.setVisible(false);
+			this.view.btnConfFchIni.setVisible(true);
+			this.view.calendar.setVisible(true);
+			
+		}else if (e.getSource() == this.view.btnFechaFin) {
+			this.view.btnConfFchIni.setVisible(false);
+			this.view.btnConfFchFin.setVisible(true);
+			this.view.calendar.setVisible(true);
+			
+		}else if (e.getSource() == this.view.btnNewButtonAddCol) {
+			
+			int creador = -1;
+			String colaborador, tipo, tematica, fchIni, fchFin, activaString;
+			Boolean activa;
+			
+			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
+				creador = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
+			}
+			
+			
+			colaborador = this.view.comboBoxColNew.getSelectedItem().toString();
+			colaborador = colaborador.substring(colaborador.indexOf(".") + 2);
+			tipo = this.view.comboBoxColTipo.getSelectedItem().toString();
+			tematica = this.view.comboBoxColTem.getSelectedItem().toString();
+			fchIni = this.view.textFieldFechIniColNew.getText();
+			fchFin = this.view.textFieldFechFinColNew.getText();
+			activa = this.view.chckbxColActivaColNew.isSelected();
+			if(activa) {
+				activaString = "Activa";
+			}else {
+				activaString = "Finalizada";
+			}
+			
+			if(creador != -1 &&
+					!colaborador.equals("Elige un colaborador") &&
+					!fchIni.equals("") &&
+					!fchFin.equals("") &&
+					creador != -1) {
+				
+				ObjectNode colaboracion = om.createObjectNode();
+				colaboracion.put("colaborador", colaborador);
+				colaboracion.put("tematica", tematica);
+				colaboracion.put("fecha_inicio", fchIni);
+				colaboracion.put("fecha_fin", fchFin);
+				colaboracion.put("tipo", tipo);
+				colaboracion.put("estado", activaString);
+				
+				JsonNode creadores = jsonR.getCreadoresNode();
+				ArrayNode colaboraciones = (ArrayNode) creadores.get(creador).get("colaboraciones");
+				colaboraciones.add(colaboracion);
+				try {
+					jsonR.actualizarCreadores();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+			
+			
+		}
     }
     
     @Override
@@ -383,4 +493,16 @@ public class Controller implements ActionListener, ListSelectionListener {
         this.view.panelLikesGrafica.revalidate();
         this.view.panelLikesGrafica.repaint();
     }
+  
+  private void generarCreadoresCol (DefaultComboBoxModel<String> modelCol) {
+		List<Creador> creadores = jsonR.getListaCreadores();
+		modelCol.addElement("Elige un colaborador");
+		for(int i=0;i<creadores.size();i++) {
+			
+			modelCol.addElement((i+1) + ". " + creadores.get(i).getNombre());
+		}
+		view.comboBoxColNew.setModel(modelCol);
+	}
+  
+  
 }
