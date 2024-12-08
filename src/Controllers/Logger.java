@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
+import Views.MainView;
+
 public class Logger {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -32,11 +34,12 @@ public class Logger {
     private Properties properties;
     private FileWriter fw;
     private File logFile;
+    private MainView view;
     
     private static Logger instance;
     
     public static Logger getInstance() {
-    	if(instance != null) {
+    	if(instance == null) {
     		instance = new Logger();
     	}
     	return instance;
@@ -72,6 +75,7 @@ public class Logger {
 
     public void warning(String texto) {
         System.out.println(ANSI_YELLOW + "[WARN] " + ANSI_BRIGHT_YELLOW + texto);
+        mostrarUsuario("[WARN] " + texto);
         loggerFile("[WARN] " + texto);
     }
 
@@ -79,6 +83,7 @@ public class Logger {
 
         if (!Boolean.parseBoolean(properties.getProperty("console.debug"))) {
             System.out.println(ANSI_RED + "[ERROR] " + ANSI_BRIGHT_RED + e);
+            mostrarUsuario("[ERROR] " + e);
         } else {
             e.printStackTrace();
         }
@@ -87,11 +92,23 @@ public class Logger {
 
     public void log(String texto) {
         System.out.println(ANSI_BLUE + "[LOGGER] " + ANSI_BRIGHT_BLUE + texto);
+        mostrarUsuario("[LOGGER] " + texto);
         loggerFile("[LOGGER] " + texto);
     }
 
     public void success(String texto) {
         System.out.println(ANSI_GREEN + "[SUCCESS] " + ANSI_BRIGHT_GREEN + texto);
+        mostrarUsuario("[SUCCESS] " + texto);
         loggerFile("[SUCCESS] " + texto);
     }
+    
+    public void mostrarUsuario(String text) {
+    	this.view.textAreaLogger.append(text + "\n");
+    }
+
+	public void setView(MainView view) {
+		this.view = view;
+	}
+    
+	
 }

@@ -50,11 +50,10 @@ public class Controller implements ActionListener, ListSelectionListener {
   private Creador creadorSeleccionado;
   private String botonSeleccionado;
   private JsonNode listaComentarios;
+  private Logger logger;
 
 
     public Controller(MainView frame) {
-
-
         this.view = frame;
         this.view.comboBox.addActionListener(this);
         this.view.comboBox_1.addActionListener(this);
@@ -74,18 +73,27 @@ public class Controller implements ActionListener, ListSelectionListener {
 	    	this.view.btnFechaIni.addActionListener(this);
 	    	this.view.btnFechaFin.addActionListener(this);
 	    	this.view.btnNewButtonAddCol.addActionListener(this);
+	    	this.view.btnExportarConsola.addActionListener(this);
         
         jsonR = new JsonReader("resources/creadores.json");
         csvR = new CsvReader("resources/metricas_contenido.csv");
         hasteServer = new HasteBinController();
         comentariosController = new ComentariosController();
+        this.logger = Logger.getInstance();
+        this.logger.setView(this.view);
         
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         DefaultComboBoxModel<String> modelCol = new DefaultComboBoxModel<>();
-	      DefaultComboBoxModel<String> modelTem = new DefaultComboBoxModel<>();
-		    DefaultComboBoxModel<String> modelTipo = new DefaultComboBoxModel<>();
-  
-  	
+	    DefaultComboBoxModel<String> modelTem = new DefaultComboBoxModel<>();
+		DefaultComboBoxModel<String> modelTipo = new DefaultComboBoxModel<>();
+		DefaultComboBoxModel<String> modelFiltros = new DefaultComboBoxModel<>();
+		
+		modelFiltros.addElement("Vistas");
+		modelFiltros.addElement("Likes");
+		modelFiltros.addElement("Comentarios");
+		modelFiltros.addElement("Compartidos");
+		this.view.comboBox_Filtros.setModel(modelFiltros);
+		
         modelTem.addElement("Tecnologia");
         modelTem.addElement("Moda");
         modelTem.addElement("Fitness");
@@ -107,8 +115,6 @@ public class Controller implements ActionListener, ListSelectionListener {
       
     }
 		
-	
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.view.comboBox) {
@@ -123,6 +129,7 @@ public class Controller implements ActionListener, ListSelectionListener {
             obtenerDatosColaboracion(colaboracion);
             this.view.lblInfoHaste.setVisible(false);
             this.view.btnExtraerDatos.setEnabled(true);
+            this.view.btnExportarConsola.setEnabled(true);
 
         } else if (e.getSource() == this.view.exitItem) {
             System.exit(0);
@@ -130,10 +137,13 @@ public class Controller implements ActionListener, ListSelectionListener {
             for (JsonNode creadorNode : jsonR.getCreadoresNode()) {
                 if (creadorNode.get("id").asInt() == creadorSeleccionado.getId()) {
                     this.view.lblInfoHaste.setVisible(true);
-                    this.view.lblInfoHaste.setText(hasteServer.uploadTextToHastebin(creadorNode));
+                    this.view.lblInfoHaste.setText(hasteServer.uploadTextToHastebin(creadorNode, null));
                 }
             }
-        } else if (e.getSource() == this.view.comboBox_1) {
+        } else if(e.getSource() == this.view.btnExportarConsola) {
+			String outputLog = this.view.textAreaLogger.getText();
+			this.logger.success(hasteServer.uploadTextToHastebin(null, outputLog));
+		} else if (e.getSource() == this.view.comboBox_1) {
             JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
             obtenerDatosColaboracion(colaboracion);
         } else if (e.getSource() == this.view.comboBox_2) {
@@ -145,13 +155,13 @@ public class Controller implements ActionListener, ListSelectionListener {
             }
         } else if(e.getSource() == this.view.btnAnterior) {
         	if(Integer.parseInt(this.view.lblMinComentarios.getText()) > 1) {
+        		this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) - 1));
         		cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
-            	this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) - 1));
         	}
         } else if(e.getSource() == this.view.btnSiguiente) {
         	if(Integer.parseInt(this.view.lblMinComentarios.getText()) < Integer.parseInt(this.view.lblMaxComentarios.getText())) {
-        		cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
-            	this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1));
+        		cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1);
+        		this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1));
         	}
         } else if(e.getSource() == this.view.btnModificar) {
         	if(this.view.listPublicaciones.getSelectedValue() != null) {
@@ -166,12 +176,59 @@ public class Controller implements ActionListener, ListSelectionListener {
             			publicacion.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
             			this.view.lblMinComentarios.setText(String.valueOf(0));
             			this.view.lblMaxComentarios.setText(String.valueOf(publicacion.getComentarios()));
-            			cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
+            			cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText() + 1));
             		}
             	}
         	}
         } else if(e.getSource() == this.view.btnEliminar) {
-        	
+        	if(!this.view.textFiltro.getText().equalsIgnoreCase("")) {
+        		List<Metrica> listaPublicaciones = csvR.obtenerPorId(creadorSeleccionado.getId());
+        		
+        		Iterator<Metrica> iterator = listaPublicaciones.iterator();
+        		while (iterator.hasNext()) {
+        		    Metrica publicacion = iterator.next();
+
+        		    switch(this.view.comboBox_Filtros.getSelectedItem().toString()) {
+    		    	case "Vistas":
+    		    		if (publicacion.getVistas() < Integer.parseInt(this.view.textFiltro.getText())) {
+            		        iterator.remove();
+            		    }
+    		    		break;
+    		    	case "Likes":
+    		    		if (publicacion.getMeGusta() < Integer.parseInt(this.view.textFiltro.getText())) {
+            		        iterator.remove();
+            		    }
+    		    		break;
+    		    	case "Comentarios":
+    		    		if (publicacion.getComentarios() < Integer.parseInt(this.view.textFiltro.getText())) {
+            		        iterator.remove();
+            		    }
+    		    		break;
+    		    	case "Compartidos":
+    		    		if (publicacion.getCompartidos() < Integer.parseInt(this.view.textFiltro.getText())) {
+            		        iterator.remove();
+            		    }
+    		    		break;		
+        		    }
+        		}
+        		csvR.setArchivoCsv(listaPublicaciones);
+        	} else {
+        		if(this.view.listPublicaciones.getSelectedValue() != null) {
+        			List<Metrica> listaPublicaciones = csvR.obtenerPorId(creadorSeleccionado.getId());
+                	
+            		Iterator<Metrica> iterator = listaPublicaciones.iterator();
+            		while (iterator.hasNext()) {
+            		    Metrica publicacion = iterator.next();
+            		    int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
+            		    if (publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
+            		        iterator.remove();
+            		        System.out.println("elimina");
+            		    }
+            		}
+            		
+            		csvR.setArchivoCsv(listaPublicaciones);
+        		}
+        	}
         }else if (e.getSource() == this.view.btnConfFchIni) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 			String selectedDate = sdf.format(this.view.calendar.getDate());
@@ -243,8 +300,6 @@ public class Controller implements ActionListener, ListSelectionListener {
 					e1.printStackTrace();
 				}
 			}
-			
-			
 		}
     }
     
@@ -281,7 +336,7 @@ public class Controller implements ActionListener, ListSelectionListener {
         view.textFieldPromVist.setText(String.valueOf((int) Math.round(creador.getEstadisticas().get("promedio_vistas_mensuales"))));
         view.textFieldTasaCrec.setText(String.valueOf(creador.getEstadisticas().get("tasa_crecimiento_seguidores")));
 
-        System.out.println(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf(".")));
+        logger.log("Creador de contenido seleccionado " + view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf(".")));
     }
 
     private void generarBotonesPlataforma(Creador creador) {
@@ -313,6 +368,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 
             botonPlataforma.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                	eliminarHistoricosValores();
                     cargarGraficaYDatos(botonPlataforma.getText());
                     botonSeleccionado = botonPlataforma.getText();
                 }
@@ -323,6 +379,12 @@ public class Controller implements ActionListener, ListSelectionListener {
 
         this.view.plataformasPanel.revalidate();
         this.view.plataformasPanel.repaint();
+    }
+    
+    private void eliminarHistoricosValores() {
+    	this.view.textFieldFechHist.setText("");
+    	this.view.textFieldNuevosSeg.setText("");
+    	this.view.textFieldIntHist.setText("");
     }
 
     private void obtenerColaboraciones(Creador creador) {
@@ -474,11 +536,15 @@ public class Controller implements ActionListener, ListSelectionListener {
     }
     
     private void cargarComentario(int comentario) {
+    	if(comentario <= 0) {
+    		comentario = 1;
+    	}
+    	
     	if(comentario > 500) {
     		comentario = comentario -= 500;
     	}
     	
-    	JsonNode comentarioSeleccionado = listaComentarios.get(comentario - 1);
+    	JsonNode comentarioSeleccionado = listaComentarios.get(comentario);
 
     	this.view.textIdComentario.setText(comentarioSeleccionado.get("id").asText());
     	this.view.textNombreComentario.setText(comentarioSeleccionado.get("name").asText());
