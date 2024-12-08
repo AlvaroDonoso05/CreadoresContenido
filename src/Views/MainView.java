@@ -162,6 +162,8 @@ public class MainView extends JFrame {
 	public JTextField textFiltro;
 	public JComboBox<String> comboBox_Filtros;
 	public JMenuItem helpItem;
+	public JTextField textTasaCrecimientoRang;
+	private JLabel lblTasaCrecimientoenerofebrero;
 
 	public MainView() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -386,83 +388,83 @@ public class MainView extends JFrame {
 
 		lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblUsuario.setBounds(26, 180, 108, 24);
+		lblUsuario.setBounds(26, 163, 108, 24);
 		panel_Plataformas.add(lblUsuario);
 
 		textFieldUsuario = new JTextField();
 		textFieldUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldUsuario.setEditable(false);
 		textFieldUsuario.setColumns(10);
-		textFieldUsuario.setBounds(156, 186, 163, 21);
+		textFieldUsuario.setBounds(156, 169, 163, 21);
 		panel_Plataformas.add(textFieldUsuario);
 
 		lblSeguidoresPlat = new JLabel("Seguidores:");
 		lblSeguidoresPlat.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblSeguidoresPlat.setBounds(26, 216, 108, 24);
+		lblSeguidoresPlat.setBounds(26, 199, 108, 24);
 		panel_Plataformas.add(lblSeguidoresPlat);
 
 		textFieldSegPlat = new JTextField();
 		textFieldSegPlat.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldSegPlat.setEditable(false);
 		textFieldSegPlat.setColumns(10);
-		textFieldSegPlat.setBounds(156, 222, 163, 21);
+		textFieldSegPlat.setBounds(156, 205, 163, 21);
 		panel_Plataformas.add(textFieldSegPlat);
 
 		lblFechCrPl = new JLabel("Fecha Creación:");
 		lblFechCrPl.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblFechCrPl.setBounds(26, 252, 108, 24);
+		lblFechCrPl.setBounds(26, 235, 108, 24);
 		panel_Plataformas.add(lblFechCrPl);
 
 		textFieldFechCr = new JTextField();
 		textFieldFechCr.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldFechCr.setEditable(false);
 		textFieldFechCr.setColumns(10);
-		textFieldFechCr.setBounds(156, 258, 163, 21);
+		textFieldFechCr.setBounds(156, 241, 163, 21);
 		panel_Plataformas.add(textFieldFechCr);
 
 		lblHistrico = new JLabel("Histórico:");
 		lblHistrico.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblHistrico.setBounds(26, 286, 108, 24);
+		lblHistrico.setBounds(26, 269, 108, 24);
 		panel_Plataformas.add(lblHistrico);
 
 		comboBox_2 = new JComboBox<String>();
-		comboBox_2.setBounds(154, 289, 165, 24);
+		comboBox_2.setBounds(154, 272, 165, 24);
 		panel_Plataformas.add(comboBox_2);
 
 		lblFechHist = new JLabel("Fecha");
 		lblFechHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblFechHist.setBounds(90, 329, 108, 24);
+		lblFechHist.setBounds(90, 312, 108, 24);
 		panel_Plataformas.add(lblFechHist);
 
 		textFieldFechHist = new JTextField();
 		textFieldFechHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldFechHist.setEditable(false);
 		textFieldFechHist.setColumns(10);
-		textFieldFechHist.setBounds(208, 331, 163, 21);
+		textFieldFechHist.setBounds(208, 314, 163, 21);
 		panel_Plataformas.add(textFieldFechHist);
 
 		lblNuevosSeg = new JLabel("Nuevos Seguidores:");
 		lblNuevosSeg.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNuevosSeg.setBounds(90, 364, 108, 24);
+		lblNuevosSeg.setBounds(90, 347, 108, 24);
 		panel_Plataformas.add(lblNuevosSeg);
 
 		textFieldNuevosSeg = new JTextField();
 		textFieldNuevosSeg.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldNuevosSeg.setEditable(false);
 		textFieldNuevosSeg.setColumns(10);
-		textFieldNuevosSeg.setBounds(208, 367, 163, 21);
+		textFieldNuevosSeg.setBounds(208, 350, 163, 21);
 		panel_Plataformas.add(textFieldNuevosSeg);
 
 		lblIntHist = new JLabel("Interacciones:");
 		lblIntHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblIntHist.setBounds(90, 399, 108, 24);
+		lblIntHist.setBounds(90, 382, 108, 24);
 		panel_Plataformas.add(lblIntHist);
 
 		textFieldIntHist = new JTextField();
 		textFieldIntHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldIntHist.setEditable(false);
 		textFieldIntHist.setColumns(10);
-		textFieldIntHist.setBounds(208, 401, 163, 21);
+		textFieldIntHist.setBounds(208, 384, 163, 21);
 		panel_Plataformas.add(textFieldIntHist);
 
 		textPromLikes = new JTextField();
@@ -484,6 +486,18 @@ public class MainView extends JFrame {
 		lblPromedio.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblPromedio.setBounds(441, 398, 183, 21);
 		panel_Plataformas.add(lblPromedio);
+		
+		textTasaCrecimientoRang = new JTextField();
+		textTasaCrecimientoRang.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textTasaCrecimientoRang.setEditable(false);
+		textTasaCrecimientoRang.setColumns(10);
+		textTasaCrecimientoRang.setBounds(26, 434, 293, 24);
+		panel_Plataformas.add(textTasaCrecimientoRang);
+		
+		lblTasaCrecimientoenerofebrero = new JLabel("Tasa Crecimiento (Enero-Febrero):");
+		lblTasaCrecimientoenerofebrero.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblTasaCrecimientoenerofebrero.setBounds(26, 408, 189, 24);
+		panel_Plataformas.add(lblTasaCrecimientoenerofebrero);
 
 
 		panel_Colabs = new JPanel();

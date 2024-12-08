@@ -596,8 +596,13 @@ public class Controller implements ActionListener, ListSelectionListener {
 					i++;
 				}
 				view.comboBox_2.setModel(model);
+				
+				Double tasaCrecimiento = calcularTasaCrecimiento(plataforma.get("historico").get(0).get("nuevos_seguidores").asInt(), plataforma.get("historico").get(1).get("nuevos_seguidores").asInt());
+				this.view.textTasaCrecimientoRang.setText(String.valueOf(tasaCrecimiento) + "%");
 			}
 		}
+		
+		
 	}
 
 	private void cargarHistorico(JsonNode historico) {
@@ -661,6 +666,14 @@ public class Controller implements ActionListener, ListSelectionListener {
 		}
 		view.comboBoxColNew.setModel(modelCol);
 	}
+	
+	public double calcularTasaCrecimiento(int seguidoresInicial, int seguidoresFinal) {
+		
+        if (seguidoresInicial == 0) {
+            return 0;
+        }
+        return Math.round(((seguidoresFinal - seguidoresInicial) / (double) seguidoresInicial) * 100);
+    }
 
 
 }
