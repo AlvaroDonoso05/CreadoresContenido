@@ -55,7 +55,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 	public Controller(MainView frame) {
 
-
+		// Listeners
 		this.view = frame;
 		this.view.comboBox.addActionListener(this);
 		this.view.comboBox_1.addActionListener(this);
