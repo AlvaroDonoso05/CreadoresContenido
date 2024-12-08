@@ -113,6 +113,11 @@ public class Controller implements ActionListener, ListSelectionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.view.comboBox) {
             resetearValores();
+            DefaultComboBoxModel<String> modelCol = (DefaultComboBoxModel<String>) this.view.comboBoxColNew.getModel();
+            modelCol.removeAllElements();
+            generarCreadoresCol(modelCol);
+            modelCol.removeElementAt(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
+            
             creadorSeleccionado = jsonR.getCreador(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
             obtenerDatosCreador(creadorSeleccionado);
             generarBotonesPlataforma(creadorSeleccionado);
@@ -239,9 +244,13 @@ public class Controller implements ActionListener, ListSelectionListener {
 				colaboraciones.add(colaboracion);
 				try {
 					jsonR.actualizarCreadores();
+					this.view.textAreaNewCol.setText("COLABORACIÓN AÑADIDA CORRECTAMENTE");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
+
+			}else {
+				this.view.textAreaNewCol.setText("DEBE RELLENAR TODOS LOS CAMPOS!!");
 			}
 			
 			

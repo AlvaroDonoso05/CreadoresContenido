@@ -160,6 +160,7 @@ public class MainView extends JFrame {
     public JComboBox<String> comboBoxColTem;
     public JButton btnConfFchFin;
     public JCalendar calendar;
+	public JTextArea textAreaNewCol;
 
     public MainView() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -815,6 +816,13 @@ public class MainView extends JFrame {
 		btnConfFchFin.setBounds(560, 345, 85, 21);
 		btnConfFchFin.setVisible(false);
 		panel_NewCol.add(btnConfFchFin);
+		
+		textAreaNewCol = new JTextArea();
+		textAreaNewCol.setFont(new Font("Tahoma", Font.BOLD, 16));
+		textAreaNewCol.setBackground(new Color(255, 204, 204));
+		textAreaNewCol.setBounds(68, 413, 404, 60);
+		panel_NewCol.add(textAreaNewCol);
+		
     }
 
     public static void main(String[] args) {
