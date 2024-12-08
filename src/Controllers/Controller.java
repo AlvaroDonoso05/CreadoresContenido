@@ -3,11 +3,15 @@ package Controllers;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
@@ -61,6 +65,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.comboBoxColTipo.addActionListener(this);
 		this.view.reporteCreadoresItem.addActionListener(this);
 		this.view.exitItem.addActionListener(this);
+		this.view.helpItem.addActionListener(this);
 		this.view.listPublicaciones.addListSelectionListener(this);
 		this.view.btnExtraerDatos.addActionListener(this);
 		this.view.btnAnterior.addActionListener(this);
@@ -138,6 +143,14 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 		} else if (e.getSource() == this.view.exitItem) {
 			System.exit(0);
+		} else if(e.getSource() == this.view.helpItem) {
+			try {
+				URI url = new URI("https://pastebin.donoso.mooo.com/gestioncreadores.md");
+				Desktop.getDesktop().browse(url);
+				
+			} catch (Exception e1) {
+				logger.error(e1);
+			}
 		} else if (e.getSource() == this.view.btnExtraerDatos) {
 			for (JsonNode creadorNode : jsonR.getCreadoresNode()) {
 				if (creadorNode.get("id").asInt() == creadorSeleccionado.getId()) {

@@ -7,8 +7,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 
-
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -163,6 +161,7 @@ public class MainView extends JFrame {
 	public JButton btnExportarConsola;
 	public JTextField textFiltro;
 	public JComboBox<String> comboBox_Filtros;
+	public JMenuItem helpItem;
 
 	public MainView() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -182,12 +181,15 @@ public class MainView extends JFrame {
 
 		fileMenu = new JMenu("File");
 		editMenu = new JMenu("Edit");
-		JMenu helpMenu = new JMenu("Help");
+		helpMenu = new JMenu("Informacion");
 
 		// Add JMenus to the JMenuBar
 		menuBar.add(fileMenu);
 		menuBar.add(editMenu);
 		menuBar.add(helpMenu);
+		
+		helpItem = new JMenuItem("Acerca de");
+		helpMenu.add(helpItem);
 
 		// Create JMenuItems
 		reporteCreadoresItem = new JMenuItem("Generar Reporte Creadores");
