@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.BorderFactory;
@@ -121,6 +122,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		}
 		view.comboBox.setModel(model);
 		generarCreadoresCol(modelCol);
+		generarBotonesPlataformaCont();
 
 	}
 
@@ -482,6 +484,145 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.plataformasPanel.revalidate();
 		this.view.plataformasPanel.repaint();
 	}
+	
+	private void generarBotonesPlataformaCont() {
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+
+		this.view.plataformasPanelCont.removeAll();
+
+		ArrayList<String> plataformas = new ArrayList<String>();
+		plataformas.add("TikTok");
+		plataformas.add("YouTube");
+		plataformas.add("Twitch");
+		plataformas.add("Instagram");
+
+		int i = 0;
+		for (String plataforma : plataformas) {
+			JButton botonPlataforma = new JButton(plataforma);
+
+			// Configuración de estilo
+			botonPlataforma.setFont(new Font("Arial", Font.BOLD, 16));
+			botonPlataforma.setBackground(new Color(51, 204, 255));
+			botonPlataforma.setPreferredSize(new Dimension(200, 50));
+			botonPlataforma.setForeground(Color.WHITE);
+			botonPlataforma.setFocusPainted(false);
+			botonPlataforma.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+			botonPlataforma.setPreferredSize(new Dimension(200, 50));
+			botonPlataforma.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+			gbc.gridx = i % 4;
+			gbc.gridy = i / 4;
+			gbc.insets = new java.awt.Insets(10, 10, 10, 10);
+
+			botonPlataforma.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					calcularRendimientoContenido(botonPlataforma.getText());
+					logger.log("Mostrando Datos promedio de " + botonPlataforma.getText());
+				}
+			});
+			this.view.plataformasPanelCont.add(botonPlataforma, gbc);
+			i++;
+		}
+
+		this.view.plataformasPanelCont.revalidate();
+		this.view.plataformasPanelCont.repaint();
+	}
+	
+	private void calcularRendimientoContenido(String text) {
+		ObjectNode contenidosPlataforma = csvR.obtenerContenidosPlataformaCont(text);
+	    // Mapas para almacenar datos
+	    Map<String, Integer> totalVistasPorTipo = new HashMap<>();
+	    Map<String, Integer> totalLikesPorTipo = new HashMap<>();
+	    Map<String, Integer> conteoPorTipo = new HashMap<>();
+
+	    // Procesar los datos del ObjectNode
+	    for (JsonNode contenido : contenidosPlataforma) {
+	        String tipo = contenido.get("tipo").asText().toLowerCase();
+	        int vistas = contenido.get("vistas").asInt();
+	        int meGusta = contenido.get("me_gusta").asInt();
+
+	        totalVistasPorTipo.put(tipo, totalVistasPorTipo.getOrDefault(tipo, 0) + vistas);
+	        totalLikesPorTipo.put(tipo, totalLikesPorTipo.getOrDefault(tipo, 0) + meGusta);
+	        conteoPorTipo.put(tipo, conteoPorTipo.getOrDefault(tipo, 0) + 1);
+	    }
+
+	    // Calcular promedios
+	    int promedioVideoLikes = conteoPorTipo.getOrDefault("video", 0) == 0 ? 0
+	            : totalLikesPorTipo.get("video") / conteoPorTipo.get("video");
+	    int promedioImagenLikes = conteoPorTipo.getOrDefault("imagen", 0) == 0 ? 0
+	            : totalLikesPorTipo.get("imagen") / conteoPorTipo.get("imagen");
+	    int promedioStreamLikes = conteoPorTipo.getOrDefault("stream", 0) == 0 ? 0
+	            : totalLikesPorTipo.get("stream") / conteoPorTipo.get("stream");
+
+	    int promedioVideoVistas = conteoPorTipo.getOrDefault("video", 0) == 0 ? 0
+	            : totalVistasPorTipo.get("video") / conteoPorTipo.get("video");
+	    int promedioImagenVistas = conteoPorTipo.getOrDefault("imagen", 0) == 0 ? 0
+	            : totalVistasPorTipo.get("imagen") / conteoPorTipo.get("imagen");
+	    int promedioStreamVistas = conteoPorTipo.getOrDefault("stream", 0) == 0 ? 0
+	            : totalVistasPorTipo.get("stream") / conteoPorTipo.get("stream");
+
+	    this.view.textVideoLikes.setText(String.valueOf(promedioVideoLikes));
+	    this.view.textImagenLikes.setText(String.valueOf(promedioImagenLikes));
+	    this.view.textStreamLikes.setText(String.valueOf(promedioStreamLikes));
+	    this.view.textVideoVistas.setText(String.valueOf(promedioVideoVistas));
+	    this.view.textImagenVistas.setText(String.valueOf(promedioImagenVistas));
+	    this.view.textStreamVistas.setText(String.valueOf(promedioStreamVistas));
+	    
+	    // Cargar Gráficas de Likes y Vistas
+	    this.view.panelLikesGraficaCont.removeAll();
+	    this.view.panelVistasGraficaCont.removeAll();
+
+	    DefaultPieDataset<String> datasetLikes = new DefaultPieDataset<>();
+	    DefaultPieDataset<String> datasetVistas = new DefaultPieDataset<>();
+	    
+	    datasetLikes.setValue("Video", promedioVideoLikes);
+	    datasetLikes.setValue("Imagen", promedioImagenLikes);
+	    datasetLikes.setValue("Stream", promedioStreamLikes);
+
+	    datasetVistas.setValue("Video", promedioVideoVistas);
+	    datasetVistas.setValue("Imagen", promedioImagenVistas);
+	    datasetVistas.setValue("Stream", promedioStreamVistas);
+	    
+	    // Crear las gráficas
+	    JFreeChart chartLikes = ChartFactory.createPieChart(
+	            "Promedio de Likes por tipo de contenido (" + text + ")",
+	            datasetLikes,
+	            true,
+	            true,
+	            false
+	    );
+
+	    JFreeChart chartVistas = ChartFactory.createPieChart(
+	            "Promedio de Vistas por tipo de contenido (" + text + ")",
+	            datasetVistas,
+	            true,
+	            true,
+	            false
+	    );
+	    
+	    // Crear los paneles de las gráficas
+	    ChartPanel likesChartPanel = new ChartPanel(chartLikes);
+	    likesChartPanel.setPreferredSize(this.view.panelLikesGrafica.getSize());
+	    likesChartPanel.setMouseWheelEnabled(true);
+
+	    ChartPanel vistasChartPanel = new ChartPanel(chartVistas);
+	    vistasChartPanel.setPreferredSize(this.view.panelVistasGrafica.getSize());
+	    vistasChartPanel.setMouseWheelEnabled(true);
+	    
+	    // Agregar los paneles a los paneles de la vista
+	    this.view.panelLikesGraficaCont.add(likesChartPanel);
+	    this.view.panelVistasGraficaCont.add(vistasChartPanel);
+
+	    this.view.panelLikesGrafica.revalidate();
+	    this.view.panelLikesGrafica.repaint();
+	    this.view.panelVistasGrafica.revalidate();
+	    this.view.panelVistasGrafica.repaint();
+	}
+
+
 
 	private void eliminarHistoricosValores() {
 		this.view.textFieldFechHist.setText("");
@@ -632,8 +773,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 				this.view.textTasaCrecimientoRang.setText(String.valueOf(tasaCrecimiento) + "%");
 			}
 		}
-		
-		
+			
 	}
 
 	private void cargarHistorico(JsonNode historico) {

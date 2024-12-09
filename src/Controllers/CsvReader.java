@@ -130,6 +130,23 @@ public class CsvReader {
 		return rootNode;
 
 	}
+	
+	public ObjectNode obtenerContenidosPlataformaCont(String plataforma) {
+		ObjectNode rootNode = objectMapper.createObjectNode();
+
+		for (Metrica metrica : archivoCsv) {
+			if (metrica.getPlataforma().equalsIgnoreCase(plataforma)) {
+				ObjectNode contenido = objectMapper.createObjectNode();
+				contenido.put("tipo", metrica.getTipo());
+				contenido.put("vistas", metrica.getVistas());
+				contenido.put("me_gusta", metrica.getMeGusta());
+
+				rootNode.set(metrica.getContenido(), contenido);
+			}
+		}
+
+		return rootNode;
+	}
 
 	public List<Metrica> getArchivoCsv() {
 		return archivoCsv;
