@@ -166,6 +166,7 @@ public class MainView extends JFrame {
 	public JMenuItem generarResRendJSON;
 
 	public MainView() {
+		setBackground(new Color(255, 204, 204));
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1202, 709);
 
@@ -180,6 +181,7 @@ public class MainView extends JFrame {
 		menuBar.setToolTipText("ayuda");
 		setJMenuBar(menuBar);
 		contentPane = new JLayeredPane();
+		contentPane.setBackground(new Color(255, 255, 255));
 
 		fileMenu = new JMenu("File");
 		helpMenu = new JMenu("Informacion");
@@ -214,6 +216,7 @@ public class MainView extends JFrame {
 		tabbedPane.setBackground(new Color(240, 240, 240));
 		contentPane.setLayer(tabbedPane, 0);
 		tabbedPane.setBounds(0, 138, 1186, 510);
+		tabbedPane.setVisible(false);
 		contentPane.add(tabbedPane);
 
 		mainPanel = new JPanel();
@@ -575,141 +578,8 @@ public class MainView extends JFrame {
 		panel_Colabs.add(chckbxColActiva);
 
 		reportes = new JPanel();
+		reportes.setBackground(new Color(255, 204, 204));
 		tabbedPane.addTab("Reportes", null, reportes, null);
-
-		panel_Publicaciones = new JPanel();
-		tabbedPane.addTab("Publicaciones", null, panel_Publicaciones, null);
-		panel_Publicaciones.setLayout(null);
-
-		listPublicaciones = new JList<String>();
-		listPublicaciones.setBounds(10, 30, 355, 405);
-		panel_Publicaciones.add(listPublicaciones);
-
-		JPanel panel_Comentarios = new JPanel();
-		panel_Comentarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel_Comentarios.setBounds(820, 137, 351, 310);
-		panel_Publicaciones.add(panel_Comentarios);
-		panel_Comentarios.setLayout(null);
-
-		JLabel lblNewLabel_2 = new JLabel("ID Comentario:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_2.setBounds(10, 11, 125, 25);
-		panel_Comentarios.add(lblNewLabel_2);
-
-		JLabel lblNombreComentario = new JLabel("Nombre:");
-		lblNombreComentario.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNombreComentario.setBounds(10, 47, 72, 25);
-		panel_Comentarios.add(lblNombreComentario);
-
-		JLabel lblEmailComentario = new JLabel("Email:");
-		lblEmailComentario.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblEmailComentario.setBounds(10, 72, 72, 25);
-		panel_Comentarios.add(lblEmailComentario);
-
-		JLabel lblContenidoComentario = new JLabel("Contenido:");
-		lblContenidoComentario.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblContenidoComentario.setBounds(10, 108, 125, 25);
-		panel_Comentarios.add(lblContenidoComentario);
-
-		textAreaComentario = new JTextArea();
-		textAreaComentario.setEditable(false);
-		textAreaComentario.setBounds(10, 137, 331, 162);
-		panel_Comentarios.add(textAreaComentario);
-
-		textIdComentario = new JTextField();
-		textIdComentario.setEditable(false);
-		textIdComentario.setBounds(145, 15, 86, 20);
-		panel_Comentarios.add(textIdComentario);
-		textIdComentario.setColumns(10);
-
-		textNombreComentario = new JTextField();
-		textNombreComentario.setEditable(false);
-		textNombreComentario.setBounds(92, 51, 249, 20);
-		panel_Comentarios.add(textNombreComentario);
-		textNombreComentario.setColumns(10);
-
-		textEmailComentario = new JTextField();
-		textEmailComentario.setEditable(false);
-		textEmailComentario.setColumns(10);
-		textEmailComentario.setBounds(92, 76, 249, 20);
-		panel_Comentarios.add(textEmailComentario);
-
-		btnAnterior = new JButton("Anterior");
-		btnAnterior.setBounds(820, 79, 160, 47);
-		panel_Publicaciones.add(btnAnterior);
-
-		btnSiguiente = new JButton("Siguiente");
-		btnSiguiente.setBounds(1016, 79, 155, 47);
-		panel_Publicaciones.add(btnSiguiente);
-
-		lblMinComentarios = new JLabel("0");
-		lblMinComentarios.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblMinComentarios.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblMinComentarios.setBounds(882, 45, 107, 23);
-		panel_Publicaciones.add(lblMinComentarios);
-
-		lblMaxComentarios = new JLabel("0");
-		lblMaxComentarios.setHorizontalAlignment(SwingConstants.LEFT);
-		lblMaxComentarios.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblMaxComentarios.setBounds(1006, 45, 118, 23);
-		panel_Publicaciones.add(lblMaxComentarios);
-
-		JLabel lblSlashCommentarios = new JLabel("/");
-		lblSlashCommentarios.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSlashCommentarios.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblSlashCommentarios.setBounds(985, 45, 22, 23);
-		panel_Publicaciones.add(lblSlashCommentarios);
-
-		JLabel lblIdContenido = new JLabel("ID Publicacion:");
-		lblIdContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblIdContenido.setBounds(390, 79, 125, 25);
-		panel_Publicaciones.add(lblIdContenido);
-
-		JLabel lblVistasContenido = new JLabel("Vistas:");
-		lblVistasContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblVistasContenido.setBounds(390, 119, 125, 25);
-		panel_Publicaciones.add(lblVistasContenido);
-
-		JLabel lblLikesContenido = new JLabel("Likes:");
-		lblLikesContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblLikesContenido.setBounds(390, 155, 125, 25);
-		panel_Publicaciones.add(lblLikesContenido);
-
-		JLabel lblComentariosContenido = new JLabel("Comentarios:");
-		lblComentariosContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblComentariosContenido.setBounds(390, 191, 125, 25);
-		panel_Publicaciones.add(lblComentariosContenido);
-
-		JLabel lblCompartidoContenido = new JLabel("Compartidos:");
-		lblCompartidoContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblCompartidoContenido.setBounds(390, 227, 125, 25);
-		panel_Publicaciones.add(lblCompartidoContenido);
-
-		textIdPublicacion = new JTextField();
-		textIdPublicacion.setEditable(false);
-		textIdPublicacion.setBounds(521, 79, 125, 23);
-		panel_Publicaciones.add(textIdPublicacion);
-		textIdPublicacion.setColumns(10);
-
-		textVistas = new JTextField();
-		textVistas.setColumns(10);
-		textVistas.setBounds(521, 115, 125, 23);
-		panel_Publicaciones.add(textVistas);
-
-		textLikes = new JTextField();
-		textLikes.setColumns(10);
-		textLikes.setBounds(521, 155, 125, 23);
-		panel_Publicaciones.add(textLikes);
-
-		textComentarios = new JTextField();
-		textComentarios.setColumns(10);
-		textComentarios.setBounds(521, 191, 125, 23);
-		panel_Publicaciones.add(textComentarios);
-
-		textCompartidos = new JTextField();
-		textCompartidos.setColumns(10);
-		textCompartidos.setBounds(521, 227, 125, 23);
-		panel_Publicaciones.add(textCompartidos);
 
 		panel = new JPanel();
 		panel.setBackground(new Color(255, 204, 204));
@@ -844,29 +714,164 @@ public class MainView extends JFrame {
 		textAreaNewCol.setBackground(new Color(255, 204, 204));
 		textAreaNewCol.setBounds(68, 413, 496, 60);
 		panel_NewCol.add(textAreaNewCol);
-
 		
-		btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(390, 366, 160, 47);
-		panel_Publicaciones.add(btnModificar);
-
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(583, 366, 160, 47);
-		panel_Publicaciones.add(btnEliminar);
-
-		textFiltro = new JTextField();
-		textFiltro.setColumns(10);
-		textFiltro.setBounds(560, 332, 125, 23);
-		panel_Publicaciones.add(textFiltro);
-
-		JLabel lblFiltroopcional = new JLabel("Filtro (Opcional):");
-		lblFiltroopcional.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblFiltroopcional.setBounds(390, 296, 160, 25);
-		panel_Publicaciones.add(lblFiltroopcional);
-
-		comboBox_Filtros = new JComboBox<String>();
-		comboBox_Filtros.setBounds(390, 332, 125, 23);
-		panel_Publicaciones.add(comboBox_Filtros);
+				panel_Publicaciones = new JPanel();
+				panel_Publicaciones.setBackground(new Color(255, 204, 204));
+				tabbedPane.addTab("Publicaciones", null, panel_Publicaciones, null);
+				panel_Publicaciones.setLayout(null);
+				
+						listPublicaciones = new JList<String>();
+						listPublicaciones.setBounds(10, 30, 355, 405);
+						panel_Publicaciones.add(listPublicaciones);
+						
+								JPanel panel_Comentarios = new JPanel();
+								panel_Comentarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+								panel_Comentarios.setBounds(820, 137, 351, 310);
+								panel_Publicaciones.add(panel_Comentarios);
+								panel_Comentarios.setLayout(null);
+								
+										JLabel lblNewLabel_2 = new JLabel("ID Comentario:");
+										lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+										lblNewLabel_2.setBounds(10, 11, 125, 25);
+										panel_Comentarios.add(lblNewLabel_2);
+										
+												JLabel lblNombreComentario = new JLabel("Nombre:");
+												lblNombreComentario.setFont(new Font("Tahoma", Font.BOLD, 15));
+												lblNombreComentario.setBounds(10, 47, 72, 25);
+												panel_Comentarios.add(lblNombreComentario);
+												
+														JLabel lblEmailComentario = new JLabel("Email:");
+														lblEmailComentario.setFont(new Font("Tahoma", Font.BOLD, 15));
+														lblEmailComentario.setBounds(10, 72, 72, 25);
+														panel_Comentarios.add(lblEmailComentario);
+														
+																JLabel lblContenidoComentario = new JLabel("Contenido:");
+																lblContenidoComentario.setFont(new Font("Tahoma", Font.BOLD, 15));
+																lblContenidoComentario.setBounds(10, 108, 125, 25);
+																panel_Comentarios.add(lblContenidoComentario);
+																
+																		textAreaComentario = new JTextArea();
+																		textAreaComentario.setEditable(false);
+																		textAreaComentario.setBounds(10, 137, 331, 162);
+																		panel_Comentarios.add(textAreaComentario);
+																		
+																				textIdComentario = new JTextField();
+																				textIdComentario.setEditable(false);
+																				textIdComentario.setBounds(145, 15, 86, 20);
+																				panel_Comentarios.add(textIdComentario);
+																				textIdComentario.setColumns(10);
+																				
+																						textNombreComentario = new JTextField();
+																						textNombreComentario.setEditable(false);
+																						textNombreComentario.setBounds(92, 51, 249, 20);
+																						panel_Comentarios.add(textNombreComentario);
+																						textNombreComentario.setColumns(10);
+																						
+																								textEmailComentario = new JTextField();
+																								textEmailComentario.setEditable(false);
+																								textEmailComentario.setColumns(10);
+																								textEmailComentario.setBounds(92, 76, 249, 20);
+																								panel_Comentarios.add(textEmailComentario);
+																								
+																										btnAnterior = new JButton("Anterior");
+																										btnAnterior.setBounds(820, 79, 160, 47);
+																										panel_Publicaciones.add(btnAnterior);
+																										
+																												btnSiguiente = new JButton("Siguiente");
+																												btnSiguiente.setBounds(1016, 79, 155, 47);
+																												panel_Publicaciones.add(btnSiguiente);
+																												
+																														lblMinComentarios = new JLabel("0");
+																														lblMinComentarios.setHorizontalAlignment(SwingConstants.RIGHT);
+																														lblMinComentarios.setFont(new Font("Tahoma", Font.BOLD, 23));
+																														lblMinComentarios.setBounds(882, 45, 107, 23);
+																														panel_Publicaciones.add(lblMinComentarios);
+																														
+																																lblMaxComentarios = new JLabel("0");
+																																lblMaxComentarios.setHorizontalAlignment(SwingConstants.LEFT);
+																																lblMaxComentarios.setFont(new Font("Tahoma", Font.BOLD, 23));
+																																lblMaxComentarios.setBounds(1006, 45, 118, 23);
+																																panel_Publicaciones.add(lblMaxComentarios);
+																																
+																																		JLabel lblSlashCommentarios = new JLabel("/");
+																																		lblSlashCommentarios.setHorizontalAlignment(SwingConstants.CENTER);
+																																		lblSlashCommentarios.setFont(new Font("Tahoma", Font.BOLD, 23));
+																																		lblSlashCommentarios.setBounds(985, 45, 22, 23);
+																																		panel_Publicaciones.add(lblSlashCommentarios);
+																																		
+																																				JLabel lblIdContenido = new JLabel("ID Publicacion:");
+																																				lblIdContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+																																				lblIdContenido.setBounds(390, 79, 125, 25);
+																																				panel_Publicaciones.add(lblIdContenido);
+																																				
+																																						JLabel lblVistasContenido = new JLabel("Vistas:");
+																																						lblVistasContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+																																						lblVistasContenido.setBounds(390, 119, 125, 25);
+																																						panel_Publicaciones.add(lblVistasContenido);
+																																						
+																																								JLabel lblLikesContenido = new JLabel("Likes:");
+																																								lblLikesContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+																																								lblLikesContenido.setBounds(390, 155, 125, 25);
+																																								panel_Publicaciones.add(lblLikesContenido);
+																																								
+																																										JLabel lblComentariosContenido = new JLabel("Comentarios:");
+																																										lblComentariosContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+																																										lblComentariosContenido.setBounds(390, 191, 125, 25);
+																																										panel_Publicaciones.add(lblComentariosContenido);
+																																										
+																																												JLabel lblCompartidoContenido = new JLabel("Compartidos:");
+																																												lblCompartidoContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+																																												lblCompartidoContenido.setBounds(390, 227, 125, 25);
+																																												panel_Publicaciones.add(lblCompartidoContenido);
+																																												
+																																														textIdPublicacion = new JTextField();
+																																														textIdPublicacion.setEditable(false);
+																																														textIdPublicacion.setBounds(521, 79, 125, 23);
+																																														panel_Publicaciones.add(textIdPublicacion);
+																																														textIdPublicacion.setColumns(10);
+																																														
+																																																textVistas = new JTextField();
+																																																textVistas.setColumns(10);
+																																																textVistas.setBounds(521, 115, 125, 23);
+																																																panel_Publicaciones.add(textVistas);
+																																																
+																																																		textLikes = new JTextField();
+																																																		textLikes.setColumns(10);
+																																																		textLikes.setBounds(521, 155, 125, 23);
+																																																		panel_Publicaciones.add(textLikes);
+																																																		
+																																																				textComentarios = new JTextField();
+																																																				textComentarios.setColumns(10);
+																																																				textComentarios.setBounds(521, 191, 125, 23);
+																																																				panel_Publicaciones.add(textComentarios);
+																																																				
+																																																						textCompartidos = new JTextField();
+																																																						textCompartidos.setColumns(10);
+																																																						textCompartidos.setBounds(521, 227, 125, 23);
+																																																						panel_Publicaciones.add(textCompartidos);
+																																																						
+																																																								
+																																																								btnModificar = new JButton("Modificar");
+																																																								btnModificar.setBounds(390, 366, 160, 47);
+																																																								panel_Publicaciones.add(btnModificar);
+																																																								
+																																																										btnEliminar = new JButton("Eliminar");
+																																																										btnEliminar.setBounds(583, 366, 160, 47);
+																																																										panel_Publicaciones.add(btnEliminar);
+																																																										
+																																																												textFiltro = new JTextField();
+																																																												textFiltro.setColumns(10);
+																																																												textFiltro.setBounds(560, 332, 125, 23);
+																																																												panel_Publicaciones.add(textFiltro);
+																																																												
+																																																														JLabel lblFiltroopcional = new JLabel("Filtro (Opcional):");
+																																																														lblFiltroopcional.setFont(new Font("Tahoma", Font.BOLD, 15));
+																																																														lblFiltroopcional.setBounds(390, 296, 160, 25);
+																																																														panel_Publicaciones.add(lblFiltroopcional);
+																																																														
+																																																																comboBox_Filtros = new JComboBox<String>();
+																																																																comboBox_Filtros.setBounds(390, 332, 125, 23);
+																																																																panel_Publicaciones.add(comboBox_Filtros);
 
 	}
 

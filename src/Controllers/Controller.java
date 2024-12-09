@@ -130,6 +130,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.view.comboBox) {
+			view.tabbedPane.setVisible(true);
 			resetearValores();
 			DefaultComboBoxModel<String> modelCol = (DefaultComboBoxModel<String>) this.view.comboBoxColNew.getModel();
 			modelCol.removeAllElements();
@@ -147,6 +148,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 				this.view.lblInfoHaste.setVisible(false);
 				this.view.btnExtraerDatos.setEnabled(true);
 				this.view.btnExportarConsola.setEnabled(true);
+			}else {
+				view.tabbedPane.setVisible(false);
 			}
 
 		} else if (e.getSource() == this.view.exitItem) {
