@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.Metrica;
+import Models.ReporteColabs;
 
 public class CsvReader {
 	private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -72,6 +73,51 @@ public class CsvReader {
 			}
 		}
 	}
+	
+	public void generarCsvColaboraciones(String direccionCSV, List<ReporteColabs> reporteColabs) {
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+		File archivo = null;
+		try {
+			archivo = new File(direccionCSV);
+
+			fw = new FileWriter(archivo);
+			bw = new BufferedWriter(fw);
+
+			bw.write("creador_id, nombre, fecha, colaborador, interacciones_totales, promedio_vistas_mensuales, tasa_crecimiento_seguidores");
+			bw.newLine();
+
+			for(ReporteColabs colab: reporteColabs) {
+				bw.write(colab.getIdCreador() + ","
+						+ colab.getNombre() + ","
+						+ colab.getFecha() + ","
+						+ colab.getColaborador() + ","
+						+ colab.getInteracciones_totales() + ","
+						+ colab.getPromedio_vistas_mensuales() + ","
+						+ colab.getTasa_crecimiento_seguidores());
+				bw.newLine();
+			}
+			logger.success("Reporte CSV generado correctamente.");
+		} catch(Exception e) {
+			logger.error(e);
+		} finally {
+			if(bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					logger.error(e);
+				}
+			}
+			if(fw != null) {
+				try {
+					fw.close();
+				} catch (IOException e) {
+					logger.error(e);
+				}
+			}
+		}
+	}
+
 
 	public List<Metrica> abrirCSV() {
 		List<Metrica> metricas = null;

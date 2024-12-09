@@ -388,7 +388,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 				nReporte.setNombre(creador.get("nombre").asText());
 				
 				JsonNode estadisticas = creador.get("estadisticas");				
-				nReporte.setInteracciones_totales(estadisticas.get("interaccines_totales").asDouble());
+				nReporte.setInteracciones_totales(estadisticas.get("interacciones_totales").asDouble());
 				nReporte.setPromedio_vistas_mensuales(estadisticas.get("promedio_vistas_mensuales").asDouble());
 				nReporte.setTasa_crecimiento_seguidores(estadisticas.get("tasa_crecimiento_seguidores").asDouble());
 				
@@ -399,6 +399,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 				}
 				reporteColabs.add(nReporte);
 			}
+			csvR.generarCsvColaboraciones("resources/colaboraciones.csv", reporteColabs);
 			
 		}
 	}
