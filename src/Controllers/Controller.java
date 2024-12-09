@@ -1,21 +1,17 @@
 package Controllers;
 
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
-
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,13 +23,18 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import javax.swing.JList;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import Models.Creador;
 import Models.Metrica;
@@ -53,12 +54,11 @@ public class Controller implements ActionListener, ListSelectionListener {
 	private Creador creadorSeleccionado;
 	private String botonSeleccionado;
 	private JsonNode listaComentarios;
-	
-
+	private Logger logger;
 
 	public Controller(MainView frame) {
 
-
+		// Listeners
 		this.view = frame;
 		this.view.comboBox.addActionListener(this);
 		this.view.comboBox_1.addActionListener(this);
@@ -70,6 +70,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.reporteColaboracionesItem.addActionListener(this);
 		this.view.generarRepColCSV.addActionListener(this);
 		this.view.exitItem.addActionListener(this);
+		this.view.helpItem.addActionListener(this);
 		this.view.listPublicaciones.addListSelectionListener(this);
 		this.view.btnExtraerDatos.addActionListener(this);
 		this.view.btnAnterior.addActionListener(this);
@@ -81,17 +82,26 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.btnFechaIni.addActionListener(this);
 		this.view.btnFechaFin.addActionListener(this);
 		this.view.btnNewButtonAddCol.addActionListener(this);
+		this.view.btnExportarConsola.addActionListener(this);
 
 		jsonR = new JsonReader("resources/creadores.json");
 		csvR = new CsvReader("resources/metricas_contenido.csv");
 		hasteServer = new HasteBinController();
 		comentariosController = new ComentariosController();
+		this.logger = Logger.getInstance();
+		this.logger.setView(this.view);
 
 		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
 		DefaultComboBoxModel<String> modelCol = new DefaultComboBoxModel<>();
 		DefaultComboBoxModel<String> modelTem = new DefaultComboBoxModel<>();
 		DefaultComboBoxModel<String> modelTipo = new DefaultComboBoxModel<>();
+		DefaultComboBoxModel<String> modelFiltros = new DefaultComboBoxModel<>();
 
+		modelFiltros.addElement("Vistas");
+		modelFiltros.addElement("Likes");
+		modelFiltros.addElement("Comentarios");
+		modelFiltros.addElement("Compartidos");
+		this.view.comboBox_Filtros.setModel(modelFiltros);
 
 		modelTem.addElement("Tecnologia");
 		modelTem.addElement("Moda");
@@ -107,14 +117,12 @@ public class Controller implements ActionListener, ListSelectionListener {
 		List<Creador> creadores = jsonR.getListaCreadores();
 		model.addElement("Elige un creador");
 		for(int i=0;i<creadores.size();i++) {
-			model.addElement((i+1) + ". " + creadores.get(i).getNombre());			
+			model.addElement((i+1) + ". " + creadores.get(i).getNombre());
 		}
 		view.comboBox.setModel(model);
 		generarCreadoresCol(modelCol);
 
 	}
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -135,20 +143,29 @@ public class Controller implements ActionListener, ListSelectionListener {
 				obtenerDatosColaboracion(colaboracion);
 				this.view.lblInfoHaste.setVisible(false);
 				this.view.btnExtraerDatos.setEnabled(true);
+				this.view.btnExportarConsola.setEnabled(true);
 			}
-			
-
-			
 
 		} else if (e.getSource() == this.view.exitItem) {
 			System.exit(0);
+		} else if(e.getSource() == this.view.helpItem) {
+			try {
+				URI url = new URI("https://pastebin.donoso.mooo.com/gestioncreadores.md");
+				Desktop.getDesktop().browse(url);
+				
+			} catch (Exception e1) {
+				logger.error(e1);
+			}
 		} else if (e.getSource() == this.view.btnExtraerDatos) {
 			for (JsonNode creadorNode : jsonR.getCreadoresNode()) {
 				if (creadorNode.get("id").asInt() == creadorSeleccionado.getId()) {
 					this.view.lblInfoHaste.setVisible(true);
-					this.view.lblInfoHaste.setText(hasteServer.uploadTextToHastebin(creadorNode));
+					this.view.lblInfoHaste.setText(hasteServer.uploadTextToHastebin(creadorNode, null));
 				}
 			}
+		} else if(e.getSource() == this.view.btnExportarConsola) {
+			String outputLog = this.view.textAreaLogger.getText();
+			this.logger.success(hasteServer.uploadTextToHastebin(null, outputLog));
 		} else if (e.getSource() == this.view.comboBox_1) {
 			JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
 			obtenerDatosColaboracion(colaboracion);
@@ -161,12 +178,12 @@ public class Controller implements ActionListener, ListSelectionListener {
 			}
 		} else if(e.getSource() == this.view.btnAnterior) {
 			if(Integer.parseInt(this.view.lblMinComentarios.getText()) > 1) {
-				cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
 				this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) - 1));
+				cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
 			}
 		} else if(e.getSource() == this.view.btnSiguiente) {
 			if(Integer.parseInt(this.view.lblMinComentarios.getText()) < Integer.parseInt(this.view.lblMaxComentarios.getText())) {
-				cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
+				cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1);
 				this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1));
 			}
 		} else if(e.getSource() == this.view.btnModificar) {
@@ -182,22 +199,72 @@ public class Controller implements ActionListener, ListSelectionListener {
 						publicacion.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
 						this.view.lblMinComentarios.setText(String.valueOf(0));
 						this.view.lblMaxComentarios.setText(String.valueOf(publicacion.getComentarios()));
-						cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
+						cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText() + 1));
 					}
 				}
 			}
-			
-		} else if(e.getSource() == this.view.btnEliminar) {
 
+		} else if(e.getSource() == this.view.btnEliminar) {
+			if(!this.view.textFiltro.getText().equalsIgnoreCase("")) {
+				List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
+
+				Iterator<Metrica> iterator = listaPublicaciones.iterator();
+				while (iterator.hasNext()) {
+					Metrica publicacion = iterator.next();
+					if(publicacion.getIdCreador() == creadorSeleccionado.getId()) {
+						switch(this.view.comboBox_Filtros.getSelectedItem().toString()) {
+							case "Vistas":
+								if (publicacion.getVistas() < Integer.parseInt(this.view.textFiltro.getText())) {
+									iterator.remove();
+									logger.success(publicacion.getContenido() + " eliminado correctamente.");
+								}
+								break;
+							case "Likes":
+								if (publicacion.getMeGusta() < Integer.parseInt(this.view.textFiltro.getText())) {
+									iterator.remove();
+									logger.success(publicacion.getContenido() + " eliminado correctamente.");
+								}
+								break;
+							case "Comentarios":
+								if (publicacion.getComentarios() < Integer.parseInt(this.view.textFiltro.getText())) {
+									iterator.remove();
+									logger.success(publicacion.getContenido() + " eliminado correctamente.");
+								}
+								break;
+							case "Compartidos":
+								if (publicacion.getCompartidos() < Integer.parseInt(this.view.textFiltro.getText())) {
+									iterator.remove();
+									logger.success(publicacion.getContenido() + " eliminado correctamente.");
+								}
+								break;
+						}
+					}
+				}
+				csvR.setArchivoCsv(listaPublicaciones);
+			} else {
+				if(this.view.listPublicaciones.getSelectedValue() != null) {
+					List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
+
+					Iterator<Metrica> iterator = listaPublicaciones.iterator();
+					while (iterator.hasNext()) {
+						Metrica publicacion = iterator.next();
+						int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
+						if (publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
+							iterator.remove();
+							logger.success(publicacion.getContenido() + " eliminado correctamente.");
+						}
+					}
+				}
+			}
 		}else if (e.getSource() == this.view.btnConfFchIni) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String selectedDate = sdf.format(this.view.calendar.getDate());
 			this.view.textFieldFechIniColNew.setText(selectedDate);
 			this.view.calendar.setVisible(false);
 			this.view.btnConfFchIni.setVisible(false);
 
 		}else if (e.getSource() == this.view.btnConfFchFin) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String selectedDate = sdf.format(this.view.calendar.getDate());
 			this.view.textFieldFechFinColNew.setText(selectedDate);
 			this.view.calendar.setVisible(false);
@@ -222,7 +289,6 @@ public class Controller implements ActionListener, ListSelectionListener {
 			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
 				creador = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
 			}
-
 
 			colaborador = this.view.comboBoxColNew.getSelectedItem().toString();
 			colaborador = colaborador.substring(colaborador.indexOf(".") + 2);
@@ -264,45 +330,43 @@ public class Controller implements ActionListener, ListSelectionListener {
 			}else {
 				this.view.textAreaNewCol.setText("DEBE RELLENAR TODOS LOS CAMPOS!!");
 			}
-
-
 		}else if(e.getSource() == this.view.reporteCreadoresItem) {
 			List<Creador> creadores = jsonR.getListaCreadores();
 			ObjectNode rootNode = om.createObjectNode();
 			ArrayNode creadoresArray = om.createArrayNode();
 
 			for (Creador creador : creadores) {
-			    int seguidores = creador.getSegidoresTotales();                
-			    JsonNode plataformas = creador.getPlataformas();
+				int seguidores = creador.getSegidoresTotales();
+				JsonNode plataformas = creador.getPlataformas();
 
-			    String plataforma = "";
-			    double mediaAlta = 0;
+				String plataforma = "";
+				double mediaAlta = 0;
 
-			    for (JsonNode plataformaNode : plataformas) {
-			        double acumulador = 0;
-			        int contador = 0;
+				for (JsonNode plataformaNode : plataformas) {
+					double acumulador = 0;
+					int contador = 0;
 
-			        ArrayNode historicos = (ArrayNode) plataformaNode.get("historico");
-			        for (JsonNode historico : historicos) {
-			            acumulador += historico.get("interacciones").asInt();
-			            contador++;
-			        }
+					ArrayNode historicos = (ArrayNode) plataformaNode.get("historico");
+					for (JsonNode historico : historicos) {
+						acumulador += historico.get("interacciones").asInt();
+						contador++;
+					}
 
-			        double mediaInteracciones = acumulador / contador;
-			        if (mediaInteracciones > mediaAlta) {
-			            mediaAlta = mediaInteracciones;
-			            plataforma = plataformaNode.get("nombre").asText();
-			        }
-			    }
+					double mediaInteracciones = acumulador / contador;
+					if (mediaInteracciones > mediaAlta) {
+						mediaAlta = mediaInteracciones;
+						plataforma = plataformaNode.get("nombre").asText();
+					}
+				}
 
-			    ObjectNode creadorNode = om.createObjectNode();
-			    creadorNode.put("id", creador.getId());
-			    creadorNode.put("nombre", creador.getNombre());
-			    creadorNode.put("total_seguidores", seguidores);
-			    creadorNode.put("plataforma_interacciones", plataforma);
-			    creadorNode.put("promedio_interacciones", mediaAlta);
+				ObjectNode creadorNode = om.createObjectNode();
+				creadorNode.put("id", creador.getId());
+				creadorNode.put("nombre", creador.getNombre());
+				creadorNode.put("total_seguidores", seguidores);
+				creadorNode.put("plataforma_interacciones", plataforma);
+				creadorNode.put("promedio_interacciones", mediaAlta);
 
-			    creadoresArray.add(creadorNode);
+				creadoresArray.add(creadorNode);
 			}
 
 			rootNode.set("creadores", creadoresArray);
@@ -339,8 +403,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		}
 	}
 
-	
-	
+
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		if(e.getSource() == this.view.listPublicaciones) {
@@ -360,7 +423,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 					}
 				}
 			}
-		}		
+		}
 	}
 
 	private void obtenerDatosCreador(Creador creador) {
@@ -374,7 +437,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		view.textFieldPromVist.setText(String.valueOf((int) Math.round(creador.getEstadisticas().get("promedio_vistas_mensuales"))));
 		view.textFieldTasaCrec.setText(String.valueOf(creador.getEstadisticas().get("tasa_crecimiento_seguidores")));
 
-		
+		logger.log("Creador de contenido seleccionado " + view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf(".")));
 	}
 
 	private void generarBotonesPlataforma(Creador creador) {
@@ -405,7 +468,9 @@ public class Controller implements ActionListener, ListSelectionListener {
 			gbc.insets = new java.awt.Insets(10, 10, 10, 10);
 
 			botonPlataforma.addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent e) {
+					eliminarHistoricosValores();
 					cargarGraficaYDatos(botonPlataforma.getText());
 					botonSeleccionado = botonPlataforma.getText();
 				}
@@ -416,6 +481,12 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 		this.view.plataformasPanel.revalidate();
 		this.view.plataformasPanel.repaint();
+	}
+
+	private void eliminarHistoricosValores() {
+		this.view.textFieldFechHist.setText("");
+		this.view.textFieldNuevosSeg.setText("");
+		this.view.textFieldIntHist.setText("");
 	}
 
 	private void obtenerColaboraciones(Creador creador) {
@@ -438,7 +509,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 	}
 
 	private void obtenerPublicaciones(int id) {
-		DefaultListModel<String> modeloPublicacion = new DefaultListModel<String>();
+		DefaultListModel<String> modeloPublicacion = new DefaultListModel<>();
 		List<Metrica> listaPublicaciones = csvR.obtenerPorId(id);
 
 		for(Metrica publicacion: listaPublicaciones) {
@@ -475,15 +546,15 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.panelLikesGrafica.removeAll();
 		this.view.panelVistasGrafica.removeAll();
 
-		DefaultPieDataset<String> datasetVistas = new DefaultPieDataset<String>();
-		DefaultPieDataset<String> datasetLikes = new DefaultPieDataset<String>();
+		DefaultPieDataset<String> datasetVistas = new DefaultPieDataset<>();
+		DefaultPieDataset<String> datasetLikes = new DefaultPieDataset<>();
 
 		ObjectNode contenidosPlataforma = csvR.obtenerContenidosPlataforma(creadorSeleccionado.getId(), text);
 		Iterator<Entry<String, JsonNode>> fieldsIterator = contenidosPlataforma.fields();
 
-		Double contadorVistas = 0.0;
-		Double contadorLikes = 0.0;
-		Double numContenido = 0.0;
+		double contadorVistas = 0.0;
+		double contadorLikes = 0.0;
+		double numContenido = 0.0;
 
 		while (fieldsIterator.hasNext()) {
 
@@ -556,8 +627,13 @@ public class Controller implements ActionListener, ListSelectionListener {
 					i++;
 				}
 				view.comboBox_2.setModel(model);
+				
+				Double tasaCrecimiento = calcularTasaCrecimiento(plataforma.get("historico").get(0).get("nuevos_seguidores").asInt(), plataforma.get("historico").get(1).get("nuevos_seguidores").asInt());
+				this.view.textTasaCrecimientoRang.setText(String.valueOf(tasaCrecimiento) + "%");
 			}
 		}
+		
+		
 	}
 
 	private void cargarHistorico(JsonNode historico) {
@@ -567,11 +643,15 @@ public class Controller implements ActionListener, ListSelectionListener {
 	}
 
 	private void cargarComentario(int comentario) {
+		if(comentario <= 0) {
+			comentario = 1;
+		}
+
 		if(comentario > 500) {
 			comentario = comentario -= 500;
 		}
 
-		JsonNode comentarioSeleccionado = listaComentarios.get(comentario - 1);
+		JsonNode comentarioSeleccionado = listaComentarios.get(comentario);
 
 		this.view.textIdComentario.setText(comentarioSeleccionado.get("id").asText());
 		this.view.textNombreComentario.setText(comentarioSeleccionado.get("name").asText());
@@ -617,6 +697,14 @@ public class Controller implements ActionListener, ListSelectionListener {
 		}
 		view.comboBoxColNew.setModel(modelCol);
 	}
+	
+	public double calcularTasaCrecimiento(int seguidoresInicial, int seguidoresFinal) {
+		
+        if (seguidoresInicial == 0) {
+            return 0;
+        }
+        return Math.round(((seguidoresFinal - seguidoresInicial) / (double) seguidoresInicial) * 100);
+    }
 
 
 }

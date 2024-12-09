@@ -543,6 +543,13 @@
     "fecha_fin" : "2023-06-30",
     "tipo" : "Patrocinado",
     "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Ana Lopez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2024-12-05",
+    "fecha_fin" : "2024-12-19",
+    "tipo" : "Colaboración Natural",
+    "estado" : "Activa"
   } ]
 }, {
   "id" : 8,

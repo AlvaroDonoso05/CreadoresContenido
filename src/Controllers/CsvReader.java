@@ -35,10 +35,6 @@ public class CsvReader {
 		try {
 			archivo = new File(url);
 
-			if(archivo.exists()) {
-				archivo.delete();
-			}
-
 			fw = new FileWriter(archivo);
 			bw = new BufferedWriter(fw);
 

@@ -1,0 +1,303 @@
+{
+  "creadores" : [ {
+    "id" : 1,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 241503,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 6900.0
+  }, {
+    "id" : 2,
+    "nombre" : "Ana Lopez",
+    "total_seguidores" : 198102,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 6440.5
+  }, {
+    "id" : 3,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 414907,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 5146.5
+  }, {
+    "id" : 4,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 174577,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 8003.5
+  }, {
+    "id" : 5,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 366973,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 7077.5
+  }, {
+    "id" : 6,
+    "nombre" : "Ana Lopez",
+    "total_seguidores" : 106167,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 7854.0
+  }, {
+    "id" : 7,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 155137,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 8816.5
+  }, {
+    "id" : 8,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 551661,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 6904.5
+  }, {
+    "id" : 9,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 397116,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 6477.0
+  }, {
+    "id" : 10,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 517624,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 9189.5
+  }, {
+    "id" : 11,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 469272,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 5246.5
+  }, {
+    "id" : 12,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 189170,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 8553.5
+  }, {
+    "id" : 13,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 539563,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 6759.0
+  }, {
+    "id" : 14,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 482319,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 5404.5
+  }, {
+    "id" : 15,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 320023,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 7270.5
+  }, {
+    "id" : 16,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 380098,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 9691.0
+  }, {
+    "id" : 17,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 516679,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 8223.5
+  }, {
+    "id" : 18,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 314537,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 6005.5
+  }, {
+    "id" : 19,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 473778,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 6610.0
+  }, {
+    "id" : 20,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 545616,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 6288.5
+  }, {
+    "id" : 21,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 118109,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 9100.5
+  }, {
+    "id" : 22,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 468658,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 5824.5
+  }, {
+    "id" : 23,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 534614,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 8707.0
+  }, {
+    "id" : 24,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 326335,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 4864.0
+  }, {
+    "id" : 25,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 133301,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 4857.0
+  }, {
+    "id" : 26,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 364755,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 7492.0
+  }, {
+    "id" : 27,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 116002,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 6183.0
+  }, {
+    "id" : 28,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 516448,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 8412.5
+  }, {
+    "id" : 29,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 591872,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 9663.0
+  }, {
+    "id" : 30,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 360937,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 4897.0
+  }, {
+    "id" : 31,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 296245,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 6968.0
+  }, {
+    "id" : 32,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 465099,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 5985.0
+  }, {
+    "id" : 33,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 147040,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 7691.5
+  }, {
+    "id" : 34,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 400200,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 8978.0
+  }, {
+    "id" : 35,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 133033,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 4884.5
+  }, {
+    "id" : 36,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 189585,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 5800.5
+  }, {
+    "id" : 37,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 210981,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 8339.0
+  }, {
+    "id" : 38,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 346160,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 6811.5
+  }, {
+    "id" : 39,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 170130,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 5717.0
+  }, {
+    "id" : 40,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 440427,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 7794.0
+  }, {
+    "id" : 41,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 356100,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 7567.0
+  }, {
+    "id" : 42,
+    "nombre" : "Ana Lopez",
+    "total_seguidores" : 510443,
+    "plataforma_interacciones" : "YouTube",
+    "promedio_interacciones" : 7688.5
+  }, {
+    "id" : 43,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 315526,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 9663.0
+  }, {
+    "id" : 44,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 138394,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 9105.0
+  }, {
+    "id" : 45,
+    "nombre" : "Ana Lopez",
+    "total_seguidores" : 514159,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 7920.5
+  }, {
+    "id" : 46,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 224073,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 8232.5
+  }, {
+    "id" : 47,
+    "nombre" : "Luis Fernandez",
+    "total_seguidores" : 272561,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 6236.0
+  }, {
+    "id" : 48,
+    "nombre" : "Lucia Garcia",
+    "total_seguidores" : 504820,
+    "plataforma_interacciones" : "Twitch",
+    "promedio_interacciones" : 4718.5
+  }, {
+    "id" : 49,
+    "nombre" : "Carlos Ruiz",
+    "total_seguidores" : 509181,
+    "plataforma_interacciones" : "Instagram",
+    "promedio_interacciones" : 5336.0
+  }, {
+    "id" : 50,
+    "nombre" : "Marta Sanchez",
+    "total_seguidores" : 199475,
+    "plataforma_interacciones" : "TikTok",
+    "promedio_interacciones" : 6984.0
+  } ]
+}

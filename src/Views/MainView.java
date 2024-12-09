@@ -7,8 +7,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 
-
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -45,7 +43,6 @@ import javax.swing.JTextArea;
 import javax.swing.border.BevelBorder;
 
 public class MainView extends JFrame {
-
 	private static final long serialVersionUID = 1L;
 	public JLayeredPane contentPane;
 	public Controller controller;
@@ -77,7 +74,6 @@ public class MainView extends JFrame {
 	public JMenuItem generarRepColCSV;
 	public JMenu fileMenu;
 	public JMenu editMenu;
-	public JButton btnNewButton_1;
 	public JLabel lblNewLabel_1;
 	private JPanel mainPanel;
 	public JPanel panel;
@@ -161,6 +157,13 @@ public class MainView extends JFrame {
 	public JButton btnConfFchFin;
 	public JCalendar calendar;
 	public JTextArea textAreaNewCol;
+	public JTextArea textAreaLogger;
+	public JButton btnExportarConsola;
+	public JTextField textFiltro;
+	public JComboBox<String> comboBox_Filtros;
+	public JMenuItem helpItem;
+	public JTextField textTasaCrecimientoRang;
+	private JLabel lblTasaCrecimientoenerofebrero;
 
 	public MainView() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -180,12 +183,15 @@ public class MainView extends JFrame {
 
 		fileMenu = new JMenu("File");
 		editMenu = new JMenu("Edit");
-		JMenu helpMenu = new JMenu("Help");
+		helpMenu = new JMenu("Informacion");
 
 		// Add JMenus to the JMenuBar
 		menuBar.add(fileMenu);
 		menuBar.add(editMenu);
 		menuBar.add(helpMenu);
+		
+		helpItem = new JMenuItem("Acerca de");
+		helpMenu.add(helpItem);
 
 		// Create JMenuItems
 		reporteCreadoresItem = new JMenuItem("Generar Reporte Creadores");
@@ -382,83 +388,83 @@ public class MainView extends JFrame {
 
 		lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblUsuario.setBounds(26, 180, 108, 24);
+		lblUsuario.setBounds(26, 163, 108, 24);
 		panel_Plataformas.add(lblUsuario);
 
 		textFieldUsuario = new JTextField();
 		textFieldUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldUsuario.setEditable(false);
 		textFieldUsuario.setColumns(10);
-		textFieldUsuario.setBounds(156, 186, 163, 21);
+		textFieldUsuario.setBounds(156, 169, 163, 21);
 		panel_Plataformas.add(textFieldUsuario);
 
 		lblSeguidoresPlat = new JLabel("Seguidores:");
 		lblSeguidoresPlat.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblSeguidoresPlat.setBounds(26, 216, 108, 24);
+		lblSeguidoresPlat.setBounds(26, 199, 108, 24);
 		panel_Plataformas.add(lblSeguidoresPlat);
 
 		textFieldSegPlat = new JTextField();
 		textFieldSegPlat.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldSegPlat.setEditable(false);
 		textFieldSegPlat.setColumns(10);
-		textFieldSegPlat.setBounds(156, 222, 163, 21);
+		textFieldSegPlat.setBounds(156, 205, 163, 21);
 		panel_Plataformas.add(textFieldSegPlat);
 
 		lblFechCrPl = new JLabel("Fecha Creación:");
 		lblFechCrPl.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblFechCrPl.setBounds(26, 252, 108, 24);
+		lblFechCrPl.setBounds(26, 235, 108, 24);
 		panel_Plataformas.add(lblFechCrPl);
 
 		textFieldFechCr = new JTextField();
 		textFieldFechCr.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldFechCr.setEditable(false);
 		textFieldFechCr.setColumns(10);
-		textFieldFechCr.setBounds(156, 258, 163, 21);
+		textFieldFechCr.setBounds(156, 241, 163, 21);
 		panel_Plataformas.add(textFieldFechCr);
 
 		lblHistrico = new JLabel("Histórico:");
 		lblHistrico.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblHistrico.setBounds(26, 286, 108, 24);
+		lblHistrico.setBounds(26, 269, 108, 24);
 		panel_Plataformas.add(lblHistrico);
 
 		comboBox_2 = new JComboBox<String>();
-		comboBox_2.setBounds(154, 289, 165, 24);
+		comboBox_2.setBounds(154, 272, 165, 24);
 		panel_Plataformas.add(comboBox_2);
 
 		lblFechHist = new JLabel("Fecha");
 		lblFechHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblFechHist.setBounds(90, 329, 108, 24);
+		lblFechHist.setBounds(90, 312, 108, 24);
 		panel_Plataformas.add(lblFechHist);
 
 		textFieldFechHist = new JTextField();
 		textFieldFechHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldFechHist.setEditable(false);
 		textFieldFechHist.setColumns(10);
-		textFieldFechHist.setBounds(208, 331, 163, 21);
+		textFieldFechHist.setBounds(208, 314, 163, 21);
 		panel_Plataformas.add(textFieldFechHist);
 
 		lblNuevosSeg = new JLabel("Nuevos Seguidores:");
 		lblNuevosSeg.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNuevosSeg.setBounds(90, 364, 108, 24);
+		lblNuevosSeg.setBounds(90, 347, 108, 24);
 		panel_Plataformas.add(lblNuevosSeg);
 
 		textFieldNuevosSeg = new JTextField();
 		textFieldNuevosSeg.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldNuevosSeg.setEditable(false);
 		textFieldNuevosSeg.setColumns(10);
-		textFieldNuevosSeg.setBounds(208, 367, 163, 21);
+		textFieldNuevosSeg.setBounds(208, 350, 163, 21);
 		panel_Plataformas.add(textFieldNuevosSeg);
 
 		lblIntHist = new JLabel("Interacciones:");
 		lblIntHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblIntHist.setBounds(90, 399, 108, 24);
+		lblIntHist.setBounds(90, 382, 108, 24);
 		panel_Plataformas.add(lblIntHist);
 
 		textFieldIntHist = new JTextField();
 		textFieldIntHist.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldIntHist.setEditable(false);
 		textFieldIntHist.setColumns(10);
-		textFieldIntHist.setBounds(208, 401, 163, 21);
+		textFieldIntHist.setBounds(208, 384, 163, 21);
 		panel_Plataformas.add(textFieldIntHist);
 
 		textPromLikes = new JTextField();
@@ -480,6 +486,18 @@ public class MainView extends JFrame {
 		lblPromedio.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblPromedio.setBounds(441, 398, 183, 21);
 		panel_Plataformas.add(lblPromedio);
+		
+		textTasaCrecimientoRang = new JTextField();
+		textTasaCrecimientoRang.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textTasaCrecimientoRang.setEditable(false);
+		textTasaCrecimientoRang.setColumns(10);
+		textTasaCrecimientoRang.setBounds(26, 434, 293, 24);
+		panel_Plataformas.add(textTasaCrecimientoRang);
+		
+		lblTasaCrecimientoenerofebrero = new JLabel("Tasa Crecimiento (Enero-Febrero):");
+		lblTasaCrecimientoenerofebrero.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblTasaCrecimientoenerofebrero.setBounds(26, 408, 189, 24);
+		panel_Plataformas.add(lblTasaCrecimientoenerofebrero);
 
 
 		panel_Colabs = new JPanel();
@@ -693,14 +711,6 @@ public class MainView extends JFrame {
 		textCompartidos.setBounds(521, 227, 125, 23);
 		panel_Publicaciones.add(textCompartidos);
 
-		btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(390, 286, 160, 47);
-		panel_Publicaciones.add(btnModificar);
-
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(584, 286, 160, 47);
-		panel_Publicaciones.add(btnEliminar);
-
 		panel = new JPanel();
 		panel.setBackground(new Color(255, 204, 204));
 		panel.setBounds(0, 0, 1186, 138);
@@ -715,6 +725,18 @@ public class MainView extends JFrame {
 		lblNewLabel_1.setBounds(107, 21, 182, 39);
 		panel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+
+		textAreaLogger = new JTextArea();
+		textAreaLogger.setEditable(false);
+
+		JScrollPane scrollPane = new JScrollPane(textAreaLogger);
+		scrollPane.setBounds(535, 21, 593, 106);
+		panel.add(scrollPane);
+
+		btnExportarConsola = new JButton("Exportar Consola");
+		btnExportarConsola.setEnabled(false);
+		btnExportarConsola.setBounds(395, 87, 128, 40);
+		panel.add(btnExportarConsola);
 
 		panel_NewCol = new JPanel();
 		panel_NewCol.setBackground(new Color(255, 204, 204));
@@ -823,6 +845,29 @@ public class MainView extends JFrame {
 		textAreaNewCol.setBounds(68, 413, 404, 60);
 		panel_NewCol.add(textAreaNewCol);
 
+		// sefs
+		btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(390, 366, 160, 47);
+		panel_Publicaciones.add(btnModificar);
+
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(583, 366, 160, 47);
+		panel_Publicaciones.add(btnEliminar);
+
+		textFiltro = new JTextField();
+		textFiltro.setColumns(10);
+		textFiltro.setBounds(560, 332, 125, 23);
+		panel_Publicaciones.add(textFiltro);
+
+		JLabel lblFiltroopcional = new JLabel("Filtro (Opcional):");
+		lblFiltroopcional.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblFiltroopcional.setBounds(390, 296, 160, 25);
+		panel_Publicaciones.add(lblFiltroopcional);
+
+		comboBox_Filtros = new JComboBox<String>();
+		comboBox_Filtros.setBounds(390, 332, 125, 23);
+		panel_Publicaciones.add(comboBox_Filtros);
+
 	}
 
 	public static void main(String[] args) {
@@ -840,5 +885,4 @@ public class MainView extends JFrame {
 			}
 		});
 	}
-
 }
