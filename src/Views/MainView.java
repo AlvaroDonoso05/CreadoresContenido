@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -927,8 +928,10 @@ public class MainView extends JFrame {
 		panel_NewCol.add(calendar);
 
 
-		btnFechaIni = new JButton("");
+		ImageIcon calendarIcon = new ImageIcon("resources/img/calendar.png");
+		btnFechaIni = new JButton(calendarIcon);
 		btnFechaIni.setBounds(355, 176, 33, 21);
+		btnFechaIni.setIcon(new ImageIcon(calendarIcon.getImage().getScaledInstance(btnFechaIni.getWidth(), btnFechaIni.getHeight(), Image.SCALE_SMOOTH)));
 		panel_NewCol.add(btnFechaIni);
 
 
@@ -937,8 +940,9 @@ public class MainView extends JFrame {
 		btnConfFchIni.setVisible(false);
 		panel_NewCol.add(btnConfFchIni);
 
-		btnFechaFin = new JButton("");
+		btnFechaFin = new JButton(calendarIcon);
 		btnFechaFin.setBounds(355, 208, 33, 21);
+		btnFechaFin.setIcon(new ImageIcon(calendarIcon.getImage().getScaledInstance(btnFechaFin.getWidth(), btnFechaFin.getHeight(), Image.SCALE_SMOOTH)));
 		panel_NewCol.add(btnFechaFin);
 
 		comboBoxColNew = new JComboBox<>();
@@ -1011,6 +1015,8 @@ public class MainView extends JFrame {
 					frame.controller = new Controller(frame);
 					frame.setVisible(true);
 					frame.setResizable(false);
+					frame.setTitle("Gestion de Creadores");
+					frame.setIconImage(new ImageIcon("resources/img/logo.png").getImage());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

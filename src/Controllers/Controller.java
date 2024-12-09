@@ -142,57 +142,6 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-	    try {
-	        if (e.getSource() == this.view.comboBox) {
-	            manejarSeleccionComboBox();
-	        } else if (e.getSource() == this.view.exitItem) {
-	            salirAplicacion();
-	        } else if (e.getSource() == this.view.helpItem) {
-	            abrirUrlAyuda();
-	        } else if (e.getSource() == this.view.btnExtraerDatos) {
-	            extraerDatosAHastebin();
-	        } else if (e.getSource() == this.view.btnExportarConsola) {
-	            exportarDatosConsola();
-	        } else if (e.getSource() == this.view.comboBox_1) {
-	            manejarSeleccionColaboracion();
-	        } else if (e.getSource() == this.view.comboBox_2) {
-	            manejarSeleccionPlataforma();
-	        } else if (e.getSource() == this.view.btnAnterior) {
-	            navegarComentarios(-1);
-	        } else if (e.getSource() == this.view.btnSiguiente) {
-	            navegarComentarios(1);
-	        } else if (e.getSource() == this.view.btnModificar) {
-	            modificarPublicacion();
-	        } else if (e.getSource() == this.view.btnEliminar) {
-	            eliminarPublicacion();
-	        } else if (e.getSource() == this.view.btnConfFchIni) {
-	            establecerFecha(this.view.textFieldFechIniColNew);
-	        } else if (e.getSource() == this.view.btnConfFchFin) {
-	            establecerFecha(this.view.textFieldFechFinColNew);
-	        } else if (e.getSource() == this.view.btnFechaIni) {
-	            mostrarCalendarioFechaInicio();
-	        } else if (e.getSource() == this.view.btnFechaFin) {
-	            mostrarCalendarioFechaFin();
-	        } else if (e.getSource() == this.view.btnNewButtonAddCol) {
-	            añadirColaboracion();
-	        } else if (e.getSource() == this.view.reporteCreadoresItem) {
-	            generarReporteCreadores();
-	        } else if (e.getSource() == this.view.reporteColaboracionesItem) {
-	            generarReporteColaboraciones();
-	        } else if (e.getSource() == this.view.exportarColCSV) {
-	            exportarColaboracionesCSV();
-	        } else if (e.getSource() == this.view.btnAgregar) {
-	            agregarNuevaPublicacion();
-	        } else if (e.getSource() == this.view.generarResRendJSON) {
-	            generarResumenRendimientoJSON();
-	        } else if (e.getSource() == this.view.generarRepColCSV) {
-	            generarReporteColaboracionesCSV();
-	        }
-	    } catch (Exception ex) {
-	        ex.printStackTrace();
-	    }
-=======
 		if (e.getSource() == this.view.comboBox) {
 			view.tabbedPane.setVisible(true);
 			resetearValores();
@@ -201,17 +150,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			generarCreadoresCol(modelCol);
 			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
 				modelCol.removeElementAt(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
-				creadorSeleccionado = jsonR.getCreador(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
-				obtenerDatosCreador(creadorSeleccionado);
-				generarBotonesPlataforma(creadorSeleccionado);
-				obtenerColaboraciones(creadorSeleccionado);
-				obtenerPublicaciones(creadorSeleccionado.getId());
-
-				JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
-				obtenerDatosColaboracion(colaboracion);
-				this.view.lblInfoHaste.setVisible(false);
-				this.view.btnExtraerDatos.setEnabled(true);
-				this.view.btnExportarConsola.setEnabled(true);
+				actualizarValores();
 			}else {
 				view.tabbedPane.setVisible(false);
 			}
@@ -220,7 +159,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			System.exit(0);
 		} else if(e.getSource() == this.view.helpItem) {
 			try {
-				URI url = new URI("https://pastebin.donoso.mooo.com/gestioncreadores.md");
+				URI url = new URI("https://creador.donoso.mooo.com");
 				Desktop.getDesktop().browse(url);
 				
 			} catch (Exception e1) {
@@ -273,6 +212,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 					}
 				}
 			}
+			
+			actualizarValores();
 
 		} else if(e.getSource() == this.view.btnEliminar) {
 			if(!this.view.textFiltro.getText().equalsIgnoreCase("")) {
@@ -311,7 +252,6 @@ public class Controller implements ActionListener, ListSelectionListener {
 					}
 				}
 				csvR.setArchivoCsv(listaPublicaciones);
-				obtenerPublicaciones(creadorSeleccionado.getId());
 			} else {
 				if(this.view.listPublicaciones.getSelectedValue() != null) {
 					List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
@@ -327,6 +267,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 					}
 				}
 			}
+			obtenerPublicaciones(creadorSeleccionado.getId());
 		}else if (e.getSource() == this.view.btnConfFchIni) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String selectedDate = sdf.format(this.view.calendar.getDate());
@@ -414,6 +355,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 					this.view.textFieldFechFinColNew.setText("");
 					this.view.chckbxColActivaColNew.setSelected(false);
 					logger.success("Colaboracion añadida");
+					actualizarValores();
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -572,6 +514,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			csvR.setArchivoCsv(listaContenidos);
 			logger.success(metrica.getContenido() + " agregado correctamente.");
 			obtenerPublicaciones(creadorSeleccionado.getId());
+			actualizarValores();
       
 		}else if(e.getSource() == this.view.generarResRendJSON) {
 			//Ej 10
@@ -599,7 +542,20 @@ public class Controller implements ActionListener, ListSelectionListener {
 			
 			csvR.generarCsvRepCol("resources/reporte_colaboraciones.csv", reporteColabs);
 		}
->>>>>>> parent of 363b137 (Merge pull request #17 from Donoso005/Ej10Inicio)
+	}
+
+	private void actualizarValores() {
+		creadorSeleccionado = jsonR.getCreador(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
+		obtenerDatosCreador(creadorSeleccionado);
+		generarBotonesPlataforma(creadorSeleccionado);
+		obtenerColaboraciones(creadorSeleccionado);
+		obtenerPublicaciones(creadorSeleccionado.getId());
+
+		JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
+		obtenerDatosColaboracion(colaboracion);
+		this.view.lblInfoHaste.setVisible(false);
+		this.view.btnExtraerDatos.setEnabled(true);
+		this.view.btnExportarConsola.setEnabled(true);
 	}
 
 	private void manejarSeleccionComboBox() {
