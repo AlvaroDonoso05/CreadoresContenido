@@ -27,6 +27,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -141,499 +142,537 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == this.view.comboBox) {
-			view.tabbedPane.setVisible(true);
-			resetearValores();
-			DefaultComboBoxModel<String> modelCol = (DefaultComboBoxModel<String>) this.view.comboBoxColNew.getModel();
-			modelCol.removeAllElements();
-			generarCreadoresCol(modelCol);
-			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
-				modelCol.removeElementAt(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
-				creadorSeleccionado = jsonR.getCreador(Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))));
-				obtenerDatosCreador(creadorSeleccionado);
-				generarBotonesPlataforma(creadorSeleccionado);
-				obtenerColaboraciones(creadorSeleccionado);
-				obtenerPublicaciones(creadorSeleccionado.getId());
-
-				JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
-				obtenerDatosColaboracion(colaboracion);
-				this.view.lblInfoHaste.setVisible(false);
-				this.view.btnExtraerDatos.setEnabled(true);
-				this.view.btnExportarConsola.setEnabled(true);
-			}else {
-				view.tabbedPane.setVisible(false);
-			}
-
-		} else if (e.getSource() == this.view.exitItem) {
-			System.exit(0);
-		} else if(e.getSource() == this.view.helpItem) {
-			try {
-				URI url = new URI("https://pastebin.donoso.mooo.com/gestioncreadores.md");
-				Desktop.getDesktop().browse(url);
-				
-			} catch (Exception e1) {
-				logger.error(e1);
-			}
-		} else if (e.getSource() == this.view.btnExtraerDatos) {
-			for (JsonNode creadorNode : jsonR.getCreadoresNode()) {
-				if (creadorNode.get("id").asInt() == creadorSeleccionado.getId()) {
-					this.view.lblInfoHaste.setVisible(true);
-					this.view.lblInfoHaste.setText(hasteServer.uploadTextToHastebin(creadorNode, null));
-				}
-			}
-		} else if(e.getSource() == this.view.btnExportarConsola) {
-			String outputLog = this.view.textAreaLogger.getText();
-			this.logger.success(hasteServer.uploadTextToHastebin(null, outputLog));
-		} else if (e.getSource() == this.view.comboBox_1) {
-			JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
-			obtenerDatosColaboracion(colaboracion);
-		} else if (e.getSource() == this.view.comboBox_2) {
-			JsonNode plataformas = creadorSeleccionado.getPlataformas();
-			for (JsonNode plataforma : plataformas) {
-				if (plataforma.get("nombre").asText().equalsIgnoreCase(botonSeleccionado)) {
-					cargarHistorico(plataforma.get("historico").get(Integer.parseInt(view.comboBox_2.getSelectedItem().toString().substring(0, view.comboBox_2.getSelectedItem().toString().indexOf("."))) - 1));
-				}
-			}
-		} else if(e.getSource() == this.view.btnAnterior) {
-			if(Integer.parseInt(this.view.lblMinComentarios.getText()) > 1) {
-				this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) - 1));
-				cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()));
-			}
-		} else if(e.getSource() == this.view.btnSiguiente) {
-			if(Integer.parseInt(this.view.lblMinComentarios.getText()) < Integer.parseInt(this.view.lblMaxComentarios.getText())) {
-				cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1);
-				this.view.lblMinComentarios.setText(String.valueOf(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1));
-			}
-		} else if(e.getSource() == this.view.btnModificar) {
-			if(this.view.listPublicaciones.getSelectedValue() != null) {
-				List<Metrica> listaPublicaciones = csvR.obtenerPorId(creadorSeleccionado.getId());
-
-				for(Metrica publicacion: listaPublicaciones) {
-					int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
-					if(publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
-						publicacion.setVistas(Integer.parseInt(this.view.textVistas.getText()));
-						publicacion.setMeGusta(Integer.parseInt(this.view.textLikes.getText()));
-						publicacion.setComentarios(Integer.parseInt(this.view.textComentarios.getText()));
-						publicacion.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
-						this.view.lblMinComentarios.setText(String.valueOf(0));
-						this.view.lblMaxComentarios.setText(String.valueOf(publicacion.getComentarios()));
-						cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText() + 1));
-					}
-				}
-			}
-
-		} else if(e.getSource() == this.view.btnEliminar) {
-			if(!this.view.textFiltro.getText().equalsIgnoreCase("")) {
-				List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
-
-				Iterator<Metrica> iterator = listaPublicaciones.iterator();
-				while (iterator.hasNext()) {
-					Metrica publicacion = iterator.next();
-					if(publicacion.getIdCreador() == creadorSeleccionado.getId()) {
-						switch(this.view.comboBox_Filtros.getSelectedItem().toString()) {
-							case "Vistas":
-								if (publicacion.getVistas() < Integer.parseInt(this.view.textFiltro.getText())) {
-									iterator.remove();
-									logger.success(publicacion.getContenido() + " eliminado correctamente.");
-								}
-								break;
-							case "Likes":
-								if (publicacion.getMeGusta() < Integer.parseInt(this.view.textFiltro.getText())) {
-									iterator.remove();
-									logger.success(publicacion.getContenido() + " eliminado correctamente.");
-								}
-								break;
-							case "Comentarios":
-								if (publicacion.getComentarios() < Integer.parseInt(this.view.textFiltro.getText())) {
-									iterator.remove();
-									logger.success(publicacion.getContenido() + " eliminado correctamente.");
-								}
-								break;
-							case "Compartidos":
-								if (publicacion.getCompartidos() < Integer.parseInt(this.view.textFiltro.getText())) {
-									iterator.remove();
-									logger.success(publicacion.getContenido() + " eliminado correctamente.");
-								}
-								break;
-						}
-					}
-				}
-				csvR.setArchivoCsv(listaPublicaciones);
-				obtenerPublicaciones(creadorSeleccionado.getId());
-			} else {
-				if(this.view.listPublicaciones.getSelectedValue() != null) {
-					List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
-
-					Iterator<Metrica> iterator = listaPublicaciones.iterator();
-					while (iterator.hasNext()) {
-						Metrica publicacion = iterator.next();
-						int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
-						if (publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
-							iterator.remove();
-							logger.success(publicacion.getContenido() + " eliminado correctamente.");
-						}
-					}
-				}
-			}
-		}else if (e.getSource() == this.view.btnConfFchIni) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			String selectedDate = sdf.format(this.view.calendar.getDate());
-			this.view.textFieldFechIniColNew.setText(selectedDate);
-			this.view.calendar.setVisible(false);
-			this.view.btnConfFchIni.setVisible(false);
-
-		}else if (e.getSource() == this.view.btnConfFchFin) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			String selectedDate = sdf.format(this.view.calendar.getDate());
-			this.view.textFieldFechFinColNew.setText(selectedDate);
-			this.view.calendar.setVisible(false);
-			this.view.btnConfFchFin.setVisible(false);
-
-		}else if (e.getSource() == this.view.btnFechaIni) {
-			this.view.btnConfFchFin.setVisible(false);
-			this.view.btnConfFchIni.setVisible(true);
-			this.view.calendar.setVisible(true);
-
-		}else if (e.getSource() == this.view.btnFechaFin) {
-			this.view.btnConfFchIni.setVisible(false);
-			this.view.btnConfFchFin.setVisible(true);
-			this.view.calendar.setVisible(true);
-
-		}else if (e.getSource() == this.view.btnNewButtonAddCol) {
-
-			int creador = -1;
-			String colaborador, tipo, tematica, fchIni, fchFin, activaString;
-			Boolean activa, fechaCorrecta = false;
-
-			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
-				creador = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
-			}
-
-			colaborador = this.view.comboBoxColNew.getSelectedItem().toString();
-			colaborador = colaborador.substring(colaborador.indexOf(".") + 2);
-			tipo = this.view.comboBoxColTipo.getSelectedItem().toString();
-			tematica = this.view.comboBoxColTem.getSelectedItem().toString();
-			fchIni = this.view.textFieldFechIniColNew.getText();
-			fchFin = this.view.textFieldFechFinColNew.getText();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			
-			Date sdfIni = null;
-			Date sdfFin = null;
-			try {
-				sdfIni = sdf.parse(fchIni);
-				sdfFin = sdf.parse(fchFin);
-			} catch (ParseException e1) {
-				logger.error(e1);
-			} 			
-			
-			if(!sdfFin.before(sdfIni)) {
-				fechaCorrecta = true;
-			}
-			
-			activa = this.view.chckbxColActivaColNew.isSelected();
-			if(activa) {
-				activaString = "Activa";
-			}else {
-				activaString = "Finalizada";
-			}
-
-			if(creador != -1 &&
-					!colaborador.equals("lige un colaborador") &&
-					!fchIni.equals("") &&
-					!fchFin.equals("") &&
-					creador != -1 &&
-					fechaCorrecta) {
-
-				ObjectNode colaboracion = om.createObjectNode();
-				colaboracion.put("colaborador", colaborador);
-				colaboracion.put("tematica", tematica);
-				colaboracion.put("fecha_inicio", fchIni);
-				colaboracion.put("fecha_fin", fchFin);
-				colaboracion.put("tipo", tipo);
-				colaboracion.put("estado", activaString);
-
-				JsonNode creadores = jsonR.getCreadoresNode();
-				ArrayNode colaboraciones = (ArrayNode) creadores.get(creador).get("colaboraciones");
-				colaboraciones.add(colaboracion);
-				try {
-					jsonR.actualizarCreadores();
-					this.view.textAreaNewCol.setText("COLABORACIÓN AÑADIDA CORRECTAMENTE");
-					this.view.textFieldFechIniColNew.setText("");
-					this.view.textFieldFechFinColNew.setText("");
-					this.view.chckbxColActivaColNew.setSelected(false);
-					logger.success("Colaboracion añadida");
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-
-			}else {
-				if(fechaCorrecta) {
-					this.view.textAreaNewCol.setText("DEBE RELLENAR TODOS LOS CAMPOS!!");
-				}else {
-					this.view.textAreaNewCol.setText("LA FECHA DE INICIO DEBE SER MENOR A LA FINAL");
-				}
-				
-			}
-		}else if(e.getSource() == this.view.reporteCreadoresItem) {
-			List<Creador> creadores = jsonR.getListaCreadores();
-			ObjectNode rootNode = om.createObjectNode();
-			ArrayNode creadoresArray = om.createArrayNode();
-
-			for (Creador creador : creadores) {
-				int seguidores = creador.getSegidoresTotales();
-				JsonNode plataformas = creador.getPlataformas();
-
-				String plataforma = "";
-				double mediaAlta = 0;
-
-				for (JsonNode plataformaNode : plataformas) {
-					double acumulador = 0;
-					int contador = 0;
-
-					ArrayNode historicos = (ArrayNode) plataformaNode.get("historico");
-					for (JsonNode historico : historicos) {
-						acumulador += historico.get("interacciones").asInt();
-						contador++;
-					}
-
-					double mediaInteracciones = acumulador / contador;
-					if (mediaInteracciones > mediaAlta) {
-						mediaAlta = mediaInteracciones;
-						plataforma = plataformaNode.get("nombre").asText();
-					}
-				}
-
-				ObjectNode creadorNode = om.createObjectNode();
-				creadorNode.put("id", creador.getId());
-				creadorNode.put("nombre", creador.getNombre());
-				creadorNode.put("total_seguidores", seguidores);
-				creadorNode.put("plataforma_interacciones", plataforma);
-				creadorNode.put("promedio_interacciones", mediaAlta);
-
-				creadoresArray.add(creadorNode);
-			}
-
-			rootNode.set("creadores", creadoresArray);
-			jsonR.crearJson("resources/reporte_creadores.json", rootNode);
-			
-			
-		}else if(e.getSource() == this.view.reporteColaboracionesItem) {
-			//Ejercicio 12
-			List<Creador> creadores = jsonR.getListaCreadores();
-			ObjectNode rootNode = om.createObjectNode();
-			ArrayNode creadoresArray = om.createArrayNode();
-
-			for (Creador creador : creadores) {	
-				JsonNode colaboraciones = creador.getColaboraciones();
-				for(JsonNode colaboracion: colaboraciones) {
-					ObjectNode creadorNode = om.createObjectNode();
-					creadorNode.put("id", creador.getId());
-					creadorNode.put("creador", creador.getNombre());
-					creadorNode.put("colaborador", colaboracion.get("colaborador").asText());
-					creadorNode.put("tematica", colaboracion.get("tematica").asText());
-					creadorNode.put("fecha_inicio", colaboracion.get("fecha_inicio").asText());
-					creadorNode.put("fecha_fin", colaboracion.get("fecha_fin").asText());
-					creadorNode.put("tipo", colaboracion.get("tipo").asText());
-					creadorNode.put("estado", colaboracion.get("estado").asText());
-
-					creadoresArray.add(creadorNode);
-				}
-
-			}
-
-			rootNode.set("colaboraciones", creadoresArray);
-			jsonR.crearJson("resources/colaboraciones.json", rootNode);
-			
-			
-		}else if(e.getSource() == this.view.exportarColCSV) {
-			//4
-			JsonNode creadores = jsonR.getCreadoresNode();
-			List<ReporteColabs> reporteColabs = new ArrayList<ReporteColabs>();
-			
-			for(JsonNode creador: creadores) {
-				
-				ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
-				for(JsonNode colaboracion: colaboraciones) {
-					ReporteColabs nReporte = new ReporteColabs();
-					nReporte.setIdCreador(creador.get("id").asInt());
-					nReporte.setNombre(creador.get("nombre").asText());
-					
-					JsonNode estadisticas = creador.get("estadisticas");				
-					nReporte.setInteracciones_totales(estadisticas.get("interacciones_totales").asDouble());
-					nReporte.setPromedio_vistas_mensuales(estadisticas.get("promedio_vistas_mensuales").asDouble());
-					nReporte.setTasa_crecimiento_seguidores(estadisticas.get("tasa_crecimiento_seguidores").asDouble());
-					nReporte.setColaborador(colaboracion.get("colaborador").asText());
-					nReporte.setFecha(colaboracion.get("fecha_inicio").asText());
-					reporteColabs.add(nReporte);					
-				}
-				
-			}
-			csvR.generarCsvColaboraciones("resources/colaboraciones.csv", reporteColabs);
-			
-		} else if(e.getSource() == this.view.btnAgregar) {
-			
-			// Obtener el contenido Mayor
-			List<Metrica> listaContenidos = csvR.abrirCSV();
-			
-			int contenidoMayor = 0;
-			for(Metrica metrica: listaContenidos) {
-				int metricaId = Integer.parseInt(metrica.getContenido().substring(metrica.getContenido().lastIndexOf(" ") + 1));;
-				if(contenidoMayor < metricaId) {
-					contenidoMayor = metricaId;
-				}
-			}
-			
-			// Creacion del objeto Metrica
-			Metrica metrica = new Metrica();
-			
-			metrica.setFecha(LocalDate.now().toString());
-			metrica.setIdCreador(creadorSeleccionado.getId());
-			metrica.setContenido("Contenido " + (contenidoMayor + 1));
-			
-			if(this.view.textVistas.getText().equalsIgnoreCase("")) {
-				metrica.setVistas(0);
-			} else {
-				metrica.setVistas(Integer.parseInt(this.view.textVistas.getText()));
-			}
-			
-			if(this.view.textLikes.getText().equalsIgnoreCase("")) {
-				metrica.setMeGusta(0);
-			} else {
-				metrica.setMeGusta(Integer.parseInt(this.view.textLikes.getText()));
-			}
-			
-			if(this.view.textComentarios.getText().equalsIgnoreCase("")) {
-				metrica.setComentarios(0);
-			} else {
-				metrica.setComentarios(Integer.parseInt(this.view.textComentarios.getText()));
-			}
-			
-			if(this.view.textCompartidos.getText().equalsIgnoreCase("")) {
-				metrica.setCompartidos(0);
-			} else {
-				metrica.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
-			}
-			
-			metrica.setPlataforma(this.view.comboBoxContenido.getSelectedItem().toString());
-
-			listaContenidos.add(metrica);
-			csvR.setArchivoCsv(listaContenidos);
-			logger.success(metrica.getContenido() + " agregado correctamente.");
-			obtenerPublicaciones(creadorSeleccionado.getId());
-      
-		}else if(e.getSource() == this.view.generarResRendJSON) {
-			//Ej 10
-			List<Metrica> metricas = csvR.abrirCSV();
-			ObjectNode rootNode = om.createObjectNode();
-			
-			
-			int vTwitch = 0, vInsta = 0, vTiktok = 0, vYoutube = 0;
-			int sTwitch = 0, sInsta = 0, sTiktok = 0, sYoutube = 0;
-			for(Metrica metrica: metricas) {
-				metrica.getIdCreador();
-				csvR.obtenerPorId(metrica.getIdCreador());
-				String plataforma = metrica.getPlataforma();
-				
-				switch (plataforma) {
-					case "Instagram":
-						vInsta = vInsta + metrica.getVistas();
-						sInsta = sInsta + metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
-						
-						break;
-					case "TikTok":
-						vTiktok = vTiktok + metrica.getVistas();
-						sTiktok = sTiktok + metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
-						
-						break;
-					case "Youtube":
-						vYoutube = vYoutube  + metrica.getVistas();
-						sYoutube  = sYoutube  + metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
-						
-						break;
-					case "Twitch":
-						vTwitch = vTwitch + metrica.getVistas();
-						sTwitch = sTwitch + metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
-						break;
-				}
-					
-				sTwitch = sTwitch / 3;
-				sInsta = sInsta / 3;
-				sTiktok = sTiktok / 3;
-				sYoutube = sYoutube / 3;
-				
-				if(vInsta > vTiktok &&
-						vInsta > vTwitch &&
-						vInsta > vYoutube) {
-					rootNode.put("plataforma_mas_vistas", "Instagram");
-					
-				}else if(vTiktok > vInsta &&
-						vTiktok > vTwitch &&
-						vTiktok > vYoutube) {
-					rootNode.put("plataforma_mas_vistas", "TikTok");
-					
-				}else if(vYoutube > vInsta &&
-						vYoutube > vTwitch &&
-						vYoutube > vInsta) {
-					rootNode.put("plataforma_mas_vistas", "Youtube");
-					
-				}else if(vTwitch > vInsta &&
-						vTwitch > vTiktok &&
-						vTwitch > vYoutube) {
-					rootNode.put("plataforma_mas_vistas", "TikTok");
-				}else {
-					rootNode.put("plataforma_mas_vistas", "Hay empate");
-				}
-				
-				if(sInsta > sTiktok &&
-						sInsta > sTwitch &&
-						sInsta > sYoutube) {
-					rootNode.put("plataforma_mas_interacciones_promedio", "Instagram");
-					
-				}else if(sTiktok > sInsta &&
-						sTiktok > sTwitch &&
-						sTiktok > sYoutube) {
-					rootNode.put("plataforma_mas_interacciones_promedio", "TikTok");
-					
-				}else if(sYoutube > sInsta &&
-						sYoutube > sTwitch &&
-						sYoutube > sInsta) {
-					rootNode.put("plataforma_mas_interacciones_promedio", "Youtube");
-					
-				}else if(sTwitch > sInsta &&
-						sTwitch > sTiktok &&
-						sTwitch > sYoutube) {
-					rootNode.put("plataforma_mas_interacciones_promedio", "TikTok");
-				}else {
-					rootNode.put("plataforma_mas_interacciones_promedio", "Hay empate");
-				}
-				
-			}
-			jsonR.crearJson("resumen_rendimiento", rootNode);
-			
-		}else if (e.getSource() == this.view.generarRepColCSV) {
-			//Ej 8
-			JsonNode creadores = jsonR.getCreadoresNode();
-			List<ReporteColabs> reporteColabs = new ArrayList<ReporteColabs>();
-			
-			for(JsonNode creador: creadores) {
-			
-				
-				
-				ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
-				for(JsonNode colaboracion: colaboraciones) {
-					ReporteColabs nReporte = new ReporteColabs();
-					nReporte.setIdCreador(creador.get("id").asInt());
-					nReporte.setNombre(creador.get("nombre").asText());
-					nReporte.setColaborador(colaboracion.get("colaborador").asText());
-					nReporte.setFecha(colaboracion.get("fecha_inicio").asText());	
-					reporteColabs.add(nReporte);
-				}
-				
-			}
-			
-			csvR.generarCsvRepCol("resources/reporte_colaboraciones.csv", reporteColabs);
-		}
+	    try {
+	        if (e.getSource() == this.view.comboBox) {
+	            manejarSeleccionComboBox();
+	        } else if (e.getSource() == this.view.exitItem) {
+	            salirAplicacion();
+	        } else if (e.getSource() == this.view.helpItem) {
+	            abrirUrlAyuda();
+	        } else if (e.getSource() == this.view.btnExtraerDatos) {
+	            extraerDatosAHastebin();
+	        } else if (e.getSource() == this.view.btnExportarConsola) {
+	            exportarDatosConsola();
+	        } else if (e.getSource() == this.view.comboBox_1) {
+	            manejarSeleccionColaboracion();
+	        } else if (e.getSource() == this.view.comboBox_2) {
+	            manejarSeleccionPlataforma();
+	        } else if (e.getSource() == this.view.btnAnterior) {
+	            navegarComentarios(-1);
+	        } else if (e.getSource() == this.view.btnSiguiente) {
+	            navegarComentarios(1);
+	        } else if (e.getSource() == this.view.btnModificar) {
+	            modificarPublicacion();
+	        } else if (e.getSource() == this.view.btnEliminar) {
+	            eliminarPublicacion();
+	        } else if (e.getSource() == this.view.btnConfFchIni) {
+	            establecerFecha(this.view.textFieldFechIniColNew);
+	        } else if (e.getSource() == this.view.btnConfFchFin) {
+	            establecerFecha(this.view.textFieldFechFinColNew);
+	        } else if (e.getSource() == this.view.btnFechaIni) {
+	            mostrarCalendarioFechaInicio();
+	        } else if (e.getSource() == this.view.btnFechaFin) {
+	            mostrarCalendarioFechaFin();
+	        } else if (e.getSource() == this.view.btnNewButtonAddCol) {
+	            añadirColaboracion();
+	        } else if (e.getSource() == this.view.reporteCreadoresItem) {
+	            generarReporteCreadores();
+	        } else if (e.getSource() == this.view.reporteColaboracionesItem) {
+	            generarReporteColaboraciones();
+	        } else if (e.getSource() == this.view.exportarColCSV) {
+	            exportarColaboracionesCSV();
+	        } else if (e.getSource() == this.view.btnAgregar) {
+	            agregarNuevaPublicacion();
+	        } else if (e.getSource() == this.view.generarResRendJSON) {
+	            generarResumenRendimientoJSON();
+	        } else if (e.getSource() == this.view.generarRepColCSV) {
+	            generarReporteColaboracionesCSV();
+	        }
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    }
 	}
+
+	private void manejarSeleccionComboBox() {
+	    view.tabbedPane.setVisible(true);
+	    resetearValores();
+	    DefaultComboBoxModel<String> modelCol = (DefaultComboBoxModel<String>) this.view.comboBoxColNew.getModel();
+	    modelCol.removeAllElements();
+	    generarCreadoresCol(modelCol);
+	    if (view.comboBox.getSelectedItem().toString().indexOf(".") != -1) {
+	        int creadorIndex = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
+	        creadorSeleccionado = jsonR.getCreador(creadorIndex);
+	        obtenerDatosCreador(creadorSeleccionado);
+	        generarBotonesPlataforma(creadorSeleccionado);
+	        obtenerColaboraciones(creadorSeleccionado);
+	        obtenerPublicaciones(creadorSeleccionado.getId());
+	    } else {
+	        view.tabbedPane.setVisible(false);
+	    }
+	}
+
+	private void salirAplicacion() {
+	    System.exit(0);
+	}
+
+	private void abrirUrlAyuda() {
+	    try {
+	        URI url = new URI("https://pastebin.donoso.mooo.com/gestioncreadores.md");
+	        Desktop.getDesktop().browse(url);
+	    } catch (Exception e1) {
+	        logger.error(e1);
+	    }
+	}
+
+	private void extraerDatosAHastebin() {
+	    for (JsonNode creadorNode : jsonR.getCreadoresNode()) {
+	        if (creadorNode.get("id").asInt() == creadorSeleccionado.getId()) {
+	            this.view.lblInfoHaste.setVisible(true);
+	            this.view.lblInfoHaste.setText(hasteServer.uploadTextToHastebin(creadorNode, null));
+	        }
+	    }
+	}
+
+	private void exportarDatosConsola() {
+	    String outputLog = this.view.textAreaLogger.getText();
+	    this.logger.success(hasteServer.uploadTextToHastebin(null, outputLog));
+	}
+
+	private void manejarSeleccionColaboracion() {
+	    JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
+	    obtenerDatosColaboracion(colaboracion);
+	}
+
+	private void manejarSeleccionPlataforma() {
+	    JsonNode plataformas = creadorSeleccionado.getPlataformas();
+	    for (JsonNode plataforma : plataformas) {
+	        if (plataforma.get("nombre").asText().equalsIgnoreCase(botonSeleccionado)) {
+	            cargarHistorico(plataforma.get("historico").get(Integer.parseInt(view.comboBox_2.getSelectedItem().toString().substring(0, view.comboBox_2.getSelectedItem().toString().indexOf("."))) - 1));
+	        }
+	    }
+	}
+
+	private void navegarComentarios(int direccion) {
+	    int minComentarios = Integer.parseInt(this.view.lblMinComentarios.getText());
+	    int maxComentarios = Integer.parseInt(this.view.lblMaxComentarios.getText());
+
+	    if (minComentarios + direccion >= 1 && minComentarios + direccion <= maxComentarios) {
+	        this.view.lblMinComentarios.setText(String.valueOf(minComentarios + direccion));
+	        cargarComentario(minComentarios + direccion);
+	    }
+	}
+
+	private void modificarPublicacion() {
+	    if (this.view.listPublicaciones.getSelectedValue() != null) {
+	        List<Metrica> listaPublicaciones = csvR.obtenerPorId(creadorSeleccionado.getId());
+
+	        for (Metrica publicacion : listaPublicaciones) {
+	            int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
+	            if (publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
+	                publicacion.setVistas(Integer.parseInt(this.view.textVistas.getText()));
+	                publicacion.setMeGusta(Integer.parseInt(this.view.textLikes.getText()));
+	                publicacion.setComentarios(Integer.parseInt(this.view.textComentarios.getText()));
+	                publicacion.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
+	                this.view.lblMinComentarios.setText(String.valueOf(0));
+	                this.view.lblMaxComentarios.setText(String.valueOf(publicacion.getComentarios()));
+	                cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1);
+	            }
+	        }
+	    }
+	}
+
+	private void eliminarPublicacion() {
+	    if (!this.view.textFiltro.getText().equalsIgnoreCase("")) {
+	        List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
+	        Iterator<Metrica> iterator = listaPublicaciones.iterator();
+	        while (iterator.hasNext()) {
+	            Metrica publicacion = iterator.next();
+	            if (publicacion.getIdCreador() == creadorSeleccionado.getId()) {
+	                switch (this.view.comboBox_Filtros.getSelectedItem().toString()) {
+	                    case "Vistas":
+	                        if (publicacion.getVistas() < Integer.parseInt(this.view.textFiltro.getText())) {
+	                            iterator.remove();
+	                            logger.success(publicacion.getContenido() + " eliminado correctamente.");
+	                        }
+	                        break;
+	                    case "Likes":
+	                        if (publicacion.getMeGusta() < Integer.parseInt(this.view.textFiltro.getText())) {
+	                            iterator.remove();
+	                            logger.success(publicacion.getContenido() + " eliminado correctamente.");
+	                        }
+	                        break;
+	                    case "Comentarios":
+	                        if (publicacion.getComentarios() < Integer.parseInt(this.view.textFiltro.getText())) {
+	                            iterator.remove();
+	                            logger.success(publicacion.getContenido() + " eliminado correctamente.");
+	                        }
+	                        break;
+	                    case "Compartidos":
+	                        if (publicacion.getCompartidos() < Integer.parseInt(this.view.textFiltro.getText())) {
+	                            iterator.remove();
+	                            logger.success(publicacion.getContenido() + " eliminado correctamente.");
+	                        }
+	                        break;
+	                }
+	            }
+	        }
+	        csvR.setArchivoCsv(listaPublicaciones);
+	        obtenerPublicaciones(creadorSeleccionado.getId());
+	    } else {
+	        if (this.view.listPublicaciones.getSelectedValue() != null) {
+	            List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
+	            Iterator<Metrica> iterator = listaPublicaciones.iterator();
+	            while (iterator.hasNext()) {
+	                Metrica publicacion = iterator.next();
+	                int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
+	                if (publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
+	                    iterator.remove();
+	                    logger.success(publicacion.getContenido() + " eliminado correctamente.");
+	                }
+	            }
+	        }
+	    }
+	}
+
+	private void establecerFecha(JTextField textField) {
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    String selectedDate = sdf.format(this.view.calendar.getDate());
+	    textField.setText(selectedDate);
+	    this.view.calendar.setVisible(false);
+	    this.view.btnConfFchIni.setVisible(false);
+	}
+
+	private void mostrarCalendarioFechaInicio() {
+	    this.view.btnConfFchFin.setVisible(false);
+	    this.view.btnConfFchIni.setVisible(true);
+	    this.view.calendar.setVisible(true);
+	}
+
+	private void mostrarCalendarioFechaFin() {
+	    this.view.btnConfFchIni.setVisible(false);
+	    this.view.btnConfFchFin.setVisible(true);
+	    this.view.calendar.setVisible(true);
+	}
+	
+	private void añadirColaboracion() {
+	    int creador = obtenerCreadorSeleccionado();
+	    String colaborador = obtenerColaboradorSeleccionado();
+	    String tipo = this.view.comboBoxColTipo.getSelectedItem().toString();
+	    String tematica = this.view.comboBoxColTem.getSelectedItem().toString();
+	    String fechaInicio = this.view.textFieldFechIniColNew.getText();
+	    String fechaFin = this.view.textFieldFechFinColNew.getText();
+	    boolean activa = this.view.chckbxColActivaColNew.isSelected();
+	    String estado = activa ? "Activa" : "Finalizada";
+
+	    if (creador != -1 && !colaborador.equals("elige un colaborador") && !fechaInicio.isEmpty() && !fechaFin.isEmpty()) {
+	        if (esFechaValida(fechaInicio, fechaFin)) {
+	            ObjectNode colaboracion = crearColaboracion(colaborador, tipo, tematica, fechaInicio, fechaFin, estado);
+	            agregarColaboracionACreador(creador, colaboracion);
+	            this.view.textAreaNewCol.setText("Colaboración añadida correctamente");
+	        } else {
+	            this.view.textAreaNewCol.setText("La fecha de inicio debe ser menor que la fecha de fin");
+	        }
+	    } else {
+	        this.view.textAreaNewCol.setText("Debe rellenar todos los campos");
+	    }
+	}
+
+	private int obtenerCreadorSeleccionado() {
+	    if (view.comboBox.getSelectedItem().toString().contains(".")) {
+	        return Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
+	    }
+	    return -1;
+	}
+
+	private String obtenerColaboradorSeleccionado() {
+	    String colaborador = this.view.comboBoxColNew.getSelectedItem().toString();
+	    return colaborador.substring(colaborador.indexOf(".") + 2);
+	}
+
+	private boolean esFechaValida(String fechaInicio, String fechaFin) {
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    try {
+	        Date inicio = sdf.parse(fechaInicio);
+	        Date fin = sdf.parse(fechaFin);
+	        return !fin.before(inicio);
+	    } catch (ParseException e) {
+	        logger.error(e);
+	        return false;
+	    }
+	}
+
+	private ObjectNode crearColaboracion(String colaborador, String tipo, String tematica, String fechaInicio, String fechaFin, String estado) {
+	    ObjectNode colaboracion = om.createObjectNode();
+	    colaboracion.put("colaborador", colaborador);
+	    colaboracion.put("tematica", tematica);
+	    colaboracion.put("fecha_inicio", fechaInicio);
+	    colaboracion.put("fecha_fin", fechaFin);
+	    colaboracion.put("tipo", tipo);
+	    colaboracion.put("estado", estado);
+	    return colaboracion;
+	}
+
+	private void agregarColaboracionACreador(int creador, ObjectNode colaboracion) {
+	    JsonNode creadores = jsonR.getCreadoresNode();
+	    ArrayNode colaboraciones = (ArrayNode) creadores.get(creador).get("colaboraciones");
+	    colaboraciones.add(colaboracion);
+	    try {
+	        jsonR.actualizarCreadores();
+	        logger.success("Colaboración añadida correctamente");
+	    } catch (Exception e) {
+	        logger.error(e);
+	    }
+	}
+
+	private void generarReporteCreadores() {
+	    List<Creador> creadores = jsonR.getListaCreadores();
+	    ObjectNode rootNode = om.createObjectNode();
+	    ArrayNode creadoresArray = om.createArrayNode();
+
+	    for (Creador creador : creadores) {
+	        int seguidores = creador.getSegidoresTotales();
+	        JsonNode plataformas = creador.getPlataformas();
+
+	        String plataforma = "";
+	        double mediaAlta = 0;
+
+	        for (JsonNode plataformaNode : plataformas) {
+	            double acumulador = 0;
+	            int contador = 0;
+
+	            ArrayNode historicos = (ArrayNode) plataformaNode.get("historico");
+	            for (JsonNode historico : historicos) {
+	                acumulador += historico.get("interacciones").asInt();
+	                contador++;
+	            }
+
+	            double mediaInteracciones = acumulador / contador;
+	            if (mediaInteracciones > mediaAlta) {
+	                mediaAlta = mediaInteracciones;
+	                plataforma = plataformaNode.get("nombre").asText();
+	            }
+	        }
+
+	        ObjectNode creadorNode = om.createObjectNode();
+	        creadorNode.put("id", creador.getId());
+	        creadorNode.put("nombre", creador.getNombre());
+	        creadorNode.put("total_seguidores", seguidores);
+	        creadorNode.put("plataforma_interacciones", plataforma);
+	        creadorNode.put("promedio_interacciones", mediaAlta);
+
+	        creadoresArray.add(creadorNode);
+	    }
+
+	    rootNode.set("creadores", creadoresArray);
+	    jsonR.crearJson("resources/reporte_creadores.json", rootNode);
+	}
+
+	private void generarReporteColaboraciones() {
+	    List<Creador> creadores = jsonR.getListaCreadores();
+	    ObjectNode rootNode = om.createObjectNode();
+	    ArrayNode creadoresArray = om.createArrayNode();
+
+	    for (Creador creador : creadores) {
+	        JsonNode colaboraciones = creador.getColaboraciones();
+	        for (JsonNode colaboracion : colaboraciones) {
+	            ObjectNode creadorNode = om.createObjectNode();
+	            creadorNode.put("id", creador.getId());
+	            creadorNode.put("creador", creador.getNombre());
+	            creadorNode.put("colaborador", colaboracion.get("colaborador").asText());
+	            creadorNode.put("tematica", colaboracion.get("tematica").asText());
+	            creadorNode.put("fecha_inicio", colaboracion.get("fecha_inicio").asText());
+	            creadorNode.put("fecha_fin", colaboracion.get("fecha_fin").asText());
+	            creadorNode.put("tipo", colaboracion.get("tipo").asText());
+	            creadorNode.put("estado", colaboracion.get("estado").asText());
+
+	            creadoresArray.add(creadorNode);
+	        }
+	    }
+
+	    rootNode.set("colaboraciones", creadoresArray);
+	    jsonR.crearJson("resources/colaboraciones.json", rootNode);
+	}
+
+	private void exportarColaboracionesCSV() {
+	    JsonNode creadores = jsonR.getCreadoresNode();
+	    List<ReporteColabs> reporteColabs = new ArrayList<>();
+
+	    for (JsonNode creador : creadores) {
+	        ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
+	        for (JsonNode colaboracion : colaboraciones) {
+	            ReporteColabs nReporte = new ReporteColabs();
+	            nReporte.setIdCreador(creador.get("id").asInt());
+	            nReporte.setNombre(creador.get("nombre").asText());
+	            nReporte.setColaborador(colaboracion.get("colaborador").asText());
+	            nReporte.setFecha(colaboracion.get("fecha_inicio").asText());
+	            reporteColabs.add(nReporte);
+	        }
+	    }
+
+	    csvR.generarCsvRepCol("resources/colaboraciones.csv", reporteColabs);
+	}
+
+	private void agregarNuevaPublicacion() {
+	    List<Metrica> listaContenidos = csvR.abrirCSV();
+	    int contenidoMayor = obtenerContenidoMayorId(listaContenidos);
+	    Metrica metrica = crearMetrica(contenidoMayor);
+	    listaContenidos.add(metrica);
+	    csvR.setArchivoCsv(listaContenidos);
+	    logger.success(metrica.getContenido() + " agregado correctamente.");
+	    obtenerPublicaciones(creadorSeleccionado.getId());
+	}
+
+	private int obtenerContenidoMayorId(List<Metrica> listaContenidos) {
+	    int contenidoMayor = 0;
+	    for (Metrica metrica : listaContenidos) {
+	        int metricaId = Integer.parseInt(metrica.getContenido().substring(metrica.getContenido().lastIndexOf(" ") + 1));
+	        if (contenidoMayor < metricaId) {
+	            contenidoMayor = metricaId;
+	        }
+	    }
+	    return contenidoMayor;
+	}
+
+	private Metrica crearMetrica(int contenidoMayor) {
+	    Metrica metrica = new Metrica();
+	    metrica.setFecha(LocalDate.now().toString());
+	    metrica.setIdCreador(creadorSeleccionado.getId());
+	    metrica.setContenido("Contenido " + (contenidoMayor + 1));
+
+	    metrica.setVistas(parseIntFromTextField(this.view.textVistas));
+	    metrica.setMeGusta(parseIntFromTextField(this.view.textLikes));
+	    metrica.setComentarios(parseIntFromTextField(this.view.textComentarios));
+	    metrica.setCompartidos(parseIntFromTextField(this.view.textCompartidos));
+	    metrica.setPlataforma(this.view.comboBoxContenido.getSelectedItem().toString());
+
+	    return metrica;
+	}
+
+	private int parseIntFromTextField(JTextField textField) {
+	    return textField.getText().equalsIgnoreCase("") ? 0 : Integer.parseInt(textField.getText());
+	}
+
+	private void generarResumenRendimientoJSON() {
+	    // Obtener las métricas de todas las publicaciones
+	    List<Metrica> metricas = csvR.abrirCSV();
+	    ObjectNode rootNode = om.createObjectNode(); // Nodo raíz del JSON
+
+	    // Variables para acumular vistas e interacciones por plataforma
+	    int vTwitch = 0, vInsta = 0, vTiktok = 0, vYoutube = 0;
+	    int sTwitch = 0, sInsta = 0, sTiktok = 0, sYoutube = 0;
+
+	    // Acumular las métricas de vistas e interacciones por plataforma
+	    for (Metrica metrica : metricas) {
+	        String plataforma = metrica.getPlataforma();
+
+	        switch (plataforma) {
+	            case "Instagram":
+	                vInsta += metrica.getVistas();
+	                sInsta += metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
+	                break;
+	            case "TikTok":
+	                vTiktok += metrica.getVistas();
+	                sTiktok += metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
+	                break;
+	            case "YouTube":
+	                vYoutube += metrica.getVistas();
+	                sYoutube += metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
+	                break;
+	            case "Twitch":
+	                vTwitch += metrica.getVistas();
+	                sTwitch += metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
+	                break;
+	        }
+	    }
+
+	    // Calcular las interacciones promedio para cada plataforma
+	    sTwitch /= 3;
+	    sInsta /= 3;
+	    sTiktok /= 3;
+	    sYoutube /= 3;
+
+	    // Determinar cuál plataforma tiene más vistas
+	    String plataformaMasVistas = obtenerPlataformaConMasVistas(vInsta, vTiktok, vYoutube, vTwitch);
+
+	    // Determinar cuál plataforma tiene más interacciones promedio
+	    String plataformaMasInteracciones = obtenerPlataformaConMasInteracciones(sInsta, sTiktok, sYoutube, sTwitch);
+
+	    // Asignar los valores calculados al objeto JSON
+	    rootNode.put("plataforma_mas_vistas", plataformaMasVistas);
+	    rootNode.put("plataforma_mas_interacciones_promedio", plataformaMasInteracciones);
+
+	    // Guardar el archivo JSON
+	    try {
+	        jsonR.crearJson("resources/resumen_rendimiento.json", rootNode);
+	        logger.success("Resumen de rendimiento generado correctamente.");
+	    } catch (Exception e) {
+	        logger.error(e);
+	    }
+	}
+
+	private String obtenerPlataformaConMasVistas(int vInsta, int vTiktok, int vYoutube, int vTwitch) {
+	    if (vInsta > vTiktok && vInsta > vTwitch && vInsta > vYoutube) {
+	        return "Instagram";
+	    } else if (vTiktok > vInsta && vTiktok > vTwitch && vTiktok > vYoutube) {
+	        return "TikTok";
+	    } else if (vYoutube > vInsta && vYoutube > vTwitch && vYoutube > vTiktok) {
+	        return "YouTube";
+	    } else if (vTwitch > vInsta && vTwitch > vTiktok && vTwitch > vYoutube) {
+	        return "Twitch";
+	    } else {
+	        return "Hay empate";
+	    }
+	}
+
+	private String obtenerPlataformaConMasInteracciones(int sInsta, int sTiktok, int sYoutube, int sTwitch) {
+	    if (sInsta > sTiktok && sInsta > sTwitch && sInsta > sYoutube) {
+	        return "Instagram";
+	    } else if (sTiktok > sInsta && sTiktok > sTwitch && sTiktok > sYoutube) {
+	        return "TikTok";
+	    } else if (sYoutube > sInsta && sYoutube > sTwitch && sYoutube > sTiktok) {
+	        return "YouTube";
+	    } else if (sTwitch > sInsta && sTwitch > sTiktok && sTwitch > sYoutube) {
+	        return "Twitch";
+	    } else {
+	        return "Hay empate";
+	    }
+	}
+
+	
+	private void generarReporteColaboracionesCSV() {
+	    // Obtener los creadores desde el JSON
+	    JsonNode creadores = jsonR.getCreadoresNode();
+	    List<ReporteColabs> reporteColabs = new ArrayList<>();
+
+	    // Iterar sobre los creadores para obtener las colaboraciones
+	    for (JsonNode creador : creadores) {
+	        // Obtener las colaboraciones de cada creador
+	        ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
+
+	        // Iterar sobre cada colaboración del creador
+	        for (JsonNode colaboracion : colaboraciones) {
+	            // Crear un nuevo objeto ReporteColabs para cada colaboración
+	            ReporteColabs nReporte = new ReporteColabs();
+	            nReporte.setIdCreador(creador.get("id").asInt());
+	            nReporte.setNombre(creador.get("nombre").asText());
+	            nReporte.setColaborador(colaboracion.get("colaborador").asText());
+	            nReporte.setFecha(colaboracion.get("fecha_inicio").asText());
+
+	            // Añadir la colaboración al reporte
+	            reporteColabs.add(nReporte);
+	        }
+	    }
+
+	    // Generar el CSV con las colaboraciones
+	    try {
+	        csvR.generarCsvRepCol("resources/reporte_colaboraciones.csv", reporteColabs);
+	        logger.success("Reporte de colaboraciones generado correctamente.");
+	    } catch (Exception e) {
+	        logger.error(e);
+	    }
+	}
+
+
 
 
 	@Override
