@@ -930,7 +930,7 @@ public class MainView extends JFrame {
 
 		ImageIcon calendarIcon = new ImageIcon("resources/img/calendar.png");
 		btnFechaIni = new JButton(calendarIcon);
-		btnFechaIni.setBounds(355, 176, 33, 21);
+		btnFechaIni.setBounds(355, 176, 20, 20);
 		btnFechaIni.setIcon(new ImageIcon(calendarIcon.getImage().getScaledInstance(btnFechaIni.getWidth(), btnFechaIni.getHeight(), Image.SCALE_SMOOTH)));
 		panel_NewCol.add(btnFechaIni);
 
@@ -941,7 +941,7 @@ public class MainView extends JFrame {
 		panel_NewCol.add(btnConfFchIni);
 
 		btnFechaFin = new JButton(calendarIcon);
-		btnFechaFin.setBounds(355, 208, 33, 21);
+		btnFechaFin.setBounds(355, 208, 20, 20);
 		btnFechaFin.setIcon(new ImageIcon(calendarIcon.getImage().getScaledInstance(btnFechaFin.getWidth(), btnFechaFin.getHeight(), Image.SCALE_SMOOTH)));
 		panel_NewCol.add(btnFechaFin);
 

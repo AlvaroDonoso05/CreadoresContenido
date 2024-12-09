@@ -42,6 +42,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import Models.Creador;
+import Models.CreadorMetrica;
 import Models.Metrica;
 import Models.ReporteColabs;
 import Views.MainView;
@@ -517,7 +518,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			actualizarValores();
       
 		}else if(e.getSource() == this.view.generarResRendJSON) {
-			//Ej 10
+			generarResumenRendimientoJSON();
 			
 		}else if (e.getSource() == this.view.generarRepColCSV) {
 			//Ej 8
@@ -920,51 +921,66 @@ public class Controller implements ActionListener, ListSelectionListener {
 	private void generarResumenRendimientoJSON() {
 	    // Obtener las métricas de todas las publicaciones
 	    List<Metrica> metricas = csvR.abrirCSV();
-	    ObjectNode rootNode = om.createObjectNode(); // Nodo raíz del JSON
-
-	    // Variables para acumular vistas e interacciones por plataforma
-	    int vTwitch = 0, vInsta = 0, vTiktok = 0, vYoutube = 0;
-	    int sTwitch = 0, sInsta = 0, sTiktok = 0, sYoutube = 0;
-
-	    // Acumular las métricas de vistas e interacciones por plataforma
-	    for (Metrica metrica : metricas) {
-	        String plataforma = metrica.getPlataforma();
-
-	        switch (plataforma) {
-	            case "Instagram":
-	                vInsta += metrica.getVistas();
-	                sInsta += metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
-	                break;
-	            case "TikTok":
-	                vTiktok += metrica.getVistas();
-	                sTiktok += metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
-	                break;
-	            case "YouTube":
-	                vYoutube += metrica.getVistas();
-	                sYoutube += metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
-	                break;
-	            case "Twitch":
-	                vTwitch += metrica.getVistas();
-	                sTwitch += metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
-	                break;
-	        }
+	    ArrayNode rootNode = om.createArrayNode(); // Nodo raíz del JSON
+	    List<CreadorMetrica> lCreadoresMetricas = new ArrayList<CreadorMetrica>();
+	    List<Integer> ids = new ArrayList<Integer>();
+	    
+	    for(Metrica metrica : metricas) {
+	    	if(!ids.contains(metrica.getIdCreador())) {
+	    		ids.add(metrica.getIdCreador());
+	    		lCreadoresMetricas.add(new CreadorMetrica(metrica.getIdCreador()));
+	    	}
 	    }
+	    for(int i = 0; i<lCreadoresMetricas.size();i++) {
+	    	String plataformaMasInteracciones = "", plataformaMasVistas = "";
+	    	int vTwitch = 0, vInsta = 0, vTiktok = 0, vYoutube = 0;
+		    int sTwitch = 0, sInsta = 0, sTiktok = 0, sYoutube = 0;
+	    	for(int j = 0; j<metricas.size(); j++) {
+	    	    if(metricas.get(j).getIdCreador() == lCreadoresMetricas.get(i).getId()) {
+	    	    	
+	    		    String plataforma = metricas.get(j).getPlataforma();
 
-	    // Calcular las interacciones promedio para cada plataforma
-	    sTwitch /= 3;
-	    sInsta /= 3;
-	    sTiktok /= 3;
-	    sYoutube /= 3;
+	    	        switch (plataforma) {
+	    	            case "Instagram":
+	    	                vInsta += metricas.get(j).getVistas();
+	    	                sInsta += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
+	    	                break;
+	    	            case "TikTok":
+	    	                vTiktok += metricas.get(j).getVistas();
+	    	                sTiktok += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
+	    	                break;
+	    	            case "YouTube":
+	    	                vYoutube += metricas.get(j).getVistas();
+	    	                sYoutube += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
+	    	                break;
+	    	            case "Twitch":
+	    	                vTwitch += metricas.get(j).getVistas();
+	    	                sTwitch += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
+	    	                break;
+	    	        }
+	    		    
+	    	    	
+	    	    }
+		    }//fin bucle j
+	    	
+	    	sTwitch /= 3;
+ 		    sInsta /= 3;
+ 		    sTiktok /= 3;
+ 		    sYoutube /= 3;
+ 		    // Determinar cuál plataforma tiene más vistas
+ 		    plataformaMasVistas = obtenerPlataformaConMasVistas(vInsta, vTiktok, vYoutube, vTwitch);
 
-	    // Determinar cuál plataforma tiene más vistas
-	    String plataformaMasVistas = obtenerPlataformaConMasVistas(vInsta, vTiktok, vYoutube, vTwitch);
+ 		    // Determinar cuál plataforma tiene más interacciones promedio
+ 		   plataformaMasInteracciones = obtenerPlataformaConMasInteracciones(sInsta, sTiktok, sYoutube, sTwitch);
+ 		   
+	    	ObjectNode creadorNode = om.createObjectNode();
+		    creadorNode.put("id", lCreadoresMetricas.get(i).getId());
+		    creadorNode.put("plataformaMasVistas", plataformaMasVistas);
+		    creadorNode.put("plataformaMasInteracciones", plataformaMasInteracciones);
+		    rootNode.add(creadorNode);
+	    }//fin bucle i
+	    
 
-	    // Determinar cuál plataforma tiene más interacciones promedio
-	    String plataformaMasInteracciones = obtenerPlataformaConMasInteracciones(sInsta, sTiktok, sYoutube, sTwitch);
-
-	    // Asignar los valores calculados al objeto JSON
-	    rootNode.put("plataforma_mas_vistas", plataformaMasVistas);
-	    rootNode.put("plataforma_mas_interacciones_promedio", plataformaMasInteracciones);
 
 	    // Guardar el archivo JSON
 	    try {
