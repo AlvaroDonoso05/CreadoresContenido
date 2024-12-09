@@ -71,7 +71,7 @@ public class MainView extends JFrame {
 	public JMenuItem savetem;
 
 	public JMenu helpMenu;
-	public JMenuItem generarRepColCSV;
+	public JMenuItem exportarColCSV;
 	public JMenu fileMenu;
 	public JLabel lblNewLabel_1;
 	private JPanel mainPanel;
@@ -164,6 +164,7 @@ public class MainView extends JFrame {
 	public JTextField textTasaCrecimientoRang;
 	private JLabel lblTasaCrecimientoenerofebrero;
 	public JMenuItem generarResRendJSON;
+	public JMenuItem generarRepColCSV;
 
 	public MainView() {
 		setBackground(new Color(255, 204, 204));
@@ -196,14 +197,18 @@ public class MainView extends JFrame {
 		// Create JMenuItems
 		reporteCreadoresItem = new JMenuItem("Generar Reporte Creadores JSON");
 		reporteColaboracionesItem = new JMenuItem("Generar Reporte Colaboraciones JSON");
-		generarRepColCSV = new JMenuItem("Generar Reporte Colaboraciones CSV");
+		exportarColCSV = new JMenuItem("Exportar Colaboraciones CSV");
 		generarResRendJSON = new JMenuItem("Generar Resumen Rendimiento JSON");
+		generarRepColCSV = new JMenuItem("Generar Reporte Colaboraciones CSV");
+		
+		
 		exitItem = new JMenuItem("Exit");
 
 		fileMenu.add(reporteCreadoresItem);
 		fileMenu.add(reporteColaboracionesItem);
-		fileMenu.add(generarRepColCSV);
+		fileMenu.add(exportarColCSV);
 		fileMenu.add(generarResRendJSON);
+		fileMenu.add(generarRepColCSV);
 		fileMenu.addSeparator();
 		fileMenu.add(exitItem);
 

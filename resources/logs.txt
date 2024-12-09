@@ -123,3 +123,56 @@
 09-12-2024 09:55:33 [LOGGER] Creador de contenido seleccionado 1
 09-12-2024 09:57:32 [LOGGER] Creador de contenido seleccionado 1
 09-12-2024 10:02:04 [SUCCESS] Reporte JSON generado correctamente
+09-12-2024 10:10:35 [SUCCESS] Reporte JSON generado correctamente
+09-12-2024 10:30:11 [LOGGER] Creador de contenido seleccionado 4
+09-12-2024 10:31:48 [LOGGER] Creador de contenido seleccionado 8
+09-12-2024 10:35:43 [LOGGER] Creador de contenido seleccionado 6
+09-12-2024 10:35:48 [LOGGER] Creador de contenido seleccionado 6
+09-12-2024 10:35:50 [LOGGER] Creador de contenido seleccionado 11
+09-12-2024 10:35:51 [LOGGER] Creador de contenido seleccionado 8
+09-12-2024 10:36:07 [LOGGER] Creador de contenido seleccionado 9
+09-12-2024 10:37:35 [LOGGER] Creador de contenido seleccionado 12
+09-12-2024 10:38:18 [LOGGER] Creador de contenido seleccionado 3
+09-12-2024 10:56:43 [LOGGER] Creador de contenido seleccionado 3
+09-12-2024 10:57:03 [LOGGER] Creador de contenido seleccionado 4
+09-12-2024 10:57:04 [LOGGER] Creador de contenido seleccionado 4
+09-12-2024 10:57:05 [LOGGER] Creador de contenido seleccionado 8
+09-12-2024 10:57:07 [LOGGER] Creador de contenido seleccionado 2
+09-12-2024 10:57:22 [LOGGER] Creador de contenido seleccionado 2
+09-12-2024 10:58:33 [LOGGER] Creador de contenido seleccionado 2
+09-12-2024 10:58:41 [LOGGER] Creador de contenido seleccionado 4
+09-12-2024 10:58:42 [LOGGER] Creador de contenido seleccionado 7
+09-12-2024 10:59:01 [LOGGER] Creador de contenido seleccionado 6
+09-12-2024 10:59:04 [LOGGER] Creador de contenido seleccionado 7
+09-12-2024 10:59:15 [LOGGER] Creador de contenido seleccionado 7
+09-12-2024 11:00:48 [LOGGER] Creador de contenido seleccionado 4
+09-12-2024 11:00:50 [LOGGER] Creador de contenido seleccionado 6
+09-12-2024 11:00:51 [LOGGER] Creador de contenido seleccionado 2
+09-12-2024 11:01:37 [LOGGER] Creador de contenido seleccionado 3
+09-12-2024 11:01:39 [LOGGER] Creador de contenido seleccionado 1
+09-12-2024 11:02:04 [LOGGER] Creador de contenido seleccionado 2
+09-12-2024 11:02:07 [LOGGER] Creador de contenido seleccionado 3
+09-12-2024 11:02:13 [LOGGER] Creador de contenido seleccionado 4
+09-12-2024 11:03:08 [LOGGER] Creador de contenido seleccionado 4
+09-12-2024 11:03:17 [LOGGER] Creador de contenido seleccionado 8
+09-12-2024 11:03:18 [LOGGER] Creador de contenido seleccionado 9
+09-12-2024 11:56:36 [LOGGER] Creador de contenido seleccionado 3
+09-12-2024 12:01:42 [LOGGER] Creador de contenido seleccionado 4
+09-12-2024 12:01:44 [LOGGER] Creador de contenido seleccionado 1
+09-12-2024 12:01:45 [LOGGER] Creador de contenido seleccionado 4
+09-12-2024 12:01:48 [SUCCESS] Reporte CSV generado correctamente.
+09-12-2024 12:06:07 [LOGGER] Creador de contenido seleccionado 6
+09-12-2024 12:06:11 [LOGGER] Creador de contenido seleccionado 7
+09-12-2024 12:06:14 [LOGGER] Creador de contenido seleccionado 10
+09-12-2024 12:06:51 [SUCCESS] Reporte JSON generado correctamente
+09-12-2024 12:21:15 [SUCCESS] Link generado correctamente: https://pastebin.donoso.mooo.com/ezupizoyac
+09-12-2024 12:21:15 [SUCCESS] https://pastebin.donoso.mooo.com/ezupizoyac
+09-12-2024 12:24:27 [LOGGER] Creador de contenido seleccionado 6
+09-12-2024 12:25:26 [SUCCESS] Reporte CSV generado correctamente.
+09-12-2024 12:26:21 [ERROR] java.io.FileNotFoundException: resources\reporte_colaboraciones.csv (El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso)
+09-12-2024 12:26:41 [SUCCESS] Reporte CSV generado correctamente.
+09-12-2024 12:27:00 [SUCCESS] Reporte CSV generado correctamente.
+09-12-2024 12:28:00 [SUCCESS] Reporte CSV generado correctamente.
+09-12-2024 12:28:05 [SUCCESS] Reporte JSON generado correctamente
+09-12-2024 12:30:35 [SUCCESS] Reporte CSV generado correctamente.
+09-12-2024 12:32:18 [SUCCESS] Reporte CSV generado correctamente.
