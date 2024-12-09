@@ -17,6 +17,8 @@ import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -35,6 +37,7 @@ import javax.swing.event.ListSelectionListener;
 
 import Models.Creador;
 import Models.Metrica;
+import Models.ReporteColabs;
 import Views.MainView;
 
 public class Controller implements ActionListener, ListSelectionListener {
@@ -50,6 +53,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 	private Creador creadorSeleccionado;
 	private String botonSeleccionado;
 	private JsonNode listaComentarios;
+	
 
 
 	public Controller(MainView frame) {
@@ -63,6 +67,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.comboBoxColTem.addActionListener(this);
 		this.view.comboBoxColTipo.addActionListener(this);
 		this.view.reporteCreadoresItem.addActionListener(this);
+		this.view.reporteColaboracionesItem.addActionListener(this);
+		this.view.generarRepColCSV.addActionListener(this);
 		this.view.exitItem.addActionListener(this);
 		this.view.listPublicaciones.addListSelectionListener(this);
 		this.view.btnExtraerDatos.addActionListener(this);
@@ -301,12 +307,39 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 			rootNode.set("creadores", creadoresArray);
 			jsonR.crearJson("resources/reporte_creadores.json", rootNode);
+			
+			
+		}else if(e.getSource() == this.view.reporteColaboracionesItem) {
+			List<Creador> creadores = jsonR.getListaCreadores();
+			
+			
+		}else if(e.getSource() == this.view.generarRepColCSV) {
+			//cosas por hacer
+			JsonNode creadores = jsonR.getCreadoresNode();
+			List<ReporteColabs> reporteColabs = new ArrayList<ReporteColabs>();
+			
+			for(JsonNode creador: creadores) {
+				ReporteColabs nReporte = new ReporteColabs();
+				nReporte.setIdCreador(creador.get("id").asInt());
+				nReporte.setNombre(creador.get("nombre").asText());
+				
+				JsonNode estadisticas = creador.get("estadisticas");				
+				nReporte.setInteracciones_totales(estadisticas.get("interaccines_totales").asDouble());
+				nReporte.setPromedio_vistas_mensuales(estadisticas.get("promedio_vistas_mensuales").asDouble());
+				nReporte.setTasa_crecimiento_seguidores(estadisticas.get("tasa_crecimiento_seguidores").asDouble());
+				
+				ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
+				for(JsonNode colaboracion: colaboraciones) {
+					nReporte.setColaborador(colaboracion.get("colaborador").asText());
+					nReporte.setFecha(colaboracion.get("fecha_inicio").asText());					
+				}
+				reporteColabs.add(nReporte);
+			}
+			
 		}
 	}
 
-	public void anadirCreador (JsonNode root) {
-		
-	}
+	
 	
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
