@@ -20,7 +20,7 @@ public class ComentariosController {
 	private JsonNode comentarios;
 	private static URL url;
 	private Logger logger;
-	
+
 	public ComentariosController() {
 		logger = Logger.getInstance();
 		try {
@@ -28,56 +28,56 @@ public class ComentariosController {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		
+
 		this.comentarios = peticionApi();
 	}
-	
+
 	private JsonNode peticionApi() {
 		JsonNode comentarios = null;
-		
+
 
 		try {
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-	        connection.setRequestMethod("GET");
-	        connection.setRequestProperty("Accept", "application/json");
-	        int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-            	
-                // Leer la respuesta
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-                
-                ObjectMapper mapper = new ObjectMapper();
-                comentarios = mapper.readTree(response.toString());
-                
-            } else {
-                logger.warning("Error en la conexión. Código de respuesta: " + responseCode);
-            }
+			connection.setRequestMethod("GET");
+			connection.setRequestProperty("Accept", "application/json");
+			int responseCode = connection.getResponseCode();
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+
+				// Leer la respuesta
+				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+				StringBuilder response = new StringBuilder();
+				String inputLine;
+				while ((inputLine = in.readLine()) != null) {
+					response.append(inputLine);
+				}
+				in.close();
+
+				ObjectMapper mapper = new ObjectMapper();
+				comentarios = mapper.readTree(response.toString());
+
+			} else {
+				logger.warning("Error en la conexión. Código de respuesta: " + responseCode);
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
+
 		return comentarios;
 	}
-	
+
 	public JsonNode obtenerComentarios() {
 		List<JsonNode> jsonComentarios = new ArrayList<>();
-        Iterator<JsonNode> elements = comentarios.elements();
-        while (elements.hasNext()) {
-            jsonComentarios.add(elements.next());
-        }
+		Iterator<JsonNode> elements = comentarios.elements();
+		while (elements.hasNext()) {
+			jsonComentarios.add(elements.next());
+		}
 
-        // Reordenar aleatoriamente las entradas
-        Collections.shuffle(jsonComentarios);
-        
-        JsonNode shuffledArrayNode = objectMapper.valueToTree(jsonComentarios);
-        
-        return shuffledArrayNode;
+		// Reordenar aleatoriamente las entradas
+		Collections.shuffle(jsonComentarios);
+
+		JsonNode shuffledArrayNode = objectMapper.valueToTree(jsonComentarios);
+
+		return shuffledArrayNode;
 	}
 } 

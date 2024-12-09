@@ -73,7 +73,7 @@ public class CsvReader {
 			}
 		}
 	}
-	
+
 	public void generarCsvColaboraciones(String direccionCSV, List<ReporteColabs> reporteColabs) {
 		BufferedWriter bw = null;
 		FileWriter fw = null;
@@ -117,7 +117,7 @@ public class CsvReader {
 			}
 		}
 	}
-	
+
 	public void generarCsvRepCol(String direccionCSV, List<ReporteColabs> reporteColabs) {
 		BufferedWriter bw = null;
 		FileWriter fw = null;
@@ -217,7 +217,7 @@ public class CsvReader {
 		return rootNode;
 
 	}
-	
+
 	public ObjectNode obtenerContenidosPlataformaCont(String plataforma) {
 		ObjectNode rootNode = objectMapper.createObjectNode();
 

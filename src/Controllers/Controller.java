@@ -106,7 +106,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		DefaultComboBoxModel<String> modelTipo = new DefaultComboBoxModel<>();
 		DefaultComboBoxModel<String> modelFiltros = new DefaultComboBoxModel<>();
 		DefaultComboBoxModel<String> modelContenido = new DefaultComboBoxModel<>();
-		
+
 		modelContenido.addElement("TikTok");
 		modelContenido.addElement("Twitch");
 		modelContenido.addElement("YouTube");
@@ -162,7 +162,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			try {
 				URI url = new URI("https://creador.donoso.mooo.com");
 				Desktop.getDesktop().browse(url);
-				
+
 			} catch (Exception e1) {
 				logger.error(e1);
 			}
@@ -213,7 +213,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 					}
 				}
 			}
-			
+
 			actualizarValores();
 
 		} else if(e.getSource() == this.view.btnEliminar) {
@@ -225,30 +225,30 @@ public class Controller implements ActionListener, ListSelectionListener {
 					Metrica publicacion = iterator.next();
 					if(publicacion.getIdCreador() == creadorSeleccionado.getId()) {
 						switch(this.view.comboBox_Filtros.getSelectedItem().toString()) {
-							case "Vistas":
-								if (publicacion.getVistas() < Integer.parseInt(this.view.textFiltro.getText())) {
-									iterator.remove();
-									logger.success(publicacion.getContenido() + " eliminado correctamente.");
-								}
-								break;
-							case "Likes":
-								if (publicacion.getMeGusta() < Integer.parseInt(this.view.textFiltro.getText())) {
-									iterator.remove();
-									logger.success(publicacion.getContenido() + " eliminado correctamente.");
-								}
-								break;
-							case "Comentarios":
-								if (publicacion.getComentarios() < Integer.parseInt(this.view.textFiltro.getText())) {
-									iterator.remove();
-									logger.success(publicacion.getContenido() + " eliminado correctamente.");
-								}
-								break;
-							case "Compartidos":
-								if (publicacion.getCompartidos() < Integer.parseInt(this.view.textFiltro.getText())) {
-									iterator.remove();
-									logger.success(publicacion.getContenido() + " eliminado correctamente.");
-								}
-								break;
+						case "Vistas":
+							if (publicacion.getVistas() < Integer.parseInt(this.view.textFiltro.getText())) {
+								iterator.remove();
+								logger.success(publicacion.getContenido() + " eliminado correctamente.");
+							}
+							break;
+						case "Likes":
+							if (publicacion.getMeGusta() < Integer.parseInt(this.view.textFiltro.getText())) {
+								iterator.remove();
+								logger.success(publicacion.getContenido() + " eliminado correctamente.");
+							}
+							break;
+						case "Comentarios":
+							if (publicacion.getComentarios() < Integer.parseInt(this.view.textFiltro.getText())) {
+								iterator.remove();
+								logger.success(publicacion.getContenido() + " eliminado correctamente.");
+							}
+							break;
+						case "Compartidos":
+							if (publicacion.getCompartidos() < Integer.parseInt(this.view.textFiltro.getText())) {
+								iterator.remove();
+								logger.success(publicacion.getContenido() + " eliminado correctamente.");
+							}
+							break;
 						}
 					}
 				}
@@ -310,7 +310,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			fchIni = this.view.textFieldFechIniColNew.getText();
 			fchFin = this.view.textFieldFechFinColNew.getText();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			
+
 			Date sdfIni = null;
 			Date sdfFin = null;
 			try {
@@ -319,11 +319,11 @@ public class Controller implements ActionListener, ListSelectionListener {
 			} catch (ParseException e1) {
 				logger.error(e1);
 			} 			
-			
+
 			if(!sdfFin.before(sdfIni)) {
 				fechaCorrecta = true;
 			}
-			
+
 			activa = this.view.chckbxColActivaColNew.isSelected();
 			if(activa) {
 				activaString = "Activa";
@@ -367,7 +367,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 				}else {
 					this.view.textAreaNewCol.setText("LA FECHA DE INICIO DEBE SER MENOR A LA FINAL");
 				}
-				
+
 			}
 		}else if(e.getSource() == this.view.reporteCreadoresItem) {
 			List<Creador> creadores = jsonR.getListaCreadores();
@@ -410,8 +410,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 			rootNode.set("creadores", creadoresArray);
 			jsonR.crearJson("resources/reporte_creadores.json", rootNode);
-			
-			
+
+
 		}else if(e.getSource() == this.view.reporteColaboracionesItem) {
 			//Ejercicio 12
 			List<Creador> creadores = jsonR.getListaCreadores();
@@ -438,21 +438,21 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 			rootNode.set("colaboraciones", creadoresArray);
 			jsonR.crearJson("resources/colaboraciones.json", rootNode);
-			
-			
+
+
 		}else if(e.getSource() == this.view.exportarColCSV) {
 			//4
 			JsonNode creadores = jsonR.getCreadoresNode();
 			List<ReporteColabs> reporteColabs = new ArrayList<ReporteColabs>();
-			
+
 			for(JsonNode creador: creadores) {
-				
+
 				ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
 				for(JsonNode colaboracion: colaboraciones) {
 					ReporteColabs nReporte = new ReporteColabs();
 					nReporte.setIdCreador(creador.get("id").asInt());
 					nReporte.setNombre(creador.get("nombre").asText());
-					
+
 					JsonNode estadisticas = creador.get("estadisticas");				
 					nReporte.setInteracciones_totales(estadisticas.get("interacciones_totales").asDouble());
 					nReporte.setPromedio_vistas_mensuales(estadisticas.get("promedio_vistas_mensuales").asDouble());
@@ -461,15 +461,15 @@ public class Controller implements ActionListener, ListSelectionListener {
 					nReporte.setFecha(colaboracion.get("fecha_inicio").asText());
 					reporteColabs.add(nReporte);					
 				}
-				
+
 			}
 			csvR.generarCsvColaboraciones("resources/colaboraciones.csv", reporteColabs);
-			
+
 		} else if(e.getSource() == this.view.btnAgregar) {
-			
+
 			// Obtener el contenido Mayor
 			List<Metrica> listaContenidos = csvR.getArchivoCsv();
-			
+
 			int contenidoMayor = 0;
 			for(Metrica metrica: listaContenidos) {
 				int metricaId = Integer.parseInt(metrica.getContenido().substring(metrica.getContenido().lastIndexOf(" ") + 1));;
@@ -477,38 +477,38 @@ public class Controller implements ActionListener, ListSelectionListener {
 					contenidoMayor = metricaId;
 				}
 			}
-			
+
 			// Creacion del objeto Metrica
 			Metrica metrica = new Metrica();
-			
+
 			metrica.setFecha(LocalDate.now().toString());
 			metrica.setIdCreador(creadorSeleccionado.getId());
 			metrica.setContenido("Contenido " + (contenidoMayor + 1));
-			
+
 			if(this.view.textVistas.getText().equalsIgnoreCase("")) {
 				metrica.setVistas(0);
 			} else {
 				metrica.setVistas(Integer.parseInt(this.view.textVistas.getText()));
 			}
-			
+
 			if(this.view.textLikes.getText().equalsIgnoreCase("")) {
 				metrica.setMeGusta(0);
 			} else {
 				metrica.setMeGusta(Integer.parseInt(this.view.textLikes.getText()));
 			}
-			
+
 			if(this.view.textComentarios.getText().equalsIgnoreCase("")) {
 				metrica.setComentarios(0);
 			} else {
 				metrica.setComentarios(Integer.parseInt(this.view.textComentarios.getText()));
 			}
-			
+
 			if(this.view.textCompartidos.getText().equalsIgnoreCase("")) {
 				metrica.setCompartidos(0);
 			} else {
 				metrica.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
 			}
-			
+
 			metrica.setPlataforma(this.view.comboBoxContenido.getSelectedItem().toString());
 
 			listaContenidos.add(metrica);
@@ -517,19 +517,19 @@ public class Controller implements ActionListener, ListSelectionListener {
 			obtenerPublicaciones(creadorSeleccionado.getId());
 			actualizarValores();
 			contenidoMayor = 0;
-      
+
 		}else if(e.getSource() == this.view.generarResRendJSON) {
 			generarResumenRendimientoJSON();
-			
+
 		}else if (e.getSource() == this.view.generarRepColCSV) {
 			//Ej 8
 			JsonNode creadores = jsonR.getCreadoresNode();
 			List<ReporteColabs> reporteColabs = new ArrayList<ReporteColabs>();
-			
+
 			for(JsonNode creador: creadores) {
-			
-				
-				
+
+
+
 				ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
 				for(JsonNode colaboracion: colaboraciones) {
 					ReporteColabs nReporte = new ReporteColabs();
@@ -539,9 +539,9 @@ public class Controller implements ActionListener, ListSelectionListener {
 					nReporte.setFecha(colaboracion.get("fecha_inicio").asText());	
 					reporteColabs.add(nReporte);
 				}
-				
+
 			}
-			
+
 			csvR.generarCsvRepCol("resources/reporte_colaboraciones.csv", reporteColabs);
 		}
 	}
@@ -561,497 +561,497 @@ public class Controller implements ActionListener, ListSelectionListener {
 	}
 
 	private void manejarSeleccionComboBox() {
-	    view.tabbedPane.setVisible(true);
-	    resetearValores();
-	    DefaultComboBoxModel<String> modelCol = (DefaultComboBoxModel<String>) this.view.comboBoxColNew.getModel();
-	    modelCol.removeAllElements();
-	    generarCreadoresCol(modelCol);
-	    if (view.comboBox.getSelectedItem().toString().indexOf(".") != -1) {
-	        int creadorIndex = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
-	        creadorSeleccionado = jsonR.getCreador(creadorIndex);
-	        obtenerDatosCreador(creadorSeleccionado);
-	        generarBotonesPlataforma(creadorSeleccionado);
-	        obtenerColaboraciones(creadorSeleccionado);
-	        obtenerPublicaciones(creadorSeleccionado.getId());
-	    } else {
-	        view.tabbedPane.setVisible(false);
-	    }
+		view.tabbedPane.setVisible(true);
+		resetearValores();
+		DefaultComboBoxModel<String> modelCol = (DefaultComboBoxModel<String>) this.view.comboBoxColNew.getModel();
+		modelCol.removeAllElements();
+		generarCreadoresCol(modelCol);
+		if (view.comboBox.getSelectedItem().toString().indexOf(".") != -1) {
+			int creadorIndex = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
+			creadorSeleccionado = jsonR.getCreador(creadorIndex);
+			obtenerDatosCreador(creadorSeleccionado);
+			generarBotonesPlataforma(creadorSeleccionado);
+			obtenerColaboraciones(creadorSeleccionado);
+			obtenerPublicaciones(creadorSeleccionado.getId());
+		} else {
+			view.tabbedPane.setVisible(false);
+		}
 	}
 
 	private void salirAplicacion() {
-	    System.exit(0);
+		System.exit(0);
 	}
 
 	private void abrirUrlAyuda() {
-	    try {
-	        URI url = new URI("https://pastebin.donoso.mooo.com/gestioncreadores.md");
-	        Desktop.getDesktop().browse(url);
-	    } catch (Exception e1) {
-	        logger.error(e1);
-	    }
+		try {
+			URI url = new URI("https://pastebin.donoso.mooo.com/gestioncreadores.md");
+			Desktop.getDesktop().browse(url);
+		} catch (Exception e1) {
+			logger.error(e1);
+		}
 	}
 
 	private void extraerDatosAHastebin() {
-	    for (JsonNode creadorNode : jsonR.getCreadoresNode()) {
-	        if (creadorNode.get("id").asInt() == creadorSeleccionado.getId()) {
-	            this.view.lblInfoHaste.setVisible(true);
-	            this.view.lblInfoHaste.setText(hasteServer.uploadTextToHastebin(creadorNode, null));
-	        }
-	    }
+		for (JsonNode creadorNode : jsonR.getCreadoresNode()) {
+			if (creadorNode.get("id").asInt() == creadorSeleccionado.getId()) {
+				this.view.lblInfoHaste.setVisible(true);
+				this.view.lblInfoHaste.setText(hasteServer.uploadTextToHastebin(creadorNode, null));
+			}
+		}
 	}
 
 	private void exportarDatosConsola() {
-	    String outputLog = this.view.textAreaLogger.getText();
-	    this.logger.success(hasteServer.uploadTextToHastebin(null, outputLog));
+		String outputLog = this.view.textAreaLogger.getText();
+		this.logger.success(hasteServer.uploadTextToHastebin(null, outputLog));
 	}
 
 	private void manejarSeleccionColaboracion() {
-	    JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
-	    obtenerDatosColaboracion(colaboracion);
+		JsonNode colaboracion = creadorSeleccionado.getColaboraciones().get(Integer.parseInt(view.comboBox_1.getSelectedItem().toString().substring(0, view.comboBox_1.getSelectedItem().toString().indexOf("."))) - 1);
+		obtenerDatosColaboracion(colaboracion);
 	}
 
 	private void manejarSeleccionPlataforma() {
-	    JsonNode plataformas = creadorSeleccionado.getPlataformas();
-	    for (JsonNode plataforma : plataformas) {
-	        if (plataforma.get("nombre").asText().equalsIgnoreCase(botonSeleccionado)) {
-	            cargarHistorico(plataforma.get("historico").get(Integer.parseInt(view.comboBox_2.getSelectedItem().toString().substring(0, view.comboBox_2.getSelectedItem().toString().indexOf("."))) - 1));
-	        }
-	    }
+		JsonNode plataformas = creadorSeleccionado.getPlataformas();
+		for (JsonNode plataforma : plataformas) {
+			if (plataforma.get("nombre").asText().equalsIgnoreCase(botonSeleccionado)) {
+				cargarHistorico(plataforma.get("historico").get(Integer.parseInt(view.comboBox_2.getSelectedItem().toString().substring(0, view.comboBox_2.getSelectedItem().toString().indexOf("."))) - 1));
+			}
+		}
 	}
 
 	private void navegarComentarios(int direccion) {
-	    int minComentarios = Integer.parseInt(this.view.lblMinComentarios.getText());
-	    int maxComentarios = Integer.parseInt(this.view.lblMaxComentarios.getText());
+		int minComentarios = Integer.parseInt(this.view.lblMinComentarios.getText());
+		int maxComentarios = Integer.parseInt(this.view.lblMaxComentarios.getText());
 
-	    if (minComentarios + direccion >= 1 && minComentarios + direccion <= maxComentarios) {
-	        this.view.lblMinComentarios.setText(String.valueOf(minComentarios + direccion));
-	        cargarComentario(minComentarios + direccion);
-	    }
+		if (minComentarios + direccion >= 1 && minComentarios + direccion <= maxComentarios) {
+			this.view.lblMinComentarios.setText(String.valueOf(minComentarios + direccion));
+			cargarComentario(minComentarios + direccion);
+		}
 	}
 
 	private void modificarPublicacion() {
-	    if (this.view.listPublicaciones.getSelectedValue() != null) {
-	        List<Metrica> listaPublicaciones = csvR.obtenerPorId(creadorSeleccionado.getId());
+		if (this.view.listPublicaciones.getSelectedValue() != null) {
+			List<Metrica> listaPublicaciones = csvR.obtenerPorId(creadorSeleccionado.getId());
 
-	        for (Metrica publicacion : listaPublicaciones) {
-	            int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
-	            if (publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
-	                publicacion.setVistas(Integer.parseInt(this.view.textVistas.getText()));
-	                publicacion.setMeGusta(Integer.parseInt(this.view.textLikes.getText()));
-	                publicacion.setComentarios(Integer.parseInt(this.view.textComentarios.getText()));
-	                publicacion.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
-	                this.view.lblMinComentarios.setText(String.valueOf(0));
-	                this.view.lblMaxComentarios.setText(String.valueOf(publicacion.getComentarios()));
-	                cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1);
-	            }
-	        }
-	    }
+			for (Metrica publicacion : listaPublicaciones) {
+				int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
+				if (publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
+					publicacion.setVistas(Integer.parseInt(this.view.textVistas.getText()));
+					publicacion.setMeGusta(Integer.parseInt(this.view.textLikes.getText()));
+					publicacion.setComentarios(Integer.parseInt(this.view.textComentarios.getText()));
+					publicacion.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
+					this.view.lblMinComentarios.setText(String.valueOf(0));
+					this.view.lblMaxComentarios.setText(String.valueOf(publicacion.getComentarios()));
+					cargarComentario(Integer.parseInt(this.view.lblMinComentarios.getText()) + 1);
+				}
+			}
+		}
 	}
 
 	private void eliminarPublicacion() {
-	    if (!this.view.textFiltro.getText().equalsIgnoreCase("")) {
-	        List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
-	        Iterator<Metrica> iterator = listaPublicaciones.iterator();
-	        while (iterator.hasNext()) {
-	            Metrica publicacion = iterator.next();
-	            if (publicacion.getIdCreador() == creadorSeleccionado.getId()) {
-	                switch (this.view.comboBox_Filtros.getSelectedItem().toString()) {
-	                    case "Vistas":
-	                        if (publicacion.getVistas() < Integer.parseInt(this.view.textFiltro.getText())) {
-	                            iterator.remove();
-	                            logger.success(publicacion.getContenido() + " eliminado correctamente.");
-	                        }
-	                        break;
-	                    case "Likes":
-	                        if (publicacion.getMeGusta() < Integer.parseInt(this.view.textFiltro.getText())) {
-	                            iterator.remove();
-	                            logger.success(publicacion.getContenido() + " eliminado correctamente.");
-	                        }
-	                        break;
-	                    case "Comentarios":
-	                        if (publicacion.getComentarios() < Integer.parseInt(this.view.textFiltro.getText())) {
-	                            iterator.remove();
-	                            logger.success(publicacion.getContenido() + " eliminado correctamente.");
-	                        }
-	                        break;
-	                    case "Compartidos":
-	                        if (publicacion.getCompartidos() < Integer.parseInt(this.view.textFiltro.getText())) {
-	                            iterator.remove();
-	                            logger.success(publicacion.getContenido() + " eliminado correctamente.");
-	                        }
-	                        break;
-	                }
-	            }
-	        }
-	        csvR.setArchivoCsv(listaPublicaciones);
-	        obtenerPublicaciones(creadorSeleccionado.getId());
-	    } else {
-	        if (this.view.listPublicaciones.getSelectedValue() != null) {
-	            List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
-	            Iterator<Metrica> iterator = listaPublicaciones.iterator();
-	            while (iterator.hasNext()) {
-	                Metrica publicacion = iterator.next();
-	                int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
-	                if (publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
-	                    iterator.remove();
-	                    logger.success(publicacion.getContenido() + " eliminado correctamente.");
-	                }
-	            }
-	        }
-	    }
+		if (!this.view.textFiltro.getText().equalsIgnoreCase("")) {
+			List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
+			Iterator<Metrica> iterator = listaPublicaciones.iterator();
+			while (iterator.hasNext()) {
+				Metrica publicacion = iterator.next();
+				if (publicacion.getIdCreador() == creadorSeleccionado.getId()) {
+					switch (this.view.comboBox_Filtros.getSelectedItem().toString()) {
+					case "Vistas":
+						if (publicacion.getVistas() < Integer.parseInt(this.view.textFiltro.getText())) {
+							iterator.remove();
+							logger.success(publicacion.getContenido() + " eliminado correctamente.");
+						}
+						break;
+					case "Likes":
+						if (publicacion.getMeGusta() < Integer.parseInt(this.view.textFiltro.getText())) {
+							iterator.remove();
+							logger.success(publicacion.getContenido() + " eliminado correctamente.");
+						}
+						break;
+					case "Comentarios":
+						if (publicacion.getComentarios() < Integer.parseInt(this.view.textFiltro.getText())) {
+							iterator.remove();
+							logger.success(publicacion.getContenido() + " eliminado correctamente.");
+						}
+						break;
+					case "Compartidos":
+						if (publicacion.getCompartidos() < Integer.parseInt(this.view.textFiltro.getText())) {
+							iterator.remove();
+							logger.success(publicacion.getContenido() + " eliminado correctamente.");
+						}
+						break;
+					}
+				}
+			}
+			csvR.setArchivoCsv(listaPublicaciones);
+			obtenerPublicaciones(creadorSeleccionado.getId());
+		} else {
+			if (this.view.listPublicaciones.getSelectedValue() != null) {
+				List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
+				Iterator<Metrica> iterator = listaPublicaciones.iterator();
+				while (iterator.hasNext()) {
+					Metrica publicacion = iterator.next();
+					int posicion = this.view.listPublicaciones.getSelectedValue().toString().indexOf(" -");
+					if (publicacion.getContenido().equalsIgnoreCase(this.view.listPublicaciones.getSelectedValue().toString().substring(0, posicion))) {
+						iterator.remove();
+						logger.success(publicacion.getContenido() + " eliminado correctamente.");
+					}
+				}
+			}
+		}
 	}
 
 	private void establecerFecha(JTextField textField) {
-	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	    String selectedDate = sdf.format(this.view.calendar.getDate());
-	    textField.setText(selectedDate);
-	    this.view.calendar.setVisible(false);
-	    this.view.btnConfFchIni.setVisible(false);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String selectedDate = sdf.format(this.view.calendar.getDate());
+		textField.setText(selectedDate);
+		this.view.calendar.setVisible(false);
+		this.view.btnConfFchIni.setVisible(false);
 	}
 
 	private void mostrarCalendarioFechaInicio() {
-	    this.view.btnConfFchFin.setVisible(false);
-	    this.view.btnConfFchIni.setVisible(true);
-	    this.view.calendar.setVisible(true);
+		this.view.btnConfFchFin.setVisible(false);
+		this.view.btnConfFchIni.setVisible(true);
+		this.view.calendar.setVisible(true);
 	}
 
 	private void mostrarCalendarioFechaFin() {
-	    this.view.btnConfFchIni.setVisible(false);
-	    this.view.btnConfFchFin.setVisible(true);
-	    this.view.calendar.setVisible(true);
+		this.view.btnConfFchIni.setVisible(false);
+		this.view.btnConfFchFin.setVisible(true);
+		this.view.calendar.setVisible(true);
 	}
-	
-	private void añadirColaboracion() {
-	    int creador = obtenerCreadorSeleccionado();
-	    String colaborador = obtenerColaboradorSeleccionado();
-	    String tipo = this.view.comboBoxColTipo.getSelectedItem().toString();
-	    String tematica = this.view.comboBoxColTem.getSelectedItem().toString();
-	    String fechaInicio = this.view.textFieldFechIniColNew.getText();
-	    String fechaFin = this.view.textFieldFechFinColNew.getText();
-	    boolean activa = this.view.chckbxColActivaColNew.isSelected();
-	    String estado = activa ? "Activa" : "Finalizada";
 
-	    if (creador != -1 && !colaborador.equals("elige un colaborador") && !fechaInicio.isEmpty() && !fechaFin.isEmpty()) {
-	        if (esFechaValida(fechaInicio, fechaFin)) {
-	            ObjectNode colaboracion = crearColaboracion(colaborador, tipo, tematica, fechaInicio, fechaFin, estado);
-	            agregarColaboracionACreador(creador, colaboracion);
-	            this.view.textAreaNewCol.setText("Colaboración añadida correctamente");
-	        } else {
-	            this.view.textAreaNewCol.setText("La fecha de inicio debe ser menor que la fecha de fin");
-	        }
-	    } else {
-	        this.view.textAreaNewCol.setText("Debe rellenar todos los campos");
-	    }
+	private void añadirColaboracion() {
+		int creador = obtenerCreadorSeleccionado();
+		String colaborador = obtenerColaboradorSeleccionado();
+		String tipo = this.view.comboBoxColTipo.getSelectedItem().toString();
+		String tematica = this.view.comboBoxColTem.getSelectedItem().toString();
+		String fechaInicio = this.view.textFieldFechIniColNew.getText();
+		String fechaFin = this.view.textFieldFechFinColNew.getText();
+		boolean activa = this.view.chckbxColActivaColNew.isSelected();
+		String estado = activa ? "Activa" : "Finalizada";
+
+		if (creador != -1 && !colaborador.equals("elige un colaborador") && !fechaInicio.isEmpty() && !fechaFin.isEmpty()) {
+			if (esFechaValida(fechaInicio, fechaFin)) {
+				ObjectNode colaboracion = crearColaboracion(colaborador, tipo, tematica, fechaInicio, fechaFin, estado);
+				agregarColaboracionACreador(creador, colaboracion);
+				this.view.textAreaNewCol.setText("Colaboración añadida correctamente");
+			} else {
+				this.view.textAreaNewCol.setText("La fecha de inicio debe ser menor que la fecha de fin");
+			}
+		} else {
+			this.view.textAreaNewCol.setText("Debe rellenar todos los campos");
+		}
 	}
 
 	private int obtenerCreadorSeleccionado() {
-	    if (view.comboBox.getSelectedItem().toString().contains(".")) {
-	        return Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
-	    }
-	    return -1;
+		if (view.comboBox.getSelectedItem().toString().contains(".")) {
+			return Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
+		}
+		return -1;
 	}
 
 	private String obtenerColaboradorSeleccionado() {
-	    String colaborador = this.view.comboBoxColNew.getSelectedItem().toString();
-	    return colaborador.substring(colaborador.indexOf(".") + 2);
+		String colaborador = this.view.comboBoxColNew.getSelectedItem().toString();
+		return colaborador.substring(colaborador.indexOf(".") + 2);
 	}
 
 	private boolean esFechaValida(String fechaInicio, String fechaFin) {
-	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	    try {
-	        Date inicio = sdf.parse(fechaInicio);
-	        Date fin = sdf.parse(fechaFin);
-	        return !fin.before(inicio);
-	    } catch (ParseException e) {
-	        logger.error(e);
-	        return false;
-	    }
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date inicio = sdf.parse(fechaInicio);
+			Date fin = sdf.parse(fechaFin);
+			return !fin.before(inicio);
+		} catch (ParseException e) {
+			logger.error(e);
+			return false;
+		}
 	}
 
 	private ObjectNode crearColaboracion(String colaborador, String tipo, String tematica, String fechaInicio, String fechaFin, String estado) {
-	    ObjectNode colaboracion = om.createObjectNode();
-	    colaboracion.put("colaborador", colaborador);
-	    colaboracion.put("tematica", tematica);
-	    colaboracion.put("fecha_inicio", fechaInicio);
-	    colaboracion.put("fecha_fin", fechaFin);
-	    colaboracion.put("tipo", tipo);
-	    colaboracion.put("estado", estado);
-	    return colaboracion;
+		ObjectNode colaboracion = om.createObjectNode();
+		colaboracion.put("colaborador", colaborador);
+		colaboracion.put("tematica", tematica);
+		colaboracion.put("fecha_inicio", fechaInicio);
+		colaboracion.put("fecha_fin", fechaFin);
+		colaboracion.put("tipo", tipo);
+		colaboracion.put("estado", estado);
+		return colaboracion;
 	}
 
 	private void agregarColaboracionACreador(int creador, ObjectNode colaboracion) {
-	    JsonNode creadores = jsonR.getCreadoresNode();
-	    ArrayNode colaboraciones = (ArrayNode) creadores.get(creador).get("colaboraciones");
-	    colaboraciones.add(colaboracion);
-	    try {
-	        jsonR.actualizarCreadores();
-	        logger.success("Colaboración añadida correctamente");
-	    } catch (Exception e) {
-	        logger.error(e);
-	    }
+		JsonNode creadores = jsonR.getCreadoresNode();
+		ArrayNode colaboraciones = (ArrayNode) creadores.get(creador).get("colaboraciones");
+		colaboraciones.add(colaboracion);
+		try {
+			jsonR.actualizarCreadores();
+			logger.success("Colaboración añadida correctamente");
+		} catch (Exception e) {
+			logger.error(e);
+		}
 	}
 
 	private void generarReporteCreadores() {
-	    List<Creador> creadores = jsonR.getListaCreadores();
-	    ObjectNode rootNode = om.createObjectNode();
-	    ArrayNode creadoresArray = om.createArrayNode();
+		List<Creador> creadores = jsonR.getListaCreadores();
+		ObjectNode rootNode = om.createObjectNode();
+		ArrayNode creadoresArray = om.createArrayNode();
 
-	    for (Creador creador : creadores) {
-	        int seguidores = creador.getSegidoresTotales();
-	        JsonNode plataformas = creador.getPlataformas();
+		for (Creador creador : creadores) {
+			int seguidores = creador.getSegidoresTotales();
+			JsonNode plataformas = creador.getPlataformas();
 
-	        String plataforma = "";
-	        double mediaAlta = 0;
+			String plataforma = "";
+			double mediaAlta = 0;
 
-	        for (JsonNode plataformaNode : plataformas) {
-	            double acumulador = 0;
-	            int contador = 0;
+			for (JsonNode plataformaNode : plataformas) {
+				double acumulador = 0;
+				int contador = 0;
 
-	            ArrayNode historicos = (ArrayNode) plataformaNode.get("historico");
-	            for (JsonNode historico : historicos) {
-	                acumulador += historico.get("interacciones").asInt();
-	                contador++;
-	            }
+				ArrayNode historicos = (ArrayNode) plataformaNode.get("historico");
+				for (JsonNode historico : historicos) {
+					acumulador += historico.get("interacciones").asInt();
+					contador++;
+				}
 
-	            double mediaInteracciones = acumulador / contador;
-	            if (mediaInteracciones > mediaAlta) {
-	                mediaAlta = mediaInteracciones;
-	                plataforma = plataformaNode.get("nombre").asText();
-	            }
-	        }
+				double mediaInteracciones = acumulador / contador;
+				if (mediaInteracciones > mediaAlta) {
+					mediaAlta = mediaInteracciones;
+					plataforma = plataformaNode.get("nombre").asText();
+				}
+			}
 
-	        ObjectNode creadorNode = om.createObjectNode();
-	        creadorNode.put("id", creador.getId());
-	        creadorNode.put("nombre", creador.getNombre());
-	        creadorNode.put("total_seguidores", seguidores);
-	        creadorNode.put("plataforma_interacciones", plataforma);
-	        creadorNode.put("promedio_interacciones", mediaAlta);
+			ObjectNode creadorNode = om.createObjectNode();
+			creadorNode.put("id", creador.getId());
+			creadorNode.put("nombre", creador.getNombre());
+			creadorNode.put("total_seguidores", seguidores);
+			creadorNode.put("plataforma_interacciones", plataforma);
+			creadorNode.put("promedio_interacciones", mediaAlta);
 
-	        creadoresArray.add(creadorNode);
-	    }
+			creadoresArray.add(creadorNode);
+		}
 
-	    rootNode.set("creadores", creadoresArray);
-	    jsonR.crearJson("resources/reporte_creadores.json", rootNode);
+		rootNode.set("creadores", creadoresArray);
+		jsonR.crearJson("resources/reporte_creadores.json", rootNode);
 	}
 
 	private void generarReporteColaboraciones() {
-	    List<Creador> creadores = jsonR.getListaCreadores();
-	    ObjectNode rootNode = om.createObjectNode();
-	    ArrayNode creadoresArray = om.createArrayNode();
+		List<Creador> creadores = jsonR.getListaCreadores();
+		ObjectNode rootNode = om.createObjectNode();
+		ArrayNode creadoresArray = om.createArrayNode();
 
-	    for (Creador creador : creadores) {
-	        JsonNode colaboraciones = creador.getColaboraciones();
-	        for (JsonNode colaboracion : colaboraciones) {
-	            ObjectNode creadorNode = om.createObjectNode();
-	            creadorNode.put("id", creador.getId());
-	            creadorNode.put("creador", creador.getNombre());
-	            creadorNode.put("colaborador", colaboracion.get("colaborador").asText());
-	            creadorNode.put("tematica", colaboracion.get("tematica").asText());
-	            creadorNode.put("fecha_inicio", colaboracion.get("fecha_inicio").asText());
-	            creadorNode.put("fecha_fin", colaboracion.get("fecha_fin").asText());
-	            creadorNode.put("tipo", colaboracion.get("tipo").asText());
-	            creadorNode.put("estado", colaboracion.get("estado").asText());
+		for (Creador creador : creadores) {
+			JsonNode colaboraciones = creador.getColaboraciones();
+			for (JsonNode colaboracion : colaboraciones) {
+				ObjectNode creadorNode = om.createObjectNode();
+				creadorNode.put("id", creador.getId());
+				creadorNode.put("creador", creador.getNombre());
+				creadorNode.put("colaborador", colaboracion.get("colaborador").asText());
+				creadorNode.put("tematica", colaboracion.get("tematica").asText());
+				creadorNode.put("fecha_inicio", colaboracion.get("fecha_inicio").asText());
+				creadorNode.put("fecha_fin", colaboracion.get("fecha_fin").asText());
+				creadorNode.put("tipo", colaboracion.get("tipo").asText());
+				creadorNode.put("estado", colaboracion.get("estado").asText());
 
-	            creadoresArray.add(creadorNode);
-	        }
-	    }
+				creadoresArray.add(creadorNode);
+			}
+		}
 
-	    rootNode.set("colaboraciones", creadoresArray);
-	    jsonR.crearJson("resources/colaboraciones.json", rootNode);
+		rootNode.set("colaboraciones", creadoresArray);
+		jsonR.crearJson("resources/colaboraciones.json", rootNode);
 	}
 
 	private void exportarColaboracionesCSV() {
-	    JsonNode creadores = jsonR.getCreadoresNode();
-	    List<ReporteColabs> reporteColabs = new ArrayList<>();
+		JsonNode creadores = jsonR.getCreadoresNode();
+		List<ReporteColabs> reporteColabs = new ArrayList<>();
 
-	    for (JsonNode creador : creadores) {
-	        ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
-	        for (JsonNode colaboracion : colaboraciones) {
-	            ReporteColabs nReporte = new ReporteColabs();
-	            nReporte.setIdCreador(creador.get("id").asInt());
-	            nReporte.setNombre(creador.get("nombre").asText());
-	            nReporte.setColaborador(colaboracion.get("colaborador").asText());
-	            nReporte.setFecha(colaboracion.get("fecha_inicio").asText());
-	            reporteColabs.add(nReporte);
-	        }
-	    }
+		for (JsonNode creador : creadores) {
+			ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
+			for (JsonNode colaboracion : colaboraciones) {
+				ReporteColabs nReporte = new ReporteColabs();
+				nReporte.setIdCreador(creador.get("id").asInt());
+				nReporte.setNombre(creador.get("nombre").asText());
+				nReporte.setColaborador(colaboracion.get("colaborador").asText());
+				nReporte.setFecha(colaboracion.get("fecha_inicio").asText());
+				reporteColabs.add(nReporte);
+			}
+		}
 
-	    csvR.generarCsvRepCol("resources/colaboraciones.csv", reporteColabs);
+		csvR.generarCsvRepCol("resources/colaboraciones.csv", reporteColabs);
 	}
 
 	private void agregarNuevaPublicacion() {
-	    List<Metrica> listaContenidos = csvR.getArchivoCsv();
-	    int contenidoMayor = obtenerContenidoMayorId(listaContenidos);
-	    Metrica metrica = crearMetrica(contenidoMayor);
-	    listaContenidos.add(metrica);
-	    csvR.setArchivoCsv(listaContenidos);
-	    logger.success(metrica.getContenido() + " agregado correctamente.");
-	    obtenerPublicaciones(creadorSeleccionado.getId());
+		List<Metrica> listaContenidos = csvR.getArchivoCsv();
+		int contenidoMayor = obtenerContenidoMayorId(listaContenidos);
+		Metrica metrica = crearMetrica(contenidoMayor);
+		listaContenidos.add(metrica);
+		csvR.setArchivoCsv(listaContenidos);
+		logger.success(metrica.getContenido() + " agregado correctamente.");
+		obtenerPublicaciones(creadorSeleccionado.getId());
 	}
 
 	private int obtenerContenidoMayorId(List<Metrica> listaContenidos) {
-	    int contenidoMayor = 0;
-	    for (Metrica metrica : listaContenidos) {
-	        int metricaId = Integer.parseInt(metrica.getContenido().substring(metrica.getContenido().lastIndexOf(" ") + 1));
-	        if (contenidoMayor < metricaId) {
-	            contenidoMayor = metricaId;
-	        }
-	    }
-	    return contenidoMayor;
+		int contenidoMayor = 0;
+		for (Metrica metrica : listaContenidos) {
+			int metricaId = Integer.parseInt(metrica.getContenido().substring(metrica.getContenido().lastIndexOf(" ") + 1));
+			if (contenidoMayor < metricaId) {
+				contenidoMayor = metricaId;
+			}
+		}
+		return contenidoMayor;
 	}
 
 	private Metrica crearMetrica(int contenidoMayor) {
-	    Metrica metrica = new Metrica();
-	    metrica.setFecha(LocalDate.now().toString());
-	    metrica.setIdCreador(creadorSeleccionado.getId());
-	    metrica.setContenido("Contenido " + (contenidoMayor + 1));
+		Metrica metrica = new Metrica();
+		metrica.setFecha(LocalDate.now().toString());
+		metrica.setIdCreador(creadorSeleccionado.getId());
+		metrica.setContenido("Contenido " + (contenidoMayor + 1));
 
-	    metrica.setVistas(parseIntFromTextField(this.view.textVistas));
-	    metrica.setMeGusta(parseIntFromTextField(this.view.textLikes));
-	    metrica.setComentarios(parseIntFromTextField(this.view.textComentarios));
-	    metrica.setCompartidos(parseIntFromTextField(this.view.textCompartidos));
-	    metrica.setPlataforma(this.view.comboBoxContenido.getSelectedItem().toString());
+		metrica.setVistas(parseIntFromTextField(this.view.textVistas));
+		metrica.setMeGusta(parseIntFromTextField(this.view.textLikes));
+		metrica.setComentarios(parseIntFromTextField(this.view.textComentarios));
+		metrica.setCompartidos(parseIntFromTextField(this.view.textCompartidos));
+		metrica.setPlataforma(this.view.comboBoxContenido.getSelectedItem().toString());
 
-	    return metrica;
+		return metrica;
 	}
 
 	private int parseIntFromTextField(JTextField textField) {
-	    return textField.getText().equalsIgnoreCase("") ? 0 : Integer.parseInt(textField.getText());
+		return textField.getText().equalsIgnoreCase("") ? 0 : Integer.parseInt(textField.getText());
 	}
 
 	private void generarResumenRendimientoJSON() {
-	    // Obtener las métricas de todas las publicaciones
-	    List<Metrica> metricas = csvR.abrirCSV();
-	    ArrayNode rootNode = om.createArrayNode(); // Nodo raíz del JSON
-	    List<CreadorMetrica> lCreadoresMetricas = new ArrayList<CreadorMetrica>();
-	    List<Integer> ids = new ArrayList<Integer>();
-	    
-	    for(Metrica metrica : metricas) {
-	    	if(!ids.contains(metrica.getIdCreador())) {
-	    		ids.add(metrica.getIdCreador());
-	    		lCreadoresMetricas.add(new CreadorMetrica(metrica.getIdCreador()));
-	    	}
-	    }
-	    for(int i = 0; i<lCreadoresMetricas.size();i++) {
-	    	String plataformaMasInteracciones = "", plataformaMasVistas = "";
-	    	int vTwitch = 0, vInsta = 0, vTiktok = 0, vYoutube = 0;
-		    int sTwitch = 0, sInsta = 0, sTiktok = 0, sYoutube = 0;
-	    	for(int j = 0; j<metricas.size(); j++) {
-	    	    if(metricas.get(j).getIdCreador() == lCreadoresMetricas.get(i).getId()) {
-	    	    	
-	    		    String plataforma = metricas.get(j).getPlataforma();
+		// Obtener las métricas de todas las publicaciones
+		List<Metrica> metricas = csvR.abrirCSV();
+		ArrayNode rootNode = om.createArrayNode(); // Nodo raíz del JSON
+		List<CreadorMetrica> lCreadoresMetricas = new ArrayList<CreadorMetrica>();
+		List<Integer> ids = new ArrayList<Integer>();
 
-	    	        switch (plataforma) {
-	    	            case "Instagram":
-	    	                vInsta += metricas.get(j).getVistas();
-	    	                sInsta += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
-	    	                break;
-	    	            case "TikTok":
-	    	                vTiktok += metricas.get(j).getVistas();
-	    	                sTiktok += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
-	    	                break;
-	    	            case "YouTube":
-	    	                vYoutube += metricas.get(j).getVistas();
-	    	                sYoutube += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
-	    	                break;
-	    	            case "Twitch":
-	    	                vTwitch += metricas.get(j).getVistas();
-	    	                sTwitch += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
-	    	                break;
-	    	        }
-	    		    
-	    	    	
-	    	    }
-		    }//fin bucle j
-	    	
-	    	sTwitch /= 3;
- 		    sInsta /= 3;
- 		    sTiktok /= 3;
- 		    sYoutube /= 3;
- 		    // Determinar cuál plataforma tiene más vistas
- 		    plataformaMasVistas = obtenerPlataformaConMasVistas(vInsta, vTiktok, vYoutube, vTwitch);
+		for(Metrica metrica : metricas) {
+			if(!ids.contains(metrica.getIdCreador())) {
+				ids.add(metrica.getIdCreador());
+				lCreadoresMetricas.add(new CreadorMetrica(metrica.getIdCreador()));
+			}
+		}
+		for(int i = 0; i<lCreadoresMetricas.size();i++) {
+			String plataformaMasInteracciones = "", plataformaMasVistas = "";
+			int vTwitch = 0, vInsta = 0, vTiktok = 0, vYoutube = 0;
+			int sTwitch = 0, sInsta = 0, sTiktok = 0, sYoutube = 0;
+			for(int j = 0; j<metricas.size(); j++) {
+				if(metricas.get(j).getIdCreador() == lCreadoresMetricas.get(i).getId()) {
 
- 		    // Determinar cuál plataforma tiene más interacciones promedio
- 		   plataformaMasInteracciones = obtenerPlataformaConMasInteracciones(sInsta, sTiktok, sYoutube, sTwitch);
- 		   
-	    	ObjectNode creadorNode = om.createObjectNode();
-		    creadorNode.put("id", lCreadoresMetricas.get(i).getId());
-		    creadorNode.put("plataformaMasVistas", plataformaMasVistas);
-		    creadorNode.put("plataformaMasInteracciones", plataformaMasInteracciones);
-		    rootNode.add(creadorNode);
-	    }//fin bucle i
-	    
+					String plataforma = metricas.get(j).getPlataforma();
+
+					switch (plataforma) {
+					case "Instagram":
+						vInsta += metricas.get(j).getVistas();
+						sInsta += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
+						break;
+					case "TikTok":
+						vTiktok += metricas.get(j).getVistas();
+						sTiktok += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
+						break;
+					case "YouTube":
+						vYoutube += metricas.get(j).getVistas();
+						sYoutube += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
+						break;
+					case "Twitch":
+						vTwitch += metricas.get(j).getVistas();
+						sTwitch += metricas.get(j).getMeGusta() + metricas.get(j).getComentarios() + metricas.get(j).getCompartidos();
+						break;
+					}
 
 
-	    // Guardar el archivo JSON
-	    try {
-	        jsonR.crearJson("resources/resumen_rendimiento.json", rootNode);
-	        logger.success("Resumen de rendimiento generado correctamente.");
-	    } catch (Exception e) {
-	        logger.error(e);
-	    }
+				}
+			}//fin bucle j
+
+			sTwitch /= 3;
+			sInsta /= 3;
+			sTiktok /= 3;
+			sYoutube /= 3;
+			// Determinar cuál plataforma tiene más vistas
+			plataformaMasVistas = obtenerPlataformaConMasVistas(vInsta, vTiktok, vYoutube, vTwitch);
+
+			// Determinar cuál plataforma tiene más interacciones promedio
+			plataformaMasInteracciones = obtenerPlataformaConMasInteracciones(sInsta, sTiktok, sYoutube, sTwitch);
+
+			ObjectNode creadorNode = om.createObjectNode();
+			creadorNode.put("id", lCreadoresMetricas.get(i).getId());
+			creadorNode.put("plataformaMasVistas", plataformaMasVistas);
+			creadorNode.put("plataformaMasInteracciones", plataformaMasInteracciones);
+			rootNode.add(creadorNode);
+		}//fin bucle i
+
+
+
+		// Guardar el archivo JSON
+		try {
+			jsonR.crearJson("resources/resumen_rendimiento.json", rootNode);
+			logger.success("Resumen de rendimiento generado correctamente.");
+		} catch (Exception e) {
+			logger.error(e);
+		}
 	}
 
 	private String obtenerPlataformaConMasVistas(int vInsta, int vTiktok, int vYoutube, int vTwitch) {
-	    if (vInsta > vTiktok && vInsta > vTwitch && vInsta > vYoutube) {
-	        return "Instagram";
-	    } else if (vTiktok > vInsta && vTiktok > vTwitch && vTiktok > vYoutube) {
-	        return "TikTok";
-	    } else if (vYoutube > vInsta && vYoutube > vTwitch && vYoutube > vTiktok) {
-	        return "YouTube";
-	    } else if (vTwitch > vInsta && vTwitch > vTiktok && vTwitch > vYoutube) {
-	        return "Twitch";
-	    } else {
-	        return "Hay empate";
-	    }
+		if (vInsta > vTiktok && vInsta > vTwitch && vInsta > vYoutube) {
+			return "Instagram";
+		} else if (vTiktok > vInsta && vTiktok > vTwitch && vTiktok > vYoutube) {
+			return "TikTok";
+		} else if (vYoutube > vInsta && vYoutube > vTwitch && vYoutube > vTiktok) {
+			return "YouTube";
+		} else if (vTwitch > vInsta && vTwitch > vTiktok && vTwitch > vYoutube) {
+			return "Twitch";
+		} else {
+			return "Hay empate";
+		}
 	}
 
 	private String obtenerPlataformaConMasInteracciones(int sInsta, int sTiktok, int sYoutube, int sTwitch) {
-	    if (sInsta > sTiktok && sInsta > sTwitch && sInsta > sYoutube) {
-	        return "Instagram";
-	    } else if (sTiktok > sInsta && sTiktok > sTwitch && sTiktok > sYoutube) {
-	        return "TikTok";
-	    } else if (sYoutube > sInsta && sYoutube > sTwitch && sYoutube > sTiktok) {
-	        return "YouTube";
-	    } else if (sTwitch > sInsta && sTwitch > sTiktok && sTwitch > sYoutube) {
-	        return "Twitch";
-	    } else {
-	        return "Hay empate";
-	    }
+		if (sInsta > sTiktok && sInsta > sTwitch && sInsta > sYoutube) {
+			return "Instagram";
+		} else if (sTiktok > sInsta && sTiktok > sTwitch && sTiktok > sYoutube) {
+			return "TikTok";
+		} else if (sYoutube > sInsta && sYoutube > sTwitch && sYoutube > sTiktok) {
+			return "YouTube";
+		} else if (sTwitch > sInsta && sTwitch > sTiktok && sTwitch > sYoutube) {
+			return "Twitch";
+		} else {
+			return "Hay empate";
+		}
 	}
 
-	
+
 	private void generarReporteColaboracionesCSV() {
-	    // Obtener los creadores desde el JSON
-	    JsonNode creadores = jsonR.getCreadoresNode();
-	    List<ReporteColabs> reporteColabs = new ArrayList<>();
+		// Obtener los creadores desde el JSON
+		JsonNode creadores = jsonR.getCreadoresNode();
+		List<ReporteColabs> reporteColabs = new ArrayList<>();
 
-	    // Iterar sobre los creadores para obtener las colaboraciones
-	    for (JsonNode creador : creadores) {
-	        // Obtener las colaboraciones de cada creador
-	        ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
+		// Iterar sobre los creadores para obtener las colaboraciones
+		for (JsonNode creador : creadores) {
+			// Obtener las colaboraciones de cada creador
+			ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
 
-	        // Iterar sobre cada colaboración del creador
-	        for (JsonNode colaboracion : colaboraciones) {
-	            // Crear un nuevo objeto ReporteColabs para cada colaboración
-	            ReporteColabs nReporte = new ReporteColabs();
-	            nReporte.setIdCreador(creador.get("id").asInt());
-	            nReporte.setNombre(creador.get("nombre").asText());
-	            nReporte.setColaborador(colaboracion.get("colaborador").asText());
-	            nReporte.setFecha(colaboracion.get("fecha_inicio").asText());
+			// Iterar sobre cada colaboración del creador
+			for (JsonNode colaboracion : colaboraciones) {
+				// Crear un nuevo objeto ReporteColabs para cada colaboración
+				ReporteColabs nReporte = new ReporteColabs();
+				nReporte.setIdCreador(creador.get("id").asInt());
+				nReporte.setNombre(creador.get("nombre").asText());
+				nReporte.setColaborador(colaboracion.get("colaborador").asText());
+				nReporte.setFecha(colaboracion.get("fecha_inicio").asText());
 
-	            // Añadir la colaboración al reporte
-	            reporteColabs.add(nReporte);
-	        }
-	    }
+				// Añadir la colaboración al reporte
+				reporteColabs.add(nReporte);
+			}
+		}
 
-	    // Generar el CSV con las colaboraciones
-	    try {
-	        csvR.generarCsvRepCol("resources/reporte_colaboraciones.csv", reporteColabs);
-	        logger.success("Reporte de colaboraciones generado correctamente.");
-	    } catch (Exception e) {
-	        logger.error(e);
-	    }
+		// Generar el CSV con las colaboraciones
+		try {
+			csvR.generarCsvRepCol("resources/reporte_colaboraciones.csv", reporteColabs);
+			logger.success("Reporte de colaboraciones generado correctamente.");
+		} catch (Exception e) {
+			logger.error(e);
+		}
 	}
 
 
@@ -1139,7 +1139,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.plataformasPanel.revalidate();
 		this.view.plataformasPanel.repaint();
 	}
-	
+
 	private void generarBotonesPlataformaCont() {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
@@ -1185,96 +1185,96 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.plataformasPanelCont.revalidate();
 		this.view.plataformasPanelCont.repaint();
 	}
-	
+
 	private void calcularRendimientoContenido(String text) {
 		ObjectNode contenidosPlataforma = csvR.obtenerContenidosPlataformaCont(text);
-	    // Mapas para almacenar datos
-	    Map<String, Integer> totalVistasPorTipo = new HashMap<>();
-	    Map<String, Integer> totalLikesPorTipo = new HashMap<>();
-	    Map<String, Integer> conteoPorTipo = new HashMap<>();
+		// Mapas para almacenar datos
+		Map<String, Integer> totalVistasPorTipo = new HashMap<>();
+		Map<String, Integer> totalLikesPorTipo = new HashMap<>();
+		Map<String, Integer> conteoPorTipo = new HashMap<>();
 
-	    // Procesar los datos del ObjectNode
-	    for (JsonNode contenido : contenidosPlataforma) {
-	        String tipo = contenido.get("tipo").asText().toLowerCase();
-	        int vistas = contenido.get("vistas").asInt();
-	        int meGusta = contenido.get("me_gusta").asInt();
+		// Procesar los datos del ObjectNode
+		for (JsonNode contenido : contenidosPlataforma) {
+			String tipo = contenido.get("tipo").asText().toLowerCase();
+			int vistas = contenido.get("vistas").asInt();
+			int meGusta = contenido.get("me_gusta").asInt();
 
-	        totalVistasPorTipo.put(tipo, totalVistasPorTipo.getOrDefault(tipo, 0) + vistas);
-	        totalLikesPorTipo.put(tipo, totalLikesPorTipo.getOrDefault(tipo, 0) + meGusta);
-	        conteoPorTipo.put(tipo, conteoPorTipo.getOrDefault(tipo, 0) + 1);
-	    }
+			totalVistasPorTipo.put(tipo, totalVistasPorTipo.getOrDefault(tipo, 0) + vistas);
+			totalLikesPorTipo.put(tipo, totalLikesPorTipo.getOrDefault(tipo, 0) + meGusta);
+			conteoPorTipo.put(tipo, conteoPorTipo.getOrDefault(tipo, 0) + 1);
+		}
 
-	    // Calcular promedios
-	    int promedioVideoLikes = conteoPorTipo.getOrDefault("video", 0) == 0 ? 0
-	            : totalLikesPorTipo.get("video") / conteoPorTipo.get("video");
-	    int promedioImagenLikes = conteoPorTipo.getOrDefault("imagen", 0) == 0 ? 0
-	            : totalLikesPorTipo.get("imagen") / conteoPorTipo.get("imagen");
-	    int promedioStreamLikes = conteoPorTipo.getOrDefault("stream", 0) == 0 ? 0
-	            : totalLikesPorTipo.get("stream") / conteoPorTipo.get("stream");
+		// Calcular promedios
+		int promedioVideoLikes = conteoPorTipo.getOrDefault("video", 0) == 0 ? 0
+				: totalLikesPorTipo.get("video") / conteoPorTipo.get("video");
+		int promedioImagenLikes = conteoPorTipo.getOrDefault("imagen", 0) == 0 ? 0
+				: totalLikesPorTipo.get("imagen") / conteoPorTipo.get("imagen");
+		int promedioStreamLikes = conteoPorTipo.getOrDefault("stream", 0) == 0 ? 0
+				: totalLikesPorTipo.get("stream") / conteoPorTipo.get("stream");
 
-	    int promedioVideoVistas = conteoPorTipo.getOrDefault("video", 0) == 0 ? 0
-	            : totalVistasPorTipo.get("video") / conteoPorTipo.get("video");
-	    int promedioImagenVistas = conteoPorTipo.getOrDefault("imagen", 0) == 0 ? 0
-	            : totalVistasPorTipo.get("imagen") / conteoPorTipo.get("imagen");
-	    int promedioStreamVistas = conteoPorTipo.getOrDefault("stream", 0) == 0 ? 0
-	            : totalVistasPorTipo.get("stream") / conteoPorTipo.get("stream");
+		int promedioVideoVistas = conteoPorTipo.getOrDefault("video", 0) == 0 ? 0
+				: totalVistasPorTipo.get("video") / conteoPorTipo.get("video");
+		int promedioImagenVistas = conteoPorTipo.getOrDefault("imagen", 0) == 0 ? 0
+				: totalVistasPorTipo.get("imagen") / conteoPorTipo.get("imagen");
+		int promedioStreamVistas = conteoPorTipo.getOrDefault("stream", 0) == 0 ? 0
+				: totalVistasPorTipo.get("stream") / conteoPorTipo.get("stream");
 
-	    this.view.textVideoLikes.setText(String.valueOf(promedioVideoLikes));
-	    this.view.textImagenLikes.setText(String.valueOf(promedioImagenLikes));
-	    this.view.textStreamLikes.setText(String.valueOf(promedioStreamLikes));
-	    this.view.textVideoVistas.setText(String.valueOf(promedioVideoVistas));
-	    this.view.textImagenVistas.setText(String.valueOf(promedioImagenVistas));
-	    this.view.textStreamVistas.setText(String.valueOf(promedioStreamVistas));
-	    
-	    // Cargar Gráficas de Likes y Vistas
-	    this.view.panelLikesGraficaCont.removeAll();
-	    this.view.panelVistasGraficaCont.removeAll();
+		this.view.textVideoLikes.setText(String.valueOf(promedioVideoLikes));
+		this.view.textImagenLikes.setText(String.valueOf(promedioImagenLikes));
+		this.view.textStreamLikes.setText(String.valueOf(promedioStreamLikes));
+		this.view.textVideoVistas.setText(String.valueOf(promedioVideoVistas));
+		this.view.textImagenVistas.setText(String.valueOf(promedioImagenVistas));
+		this.view.textStreamVistas.setText(String.valueOf(promedioStreamVistas));
 
-	    DefaultPieDataset<String> datasetLikes = new DefaultPieDataset<>();
-	    DefaultPieDataset<String> datasetVistas = new DefaultPieDataset<>();
-	    
-	    datasetLikes.setValue("Video", promedioVideoLikes);
-	    datasetLikes.setValue("Imagen", promedioImagenLikes);
-	    datasetLikes.setValue("Stream", promedioStreamLikes);
+		// Cargar Gráficas de Likes y Vistas
+		this.view.panelLikesGraficaCont.removeAll();
+		this.view.panelVistasGraficaCont.removeAll();
 
-	    datasetVistas.setValue("Video", promedioVideoVistas);
-	    datasetVistas.setValue("Imagen", promedioImagenVistas);
-	    datasetVistas.setValue("Stream", promedioStreamVistas);
-	    
-	    // Crear las gráficas
-	    JFreeChart chartLikes = ChartFactory.createPieChart(
-	            "Promedio de Likes por tipo de contenido (" + text + ")",
-	            datasetLikes,
-	            true,
-	            true,
-	            false
-	    );
+		DefaultPieDataset<String> datasetLikes = new DefaultPieDataset<>();
+		DefaultPieDataset<String> datasetVistas = new DefaultPieDataset<>();
 
-	    JFreeChart chartVistas = ChartFactory.createPieChart(
-	            "Promedio de Vistas por tipo de contenido (" + text + ")",
-	            datasetVistas,
-	            true,
-	            true,
-	            false
-	    );
-	    
-	    // Crear los paneles de las gráficas
-	    ChartPanel likesChartPanel = new ChartPanel(chartLikes);
-	    likesChartPanel.setPreferredSize(this.view.panelLikesGrafica.getSize());
-	    likesChartPanel.setMouseWheelEnabled(true);
+		datasetLikes.setValue("Video", promedioVideoLikes);
+		datasetLikes.setValue("Imagen", promedioImagenLikes);
+		datasetLikes.setValue("Stream", promedioStreamLikes);
 
-	    ChartPanel vistasChartPanel = new ChartPanel(chartVistas);
-	    vistasChartPanel.setPreferredSize(this.view.panelVistasGrafica.getSize());
-	    vistasChartPanel.setMouseWheelEnabled(true);
-	    
-	    // Agregar los paneles a los paneles de la vista
-	    this.view.panelLikesGraficaCont.add(likesChartPanel);
-	    this.view.panelVistasGraficaCont.add(vistasChartPanel);
+		datasetVistas.setValue("Video", promedioVideoVistas);
+		datasetVistas.setValue("Imagen", promedioImagenVistas);
+		datasetVistas.setValue("Stream", promedioStreamVistas);
 
-	    this.view.panelLikesGrafica.revalidate();
-	    this.view.panelLikesGrafica.repaint();
-	    this.view.panelVistasGrafica.revalidate();
-	    this.view.panelVistasGrafica.repaint();
+		// Crear las gráficas
+		JFreeChart chartLikes = ChartFactory.createPieChart(
+				"Promedio de Likes por tipo de contenido (" + text + ")",
+				datasetLikes,
+				true,
+				true,
+				false
+				);
+
+		JFreeChart chartVistas = ChartFactory.createPieChart(
+				"Promedio de Vistas por tipo de contenido (" + text + ")",
+				datasetVistas,
+				true,
+				true,
+				false
+				);
+
+		// Crear los paneles de las gráficas
+		ChartPanel likesChartPanel = new ChartPanel(chartLikes);
+		likesChartPanel.setPreferredSize(this.view.panelLikesGrafica.getSize());
+		likesChartPanel.setMouseWheelEnabled(true);
+
+		ChartPanel vistasChartPanel = new ChartPanel(chartVistas);
+		vistasChartPanel.setPreferredSize(this.view.panelVistasGrafica.getSize());
+		vistasChartPanel.setMouseWheelEnabled(true);
+
+		// Agregar los paneles a los paneles de la vista
+		this.view.panelLikesGraficaCont.add(likesChartPanel);
+		this.view.panelVistasGraficaCont.add(vistasChartPanel);
+
+		this.view.panelLikesGrafica.revalidate();
+		this.view.panelLikesGrafica.repaint();
+		this.view.panelVistasGrafica.revalidate();
+		this.view.panelVistasGrafica.repaint();
 	}
 
 
@@ -1423,12 +1423,12 @@ public class Controller implements ActionListener, ListSelectionListener {
 					i++;
 				}
 				view.comboBox_2.setModel(model);
-				
+
 				Double tasaCrecimiento = calcularTasaCrecimiento(plataforma.get("historico").get(0).get("nuevos_seguidores").asInt(), plataforma.get("historico").get(1).get("nuevos_seguidores").asInt());
 				this.view.textTasaCrecimientoRang.setText(String.valueOf(tasaCrecimiento) + "%");
 			}
 		}
-			
+
 	}
 
 	private void cargarHistorico(JsonNode historico) {
@@ -1492,14 +1492,14 @@ public class Controller implements ActionListener, ListSelectionListener {
 		}
 		view.comboBoxColNew.setModel(modelCol);
 	}
-	
+
 	public double calcularTasaCrecimiento(int seguidoresInicial, int seguidoresFinal) {
-		
-        if (seguidoresInicial == 0) {
-            return 0;
-        }
-        return Math.round(((seguidoresFinal - seguidoresInicial) / (double) seguidoresInicial) * 100);
-    }
+
+		if (seguidoresInicial == 0) {
+			return 0;
+		}
+		return Math.round(((seguidoresFinal - seguidoresInicial) / (double) seguidoresInicial) * 100);
+	}
 
 
 }
