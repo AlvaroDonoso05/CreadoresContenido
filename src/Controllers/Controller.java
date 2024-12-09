@@ -72,7 +72,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.comboBoxColTipo.addActionListener(this);
 		this.view.reporteCreadoresItem.addActionListener(this);
 		this.view.reporteColaboracionesItem.addActionListener(this);
-		this.view.generarRepColCSV.addActionListener(this);
+		this.view.exportarColCSV.addActionListener(this);
 		this.view.exitItem.addActionListener(this);
 		this.view.helpItem.addActionListener(this);
 		this.view.listPublicaciones.addListSelectionListener(this);
@@ -88,8 +88,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.btnNewButtonAddCol.addActionListener(this);
 		this.view.btnExportarConsola.addActionListener(this);
 		this.view.btnAgregar.addActionListener(this);
-		
-		//this.view.generarResRendJSON.addActionListener(this);
+		this.view.generarResRendJSON.addActionListener(this);
+		this.view.generarRepColCSV.addActionListener(this);
 
 		jsonR = new JsonReader("resources/creadores.json");
 		csvR = new CsvReader("resources/metricas_contenido.csv");
@@ -437,27 +437,28 @@ public class Controller implements ActionListener, ListSelectionListener {
 			jsonR.crearJson("resources/colaboraciones.json", rootNode);
 			
 			
-		}else if(e.getSource() == this.view.generarRepColCSV) {
-			//cosas por hacer
+		}else if(e.getSource() == this.view.exportarColCSV) {
+			//4
 			JsonNode creadores = jsonR.getCreadoresNode();
 			List<ReporteColabs> reporteColabs = new ArrayList<ReporteColabs>();
 			
 			for(JsonNode creador: creadores) {
-				ReporteColabs nReporte = new ReporteColabs();
-				nReporte.setIdCreador(creador.get("id").asInt());
-				nReporte.setNombre(creador.get("nombre").asText());
-				
-				JsonNode estadisticas = creador.get("estadisticas");				
-				nReporte.setInteracciones_totales(estadisticas.get("interacciones_totales").asDouble());
-				nReporte.setPromedio_vistas_mensuales(estadisticas.get("promedio_vistas_mensuales").asDouble());
-				nReporte.setTasa_crecimiento_seguidores(estadisticas.get("tasa_crecimiento_seguidores").asDouble());
 				
 				ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
 				for(JsonNode colaboracion: colaboraciones) {
+					ReporteColabs nReporte = new ReporteColabs();
+					nReporte.setIdCreador(creador.get("id").asInt());
+					nReporte.setNombre(creador.get("nombre").asText());
+					
+					JsonNode estadisticas = creador.get("estadisticas");				
+					nReporte.setInteracciones_totales(estadisticas.get("interacciones_totales").asDouble());
+					nReporte.setPromedio_vistas_mensuales(estadisticas.get("promedio_vistas_mensuales").asDouble());
+					nReporte.setTasa_crecimiento_seguidores(estadisticas.get("tasa_crecimiento_seguidores").asDouble());
 					nReporte.setColaborador(colaboracion.get("colaborador").asText());
-					nReporte.setFecha(colaboracion.get("fecha_inicio").asText());					
+					nReporte.setFecha(colaboracion.get("fecha_inicio").asText());
+					reporteColabs.add(nReporte);					
 				}
-				reporteColabs.add(nReporte);
+				
 			}
 			csvR.generarCsvColaboraciones("resources/colaboraciones.csv", reporteColabs);
 			
@@ -509,6 +510,32 @@ public class Controller implements ActionListener, ListSelectionListener {
 			listaContenidos.add(metrica);
 			csvR.setArchivoCsv(listaContenidos);
 			logger.success(metrica.getContenido() + " agregado correctamente.");
+      
+		}else if(e.getSource() == this.view.generarResRendJSON) {
+			//Ej 10
+			
+		}else if (e.getSource() == this.view.generarRepColCSV) {
+			//Ej 8
+			JsonNode creadores = jsonR.getCreadoresNode();
+			List<ReporteColabs> reporteColabs = new ArrayList<ReporteColabs>();
+			
+			for(JsonNode creador: creadores) {
+			
+				
+				
+				ArrayNode colaboraciones = (ArrayNode) creador.get("colaboraciones");
+				for(JsonNode colaboracion: colaboraciones) {
+					ReporteColabs nReporte = new ReporteColabs();
+					nReporte.setIdCreador(creador.get("id").asInt());
+					nReporte.setNombre(creador.get("nombre").asText());
+					nReporte.setColaborador(colaboracion.get("colaborador").asText());
+					nReporte.setFecha(colaboracion.get("fecha_inicio").asText());	
+					reporteColabs.add(nReporte);
+				}
+				
+			}
+			
+			csvR.generarCsvRepCol("resources/reporte_colaboraciones.csv", reporteColabs);
 		}
 	}
 

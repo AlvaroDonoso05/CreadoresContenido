@@ -71,7 +71,7 @@ public class MainView extends JFrame {
 	public JMenuItem savetem;
 
 	public JMenu helpMenu;
-	public JMenuItem generarRepColCSV;
+	public JMenuItem exportarColCSV;
 	public JMenu fileMenu;
 	public JMenu editMenu;
 	public JLabel lblNewLabel_1;
@@ -163,6 +163,9 @@ public class MainView extends JFrame {
 	public JMenuItem helpItem;
 	public JTextField textTasaCrecimientoRang;
 	private JLabel lblTasaCrecimientoenerofebrero;
+
+	public JMenuItem generarResRendJSON;
+	public JMenuItem generarRepColCSV;
 	public JPanel panel_Contenidos;
 	public JPanel plataformasPanelCont;
 	public JPanel panelBotonesPlataformaCont;
@@ -207,11 +210,16 @@ public class MainView extends JFrame {
 		// Create JMenuItems
 		reporteCreadoresItem = new JMenuItem("Generar Reporte Creadores");
 		reporteColaboracionesItem = new JMenuItem("Generar Reporte Colaboraciones JSON");
+		exportarColCSV = new JMenuItem("Exportar Colaboraciones CSV");
+		generarResRendJSON = new JMenuItem("Generar Resumen Rendimiento JSON");
 		generarRepColCSV = new JMenuItem("Generar Reporte Colaboraciones CSV");
+		
 		exitItem = new JMenuItem("Exit");
 
 		fileMenu.add(reporteCreadoresItem);
 		fileMenu.add(reporteColaboracionesItem);
+		fileMenu.add(exportarColCSV);
+		fileMenu.add(generarResRendJSON);
 		fileMenu.add(generarRepColCSV);
 		fileMenu.addSeparator();
 		fileMenu.add(exitItem);
@@ -952,7 +960,7 @@ public class MainView extends JFrame {
 		textAreaNewCol = new JTextArea();
 		textAreaNewCol.setFont(new Font("Tahoma", Font.BOLD, 16));
 		textAreaNewCol.setBackground(new Color(255, 204, 204));
-		textAreaNewCol.setBounds(68, 413, 404, 60);
+		textAreaNewCol.setBounds(68, 413, 448, 60);
 		panel_NewCol.add(textAreaNewCol);
 
 		// sefs
