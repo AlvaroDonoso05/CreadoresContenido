@@ -18,6 +18,7 @@ public class ReporteColabs {
 	private double promedio_vistas_mensuales;
 	@CsvBindByName(column = "tasa_crecimiento_seguidores")
 	private double tasa_crecimiento_seguidores;
+	
 	public int getIdCreador() {
 		return idCreador;
 	}

@@ -20,10 +20,12 @@ public class JsonReader {
 	List<Creador> listaCreadores;
 	private JsonNode creadoresNode;
 	private final String url;
+	private Logger logger;
 
 	public JsonReader(String url) {
 		this.url = url;
 		abrirJson();
+		this.logger = Logger.getInstance();
 	}
 
 	public void abrirJson() {
@@ -78,6 +80,7 @@ public class JsonReader {
 		try {
 			mapper.enable(SerializationFeature.INDENT_OUTPUT);
 			mapper.writeValue(new File(fichero), rootNode);
+			logger.success("Reporte JSON generado correctamente");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
