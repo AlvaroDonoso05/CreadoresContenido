@@ -86,7 +86,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.btnFechaFin.addActionListener(this);
 		this.view.btnNewButtonAddCol.addActionListener(this);
 		this.view.btnExportarConsola.addActionListener(this);
-		this.view.generarResRendJSON.addActionListener(this);
+		//this.view.generarResRendJSON.addActionListener(this);
 
 		jsonR = new JsonReader("resources/creadores.json");
 		csvR = new CsvReader("resources/metricas_contenido.csv");
@@ -458,9 +458,9 @@ public class Controller implements ActionListener, ListSelectionListener {
 			}
 			csvR.generarCsvColaboraciones("resources/colaboraciones.csv", reporteColabs);
 			
-		}else if(e.getSource() == this.view.generarResRendJSON) {
+		}//else if(e.getSource() == this.view.generarResRendJSON) {
 			
-		}
+		//}
 	}
 
 
