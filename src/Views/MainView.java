@@ -177,6 +177,7 @@ public class MainView extends JFrame {
 	public JTextField textStreamVistas;
 	public JPanel panelVistasGraficaCont;
 	public JPanel panelLikesGraficaCont;
+	public JButton btnAgregar;
 
 	public MainView() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -964,26 +965,30 @@ public class MainView extends JFrame {
 
 		// sefs
 		btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(390, 366, 160, 47);
+		btnModificar.setBounds(390, 366, 125, 47);
 		panel_Publicaciones.add(btnModificar);
 
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(583, 366, 160, 47);
+		btnEliminar.setBounds(521, 366, 125, 47);
 		panel_Publicaciones.add(btnEliminar);
 
 		textFiltro = new JTextField();
 		textFiltro.setColumns(10);
-		textFiltro.setBounds(560, 332, 125, 23);
+		textFiltro.setBounds(560, 318, 125, 23);
 		panel_Publicaciones.add(textFiltro);
 
 		JLabel lblFiltroopcional = new JLabel("Filtro (Opcional):");
 		lblFiltroopcional.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblFiltroopcional.setBounds(390, 296, 160, 25);
+		lblFiltroopcional.setBounds(390, 282, 160, 25);
 		panel_Publicaciones.add(lblFiltroopcional);
 
 		comboBox_Filtros = new JComboBox<String>();
-		comboBox_Filtros.setBounds(390, 332, 125, 23);
+		comboBox_Filtros.setBounds(390, 318, 125, 23);
 		panel_Publicaciones.add(comboBox_Filtros);
+		
+		btnAgregar = new JButton("Agregar");
+		btnAgregar.setBounds(656, 366, 142, 47);
+		panel_Publicaciones.add(btnAgregar);
 
 	}
 

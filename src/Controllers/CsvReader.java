@@ -177,7 +177,7 @@ public class CsvReader {
 		return metricas;
 	}
 
-	public List<Metrica> obtenerPorId(int id) {
+	public synchronized List<Metrica> obtenerPorId(int id) {
 		List<Metrica> metricaCreador = new ArrayList<>();
 
 		for (Metrica metrica : this.archivoCsv) {

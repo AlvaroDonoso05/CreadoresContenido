@@ -14,6 +14,7 @@ import java.net.URI;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -86,6 +87,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.btnFechaFin.addActionListener(this);
 		this.view.btnNewButtonAddCol.addActionListener(this);
 		this.view.btnExportarConsola.addActionListener(this);
+		this.view.btnAgregar.addActionListener(this);
 		this.view.generarResRendJSON.addActionListener(this);
 		this.view.generarRepColCSV.addActionListener(this);
 
@@ -460,7 +462,55 @@ public class Controller implements ActionListener, ListSelectionListener {
 			}
 			csvR.generarCsvColaboraciones("resources/colaboraciones.csv", reporteColabs);
 			
+		} else if(e.getSource() == this.view.btnAgregar) {
+			
+			// Obtener el contenido Mayor
+			List<Metrica> listaContenidos = csvR.abrirCSV();
+			
+			int contenidoMayor = 0;
+			for(Metrica metrica: listaContenidos) {
+				System.out.println(metrica.getContenido());
+				int metricaId = Integer.parseInt(metrica.getContenido().substring(metrica.getContenido().lastIndexOf(" ") + 1));;
+				if(contenidoMayor < metricaId) {
+					contenidoMayor = metricaId;
+				}
+			}
+			
+			// Creacion del objeto Metrica
+			Metrica metrica = new Metrica();
+			
+			metrica.setFecha(LocalDate.now().toString());
+			metrica.setIdCreador(creadorSeleccionado.getId());
+			metrica.setContenido("Contenido " + (contenidoMayor + 1));
+			
+			if(this.view.textVistas.getText().equalsIgnoreCase("")) {
+				metrica.setVistas(0);
+			} else {
+				metrica.setVistas(Integer.parseInt(this.view.textVistas.getText()));
+			}
+			
+			if(this.view.textLikes.getText().equalsIgnoreCase("")) {
+				metrica.setMeGusta(0);
+			} else {
+				metrica.setMeGusta(Integer.parseInt(this.view.textLikes.getText()));
+			}
+			
+			if(this.view.textComentarios.getText().equalsIgnoreCase("")) {
+				metrica.setComentarios(0);
+			} else {
+				metrica.setComentarios(Integer.parseInt(this.view.textComentarios.getText()));
+			}
+			
+			if(this.view.textCompartidos.getText().equalsIgnoreCase("")) {
+				metrica.setCompartidos(0);
+			} else {
+				metrica.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
+			}
 
+			listaContenidos.add(metrica);
+			csvR.setArchivoCsv(listaContenidos);
+			logger.success(metrica.getContenido() + " agregado correctamente.");
+      
 		}else if(e.getSource() == this.view.generarResRendJSON) {
 			//Ej 10
 			
