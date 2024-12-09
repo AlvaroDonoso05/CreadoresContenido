@@ -194,7 +194,7 @@ public class MainView extends JFrame {
 		helpMenu.add(helpItem);
 
 		// Create JMenuItems
-		reporteCreadoresItem = new JMenuItem("Generar Reporte Creadores");
+		reporteCreadoresItem = new JMenuItem("Generar Reporte Creadores JSON");
 		reporteColaboracionesItem = new JMenuItem("Generar Reporte Colaboraciones JSON");
 		generarRepColCSV = new JMenuItem("Generar Reporte Colaboraciones CSV");
 		exitItem = new JMenuItem("Exit");
@@ -748,17 +748,17 @@ public class MainView extends JFrame {
 		lblAnadirColaboracion.setBounds(25, 33, 379, 46);
 		panel_NewCol.add(lblAnadirColaboracion);
 
-		lblTemColNew = new JLabel("Temática:");
+		lblTemColNew = new JLabel("*Temática:");
 		lblTemColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblTemColNew.setBounds(68, 241, 108, 24);
 		panel_NewCol.add(lblTemColNew);
 
-		lblTipoColNew = new JLabel("Tipo:");
+		lblTipoColNew = new JLabel("*Tipo:");
 		lblTipoColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblTipoColNew.setBounds(68, 136, 108, 24);
 		panel_NewCol.add(lblTipoColNew);
 
-		lblFechaInicioColNew = new JLabel("Fecha Inicio:");
+		lblFechaInicioColNew = new JLabel("*Fecha Inicio:");
 		lblFechaInicioColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblFechaInicioColNew.setBounds(68, 173, 108, 24);
 		panel_NewCol.add(lblFechaInicioColNew);
@@ -770,7 +770,7 @@ public class MainView extends JFrame {
 		textFieldFechIniColNew.setBounds(182, 175, 163, 21);
 		panel_NewCol.add(textFieldFechIniColNew);
 
-		lblFechaFinColNew = new JLabel("Fecha Fin:");
+		lblFechaFinColNew = new JLabel("*Fecha Fin:");
 		lblFechaFinColNew.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblFechaFinColNew.setBounds(68, 207, 108, 24);
 		panel_NewCol.add(lblFechaFinColNew);
@@ -792,7 +792,7 @@ public class MainView extends JFrame {
 		chckbxColActivaColNew.setBounds(182, 282, 93, 21);
 		panel_NewCol.add(chckbxColActivaColNew);
 
-		lblColaborador = new JLabel("Colaborador:");
+		lblColaborador = new JLabel("*Colaborador:");
 		lblColaborador.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblColaborador.setBounds(68, 102, 108, 24);
 		panel_NewCol.add(lblColaborador);

@@ -384,13 +384,6 @@
     "fecha_fin" : "2023-03-30",
     "tipo" : "Patrocinado",
     "estado" : "Activa"
-  }, {
-    "colaborador" : "lige un colaborador",
-    "tematica" : "Tecnologia",
-    "fecha_inicio" : "2024-12-12",
-    "fecha_fin" : "2024-12-29",
-    "tipo" : "Colaboración Natural",
-    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 6,

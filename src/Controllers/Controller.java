@@ -304,7 +304,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			}
 
 			if(creador != -1 &&
-					!colaborador.equals("Elige un colaborador") &&
+					!colaborador.equals("lige un colaborador") &&
 					!fchIni.equals("") &&
 					!fchFin.equals("") &&
 					creador != -1) {
@@ -374,7 +374,31 @@ public class Controller implements ActionListener, ListSelectionListener {
 			
 			
 		}else if(e.getSource() == this.view.reporteColaboracionesItem) {
+			//Ejercicio 12
 			List<Creador> creadores = jsonR.getListaCreadores();
+			ObjectNode rootNode = om.createObjectNode();
+			ArrayNode creadoresArray = om.createArrayNode();
+
+			for (Creador creador : creadores) {	
+				JsonNode colaboraciones = creador.getColaboraciones();
+				for(JsonNode colaboracion: colaboraciones) {
+					ObjectNode creadorNode = om.createObjectNode();
+					creadorNode.put("id", creador.getId());
+					creadorNode.put("creador", creador.getNombre());
+					creadorNode.put("colaborador", colaboracion.get("colaborador").asText());
+					creadorNode.put("tematica", colaboracion.get("tematica").asText());
+					creadorNode.put("fecha_inicio", colaboracion.get("fecha_inicio").asText());
+					creadorNode.put("fecha_fin", colaboracion.get("fecha_fin").asText());
+					creadorNode.put("tipo", colaboracion.get("tipo").asText());
+					creadorNode.put("estado", colaboracion.get("estado").asText());
+
+					creadoresArray.add(creadorNode);
+				}
+
+			}
+
+			rootNode.set("colaboraciones", creadoresArray);
+			jsonR.crearJson("resources/colaboraciones.json", rootNode);
 			
 			
 		}else if(e.getSource() == this.view.generarRepColCSV) {
