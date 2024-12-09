@@ -117,6 +117,47 @@ public class CsvReader {
 			}
 		}
 	}
+	
+	public void generarCsvRepCol(String direccionCSV, List<ReporteColabs> reporteColabs) {
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+		File archivo = null;
+		try {
+			archivo = new File(direccionCSV);
+
+			fw = new FileWriter(archivo);
+			bw = new BufferedWriter(fw);
+
+			bw.write("creador_id, nombre, fecha_inicio, colaborador");
+			bw.newLine();
+
+			for(ReporteColabs colab: reporteColabs) {
+				bw.write(colab.getIdCreador() + ","
+						+ colab.getNombre() + ","
+						+ colab.getFecha() + ","
+						+ colab.getColaborador());
+				bw.newLine();
+			}
+			logger.success("Reporte CSV generado correctamente.");
+		} catch(Exception e) {
+			logger.error(e);
+		} finally {
+			if(bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					logger.error(e);
+				}
+			}
+			if(fw != null) {
+				try {
+					fw.close();
+				} catch (IOException e) {
+					logger.error(e);
+				}
+			}
+		}
+	}
 
 
 	public List<Metrica> abrirCSV() {
