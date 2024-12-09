@@ -95,4 +95,12 @@ public class Metrica {
 	public void setCompartidos(int compartidos) {
 		this.compartidos = compartidos;
 	}
+
+	@Override
+	public String toString() {
+		return "Metrica [idCreador=" + idCreador + ", plataforma=" + plataforma + ", fecha=" + fecha + ", contenido="
+				+ contenido + ", tipo=" + tipo + ", vistas=" + vistas + ", meGusta=" + meGusta + ", comentarios="
+				+ comentarios + ", compartidos=" + compartidos + "]";
+	}
+	
 }
