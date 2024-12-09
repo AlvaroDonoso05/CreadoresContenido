@@ -67,11 +67,11 @@ public class MainView extends JFrame {
 	public JTextField textFieldTasaCrec;
 	public JMenuItem exitItem;
 	public JMenuItem reporteCreadoresItem;
-	public JMenuItem openItem;
+	public JMenuItem reporteColaboracionesItem;
 	public JMenuItem savetem;
 
 	public JMenu helpMenu;
-	public JMenuItem saveItem;
+	public JMenuItem generarRepColCSV;
 	public JMenu fileMenu;
 	public JMenu editMenu;
 	public JLabel lblNewLabel_1;
@@ -195,13 +195,13 @@ public class MainView extends JFrame {
 
 		// Create JMenuItems
 		reporteCreadoresItem = new JMenuItem("Generar Reporte Creadores");
-		openItem = new JMenuItem("Open");
-		saveItem = new JMenuItem("Save");
+		reporteColaboracionesItem = new JMenuItem("Generar Reporte Colaboraciones JSON");
+		generarRepColCSV = new JMenuItem("Generar Reporte Colaboraciones CSV");
 		exitItem = new JMenuItem("Exit");
 
 		fileMenu.add(reporteCreadoresItem);
-		fileMenu.add(openItem);
-		fileMenu.add(saveItem);
+		fileMenu.add(reporteColaboracionesItem);
+		fileMenu.add(generarRepColCSV);
 		fileMenu.addSeparator();
 		fileMenu.add(exitItem);
 
