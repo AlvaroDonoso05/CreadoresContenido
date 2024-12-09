@@ -74,8 +74,8 @@ public class MainView extends JFrame {
 	public JMenuItem generarRepColCSV;
 	public JMenu fileMenu;
 	public JLabel lblNewLabel_1;
-	private JPanel mainPanel;
-	public JPanel panel;
+	private JPanel panel_Datos;
+	public JPanel panelEncabezado;
 	public JPanel panelVistasGrafica;
 	public JTabbedPane tabbedPane;
 	public JPanel panel_Plataformas;
@@ -117,7 +117,6 @@ public class MainView extends JFrame {
 	public JTextField textPromVistas;
 	public JTextField lblInfoHaste;
 	private JLabel lblPromedio;
-	private JPanel reportes;
 	private JPanel panel_Publicaciones;
 	public JTextField textIdComentario;
 	public JTextField textNombreComentario;
@@ -163,6 +162,17 @@ public class MainView extends JFrame {
 	public JMenuItem helpItem;
 	public JTextField textTasaCrecimientoRang;
 	private JLabel lblTasaCrecimientoenerofebrero;
+	public JPanel panel_Contenidos;
+	public JPanel plataformasPanelCont;
+	public JPanel panelBotonesPlataformaCont;
+	public JTextField textVideoLikes;
+	public JTextField textImagenLikes;
+	public JTextField textStreamLikes;
+	public JTextField textVideoVistas;
+	public JTextField textImagenVistas;
+	public JTextField textStreamVistas;
+	public JPanel panelVistasGraficaCont;
+	public JPanel panelLikesGraficaCont;
 	public JMenuItem generarResRendJSON;
 
 	public MainView() {
@@ -219,122 +229,122 @@ public class MainView extends JFrame {
 		tabbedPane.setVisible(false);
 		contentPane.add(tabbedPane);
 
-		mainPanel = new JPanel();
-		tabbedPane.addTab("Datos", null, mainPanel, null);
-		mainPanel.setBackground(new Color(255, 204, 204));
-		mainPanel.setForeground(new Color(255, 255, 255));
-		mainPanel.setLayout(null);
+		panel_Datos = new JPanel();
+		tabbedPane.addTab("Datos", null, panel_Datos, null);
+		panel_Datos.setBackground(new Color(255, 204, 204));
+		panel_Datos.setForeground(new Color(255, 255, 255));
+		panel_Datos.setLayout(null);
 
 		lblId = new JLabel("ID:");
 		lblId.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblId.setBounds(65, 94, 108, 24);
-		mainPanel.add(lblId);
+		panel_Datos.add(lblId);
 
 		textFieldId = new JTextField();
 		textFieldId.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldId.setBounds(195, 100, 163, 21);
-		mainPanel.add(textFieldId);
+		panel_Datos.add(textFieldId);
 		textFieldId.setColumns(10);
 		textFieldId.setEditable(false);
 
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNombre.setBounds(65, 130, 108, 24);
-		mainPanel.add(lblNombre);
+		panel_Datos.add(lblNombre);
 
 		textFieldNombre = new JTextField();
 		textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldNombre.setColumns(10);
 		textFieldNombre.setBounds(195, 136, 163, 21);
-		mainPanel.add(textFieldNombre);
+		panel_Datos.add(textFieldNombre);
 		textFieldNombre.setEditable(false);
 
 		lblPais = new JLabel("Pais:");
 		lblPais.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblPais.setBounds(65, 166, 108, 24);
-		mainPanel.add(lblPais);
+		panel_Datos.add(lblPais);
 
 		textFieldPais = new JTextField();
 		textFieldPais.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldPais.setColumns(10);
 		textFieldPais.setBounds(195, 172, 163, 21);
-		mainPanel.add(textFieldPais);
+		panel_Datos.add(textFieldPais);
 		textFieldPais.setEditable(false);
 
 		lblTematica = new JLabel("Temática:");
 		lblTematica.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblTematica.setBounds(65, 200, 108, 24);
-		mainPanel.add(lblTematica);
+		panel_Datos.add(lblTematica);
 
 		textFieldTematica = new JTextField();
 		textFieldTematica.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldTematica.setColumns(10);
 		textFieldTematica.setBounds(195, 206, 163, 21);
 		textFieldTematica.setEditable(false);
-		mainPanel.add(textFieldTematica);
+		panel_Datos.add(textFieldTematica);
 
 		lblSeguidores = new JLabel("Seguidores:");
 		lblSeguidores.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblSeguidores.setBounds(65, 234, 108, 24);
-		mainPanel.add(lblSeguidores);
+		panel_Datos.add(lblSeguidores);
 
 		textFieldSeguidores = new JTextField();
 		textFieldSeguidores.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldSeguidores.setColumns(10);
 		textFieldSeguidores.setBounds(195, 240, 163, 21);
 		textFieldSeguidores.setEditable(false);
-		mainPanel.add(textFieldSeguidores);
+		panel_Datos.add(textFieldSeguidores);
 
 		lblInteracciones = new JLabel("Interacciones:");
 		lblInteracciones.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblInteracciones.setBounds(392, 94, 108, 24);
-		mainPanel.add(lblInteracciones);
+		panel_Datos.add(lblInteracciones);
 
 		textFieldInteracciones = new JTextField();
 		textFieldInteracciones.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldInteracciones.setEditable(false);
 		textFieldInteracciones.setColumns(10);
 		textFieldInteracciones.setBounds(522, 100, 163, 21);
-		mainPanel.add(textFieldInteracciones);
+		panel_Datos.add(textFieldInteracciones);
 
 		lblPromedioVistas = new JLabel("Promedio Vistas:");
 		lblPromedioVistas.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblPromedioVistas.setBounds(392, 130, 108, 24);
-		mainPanel.add(lblPromedioVistas);
+		panel_Datos.add(lblPromedioVistas);
 
 		textFieldPromVist = new JTextField();
 		textFieldPromVist.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldPromVist.setEditable(false);
 		textFieldPromVist.setColumns(10);
 		textFieldPromVist.setBounds(522, 136, 163, 21);
-		mainPanel.add(textFieldPromVist);
+		panel_Datos.add(textFieldPromVist);
 
 		lblTasaCrecimiento = new JLabel("Tasa Crecimiento:");
 		lblTasaCrecimiento.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblTasaCrecimiento.setBounds(392, 166, 108, 24);
-		mainPanel.add(lblTasaCrecimiento);
+		panel_Datos.add(lblTasaCrecimiento);
 
 		textFieldTasaCrec = new JTextField();
 		textFieldTasaCrec.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldTasaCrec.setEditable(false);
 		textFieldTasaCrec.setColumns(10);
 		textFieldTasaCrec.setBounds(522, 172, 163, 21);
-		mainPanel.add(textFieldTasaCrec);
+		panel_Datos.add(textFieldTasaCrec);
 
 		lblDatos = new JLabel("Datos:");
 		lblDatos.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblDatos.setBounds(25, 33, 144, 46);
-		mainPanel.add(lblDatos);
+		panel_Datos.add(lblDatos);
 
 		ImageIcon icono = new ImageIcon("resources/img/avatar.png");
 		JLabel lblNewLabel = new JLabel(icono);
 		lblNewLabel.setBounds(846, 23, 263, 248);
-		mainPanel.add(lblNewLabel);
+		panel_Datos.add(lblNewLabel);
 
 		btnExtraerDatos = new JButton("Exportar Datos");
 		btnExtraerDatos.setBounds(846, 282, 263, 37);
 		btnExtraerDatos.setEnabled(false);
-		mainPanel.add(btnExtraerDatos);
+		panel_Datos.add(btnExtraerDatos);
 
 		lblInfoHaste = new JTextField("");
 		lblInfoHaste.setEditable(false);
@@ -342,7 +352,112 @@ public class MainView extends JFrame {
 		lblInfoHaste.setForeground(new Color(0, 128, 0));
 		lblInfoHaste.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblInfoHaste.setBounds(781, 434, 390, 37);
-		mainPanel.add(lblInfoHaste);
+		panel_Datos.add(lblInfoHaste);
+		
+		panel_Contenidos = new JPanel();
+		tabbedPane.addTab("Contenidos", null, panel_Contenidos, null);
+		
+		plataformasPanelCont = new JPanel();
+		plataformasPanelCont.setSize(1171, 130);
+		plataformasPanelCont.setLocation(1, 1);
+		plataformasPanelCont.setLayout(new GridBagLayout());
+		panel_Contenidos.add(plataformasPanelCont);
+		
+		panelBotonesPlataformaCont = new JPanel();
+		panelBotonesPlataformaCont.setBounds(131, 23, 928, 74);;
+		panel_Contenidos.add(panelBotonesPlataformaCont);
+		panel_Contenidos.setLayout(null);
+		
+		JScrollPane scrollPlataformasCont = new JScrollPane(plataformasPanelCont);
+		scrollPlataformasCont.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPlataformasCont.setBounds(52, 332, 1124, 132);
+		panelBotonesPlataformaCont.add(scrollPlataformasCont);
+		
+		JLabel lblVideo = new JLabel("Video");
+		lblVideo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVideo.setFont(new Font("Tahoma", Font.BOLD, 21));
+		lblVideo.setBounds(83, 139, 90, 24);
+		panel_Contenidos.add(lblVideo);
+		
+		textVideoLikes = new JTextField();
+		textVideoLikes.setHorizontalAlignment(SwingConstants.CENTER);
+		textVideoLikes.setFont(new Font("Tahoma", Font.BOLD, 21));
+		textVideoLikes.setEditable(false);
+		textVideoLikes.setColumns(10);
+		textVideoLikes.setBounds(83, 174, 90, 32);
+		panel_Contenidos.add(textVideoLikes);
+		
+		JLabel lblImagen = new JLabel("Imagen");
+		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
+		lblImagen.setFont(new Font("Tahoma", Font.BOLD, 21));
+		lblImagen.setBounds(203, 139, 90, 24);
+		panel_Contenidos.add(lblImagen);
+		
+		textImagenLikes = new JTextField();
+		textImagenLikes.setHorizontalAlignment(SwingConstants.CENTER);
+		textImagenLikes.setFont(new Font("Tahoma", Font.BOLD, 21));
+		textImagenLikes.setEditable(false);
+		textImagenLikes.setColumns(10);
+		textImagenLikes.setBounds(203, 174, 90, 32);
+		panel_Contenidos.add(textImagenLikes);
+		
+		JLabel lblStream = new JLabel("Stream");
+		lblStream.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStream.setFont(new Font("Tahoma", Font.BOLD, 21));
+		lblStream.setBounds(319, 139, 90, 24);
+		panel_Contenidos.add(lblStream);
+		
+		textStreamLikes = new JTextField();
+		textStreamLikes.setHorizontalAlignment(SwingConstants.CENTER);
+		textStreamLikes.setFont(new Font("Tahoma", Font.BOLD, 21));
+		textStreamLikes.setEditable(false);
+		textStreamLikes.setColumns(10);
+		textStreamLikes.setBounds(319, 174, 90, 32);
+		panel_Contenidos.add(textStreamLikes);
+		
+		textVideoVistas = new JTextField();
+		textVideoVistas.setHorizontalAlignment(SwingConstants.CENTER);
+		textVideoVistas.setFont(new Font("Tahoma", Font.BOLD, 21));
+		textVideoVistas.setEditable(false);
+		textVideoVistas.setColumns(10);
+		textVideoVistas.setBounds(83, 223, 90, 32);
+		panel_Contenidos.add(textVideoVistas);
+		
+		textImagenVistas = new JTextField();
+		textImagenVistas.setHorizontalAlignment(SwingConstants.CENTER);
+		textImagenVistas.setFont(new Font("Tahoma", Font.BOLD, 21));
+		textImagenVistas.setEditable(false);
+		textImagenVistas.setColumns(10);
+		textImagenVistas.setBounds(203, 223, 90, 32);
+		panel_Contenidos.add(textImagenVistas);
+		
+		textStreamVistas = new JTextField();
+		textStreamVistas.setHorizontalAlignment(SwingConstants.CENTER);
+		textStreamVistas.setFont(new Font("Tahoma", Font.BOLD, 21));
+		textStreamVistas.setEditable(false);
+		textStreamVistas.setColumns(10);
+		textStreamVistas.setBounds(319, 223, 90, 32);
+		panel_Contenidos.add(textStreamVistas);
+		
+		JLabel lblLikes = new JLabel("Likes");
+		lblLikes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLikes.setFont(new Font("Tahoma", Font.BOLD, 21));
+		lblLikes.setBounds(0, 178, 72, 24);
+		panel_Contenidos.add(lblLikes);
+		
+		JLabel lblVistas = new JLabel("Vistas");
+		lblVistas.setHorizontalAlignment(SwingConstants.LEFT);
+		lblVistas.setFont(new Font("Tahoma", Font.BOLD, 21));
+		lblVistas.setBounds(8, 227, 64, 24);
+		panel_Contenidos.add(lblVistas);
+		
+		panelLikesGraficaCont = new JPanel();
+		panelLikesGraficaCont.setBounds(811, 139, 360, 298);
+		panel_Contenidos.add(panelLikesGraficaCont);
+		
+		panelVistasGraficaCont = new JPanel();
+		panelVistasGraficaCont.setBounds(441, 139, 360, 298);
+		panel_Contenidos.add(panelVistasGraficaCont);
 
 		panel_Plataformas = new JPanel();
 		panel_Plataformas.setBackground(new Color(255, 204, 204));
@@ -359,18 +474,15 @@ public class MainView extends JFrame {
 		plataformasPanel.setSize(1171, 130);
 		plataformasPanel.setLocation(0, 0);
 		plataformasPanel.setLayout(new GridBagLayout());
-		plataformasPanel.setOpaque(rootPaneCheckingEnabled);
 		panel_Plataformas.add(plataformasPanel);
-
-		JScrollPane scrollPlataformas = new JScrollPane(plataformasPanel);
-		scrollPlataformas.setOpaque(rootPaneCheckingEnabled);
 
 		panelBotonesPlataforma = new JPanel();
 		panelBotonesPlataforma.setBackground(new Color(255, 204, 204));
-
 		panelBotonesPlataforma.setBounds(156, 11, 928, 74);
 		panel_Plataformas.add(panelBotonesPlataforma);
-
+		
+		JScrollPane scrollPlataformas = new JScrollPane(plataformasPanel);
+		scrollPlataformas.setOpaque(rootPaneCheckingEnabled);
 		scrollPlataformas.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPlataformas.setBounds(52, 332, 1124, 132);
 		panelBotonesPlataforma.add(scrollPlataformas);
@@ -577,23 +689,153 @@ public class MainView extends JFrame {
 
 		panel_Colabs.add(chckbxColActiva);
 
-		reportes = new JPanel();
-		reportes.setBackground(new Color(255, 204, 204));
-		tabbedPane.addTab("Reportes", null, reportes, null);
+		panel_Publicaciones = new JPanel();
+		tabbedPane.addTab("Publicaciones", null, panel_Publicaciones, null);
+		panel_Publicaciones.setLayout(null);
 
-		panel = new JPanel();
-		panel.setBackground(new Color(255, 204, 204));
-		panel.setBounds(0, 0, 1186, 138);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		listPublicaciones = new JList<String>();
+		listPublicaciones.setBounds(10, 30, 355, 405);
+		panel_Publicaciones.add(listPublicaciones);
+
+		JPanel panel_Comentarios = new JPanel();
+		panel_Comentarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_Comentarios.setBounds(820, 137, 351, 310);
+		panel_Publicaciones.add(panel_Comentarios);
+		panel_Comentarios.setLayout(null);
+
+		JLabel lblNewLabel_2 = new JLabel("ID Comentario:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(10, 11, 125, 25);
+		panel_Comentarios.add(lblNewLabel_2);
+
+		JLabel lblNombreComentario = new JLabel("Nombre:");
+		lblNombreComentario.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNombreComentario.setBounds(10, 47, 72, 25);
+		panel_Comentarios.add(lblNombreComentario);
+
+		JLabel lblEmailComentario = new JLabel("Email:");
+		lblEmailComentario.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblEmailComentario.setBounds(10, 72, 72, 25);
+		panel_Comentarios.add(lblEmailComentario);
+
+		JLabel lblContenidoComentario = new JLabel("Contenido:");
+		lblContenidoComentario.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblContenidoComentario.setBounds(10, 108, 125, 25);
+		panel_Comentarios.add(lblContenidoComentario);
+
+		textAreaComentario = new JTextArea();
+		textAreaComentario.setEditable(false);
+		textAreaComentario.setBounds(10, 137, 331, 162);
+		panel_Comentarios.add(textAreaComentario);
+
+		textIdComentario = new JTextField();
+		textIdComentario.setEditable(false);
+		textIdComentario.setBounds(145, 15, 86, 20);
+		panel_Comentarios.add(textIdComentario);
+		textIdComentario.setColumns(10);
+
+		textNombreComentario = new JTextField();
+		textNombreComentario.setEditable(false);
+		textNombreComentario.setBounds(92, 51, 249, 20);
+		panel_Comentarios.add(textNombreComentario);
+		textNombreComentario.setColumns(10);
+
+		textEmailComentario = new JTextField();
+		textEmailComentario.setEditable(false);
+		textEmailComentario.setColumns(10);
+		textEmailComentario.setBounds(92, 76, 249, 20);
+		panel_Comentarios.add(textEmailComentario);
+
+		btnAnterior = new JButton("Anterior");
+		btnAnterior.setBounds(820, 79, 160, 47);
+		panel_Publicaciones.add(btnAnterior);
+
+		btnSiguiente = new JButton("Siguiente");
+		btnSiguiente.setBounds(1016, 79, 155, 47);
+		panel_Publicaciones.add(btnSiguiente);
+
+		lblMinComentarios = new JLabel("0");
+		lblMinComentarios.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMinComentarios.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblMinComentarios.setBounds(882, 45, 107, 23);
+		panel_Publicaciones.add(lblMinComentarios);
+
+		lblMaxComentarios = new JLabel("0");
+		lblMaxComentarios.setHorizontalAlignment(SwingConstants.LEFT);
+		lblMaxComentarios.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblMaxComentarios.setBounds(1006, 45, 118, 23);
+		panel_Publicaciones.add(lblMaxComentarios);
+
+		JLabel lblSlashCommentarios = new JLabel("/");
+		lblSlashCommentarios.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSlashCommentarios.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblSlashCommentarios.setBounds(985, 45, 22, 23);
+		panel_Publicaciones.add(lblSlashCommentarios);
+
+		JLabel lblIdContenido = new JLabel("ID Publicacion:");
+		lblIdContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblIdContenido.setBounds(390, 79, 125, 25);
+		panel_Publicaciones.add(lblIdContenido);
+
+		JLabel lblVistasContenido = new JLabel("Vistas:");
+		lblVistasContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblVistasContenido.setBounds(390, 119, 125, 25);
+		panel_Publicaciones.add(lblVistasContenido);
+
+		JLabel lblLikesContenido = new JLabel("Likes:");
+		lblLikesContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblLikesContenido.setBounds(390, 155, 125, 25);
+		panel_Publicaciones.add(lblLikesContenido);
+
+		JLabel lblComentariosContenido = new JLabel("Comentarios:");
+		lblComentariosContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblComentariosContenido.setBounds(390, 191, 125, 25);
+		panel_Publicaciones.add(lblComentariosContenido);
+
+		JLabel lblCompartidoContenido = new JLabel("Compartidos:");
+		lblCompartidoContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblCompartidoContenido.setBounds(390, 227, 125, 25);
+		panel_Publicaciones.add(lblCompartidoContenido);
+
+		textIdPublicacion = new JTextField();
+		textIdPublicacion.setEditable(false);
+		textIdPublicacion.setBounds(521, 79, 125, 23);
+		panel_Publicaciones.add(textIdPublicacion);
+		textIdPublicacion.setColumns(10);
+
+		textVistas = new JTextField();
+		textVistas.setColumns(10);
+		textVistas.setBounds(521, 115, 125, 23);
+		panel_Publicaciones.add(textVistas);
+
+		textLikes = new JTextField();
+		textLikes.setColumns(10);
+		textLikes.setBounds(521, 155, 125, 23);
+		panel_Publicaciones.add(textLikes);
+
+		textComentarios = new JTextField();
+		textComentarios.setColumns(10);
+		textComentarios.setBounds(521, 191, 125, 23);
+		panel_Publicaciones.add(textComentarios);
+
+		textCompartidos = new JTextField();
+		textCompartidos.setColumns(10);
+		textCompartidos.setBounds(521, 227, 125, 23);
+		panel_Publicaciones.add(textCompartidos);
+
+		panelEncabezado = new JPanel();
+		panelEncabezado.setBackground(new Color(255, 204, 204));
+		panelEncabezado.setBounds(0, 0, 1186, 138);
+		contentPane.add(panelEncabezado);
+		panelEncabezado.setLayout(null);
 
 		comboBox = new JComboBox<>();
 		comboBox.setBounds(107, 71, 182, 40);
-		panel.add(comboBox);
+		panelEncabezado.add(comboBox);
 
 		lblNewLabel_1 = new JLabel("Seleccione al Creador:");
 		lblNewLabel_1.setBounds(107, 21, 182, 39);
-		panel.add(lblNewLabel_1);
+		panelEncabezado.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		textAreaLogger = new JTextArea();
@@ -601,12 +843,12 @@ public class MainView extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane(textAreaLogger);
 		scrollPane.setBounds(535, 21, 593, 106);
-		panel.add(scrollPane);
+		panelEncabezado.add(scrollPane);
 
 		btnExportarConsola = new JButton("Exportar Consola");
 		btnExportarConsola.setEnabled(false);
 		btnExportarConsola.setBounds(395, 87, 128, 40);
-		panel.add(btnExportarConsola);
+		panelEncabezado.add(btnExportarConsola);
 
 		panel_NewCol = new JPanel();
 		panel_NewCol.setBackground(new Color(255, 204, 204));
