@@ -463,6 +463,92 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 		}else if(e.getSource() == this.view.generarResRendJSON) {
 			//Ej 10
+			List<Metrica> metricas = csvR.abrirCSV();
+			ObjectNode rootNode = om.createObjectNode();
+			
+			
+			int vTwitch = 0, vInsta = 0, vTiktok = 0, vYoutube = 0;
+			int sTwitch = 0, sInsta = 0, sTiktok = 0, sYoutube = 0;
+			for(Metrica metrica: metricas) {
+				metrica.getIdCreador();
+				csvR.obtenerPorId(metrica.getIdCreador());
+				String plataforma = metrica.getPlataforma();
+				
+				switch (plataforma) {
+					case "Instagram":
+						vInsta = vInsta + metrica.getVistas();
+						sInsta = sInsta + metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
+						
+						break;
+					case "TikTok":
+						vTiktok = vTiktok + metrica.getVistas();
+						sTiktok = sTiktok + metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
+						
+						break;
+					case "Youtube":
+						vYoutube = vYoutube  + metrica.getVistas();
+						sYoutube  = sYoutube  + metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
+						
+						break;
+					case "Twitch":
+						vTwitch = vTwitch + metrica.getVistas();
+						sTwitch = sTwitch + metrica.getMeGusta() + metrica.getComentarios() + metrica.getCompartidos();
+						break;
+				}
+					
+				sTwitch = sTwitch / 3;
+				sInsta = sInsta / 3;
+				sTiktok = sTiktok / 3;
+				sYoutube = sYoutube / 3;
+				
+				if(vInsta > vTiktok &&
+						vInsta > vTwitch &&
+						vInsta > vYoutube) {
+					rootNode.put("plataforma_mas_vistas", "Instagram");
+					
+				}else if(vTiktok > vInsta &&
+						vTiktok > vTwitch &&
+						vTiktok > vYoutube) {
+					rootNode.put("plataforma_mas_vistas", "TikTok");
+					
+				}else if(vYoutube > vInsta &&
+						vYoutube > vTwitch &&
+						vYoutube > vInsta) {
+					rootNode.put("plataforma_mas_vistas", "Youtube");
+					
+				}else if(vTwitch > vInsta &&
+						vTwitch > vTiktok &&
+						vTwitch > vYoutube) {
+					rootNode.put("plataforma_mas_vistas", "TikTok");
+				}else {
+					rootNode.put("plataforma_mas_vistas", "Hay empate");
+				}
+				
+				if(sInsta > sTiktok &&
+						sInsta > sTwitch &&
+						sInsta > sYoutube) {
+					rootNode.put("plataforma_mas_interacciones_promedio", "Instagram");
+					
+				}else if(sTiktok > sInsta &&
+						sTiktok > sTwitch &&
+						sTiktok > sYoutube) {
+					rootNode.put("plataforma_mas_interacciones_promedio", "TikTok");
+					
+				}else if(sYoutube > sInsta &&
+						sYoutube > sTwitch &&
+						sYoutube > sInsta) {
+					rootNode.put("plataforma_mas_interacciones_promedio", "Youtube");
+					
+				}else if(sTwitch > sInsta &&
+						sTwitch > sTiktok &&
+						sTwitch > sYoutube) {
+					rootNode.put("plataforma_mas_interacciones_promedio", "TikTok");
+				}else {
+					rootNode.put("plataforma_mas_interacciones_promedio", "Hay empate");
+				}
+				
+			}
+			jsonR.crearJson("resumen_rendimiento", rootNode);
 			
 		}else if (e.getSource() == this.view.generarRepColCSV) {
 			//Ej 8
