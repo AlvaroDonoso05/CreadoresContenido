@@ -486,7 +486,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			}
 			
 			csvR.generarCsvRepCol("resources/reporte_colaboraciones.csv", reporteColabs);
-
+		}
 	}
 
 
