@@ -467,7 +467,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		} else if(e.getSource() == this.view.btnAgregar) {
 			
 			// Obtener el contenido Mayor
-			List<Metrica> listaContenidos = csvR.abrirCSV();
+			List<Metrica> listaContenidos = csvR.getArchivoCsv();
 			
 			int contenidoMayor = 0;
 			for(Metrica metrica: listaContenidos) {
@@ -515,6 +515,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			logger.success(metrica.getContenido() + " agregado correctamente.");
 			obtenerPublicaciones(creadorSeleccionado.getId());
 			actualizarValores();
+			contenidoMayor = 0;
       
 		}else if(e.getSource() == this.view.generarResRendJSON) {
 			//Ej 10
@@ -878,7 +879,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 	}
 
 	private void agregarNuevaPublicacion() {
-	    List<Metrica> listaContenidos = csvR.abrirCSV();
+	    List<Metrica> listaContenidos = csvR.getArchivoCsv();
 	    int contenidoMayor = obtenerContenidoMayorId(listaContenidos);
 	    Metrica metrica = crearMetrica(contenidoMayor);
 	    listaContenidos.add(metrica);
