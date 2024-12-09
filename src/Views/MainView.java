@@ -178,6 +178,7 @@ public class MainView extends JFrame {
 	public JPanel panelVistasGraficaCont;
 	public JPanel panelLikesGraficaCont;
 	public JButton btnAgregar;
+	public JComboBox<String> comboBoxContenido;
 
 	public MainView() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -780,53 +781,53 @@ public class MainView extends JFrame {
 
 		JLabel lblIdContenido = new JLabel("ID Publicacion:");
 		lblIdContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblIdContenido.setBounds(390, 79, 125, 25);
+		lblIdContenido.setBounds(390, 45, 125, 25);
 		panel_Publicaciones.add(lblIdContenido);
 
 		JLabel lblVistasContenido = new JLabel("Vistas:");
 		lblVistasContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblVistasContenido.setBounds(390, 119, 125, 25);
+		lblVistasContenido.setBounds(390, 85, 125, 25);
 		panel_Publicaciones.add(lblVistasContenido);
 
 		JLabel lblLikesContenido = new JLabel("Likes:");
 		lblLikesContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblLikesContenido.setBounds(390, 155, 125, 25);
+		lblLikesContenido.setBounds(390, 121, 125, 25);
 		panel_Publicaciones.add(lblLikesContenido);
 
 		JLabel lblComentariosContenido = new JLabel("Comentarios:");
 		lblComentariosContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblComentariosContenido.setBounds(390, 191, 125, 25);
+		lblComentariosContenido.setBounds(390, 157, 125, 25);
 		panel_Publicaciones.add(lblComentariosContenido);
 
 		JLabel lblCompartidoContenido = new JLabel("Compartidos:");
 		lblCompartidoContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblCompartidoContenido.setBounds(390, 227, 125, 25);
+		lblCompartidoContenido.setBounds(390, 193, 125, 25);
 		panel_Publicaciones.add(lblCompartidoContenido);
 
 		textIdPublicacion = new JTextField();
 		textIdPublicacion.setEditable(false);
-		textIdPublicacion.setBounds(521, 79, 125, 23);
+		textIdPublicacion.setBounds(521, 45, 125, 23);
 		panel_Publicaciones.add(textIdPublicacion);
 		textIdPublicacion.setColumns(10);
 
 		textVistas = new JTextField();
 		textVistas.setColumns(10);
-		textVistas.setBounds(521, 115, 125, 23);
+		textVistas.setBounds(521, 81, 125, 23);
 		panel_Publicaciones.add(textVistas);
 
 		textLikes = new JTextField();
 		textLikes.setColumns(10);
-		textLikes.setBounds(521, 155, 125, 23);
+		textLikes.setBounds(521, 121, 125, 23);
 		panel_Publicaciones.add(textLikes);
 
 		textComentarios = new JTextField();
 		textComentarios.setColumns(10);
-		textComentarios.setBounds(521, 191, 125, 23);
+		textComentarios.setBounds(521, 157, 125, 23);
 		panel_Publicaciones.add(textComentarios);
 
 		textCompartidos = new JTextField();
 		textCompartidos.setColumns(10);
-		textCompartidos.setBounds(521, 227, 125, 23);
+		textCompartidos.setBounds(521, 193, 125, 23);
 		panel_Publicaciones.add(textCompartidos);
 
 		panelEncabezado = new JPanel();
@@ -989,6 +990,15 @@ public class MainView extends JFrame {
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.setBounds(656, 366, 142, 47);
 		panel_Publicaciones.add(btnAgregar);
+		
+		JLabel lblPlataformaContenido = new JLabel("Plataforma:");
+		lblPlataformaContenido.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblPlataformaContenido.setBounds(390, 234, 125, 25);
+		panel_Publicaciones.add(lblPlataformaContenido);
+		
+		comboBoxContenido = new JComboBox<String>();
+		comboBoxContenido.setBounds(521, 234, 125, 23);
+		panel_Publicaciones.add(comboBoxContenido);
 
 	}
 

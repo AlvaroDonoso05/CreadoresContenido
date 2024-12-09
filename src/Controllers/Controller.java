@@ -103,6 +103,13 @@ public class Controller implements ActionListener, ListSelectionListener {
 		DefaultComboBoxModel<String> modelTem = new DefaultComboBoxModel<>();
 		DefaultComboBoxModel<String> modelTipo = new DefaultComboBoxModel<>();
 		DefaultComboBoxModel<String> modelFiltros = new DefaultComboBoxModel<>();
+		DefaultComboBoxModel<String> modelContenido = new DefaultComboBoxModel<>();
+		
+		modelContenido.addElement("TikTok");
+		modelContenido.addElement("Twitch");
+		modelContenido.addElement("YouTube");
+		modelContenido.addElement("Instagram");
+		this.view.comboBoxContenido.setModel(modelContenido);
 
 		modelFiltros.addElement("Vistas");
 		modelFiltros.addElement("Likes");
@@ -252,6 +259,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 					}
 				}
 				csvR.setArchivoCsv(listaPublicaciones);
+				obtenerPublicaciones(creadorSeleccionado.getId());
 			} else {
 				if(this.view.listPublicaciones.getSelectedValue() != null) {
 					List<Metrica> listaPublicaciones = csvR.getArchivoCsv();
@@ -469,7 +477,6 @@ public class Controller implements ActionListener, ListSelectionListener {
 			
 			int contenidoMayor = 0;
 			for(Metrica metrica: listaContenidos) {
-				System.out.println(metrica.getContenido());
 				int metricaId = Integer.parseInt(metrica.getContenido().substring(metrica.getContenido().lastIndexOf(" ") + 1));;
 				if(contenidoMayor < metricaId) {
 					contenidoMayor = metricaId;
@@ -506,10 +513,13 @@ public class Controller implements ActionListener, ListSelectionListener {
 			} else {
 				metrica.setCompartidos(Integer.parseInt(this.view.textCompartidos.getText()));
 			}
+			
+			metrica.setPlataforma(this.view.comboBoxContenido.getSelectedItem().toString());
 
 			listaContenidos.add(metrica);
 			csvR.setArchivoCsv(listaContenidos);
 			logger.success(metrica.getContenido() + " agregado correctamente.");
+			obtenerPublicaciones(creadorSeleccionado.getId());
       
 		}else if(e.getSource() == this.view.generarResRendJSON) {
 			//Ej 10
@@ -553,9 +563,13 @@ public class Controller implements ActionListener, ListSelectionListener {
 						this.view.textLikes.setText(String.valueOf(publicacion.getMeGusta()));
 						this.view.textComentarios.setText(String.valueOf(publicacion.getComentarios()));
 						this.view.textCompartidos.setText(String.valueOf(publicacion.getCompartidos()));
-						this.view.lblMinComentarios.setText("1");
 						this.view.lblMaxComentarios.setText(String.valueOf(publicacion.getComentarios()));
-						cargarComentario(1);
+						if(publicacion.getComentarios() != 0) {
+							cargarComentario(1);
+							this.view.lblMinComentarios.setText("1");
+						} else {
+							this.view.lblMinComentarios.setText("0");
+						}
 					}
 				}
 			}
