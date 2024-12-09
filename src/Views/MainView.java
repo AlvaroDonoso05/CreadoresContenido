@@ -73,7 +73,6 @@ public class MainView extends JFrame {
 	public JMenu helpMenu;
 	public JMenuItem generarRepColCSV;
 	public JMenu fileMenu;
-	public JMenu editMenu;
 	public JLabel lblNewLabel_1;
 	private JPanel mainPanel;
 	public JPanel panel;
@@ -164,6 +163,7 @@ public class MainView extends JFrame {
 	public JMenuItem helpItem;
 	public JTextField textTasaCrecimientoRang;
 	private JLabel lblTasaCrecimientoenerofebrero;
+	public JMenuItem generarResRendJSON;
 
 	public MainView() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -182,12 +182,10 @@ public class MainView extends JFrame {
 		contentPane = new JLayeredPane();
 
 		fileMenu = new JMenu("File");
-		editMenu = new JMenu("Edit");
 		helpMenu = new JMenu("Informacion");
 
 		// Add JMenus to the JMenuBar
 		menuBar.add(fileMenu);
-		menuBar.add(editMenu);
 		menuBar.add(helpMenu);
 		
 		helpItem = new JMenuItem("Acerca de");
@@ -197,11 +195,13 @@ public class MainView extends JFrame {
 		reporteCreadoresItem = new JMenuItem("Generar Reporte Creadores JSON");
 		reporteColaboracionesItem = new JMenuItem("Generar Reporte Colaboraciones JSON");
 		generarRepColCSV = new JMenuItem("Generar Reporte Colaboraciones CSV");
+		generarResRendJSON = new JMenuItem("Generar Resumen Rendimiento JSON");
 		exitItem = new JMenuItem("Exit");
 
 		fileMenu.add(reporteCreadoresItem);
 		fileMenu.add(reporteColaboracionesItem);
 		fileMenu.add(generarRepColCSV);
+		fileMenu.add(generarResRendJSON);
 		fileMenu.addSeparator();
 		fileMenu.add(exitItem);
 
@@ -842,10 +842,10 @@ public class MainView extends JFrame {
 		textAreaNewCol = new JTextArea();
 		textAreaNewCol.setFont(new Font("Tahoma", Font.BOLD, 16));
 		textAreaNewCol.setBackground(new Color(255, 204, 204));
-		textAreaNewCol.setBounds(68, 413, 404, 60);
+		textAreaNewCol.setBounds(68, 413, 496, 60);
 		panel_NewCol.add(textAreaNewCol);
 
-		// sefs
+		
 		btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(390, 366, 160, 47);
 		panel_Publicaciones.add(btnModificar);

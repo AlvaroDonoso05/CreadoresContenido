@@ -12,8 +12,10 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -83,6 +85,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 		this.view.btnFechaFin.addActionListener(this);
 		this.view.btnNewButtonAddCol.addActionListener(this);
 		this.view.btnExportarConsola.addActionListener(this);
+		this.view.generarResRendJSON.addActionListener(this);
 
 		jsonR = new JsonReader("resources/creadores.json");
 		csvR = new CsvReader("resources/metricas_contenido.csv");
@@ -284,7 +287,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 			int creador = -1;
 			String colaborador, tipo, tematica, fchIni, fchFin, activaString;
-			Boolean activa;
+			Boolean activa, fechaCorrecta = false;
 
 			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
 				creador = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
@@ -296,6 +299,21 @@ public class Controller implements ActionListener, ListSelectionListener {
 			tematica = this.view.comboBoxColTem.getSelectedItem().toString();
 			fchIni = this.view.textFieldFechIniColNew.getText();
 			fchFin = this.view.textFieldFechFinColNew.getText();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
+			Date sdfIni = null;
+			Date sdfFin = null;
+			try {
+				sdfIni = sdf.parse(fchIni);
+				sdfFin = sdf.parse(fchFin);
+			} catch (ParseException e1) {
+				logger.error(e1);
+			} 			
+			
+			if(!sdfFin.before(sdfIni)) {
+				fechaCorrecta = true;
+			}
+			
 			activa = this.view.chckbxColActivaColNew.isSelected();
 			if(activa) {
 				activaString = "Activa";
@@ -307,7 +325,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 					!colaborador.equals("lige un colaborador") &&
 					!fchIni.equals("") &&
 					!fchFin.equals("") &&
-					creador != -1) {
+					creador != -1 &&
+					fechaCorrecta) {
 
 				ObjectNode colaboracion = om.createObjectNode();
 				colaboracion.put("colaborador", colaborador);
@@ -323,12 +342,21 @@ public class Controller implements ActionListener, ListSelectionListener {
 				try {
 					jsonR.actualizarCreadores();
 					this.view.textAreaNewCol.setText("COLABORACIÓN AÑADIDA CORRECTAMENTE");
+					this.view.textFieldFechIniColNew.setText("");
+					this.view.textFieldFechFinColNew.setText("");
+					this.view.chckbxColActivaColNew.setSelected(false);
+					logger.success("Colaboracion añadida");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 
 			}else {
-				this.view.textAreaNewCol.setText("DEBE RELLENAR TODOS LOS CAMPOS!!");
+				if(fechaCorrecta) {
+					this.view.textAreaNewCol.setText("DEBE RELLENAR TODOS LOS CAMPOS!!");
+				}else {
+					this.view.textAreaNewCol.setText("LA FECHA DE INICIO DEBE SER MENOR A LA FINAL");
+				}
+				
 			}
 		}else if(e.getSource() == this.view.reporteCreadoresItem) {
 			List<Creador> creadores = jsonR.getListaCreadores();
@@ -424,6 +452,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 				reporteColabs.add(nReporte);
 			}
 			csvR.generarCsvColaboraciones("resources/colaboraciones.csv", reporteColabs);
+			
+		}else if(e.getSource() == this.view.generarResRendJSON) {
 			
 		}
 	}
