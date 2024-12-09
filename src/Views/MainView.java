@@ -959,7 +959,7 @@ public class MainView extends JFrame {
 		textAreaNewCol = new JTextArea();
 		textAreaNewCol.setFont(new Font("Tahoma", Font.BOLD, 16));
 		textAreaNewCol.setBackground(new Color(255, 204, 204));
-		textAreaNewCol.setBounds(68, 413, 404, 60);
+		textAreaNewCol.setBounds(68, 413, 448, 60);
 		panel_NewCol.add(textAreaNewCol);
 
 		// sefs
