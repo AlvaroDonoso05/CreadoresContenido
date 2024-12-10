@@ -363,6 +363,7 @@ public class MainView extends JFrame {
 		panel_Datos.add(lblInfoHaste);
 
 		panel_Contenidos = new JPanel();
+		panel_Contenidos.setBackground(new Color(255, 204, 204));
 		tabbedPane.addTab("Contenidos", null, panel_Contenidos, null);
 
 		plataformasPanelCont = new JPanel();
