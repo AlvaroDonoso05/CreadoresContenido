@@ -9,9 +9,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.net.URI;
-import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -27,7 +25,6 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -295,80 +292,86 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 		}else if (e.getSource() == this.view.btnNewButtonAddCol) {
 
-			int creador = -1;
-			String colaborador, tipo, tematica, fchIni, fchFin, activaString;
-			Boolean activa, fechaCorrecta = false;
+			if(!this.view.textFieldFechIniColNew.getText().equalsIgnoreCase("") && !this.view.textFieldFechFinColNew.getText().equalsIgnoreCase("")) {
+				int creador = -1;
+				String colaborador, tipo, tematica, fchIni, fchFin, activaString;
+				Boolean activa, fechaCorrecta = false;
 
-			if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
-				creador = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
-			}
+				if(view.comboBox.getSelectedItem().toString().indexOf(".")!= -1) {
+					creador = Integer.parseInt(view.comboBox.getSelectedItem().toString().substring(0, view.comboBox.getSelectedItem().toString().indexOf("."))) - 1;
+				}
 
-			colaborador = this.view.comboBoxColNew.getSelectedItem().toString();
-			colaborador = colaborador.substring(colaborador.indexOf(".") + 2);
-			tipo = this.view.comboBoxColTipo.getSelectedItem().toString();
-			tematica = this.view.comboBoxColTem.getSelectedItem().toString();
-			fchIni = this.view.textFieldFechIniColNew.getText();
-			fchFin = this.view.textFieldFechFinColNew.getText();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-			Date sdfIni = null;
-			Date sdfFin = null;
-			try {
-				sdfIni = sdf.parse(fchIni);
-				sdfFin = sdf.parse(fchFin);
-			} catch (ParseException e1) {
-				logger.error(e1);
-			} 			
-
-			if(!sdfFin.before(sdfIni)) {
-				fechaCorrecta = true;
-			}
-
-			activa = this.view.chckbxColActivaColNew.isSelected();
-			if(activa) {
-				activaString = "Activa";
-			}else {
-				activaString = "Finalizada";
-			}
-
-			if(creador != -1 &&
-					!colaborador.equals("lige un colaborador") &&
-					!fchIni.equals("") &&
-					!fchFin.equals("") &&
-					creador != -1 &&
-					fechaCorrecta) {
-
-				ObjectNode colaboracion = om.createObjectNode();
-				colaboracion.put("colaborador", colaborador);
-				colaboracion.put("tematica", tematica);
-				colaboracion.put("fecha_inicio", fchIni);
-				colaboracion.put("fecha_fin", fchFin);
-				colaboracion.put("tipo", tipo);
-				colaboracion.put("estado", activaString);
-
-				JsonNode creadores = jsonR.getCreadoresNode();
-				ArrayNode colaboraciones = (ArrayNode) creadores.get(creador).get("colaboraciones");
-				colaboraciones.add(colaboracion);
+				colaborador = this.view.comboBoxColNew.getSelectedItem().toString();
+				colaborador = colaborador.substring(colaborador.indexOf(".") + 2);
+				tipo = this.view.comboBoxColTipo.getSelectedItem().toString();
+				tematica = this.view.comboBoxColTem.getSelectedItem().toString();
+				fchIni = this.view.textFieldFechIniColNew.getText();
+				fchFin = this.view.textFieldFechFinColNew.getText();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				
+				Date sdfIni = null;
+				Date sdfFin = null;
 				try {
-					jsonR.actualizarCreadores();
-					this.view.textAreaNewCol.setText("COLABORACIÓN AÑADIDA CORRECTAMENTE");
-					this.view.textFieldFechIniColNew.setText("");
-					this.view.textFieldFechFinColNew.setText("");
-					this.view.chckbxColActivaColNew.setSelected(false);
-					logger.success("Colaboracion añadida");
-					actualizarValores();
-				} catch (Exception e1) {
-					e1.printStackTrace();
+					sdfIni = sdf.parse(fchIni);
+					sdfFin = sdf.parse(fchFin);
+				} catch (ParseException e1) {
+					logger.error(e1);
+				} 			
+
+				if(!sdfFin.before(sdfIni)) {
+					fechaCorrecta = true;
 				}
 
-			}else {
-				if(fechaCorrecta) {
-					this.view.textAreaNewCol.setText("DEBE RELLENAR TODOS LOS CAMPOS!!");
+				activa = this.view.chckbxColActivaColNew.isSelected();
+				if(activa) {
+					activaString = "Activa";
 				}else {
-					this.view.textAreaNewCol.setText("LA FECHA DE INICIO DEBE SER MENOR A LA FINAL");
+					activaString = "Finalizada";
 				}
 
+				if(creador != -1 &&
+						!colaborador.equals("lige un colaborador") &&
+						!fchIni.equals("") &&
+						!fchFin.equals("") &&
+						creador != -1 &&
+						fechaCorrecta) {
+
+					ObjectNode colaboracion = om.createObjectNode();
+					colaboracion.put("colaborador", colaborador);
+					colaboracion.put("tematica", tematica);
+					colaboracion.put("fecha_inicio", fchIni);
+					colaboracion.put("fecha_fin", fchFin);
+					colaboracion.put("tipo", tipo);
+					colaboracion.put("estado", activaString);
+
+					JsonNode creadores = jsonR.getCreadoresNode();
+					ArrayNode colaboraciones = (ArrayNode) creadores.get(creador).get("colaboraciones");
+					colaboraciones.add(colaboracion);
+					try {
+						jsonR.actualizarCreadores();
+						this.view.textAreaNewCol.setText("COLABORACIÓN AÑADIDA CORRECTAMENTE");
+						this.view.textFieldFechIniColNew.setText("");
+						this.view.textFieldFechFinColNew.setText("");
+						this.view.chckbxColActivaColNew.setSelected(false);
+						logger.success("Colaboracion añadida correctamente");
+						actualizarValores();
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+
+				}else {
+					if(fechaCorrecta) {
+						this.view.textAreaNewCol.setText("DEBE RELLENAR TODOS LOS CAMPOS!!");
+					}else {
+						this.view.textAreaNewCol.setText("LA FECHA DE INICIO DEBE SER MENOR A LA FINAL");
+					}
+
+				}
+			} else {
+				logger.warning("Rellena todos los campos");
+				this.view.textAreaNewCol.setText("DEBE RELLENAR TODOS LOS CAMPOS!!");
 			}
+			
 		}else if(e.getSource() == this.view.reporteCreadoresItem) {
 			List<Creador> creadores = jsonR.getListaCreadores();
 			ObjectNode rootNode = om.createObjectNode();
